@@ -1,0 +1,46 @@
+export const common = {
+  nav: {
+    home: '홈',
+    about: '회사소개',
+    aboutIntro: '회사 개요',
+    aboutHistory: '연혁',
+    aboutTech: '비전 및 철학',
+    aboutCI: 'CEO 인사말',
+    product: '제품소개',
+    productOverview: '제품 개요',
+    productProblems: '문제점',
+    productHowItWorks: '작동 원리',
+    productApplication: '적용 방법',
+    productIndustries: '적용 산업',
+    performance: '적용 실적',
+    performanceAdvantages: '국내 시험로',
+    performanceCases: '몽골 석탄공장',
+    performanceComparison: '태국·라오스',
+    media: '미디어',
+    mediaPress: '보도자료',
+    mediaAwards: '인증 및 수상',
+    mediaTechnical: '기술 자료',
+    contact: '문의하기'
+  },
+  cta: {
+    contact: '문의하기',
+    learnMore: '자세히 보기',
+    viewMore: '더보기',
+    submit: '제출하기',
+    viewDetails: '상세보기'
+  },
+  footer: {
+    description: '석탄 연소 효율을 높이고 대기오염을 저감하는 친환경 연소 솔루션을 개발·공급하는 환경기술 기업입니다.',
+    quickLinks: '빠른 링크',
+    resources: '자료실',
+    contact: '연락처',
+    address: '문의 시 안내',
+    company: '주식회사 대양환경기술',
+    rights: 'All rights reserved.',
+    newsletter: '뉴스레터',
+    emailPlaceholder: '이메일 주소를 입력하세요',
+    products: '제품',
+    copyright: '© 2024 주식회사 대양환경기술. All rights reserved.',
+    poweredBy: 'Website Builder'
+  }
+};
