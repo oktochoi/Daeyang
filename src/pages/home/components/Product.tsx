@@ -14,7 +14,7 @@ export default function Product() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
     );
 
     if (sectionRef.current) {
@@ -47,9 +47,9 @@ export default function Product() {
   ];
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('common.nav.product')}
           </div>
@@ -65,8 +65,8 @@ export default function Product() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${(index + 1) * 0.1}s` }}
+              className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: `${(index + 1) * 0.05}s` }}
             >
               <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
                 <i className={`${feature.icon} text-3xl text-teal-600`}></i>
@@ -81,7 +81,7 @@ export default function Product() {
           ))}
         </div>
 
-        <div className={`text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center transition-all duration-500 delay-200 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
             to="/product/overview"
             className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"

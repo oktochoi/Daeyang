@@ -108,16 +108,9 @@ export default function Footer() {
             <p className="text-sm text-gray-500 text-center md:text-left">
               © 2025 {t('common.footer.company')}. {t('common.footer.rights')}
             </p>
-            <div className="flex items-center gap-6">
-              <a 
-                href="https://okto.ai" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-xs text-gray-500 hover:text-gray-400 transition-colors cursor-pointer"
-              >
-                Powered by okto
-              </a>
-            </div>
+            <span className="text-xs text-gray-500">
+              Powered by okto
+            </span>
           </div>
           <div className="mt-4 text-center">
             <Link 
