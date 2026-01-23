@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import factory1 from '../../../assets/factory_1.png';
+import factory5 from '../../../assets/factory_5.jpg';
 
 export default function ProductApplicationPage() {
   const { t } = useTranslation();
@@ -26,10 +28,25 @@ export default function ProductApplicationPage() {
       {/* Application Method */}
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6">
+          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
+            <img 
+              src={factory1} 
+              alt="제품 적용 방법" 
+              className="w-full h-64 object-cover"
+            />
+          </div>
           <div className="bg-teal-50 rounded-2xl p-8 mb-12">
             <p className="text-lg text-gray-700 leading-relaxed text-center">
               {t('product.application.description')}
             </p>
+          </div>
+          
+          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
+            <img 
+              src={factory5} 
+              alt="제품 적용 현장" 
+              className="w-full h-80 object-cover"
+            />
           </div>
 
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
@@ -37,7 +54,7 @@ export default function ProductApplicationPage() {
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
             <ul className="space-y-4">
-              {t('product.specifications.items', { returnObjects: true }).map((item: string, index: number) => (
+              {(t('product.specifications.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                 <li key={index} className="flex items-start gap-3">
                   <div className="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <i className="ri-checkbox-circle-fill text-xl text-teal-600"></i>
@@ -50,32 +67,6 @@ export default function ProductApplicationPage() {
         </div>
       </section>
 
-      {/* Targets */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-            {t('product.targets.title')}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-              <i className="ri-flashlight-line text-4xl text-teal-600 mb-4"></i>
-              <h3 className="text-lg font-bold text-gray-900">{t('product.targets.target1')}</h3>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-              <i className="ri-hammer-line text-4xl text-teal-600 mb-4"></i>
-              <h3 className="text-lg font-bold text-gray-900">{t('product.targets.target2')}</h3>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-              <i className="ri-building-line text-4xl text-teal-600 mb-4"></i>
-              <h3 className="text-lg font-bold text-gray-900">{t('product.targets.target3')}</h3>
-            </div>
-            <div className="bg-white rounded-xl p-6 text-center shadow-sm">
-              <i className="ri-global-line text-4xl text-teal-600 mb-4"></i>
-              <h3 className="text-lg font-bold text-gray-900">{t('product.targets.target4')}</h3>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>

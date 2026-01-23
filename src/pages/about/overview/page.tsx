@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import office1 from '../../../assets/office_1.png';
+import office2 from '../../../assets/office_2.png';
 
 export default function AboutOverviewPage() {
   const { t } = useTranslation();
@@ -49,19 +51,21 @@ export default function AboutOverviewPage() {
             </div>
           </div>
 
-          {/* Image Placeholders */}
+          {/* Office Images */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="aspect-[4/3] bg-gray-100 rounded-2xl border-2 border-dashed border-gray-300 flex items-center justify-center">
-              <div className="text-center">
-                <i className="ri-image-line text-4xl text-gray-400 mb-2"></i>
-                <p className="text-sm text-gray-500">이미지 영역</p>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={office1} 
+                alt="대양환경기술 사무실" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="aspect-[4/3] bg-gray-100 rounded-2xl border-2 border-dashed border-gray-300 flex items-center justify-center">
-              <div className="text-center">
-                <i className="ri-image-line text-4xl text-gray-400 mb-2"></i>
-                <p className="text-sm text-gray-500">이미지 영역</p>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={office2} 
+                alt="대양환경기술 사무실" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -86,7 +90,7 @@ export default function AboutOverviewPage() {
                 <h3 className="text-2xl font-bold text-gray-900">정식 사업 분야</h3>
               </div>
               <ul className="space-y-4">
-                {t('about.overview.businessFields', { returnObjects: true }).map((field: string, index: number) => (
+                {(t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <i className="ri-check-line text-white text-xs"></i>
@@ -105,7 +109,7 @@ export default function AboutOverviewPage() {
                 <h3 className="text-2xl font-bold text-gray-900">주요 고객 유형</h3>
               </div>
               <ul className="space-y-4">
-                {t('about.overview.customerTypes', { returnObjects: true }).map((type: string, index: number) => (
+                {(t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <i className="ri-check-line text-white text-xs"></i>

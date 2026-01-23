@@ -31,7 +31,7 @@ export default function AboutHistoryPage() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal-500 via-teal-400 to-teal-300"></div>
             
             <div className="space-y-12">
-              {t('about.history.milestones', { returnObjects: true }).map((milestone: any, index: number) => (
+              {(t('about.history.milestones', { returnObjects: true }) as any[]).map((milestone: any, index: number) => (
                 <div key={index} className="relative pl-24">
                   {/* Timeline Dot */}
                   <div className="absolute left-0 top-2 w-16 h-16 bg-white border-4 border-teal-600 rounded-full flex items-center justify-center shadow-lg">
@@ -43,7 +43,7 @@ export default function AboutHistoryPage() {
                       <span className="text-2xl font-bold text-teal-600">{milestone.year}</span>
                       <h3 className="text-xl font-bold text-gray-900">{milestone.title}</h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                    <p className="text-gray-600 leading-relaxed whitespace-pre-line">{milestone.description}</p>
                   </div>
                 </div>
               ))}

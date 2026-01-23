@@ -1,5 +1,7 @@
+'use client'
+
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -57,10 +59,13 @@ export default function MediaPressPage() {
                     <p className="text-gray-600 leading-relaxed mb-4">
                       {i18n.language === 'ko' ? item.summary : item.summaryEn}
                     </p>
-                    <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
+                    <Link
+                      href={`/media/press/${item.id}`}
+                      className="flex items-center gap-1 text-teal-600 text-sm font-medium hover:text-teal-700 transition-colors"
+                    >
                       {i18n.language === 'ko' ? '자세히 보기' : 'Read more'}
                       <i className="ri-arrow-right-line"></i>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -68,18 +73,50 @@ export default function MediaPressPage() {
           </div>
 
           {/* Add New Article Placeholder */}
-          <div className="mb-12 p-8 bg-teal-50 rounded-xl border-2 border-dashed border-teal-300 text-center">
-            <i className="ri-add-circle-line text-4xl text-teal-600 mb-3"></i>
-            <p className="text-lg text-teal-700 font-medium mb-2">
-              {i18n.language === 'ko' 
-                ? '관리자가 보도자료를 추가할 수 있습니다' 
-                : 'Administrators can add press releases'}
-            </p>
-            <p className="text-sm text-teal-600">
-              {i18n.language === 'ko' 
-                ? '새로운 뉴스와 보도자료를 업로드할 수 있습니다' 
-                : 'You can upload new news and press releases'}
-            </p>
+          <div className="mb-12 p-8 bg-teal-50 rounded-xl border-2 border-dashed border-teal-300">
+            <div className="text-center mb-6">
+              <i className="ri-add-circle-line text-4xl text-teal-600 mb-3"></i>
+              <p className="text-lg text-teal-700 font-medium mb-2">
+                {i18n.language === 'ko' 
+                  ? '관리자가 보도자료를 추가할 수 있습니다' 
+                  : 'Administrators can add press releases'}
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 border border-teal-200">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">
+                {i18n.language === 'ko' ? '뉴스 URL 입력' : 'Enter News URL'}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {i18n.language === 'ko' ? '뉴스 URL' : 'News URL'}
+                  </label>
+                  <input
+                    type="url"
+                    placeholder={i18n.language === 'ko' ? 'https://example.com/news/article' : 'https://example.com/news/article'}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {i18n.language === 'ko' ? '제목 (선택사항)' : 'Title (Optional)'}
+                  </label>
+                  <input
+                    type="text"
+                    placeholder={i18n.language === 'ko' ? '기사 제목을 입력하세요' : 'Enter article title'}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  />
+                </div>
+                <button className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors">
+                  {i18n.language === 'ko' ? '기사 추가' : 'Add Article'}
+                </button>
+              </div>
+              <p className="text-xs text-gray-500 mt-4">
+                {i18n.language === 'ko' 
+                  ? '* URL을 입력하면 자동으로 기사 내용을 가져올 수 있습니다' 
+                  : '* Enter URL to automatically fetch article content'}
+              </p>
+            </div>
           </div>
 
           {/* Video Section */}

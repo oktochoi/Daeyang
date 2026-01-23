@@ -1,5 +1,8 @@
-import { Link } from 'react-router-dom';
+'use client'
+
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import whiteLogo from '../../assets/white_logo.png';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -10,13 +13,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info with Logo */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-6">
-              <div className="w-32 h-16 bg-white rounded-lg flex items-center justify-center border-2 border-dashed border-gray-400">
-                <div className="text-center">
-                  <i className="ri-image-line text-3xl text-gray-400 mb-1"></i>
-                  <p className="text-xs text-gray-500">로고</p>
-                </div>
-              </div>
+            <Link href="/" className="inline-block mb-6">
+              <img 
+                src={typeof whiteLogo === 'string' ? whiteLogo : whiteLogo.src || whiteLogo} 
+                alt="대양환경기술 로고" 
+                className="h-16 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               {t('common.footer.description')}
@@ -31,25 +33,25 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/about/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/about/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.about')}
                 </Link>
               </li>
               <li>
-                <Link to="/product/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/product/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.product')}
                 </Link>
               </li>
               <li>
-                <Link to="/product/industries" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/product/industries" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.productIndustries')}
                 </Link>
               </li>
               <li>
-                <Link to="/performance" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/performance" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.performance')}
                 </Link>
@@ -62,13 +64,13 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.resources')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/media" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/media" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.media')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/contact" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.contact')}
                 </Link>
@@ -114,7 +116,7 @@ export default function Footer() {
           </div>
           <div className="mt-4 text-center">
             <Link 
-              to="/admin" 
+              href="/admin" 
               className="text-xs text-gray-500 hover:text-gray-400 transition-colors cursor-pointer"
               style={{ opacity: 0.4 }}
             >

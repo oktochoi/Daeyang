@@ -1,15 +1,18 @@
+'use client'
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../base/LanguageSwitcher';
+import logo from '../../assets/logo.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [openMegaSections, setOpenMegaSections] = useState<Set<string>>(new Set());
-  const location = useLocation();
+  const pathname = usePathname();
   const { t } = useTranslation();
 
   // Mega menu 기본 오픈 섹션 (제품소개, 적용 실적, 미디어) 유지
@@ -46,7 +49,6 @@ export default function Navbar() {
       label: t('common.nav.product'),
       submenu: [
         { path: '/product/overview', label: t('common.nav.productOverview') },
-        { path: '/product/problems', label: t('common.nav.productProblems') },
         { path: '/product/how-it-works', label: t('common.nav.productHowItWorks') },
         { path: '/product/application', label: t('common.nav.productApplication') },
         { path: '/product/industries', label: t('common.nav.productIndustries') },
@@ -108,9 +110,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
             <img 
-              src="https://static.readdy.ai/image/aa1565715a7c63aa7d986d857e515b00/a7b1faee96da8f05993820bd38dca442.png" 
+              src={typeof logo === 'string' ? logo : logo.src || logo} 
               alt="대양환경기술 로고" 
               className="h-10 sm:h-12 w-auto object-contain"
             />
@@ -126,9 +128,9 @@ export default function Navbar() {
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
-                  to={link.path}
+                  href={link.path}
                   className={`text-sm font-medium transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1 ${
-                    location.pathname === link.path
+                    pathname && pathname === link.path
                       ? 'text-teal-600'
                       : 'text-gray-700 hover:text-teal-600'
                   }`}
@@ -148,13 +150,13 @@ export default function Navbar() {
                   >
                     <div className="bg-white shadow-lg rounded-lg py-2 border border-gray-100">
                       {link.submenu.map((sublink) => (
-                        <a
+                        <Link
                           key={sublink.path}
                           href={sublink.path}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition-colors cursor-pointer"
                         >
                           {sublink.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -165,7 +167,7 @@ export default function Navbar() {
             <LanguageSwitcher />
 
             <Link
-              to="/contact"
+              href="/contact"
               className="px-4 sm:px-6 py-2 sm:py-2.5 bg-teal-600 text-white text-sm font-medium rounded-full hover:bg-teal-700 transition-colors whitespace-nowrap cursor-pointer"
             >
               {t('common.cta.contact')}
@@ -185,9 +187,9 @@ export default function Navbar() {
         {isMegaMenuOpen && (
           <div className="fixed inset-0 z-50 bg-white text-gray-900 overflow-y-auto">
             <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 border-b border-gray-200">
-              <Link to="/" onClick={handleMegaMenuClose} className="flex items-center gap-2 cursor-pointer">
+              <Link href="/" onClick={handleMegaMenuClose} className="flex items-center gap-2 cursor-pointer">
                 <img 
-                  src="https://static.readdy.ai/image/aa1565715a7c63aa7d986d857e515b00/a7b1faee96da8f05993820bd38dca442.png" 
+                  src={typeof logo === 'string' ? logo : logo.src || logo} 
                   alt="대양환경기술 로고" 
                   className="h-10 w-auto object-contain"
                 />
@@ -226,7 +228,7 @@ export default function Navbar() {
                             <ul className="space-y-3 mt-2" onClick={(e) => e.stopPropagation()}>
                               {link.submenu.map((sublink) => (
                                 <li key={sublink.path}>
-                                  <a
+                                  <Link
                                     href={sublink.path}
                                     onClick={(e) => {
                                       e.stopPropagation();
@@ -236,7 +238,7 @@ export default function Navbar() {
                                     className="text-base text-gray-700 hover:text-teal-600 transition-colors cursor-pointer block"
                                   >
                                     {sublink.label}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -244,7 +246,7 @@ export default function Navbar() {
                         </>
                       ) : (
                         <Link
-                          to={link.path}
+                          href={link.path}
                           onClick={handleMegaMenuClose}
                           className="text-2xl font-bold text-gray-900 mb-4 inline-block cursor-pointer"
                         >
@@ -262,7 +264,7 @@ export default function Navbar() {
                     {t('home.finalCta.subtitle')}
                   </p>
                   <Link
-                    to="/contact"
+                    href="/contact"
                     onClick={handleMegaMenuClose}
                     className="inline-flex items-center gap-2 px-4 py-3 bg-white text-teal-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
                   >

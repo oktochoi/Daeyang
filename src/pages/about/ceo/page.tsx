@@ -26,7 +26,7 @@ export default function AboutCeoPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200">
             {/* CEO Info */}
-            <div className="flex items-center gap-6 mb-8 pb-8 border-b border-gray-200">
+            <div className="flex items-center gap-6 mb-6 pb-6 border-b border-gray-200">
               <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl flex items-center justify-center flex-shrink-0">
                 <i className="ri-user-3-line text-4xl text-white"></i>
               </div>
@@ -37,7 +37,7 @@ export default function AboutCeoPage() {
             </div>
             
             {/* Message */}
-            <div className="prose prose-lg max-w-none mb-8">
+            <div className="prose prose-lg max-w-none mb-6">
               <div className="text-gray-700 leading-relaxed whitespace-pre-line text-lg">
                 {t('about.ceo.message')}
               </div>

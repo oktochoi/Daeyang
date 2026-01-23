@@ -1,4 +1,7 @@
+'use client'
+
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -16,15 +19,15 @@ export default function MediaAwardsPage() {
       <section className="pt-32 pb-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
-            {t('media.tabs.awards')}
+            기사 아카이빙
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            {t('media.tabs.awards')}
+            기사 아카이빙
           </h1>
           <p className="text-lg text-gray-600">
             {i18n.language === 'ko' 
-              ? '인증서, 특허, 수상 내역을 확인하세요' 
-              : 'Check out our certifications, patents, and awards'}
+              ? '회사 관련 기사와 보도자료를 모아보세요' 
+              : 'Browse company-related articles and press releases'}
           </p>
         </div>
       </section>
@@ -32,33 +35,38 @@ export default function MediaAwardsPage() {
       {/* Awards & Certifications */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Awards List */}
+          {/* Articles List */}
           <div className="space-y-6 mb-12">
             {mediaItems.awards.map((item) => (
-              <div
+              <Link
                 key={item.id}
-                className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300"
+                href={`/media/awards/${item.id}`}
+                className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 hover:shadow-md hover:border-teal-400 transition-all duration-300 block cursor-pointer group"
               >
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="w-full sm:w-40 sm:h-24 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-dashed border-gray-300">
-                    <i className="ri-award-line text-3xl text-gray-400"></i>
+                    <i className="ri-newspaper-line text-3xl text-gray-400"></i>
                   </div>
                   <div className="flex-1 w-full">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-sm text-gray-500">{item.date}</span>
                       <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">
-                        {i18n.language === 'ko' ? '인증' : 'Certification'}
+                        {i18n.language === 'ko' ? '기사' : 'Article'}
                       </span>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
                       {i18n.language === 'ko' ? item.title : item.titleEn}
                     </h2>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed mb-4">
                       {i18n.language === 'ko' ? item.summary : item.summaryEn}
                     </p>
+                    <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
+                      {i18n.language === 'ko' ? '자세히 보기' : 'Read more'}
+                      <i className="ri-arrow-right-line"></i>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -89,19 +97,36 @@ export default function MediaAwardsPage() {
             </div>
           </div>
 
-          {/* Add New Award Placeholder */}
-          <div className="p-8 bg-teal-50 rounded-xl border-2 border-dashed border-teal-300 text-center">
-            <i className="ri-add-circle-line text-4xl text-teal-600 mb-3"></i>
-            <p className="text-lg text-teal-700 font-medium mb-2">
-              {i18n.language === 'ko' 
-                ? '관리자가 인증 및 수상 내용을 추가할 수 있습니다' 
-                : 'Administrators can add awards and certifications'}
-            </p>
-            <p className="text-sm text-teal-600">
-              {i18n.language === 'ko' 
-                ? '새로운 인증서, 특허, 수상 내역을 업로드할 수 있습니다' 
-                : 'You can upload new certificates, patents, and awards'}
-            </p>
+          {/* Add New Article Placeholder */}
+          <div className="p-8 bg-teal-50 rounded-xl border-2 border-dashed border-teal-300">
+            <div className="text-center mb-6">
+              <i className="ri-add-circle-line text-4xl text-teal-600 mb-3"></i>
+              <p className="text-lg text-teal-700 font-medium mb-2">
+                {i18n.language === 'ko' 
+                  ? '관리자가 기사를 추가할 수 있습니다' 
+                  : 'Administrators can add articles'}
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 border border-teal-200">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">
+                {i18n.language === 'ko' ? '기사 URL 입력' : 'Enter Article URL'}
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {i18n.language === 'ko' ? '기사 URL' : 'Article URL'}
+                  </label>
+                  <input
+                    type="url"
+                    placeholder={i18n.language === 'ko' ? 'https://example.com/news/article' : 'https://example.com/news/article'}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  />
+                </div>
+                <button className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors">
+                  {i18n.language === 'ko' ? '기사 추가' : 'Add Article'}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

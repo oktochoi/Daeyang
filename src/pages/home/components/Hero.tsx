@@ -1,16 +1,20 @@
+'use client'
 
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import mainBg from '../../../assets/main_bg.jpg';
 
 export default function Hero() {
   const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={mainBg}
+          src={typeof mainBg === 'string' ? mainBg : mainBg.src || mainBg}
           alt="연기가 나오는 공장 사진 by Etienne Girardet on Unsplash"
           className="w-full h-full object-cover object-center hero-bg-zoom"
           loading="eager"
@@ -47,13 +51,13 @@ export default function Hero() {
             {/* CTA Buttons - 미니멀한 고급스러운 스타일 */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-16 sm:mb-20">
               <button
-                onClick={() => window.REACT_APP_NAVIGATE('/product')}
+                onClick={() => router.push('/product/overview')}
                 className="h-12 px-6 sm:px-8 bg-teal-700 hover:bg-teal-800 text-white text-base font-medium rounded-[14px] transition-colors duration-200 whitespace-nowrap cursor-pointer hero-fade-in-delay-2"
               >
                 {t('home.hero.cta.product')}
               </button>
               <button
-                onClick={() => window.REACT_APP_NAVIGATE('/contact')}
+                onClick={() => router.push('/contact')}
                 className="h-12 px-6 sm:px-8 bg-transparent hover:bg-white/5 text-white text-base font-medium rounded-[14px] border border-white/20 transition-all duration-200 whitespace-nowrap cursor-pointer hero-fade-in-delay-3"
               >
                 {t('home.hero.cta.contact')}

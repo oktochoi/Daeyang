@@ -88,14 +88,44 @@ export default function ProductTechnicalPage() {
           </div>
 
           {/* Add New Document Placeholder */}
-          <div className="mt-12 p-8 bg-teal-50 rounded-2xl border-2 border-dashed border-teal-300 text-center">
-            <i className="ri-add-circle-line text-4xl text-teal-600 mb-4"></i>
-            <p className="text-lg text-teal-700 font-medium mb-2">
-              관리자가 기술 자료를 추가할 수 있습니다
-            </p>
-            <p className="text-sm text-teal-600">
-              PDF 문서, 가이드라인, 시험성적 등을 업로드할 수 있습니다
-            </p>
+          <div className="mt-12 p-8 bg-teal-50 rounded-2xl border-2 border-dashed border-teal-300">
+            <div className="text-center mb-6">
+              <i className="ri-add-circle-line text-4xl text-teal-600 mb-4"></i>
+              <p className="text-lg text-teal-700 font-medium mb-2">
+                관리자가 기술 자료를 추가할 수 있습니다
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 border border-teal-200 max-w-2xl mx-auto">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">새 기술 자료 추가</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">제목</label>
+                  <input
+                    type="text"
+                    placeholder="기술 자료 제목을 입력하세요"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">설명</label>
+                  <textarea
+                    placeholder="기술 자료에 대한 설명을 입력하세요"
+                    rows={3}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  ></textarea>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">파일 업로드</label>
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-teal-400 transition-colors cursor-pointer">
+                    <i className="ri-upload-cloud-line text-3xl text-gray-400 mb-2"></i>
+                    <p className="text-sm text-gray-600">PDF 파일을 드래그하거나 클릭하여 업로드</p>
+                  </div>
+                </div>
+                <button className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors">
+                  기술 자료 추가
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

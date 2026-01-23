@@ -1,10 +1,13 @@
+'use client'
+
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
 export default function AdminLoginPage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -20,7 +23,7 @@ export default function AdminLoginPage() {
     // 아무 입력이나 있으면 바로 관리자 페이지로 이동
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/admin/dashboard');
+      router.push('/admin/dashboard');
     }, 500);
   };
 
@@ -128,13 +131,13 @@ export default function AdminLoginPage() {
 
           {/* Footer */}
           <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-            <a
+            <Link
               href="/"
               className="text-sm text-gray-500 hover:text-teal-600 transition-colors inline-flex items-center gap-1"
             >
               <i className="ri-arrow-left-line"></i>
               홈으로 돌아가기
-            </a>
+            </Link>
           </div>
         </div>
 

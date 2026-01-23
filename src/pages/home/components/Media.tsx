@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { mediaItems } from '../../../mocks/media';
 
@@ -18,13 +20,14 @@ export default function Media() {
       { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -79,7 +82,7 @@ export default function Media() {
 
         <div className={`text-center transition-all duration-500 delay-200 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
-            to="/media"
+            href="/media"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
           >
             {i18n.language === 'ko' ? '더 많은 소식 보기' : 'View More News'}

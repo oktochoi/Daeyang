@@ -1,24 +1,43 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client'
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
 export default function Breadcrumb() {
-  const location = useLocation();
-  const { t } = useTranslation();
+  const pathname = usePathname();
+  const { t, i18n } = useTranslation();
 
-  const pathMap: { [key: string]: string } = {
-    '/': t('common.nav.home'),
-    '/about': t('common.nav.about'),
-    '/product': t('common.nav.product'),
-    '/business': t('common.nav.business'),
-    '/performance': t('common.nav.performance'),
-    '/media': t('common.nav.media'),
-    '/contact': t('common.cta.contact'),
+  // 한국어와 영어 라벨 매핑
+  const pathMap: { [key: string]: { ko: string; en: string } } = {
+    '/': { ko: '홈', en: 'Home' },
+    '/about': { ko: t('common.nav.about'), en: 'About' },
+    '/about/overview': { ko: t('common.nav.aboutIntro'), en: 'Company Overview' },
+    '/about/history': { ko: t('common.nav.aboutHistory'), en: 'History' },
+    '/about/vision': { ko: t('common.nav.aboutTech'), en: 'Vision & Philosophy' },
+    '/about/ceo': { ko: t('common.nav.aboutCI'), en: 'CEO Message' },
+    '/product': { ko: t('common.nav.product'), en: 'Product' },
+    '/product/overview': { ko: t('common.nav.productOverview'), en: 'Product Overview' },
+    '/product/how-it-works': { ko: t('common.nav.productHowItWorks'), en: 'How It Works' },
+    '/product/application': { ko: t('common.nav.productApplication'), en: 'Application' },
+    '/product/industries': { ko: t('common.nav.productIndustries'), en: 'Industries' },
+    '/product/technical': { ko: t('common.nav.mediaTechnical'), en: 'Technical Resources' },
+    '/performance': { ko: t('common.nav.performance'), en: 'Performance' },
+    '/performance/pilot': { ko: t('common.nav.performanceAdvantages'), en: 'Domestic Pilot' },
+    '/performance/mongolia': { ko: t('common.nav.performanceCases'), en: 'Mongolia Plant' },
+    '/performance/seasia': { ko: t('common.nav.performanceComparison'), en: 'Thailand & Laos' },
+    '/media': { ko: t('common.nav.media'), en: 'Media' },
+    '/media/press': { ko: t('common.nav.mediaPress'), en: 'Press Release' },
+    '/media/awards': { ko: t('common.nav.mediaAwards'), en: 'Awards & Certifications' },
+    '/contact': { ko: t('common.cta.contact'), en: 'Contact' },
   };
 
-  const pathSegments = location.pathname.split('/').filter(Boolean);
+  if (!pathname) return null;
+
+  const pathSegments = pathname.split('/').filter(Boolean);
   
-  const breadcrumbs = [
-    { path: '/', label: 'Home' }
+  const breadcrumbs: Array<{ path: string; labelKo: string; labelEn: string }> = [
+    { path: '/', labelKo: '홈', labelEn: 'Home' }
   ];
 
   let currentPath = '';
@@ -27,31 +46,42 @@ export default function Breadcrumb() {
     if (pathMap[currentPath]) {
       breadcrumbs.push({
         path: currentPath,
-        label: pathMap[currentPath]
+        labelKo: pathMap[currentPath].ko,
+        labelEn: pathMap[currentPath].en
+      });
+    } else {
+      // pathMap에 없는 경로도 추가 (예: /product 같은 경우)
+      breadcrumbs.push({
+        path: currentPath,
+        labelKo: segment,
+        labelEn: segment
       });
     }
   });
 
-  if (breadcrumbs.length === 1) return null;
+  // 홈 페이지만 있으면 breadcrumb 숨기기
+  if (breadcrumbs.length === 1 && pathname === '/') return null;
 
   return (
-    <div className="bg-gray-50 border-b border-gray-200">
+    <div className="bg-gray-50 border-b border-gray-200 fixed top-16 sm:top-20 left-0 right-0 z-40">
       <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center gap-2 text-sm">
-          <Link to="/" className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer">
+          <Link href="/" className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer">
             <i className="ri-home-4-line"></i>
           </Link>
           {breadcrumbs.slice(1).map((crumb, index) => (
             <div key={crumb.path} className="flex items-center gap-2">
               <i className="ri-arrow-right-s-line text-gray-400"></i>
               {index === breadcrumbs.length - 2 ? (
-                <span className="text-gray-900 font-medium">{crumb.label}</span>
+                <span className="text-gray-900 font-medium">
+                  {crumb.labelKo} <span className="text-gray-500 font-normal">({crumb.labelEn})</span>
+                </span>
               ) : (
                 <Link
-                  to={crumb.path}
+                  href={crumb.path}
                   className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer"
                 >
-                  {crumb.label}
+                  {crumb.labelKo} <span className="text-gray-400">({crumb.labelEn})</span>
                 </Link>
               )}
             </div>

@@ -1,6 +1,11 @@
+'use client'
+
+'use client'
+
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import office1 from '../../../assets/office_1.png';
 
 export default function About() {
   const { t } = useTranslation();
@@ -17,13 +22,14 @@ export default function About() {
       { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -55,7 +61,7 @@ export default function About() {
               </div>
             </div>
             <Link
-              to="/about/overview"
+              href="/about/overview"
               className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
             >
               회사소개 자세히 보기
@@ -63,14 +69,14 @@ export default function About() {
             </Link>
           </div>
 
-          {/* Right: Image Placeholder */}
+          {/* Right: Office Image */}
           <div className={`transition-all duration-500 delay-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="aspect-[4/3] bg-gradient-to-br from-teal-50 to-gray-100 rounded-2xl border-2 border-dashed border-gray-300 flex items-center justify-center">
-              <div className="text-center">
-                <i className="ri-building-2-line text-6xl text-gray-400 mb-4"></i>
-                <p className="text-lg text-gray-500 font-medium">회사 이미지</p>
-                <p className="text-sm text-gray-400 mt-2">관리자가 이미지를 추가할 수 있습니다</p>
-              </div>
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <img 
+                src={typeof office1 === 'string' ? office1 : office1.src || office1}
+                alt="대양환경기술 회사 소개" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

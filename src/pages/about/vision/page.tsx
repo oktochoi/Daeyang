@@ -2,9 +2,12 @@ import { useTranslation } from 'react-i18next';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
 
 export default function AboutVisionPage() {
   const { t } = useTranslation();
+  const coreValuesRef = useScrollAnimation();
+  const priorityRef = useScrollAnimation();
 
   return (
     <div className="min-h-screen bg-white">
@@ -22,7 +25,7 @@ export default function AboutVisionPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -31,7 +34,12 @@ export default function AboutVisionPage() {
             <p className="text-lg text-gray-600">환경과 기술을 통한 실질적 개선</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div 
+            ref={coreValuesRef.ref as React.RefObject<HTMLDivElement>}
+            className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 transition-all duration-700 ${
+              coreValuesRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <div className="bg-gradient-to-br from-teal-50 to-white rounded-2xl p-8 border border-teal-100 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-teal-600 rounded-xl flex items-center justify-center mb-6">
                 <i className="ri-earth-line text-3xl text-white"></i>
@@ -72,9 +80,14 @@ export default function AboutVisionPage() {
       </section>
 
       {/* Priority & Future Vision */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div 
+            ref={priorityRef.ref as React.RefObject<HTMLDivElement>}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-12 transition-all duration-700 ${
+              priorityRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">

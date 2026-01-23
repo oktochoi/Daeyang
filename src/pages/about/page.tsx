@@ -79,7 +79,7 @@ export default function AboutPage() {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">정식 사업 분야</h3>
               <ul className="space-y-2">
-                {t('about.overview.businessFields', { returnObjects: true }).map((field: string, index: number) => (
+                {(t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
                   <li key={index} className="flex items-start gap-2">
                     <i className="ri-checkbox-circle-line text-teal-600 mt-1"></i>
                     <span className="text-gray-700">{field}</span>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">주요 고객 유형</h3>
               <ul className="space-y-2">
-                {t('about.overview.customerTypes', { returnObjects: true }).map((type: string, index: number) => (
+                {(t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
                   <li key={index} className="flex items-start gap-2">
                     <i className="ri-checkbox-circle-line text-teal-600 mt-1"></i>
                     <span className="text-gray-700">{type}</span>
@@ -112,7 +112,7 @@ export default function AboutPage() {
             {t('about.history.founded')}
           </p>
           <div className="space-y-8">
-            {t('about.history.milestones', { returnObjects: true }).map((milestone: any, index: number) => (
+            {(t('about.history.milestones', { returnObjects: true }) as any[]).map((milestone: any, index: number) => (
               <div key={index} className="flex gap-8 pb-8 border-b border-gray-200 last:border-0">
                 <div className="w-24 flex-shrink-0">
                   <div className="text-2xl font-bold text-teal-600">{milestone.year}</div>
@@ -177,7 +177,7 @@ export default function AboutPage() {
                 {t('about.vision.futureVision.title')}
               </h3>
               <ul className="space-y-3">
-                {t('about.vision.futureVision.goals', { returnObjects: true }).map((goal: string, index: number) => (
+                {(t('about.vision.futureVision.goals', { returnObjects: true }) as string[]).map((goal: string, index: number) => (
                   <li key={index} className="flex items-start gap-2">
                     <i className="ri-arrow-right-s-line text-teal-600 mt-1"></i>
                     <span className="text-gray-700">{goal}</span>

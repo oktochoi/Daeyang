@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client'
+
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 export default function Solution() {
@@ -76,7 +78,7 @@ export default function Solution() {
             </div>
 
             <Link
-              to="/product"
+              href="/product/overview"
               className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-full hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer"
             >
               {t('home.solution.cta')}

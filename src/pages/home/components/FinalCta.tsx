@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client'
+
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 export default function FinalCta() {
@@ -22,7 +24,7 @@ export default function FinalCta() {
           {t('home.finalCta.subtitle')}
         </p>
         <Link
-          to="/contact"
+          href="/contact"
           className="inline-flex items-center gap-2 px-10 py-5 bg-teal-600 text-white text-lg font-semibold rounded-full hover:bg-teal-700 transition-all duration-300 shadow-xl hover:shadow-2xl whitespace-nowrap cursor-pointer"
         >
           {t('home.finalCta.button')}

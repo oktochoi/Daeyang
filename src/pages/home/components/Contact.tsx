@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
@@ -17,13 +19,14 @@ export default function Contact() {
       { threshold: 0.05, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -77,7 +80,7 @@ export default function Contact() {
 
         <div className={`transition-all duration-500 delay-250 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer"
           >
             {t('home.finalCta.button')}

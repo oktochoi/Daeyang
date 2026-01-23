@@ -1,4 +1,5 @@
-import { Suspense } from 'react';
+'use client'
+
 import Navbar from '../../components/feature/Navbar';
 import Footer from '../../components/feature/Footer';
 import Hero from './components/Hero';
@@ -10,17 +11,15 @@ import Contact from './components/Contact';
 
 export default function HomePage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="min-h-screen">
-        <Navbar />
-        <Hero />
-        <About />
-        <Product />
-        <Performance />
-        <Media />
-        <Contact />
-        <Footer />
-      </div>
-    </Suspense>
+    <div className="min-h-screen">
+      <Navbar />
+      <Hero />
+      <About />
+      <Product />
+      <Performance />
+      <Media />
+      <Contact />
+      <Footer />
+    </div>
   );
 }
