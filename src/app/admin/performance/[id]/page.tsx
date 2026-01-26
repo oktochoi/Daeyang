@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
@@ -21,6 +21,7 @@ export default function PerformanceProjectManagePage() {
   const router = useRouter();
   const projectId = params?.id ? parseInt(params.id as string) : null;
   
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [project, setProject] = useState<PerformanceProject | null>(null);
   const [items, setItems] = useState<PerformanceProjectItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,14 +32,7 @@ export default function PerformanceProjectManagePage() {
   });
   const [uploadingFiles, setUploadingFiles] = useState<{ [key: number]: boolean }>({});
 
-  useEffect(() => {
-    if (projectId) {
-      loadProject();
-      loadItems();
-    }
-  }, [projectId]);
-
-  async function loadProject() {
+  const loadProject = useCallback(async () => {
     if (!projectId) return;
     setIsLoading(true);
     try {
@@ -49,9 +43,9 @@ export default function PerformanceProjectManagePage() {
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [projectId]);
 
-  async function loadItems() {
+  const loadItems = useCallback(async () => {
     if (!projectId) return;
     try {
       const data = await getPerformanceProjectItems(projectId);
@@ -59,6 +53,47 @@ export default function PerformanceProjectManagePage() {
     } catch (error) {
       console.error('Error loading items:', error);
     }
+  }, [projectId]);
+
+  // 인증 체크
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const response = await fetch('/api/admin/check');
+        const data = await response.json();
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+          if (projectId) {
+            loadProject();
+            loadItems();
+          }
+        } else {
+          setIsAuthenticated(false);
+          router.push('/admin');
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        setIsAuthenticated(false);
+        router.push('/admin');
+      }
+    }
+    checkAuth();
+  }, [projectId, router, loadProject, loadItems]);
+
+  // 인증되지 않은 경우 로딩 표시
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
+          <p className="mt-4 text-gray-600">인증 확인 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAuthenticated === false) {
+    return null; // 리다이렉트 중
   }
 
   async function handleAddItem(e: React.FormEvent) {

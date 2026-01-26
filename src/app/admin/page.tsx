@@ -20,11 +20,32 @@ export default function AdminLoginPage() {
     setError('');
     setIsLoading(true);
 
-    // 아무 입력이나 있으면 바로 관리자 페이지로 이동
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        router.push('/admin/dashboard');
+        router.refresh();
+      } else {
+        setError(data.error || '로그인에 실패했습니다.');
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('로그인 처리 중 오류가 발생했습니다.');
       setIsLoading(false);
-      router.push('/admin/dashboard');
-    }, 500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

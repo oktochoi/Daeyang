@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -10,7 +10,7 @@ export default function AboutHistoryPage() {
   const { t } = useTranslation();
   
   // 각 연혁 항목에 대한 애니메이션 refs
-  const milestones = (t('about.history.milestones', { returnObjects: true }) as any[]);
+  const milestones = useMemo(() => (t('about.history.milestones', { returnObjects: true }) as any[]), [t]);
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function AboutHistoryPage() {
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, [milestones.length]);
+  }, [milestones]);
 
   return (
     <div className="min-h-screen bg-white">

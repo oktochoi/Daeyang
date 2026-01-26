@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,6 +23,8 @@ import {
 
 export default function AdminDashboardPage() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [iconImage, setIconImage] = useState<string | null>(null);
   const [uploadingIcon, setUploadingIcon] = useState(false);
   const [performanceProjects, setPerformanceProjects] = useState<SupabasePerformanceProject[]>([]);
@@ -102,13 +105,62 @@ export default function AdminDashboardPage() {
     descriptionEn: ''
   });
 
-  // 데이터 로드
+  // 인증 체크
   useEffect(() => {
-    loadPerformanceProjects();
-    loadPressReleases();
-    loadAwardsCertifications();
-    loadTechnicalResources();
-  }, []);
+    async function checkAuth() {
+      try {
+        const response = await fetch('/api/admin/check');
+        const data = await response.json();
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+          loadPerformanceProjects();
+          loadPressReleases();
+          loadAwardsCertifications();
+          loadTechnicalResources();
+        } else {
+          setIsAuthenticated(false);
+          router.push('/admin');
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        setIsAuthenticated(false);
+        router.push('/admin');
+      }
+    }
+    checkAuth();
+  }, [router]);
+
+  // 로그아웃 핸들러
+  async function handleLogout() {
+    if (!confirm('로그아웃 하시겠습니까?')) {
+      return;
+    }
+
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      router.push('/admin');
+      router.refresh();
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert('로그아웃 중 오류가 발생했습니다.');
+    }
+  }
+
+  // 인증되지 않은 경우 로딩 표시
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
+          <p className="mt-4 text-gray-600">인증 확인 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAuthenticated === false) {
+    return null; // 리다이렉트 중
+  }
 
   async function loadPerformanceProjects() {
     setIsLoading(true);
@@ -474,7 +526,10 @@ export default function AdminDashboardPage() {
                 <i className="ri-home-line"></i>
                 홈으로
               </Link>
-              <button className="text-sm text-red-600 hover:text-red-700 transition-colors flex items-center gap-2">
+              <button 
+                onClick={handleLogout}
+                className="text-sm text-red-600 hover:text-red-700 transition-colors flex items-center gap-2"
+              >
                 <i className="ri-logout-box-line"></i>
                 로그아웃
               </button>
