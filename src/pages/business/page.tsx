@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../components/feature/Navbar';
 import Breadcrumb from '../../components/base/Breadcrumb';
 import Footer from '../../components/feature/Footer';
@@ -60,10 +61,12 @@ export default function BusinessPage() {
       {/* Hero */}
       <section className="relative h-96 flex items-center justify-center">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://readdy.ai/api/search-image?query=panoramic%20view%20of%20multiple%20industrial%20facilities%20including%20power%20plants%20steel%20mills%20and%20cement%20factories%2C%20wide%20industrial%20landscape%20showing%20diverse%20heavy%20industry%20sectors%2C%20professional%20aerial%20photography%20of%20industrial%20complex&width=1920&height=600&seq=business1&orientation=landscape"
             alt="Industrial Sectors"
-            className="w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
+            unoptimized
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

@@ -36,14 +36,16 @@ export default function AboutOverviewPage() {
                 <h3 className="text-[20px] font-semibold text-[#1f2933]">정식 사업 분야</h3>
               </div>
               <ul className="space-y-3">
-                {(t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i className="ri-check-line text-white text-xs"></i>
-                    </div>
-                    <span className="text-[#4b5563] text-[15px] leading-[1.6] font-normal">{field}</span>
-                  </li>
-                ))}
+                {Array.isArray(t('about.overview.businessFields', { returnObjects: true })) 
+                  ? (t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-check-line text-white text-xs"></i>
+                      </div>
+                      <span className="text-[#4b5563] text-[15px] leading-[1.6] font-normal">{field}</span>
+                    </li>
+                  ))
+                  : null}
               </ul>
             </div>
             
@@ -55,14 +57,16 @@ export default function AboutOverviewPage() {
                 <h3 className="text-[20px] font-semibold text-[#1f2933]">주요 고객 유형</h3>
               </div>
               <ul className="space-y-3">
-                {(t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i className="ri-check-line text-white text-xs"></i>
-                    </div>
-                    <span className="text-[#4b5563] text-[15px] leading-[1.6] font-normal">{type}</span>
-                  </li>
-                ))}
+                {Array.isArray(t('about.overview.customerTypes', { returnObjects: true })) 
+                  ? (t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-check-line text-white text-xs"></i>
+                      </div>
+                      <span className="text-[#4b5563] text-[15px] leading-[1.6] font-normal">{type}</span>
+                    </li>
+                  ))
+                  : null}
               </ul>
             </div>
           </div>

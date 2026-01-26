@@ -4,11 +4,13 @@ import { cookies } from "next/headers";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const createClient = async (cookieStore: ReturnType<typeof cookies>) => {
+export const createClient = async () => {
   if (!supabaseUrl || !supabaseKey) {
     console.warn('Supabase environment variables are not set.');
     return null;
   }
+
+  const cookieStore = await cookies();
 
   return createServerClient(
     supabaseUrl,

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -53,18 +54,20 @@ export default function AboutOverviewPage() {
 
           {/* Office Images */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <img 
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg relative">
+              <Image 
                 src={office1} 
                 alt="대양환경기술 사무실" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-              <img 
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg relative">
+              <Image 
                 src={office2} 
                 alt="대양환경기술 사무실" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
@@ -90,14 +93,16 @@ export default function AboutOverviewPage() {
                 <h3 className="text-2xl font-bold text-gray-900">정식 사업 분야</h3>
               </div>
               <ul className="space-y-4">
-                {(t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i className="ri-check-line text-white text-xs"></i>
-                    </div>
-                    <span className="text-gray-700 text-lg leading-relaxed">{field}</span>
-                  </li>
-                ))}
+                {Array.isArray(t('about.overview.businessFields', { returnObjects: true })) 
+                  ? (t('about.overview.businessFields', { returnObjects: true }) as string[]).map((field: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-check-line text-white text-xs"></i>
+                      </div>
+                      <span className="text-gray-700 text-lg leading-relaxed">{field}</span>
+                    </li>
+                  ))
+                  : null}
               </ul>
             </div>
             
@@ -109,14 +114,16 @@ export default function AboutOverviewPage() {
                 <h3 className="text-2xl font-bold text-gray-900">주요 고객 유형</h3>
               </div>
               <ul className="space-y-4">
-                {(t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i className="ri-check-line text-white text-xs"></i>
-                    </div>
-                    <span className="text-gray-700 text-lg leading-relaxed">{type}</span>
-                  </li>
-                ))}
+                {Array.isArray(t('about.overview.customerTypes', { returnObjects: true })) 
+                  ? (t('about.overview.customerTypes', { returnObjects: true }) as string[]).map((type: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-check-line text-white text-xs"></i>
+                      </div>
+                      <span className="text-gray-700 text-lg leading-relaxed">{type}</span>
+                    </li>
+                  ))
+                  : null}
               </ul>
             </div>
           </div>

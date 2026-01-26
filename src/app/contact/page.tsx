@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../components/feature/Navbar';
 import Breadcrumb from '../../components/base/Breadcrumb';
 import Footer from '../../components/feature/Footer';
@@ -57,10 +58,12 @@ export default function ContactPage() {
       {/* Hero Banner */}
       <section className="relative h-96 flex items-center justify-center pt-20">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://readdy.ai/api/search-image?query=wide%20panoramic%20view%20of%20modern%20industrial%20facility%20at%20sunset%20with%20dramatic%20sky%2C%20professional%20corporate%20photography%20of%20large%20scale%20power%20plant%20complex%2C%20inspiring%20industrial%20landscape%20with%20warm%20lighting&width=1920&height=600&seq=contact1&orientation=landscape"
             alt="Contact Us"
-            className="w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
+            unoptimized
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

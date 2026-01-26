@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 export default function Business() {
   const { t } = useTranslation();
@@ -51,11 +52,13 @@ export default function Business() {
               key={index}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="aspect-video overflow-hidden">
-                <img
+              <div className="aspect-video overflow-hidden relative">
+                <Image
                   src={industry.image}
                   alt={industry.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
                 />
               </div>
               <div className="p-8">

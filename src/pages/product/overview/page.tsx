@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -123,11 +124,12 @@ export default function ProductOverviewPage() {
           }`}
         >
           <div className="mb-8">
-            <div className="max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg">
-              <img 
+            <div className="max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg relative h-64">
+              <Image 
                 src={factory1} 
                 alt="Coal Green 제품" 
-                className="w-full h-64 object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
@@ -153,11 +155,12 @@ export default function ProductOverviewPage() {
             }`}
           >
             <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={factory2} 
                   alt="연소 효율 향상" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -170,11 +173,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={factory3} 
                   alt="비용 절감" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -187,11 +191,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={factory4} 
                   alt="환경 개선" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -275,11 +280,12 @@ export default function ProductOverviewPage() {
             }`}
           >
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
-              <div className="h-40 overflow-hidden">
-                <img 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
                   src={factory5} 
                   alt={t('business.background.reason1.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">
@@ -292,11 +298,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
-              <div className="h-40 overflow-hidden">
-                <img 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
                   src={factory1} 
                   alt={t('business.background.reason2.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">
@@ -309,11 +316,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
-              <div className="h-40 overflow-hidden">
-                <img 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
                   src={factory2} 
                   alt={t('business.background.reason3.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">

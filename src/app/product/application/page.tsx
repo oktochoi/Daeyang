@@ -68,14 +68,16 @@ export default function ProductApplicationPage() {
           </div>
           <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
-              {(t('product.specifications.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <i className="ri-check-line text-white text-xs"></i>
-                  </div>
-                  <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{item}</span>
-                </li>
-              ))}
+              {Array.isArray(t('product.specifications.items', { returnObjects: true })) 
+                ? (t('product.specifications.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <i className="ri-check-line text-white text-xs"></i>
+                    </div>
+                    <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{item}</span>
+                  </li>
+                ))
+                : null}
             </ul>
           </div>
         </div>

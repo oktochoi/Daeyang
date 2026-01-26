@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import factory2 from '../../../assets/factory_2.png';
 import factory3 from '../../../assets/factory_3.png';
 import factory4 from '../../../assets/factroey_4.png';
@@ -77,11 +78,13 @@ export default function Product() {
               className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: `${(index + 1) * 0.05}s` }}
             >
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={feature.image} 
                   alt={feature.title} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
               <div className="p-8">

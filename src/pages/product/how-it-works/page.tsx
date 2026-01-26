@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -40,11 +41,12 @@ export default function ProductHowItWorksPage() {
           {/* Process Steps */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="bg-white rounded-xl overflow-hidden border-2 border-teal-100 shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={factory3} 
                   alt="희석 및 분사" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -67,11 +69,12 @@ export default function ProductHowItWorksPage() {
             </div>
 
             <div className="bg-white rounded-xl overflow-hidden border-2 border-teal-100 shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
                   src={factory4} 
                   alt="건조 처리" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">

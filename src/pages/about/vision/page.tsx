@@ -110,14 +110,16 @@ export default function AboutVisionPage() {
                 </h3>
               </div>
               <ul className="space-y-4">
-                {t('about.vision.futureVision.goals', { returnObjects: true }).map((goal: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i className="ri-check-line text-white text-xs"></i>
-                    </div>
-                    <span className="text-gray-700 text-lg leading-relaxed">{goal}</span>
-                  </li>
-                ))}
+                {Array.isArray(t('about.vision.futureVision.goals', { returnObjects: true })) 
+                  ? (t('about.vision.futureVision.goals', { returnObjects: true }) as string[]).map((goal: string, index: number) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-check-line text-white text-xs"></i>
+                      </div>
+                      <span className="text-gray-700 text-lg leading-relaxed">{goal}</span>
+                    </li>
+                  ))
+                  : null}
               </ul>
             </div>
           </div>

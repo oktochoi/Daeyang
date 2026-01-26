@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 export default function Solution() {
   const { t } = useTranslation();
@@ -30,11 +31,13 @@ export default function Solution() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Product Image */}
           <div className="relative">
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
-              <img
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl relative">
+              <Image
                 src="https://readdy.ai/api/search-image?query=Professional%20product%20photography%20of%20industrial%20coal%20combustion%20additive%20in%20modern%20laboratory%20setting%2C%20clean%20white%20background%20with%20teal%20accents%2C%20scientific%20equipment%20and%20coal%20samples%20visible%2C%20high-tech%20industrial%20chemical%20product%20presentation%2C%20professional%20lighting%20with%20soft%20shadows%2C%20modern%20industrial%20design%20aesthetic&width=800&height=800&seq=coal-green-product-001&orientation=squarish"
                 alt="Coal Green14001"
-                className="w-full h-full object-cover object-center"
+                fill
+                className="object-cover object-center"
+                unoptimized
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 max-w-xs">

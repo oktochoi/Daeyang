@@ -1,10 +1,9 @@
 'use client'
 
-'use client'
-
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import office1 from '../../../assets/office_1.png';
 
 export default function About() {
@@ -71,11 +70,12 @@ export default function About() {
 
           {/* Right: Office Image */}
           <div className={`transition-all duration-500 delay-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <img 
-                src={typeof office1 === 'string' ? office1 : office1.src || office1}
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl relative">
+              <Image 
+                src={office1}
                 alt="대양환경기술 회사 소개" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
