@@ -60,38 +60,39 @@ export default function ProductIndustriesPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
             {t('business.industries.title')}
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
             {t('business.industries.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">적용 산업</h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow"
+                className="bg-[#f9fafb] rounded-xl p-8 shadow-sm"
               >
-                <div className="w-16 h-16 flex items-center justify-center bg-teal-600 rounded-full mb-6">
-                  <i className={`${industry.icon} text-3xl text-white`}></i>
+                <div className="w-12 h-12 flex items-center justify-center bg-teal-600 rounded-lg mb-6">
+                  <i className={`${industry.icon} text-2xl text-white`}></i>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {industry.title}
                 </h3>
-                <p className="text-base text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {industry.description}
                 </p>
-                <a href="#" className="inline-block mt-6 text-sm text-teal-600 hover:text-teal-700 font-medium cursor-pointer">
-                  {t('common.cta.viewDetails')} →
-                </a>
               </div>
             ))}
           </div>
@@ -99,24 +100,27 @@ export default function ProductIndustriesPage() {
       </section>
 
       {/* Process */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">
-            {t('business.approach.title')}
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-16">
-            {t('business.approach.subtitle')}
-          </p>
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
+              {t('business.approach.title')}
+            </h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
+              {t('business.approach.subtitle')}
+            </p>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {process.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-20 h-20 flex items-center justify-center bg-teal-600 rounded-full text-3xl font-bold text-white mx-auto mb-6">
+              <div key={index} className="text-left">
+                <div className="w-16 h-16 flex items-center justify-center bg-teal-600 rounded-full text-[24px] font-bold text-white mb-6">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {item.description}
                 </p>
               </div>

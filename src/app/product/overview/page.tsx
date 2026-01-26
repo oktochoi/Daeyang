@@ -26,90 +26,96 @@ export default function ProductOverviewPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="pt-[120px] pb-20 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-6xl font-bold text-gray-900 mb-6">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
             {t('product.hero.title')}
           </h1>
-          <p className="text-xl text-gray-600 max-w-[640px] mx-auto mb-0">
+          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
             {t('product.hero.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Technical Resources */}
-      <section className="pt-[120px] pb-[120px] bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
               기술 자료
             </h2>
-            <p className="text-lg text-gray-600 mb-12">
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
               제품 기술 백서, 적용 가이드, 시험성적 및 환경 영향 평가 자료
             </p>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-12 border border-gray-200 max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="ri-file-text-line text-2xl text-teal-600"></i>
+          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
+                <i className="ri-file-text-line text-2xl text-white"></i>
+              </div>
+              <h3 className="text-[20px] font-semibold text-[#1f2933]">
+                기술 자료 모아보기
+              </h3>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">
-              기술 자료 모아보기
-            </h3>
-            <p className="text-gray-600 mb-8">
+            <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal mb-6">
               기술 백서, 적용 가이드라인, 시험성적, 환경 영향 평가 자료를 확인하세요.
             </p>
             <Link
               href="/product/technical"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white text-[15px] font-semibold rounded-lg hover:bg-teal-700 transition-colors"
             >
               기술 자료 바로가기
-              <i className="ri-arrow-right-line text-xl"></i>
+              <i className="ri-arrow-right-line"></i>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Problems Section - Moved from problems page */}
-      <section className="pt-[120px] pb-[120px] bg-red-50 border-t border-red-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      {/* Problems Section */}
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
               {t('product.problems.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-12">기존 석탄 연소 방식의 핵심 문제점</p>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
+              기존 석탄 연소 방식의 핵심 문제점
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                <i className="ri-fire-line text-3xl text-red-600"></i>
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-6">
+                <i className="ri-fire-line text-2xl text-white"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.problems.problem1.title')}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.problems.problem1.description')}
               </p>
             </div>
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                <i className="ri-cloud-line text-3xl text-orange-600"></i>
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-6">
+                <i className="ri-cloud-line text-2xl text-white"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.problems.problem2.title')}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.problems.problem2.description')}
               </p>
             </div>
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-                <i className="ri-tools-line text-3xl text-yellow-600"></i>
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-6">
+                <i className="ri-tools-line text-2xl text-white"></i>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.problems.problem3.title')}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.problems.problem3.description')}
               </p>
             </div>
@@ -118,44 +124,50 @@ export default function ProductOverviewPage() {
       </section>
 
       {/* Definition */}
-      <section className="pt-[120px] pb-[120px] bg-white border-t border-gray-100">
-        <div 
-          ref={definitionRef.ref as React.RefObject<HTMLDivElement>}
-          className={`max-w-4xl mx-auto px-6 text-center transition-all duration-700 ${
-            definitionRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="mb-12">
-            <div className="max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div 
+            ref={definitionRef.ref as React.RefObject<HTMLDivElement>}
+            className={`transition-all duration-700 ${
+              definitionRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="mb-8">
+              <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
+                {t('product.definition.title')}
+              </h2>
+              <div className="w-12 h-0.5 bg-teal-600"></div>
+            </div>
+            <div className="mb-8 rounded-xl overflow-hidden border border-gray-200">
               <img 
                 src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
                 alt="Coal Green 제품" 
-                className="w-full h-64 object-cover"
+                className="w-full h-[400px] object-cover"
               />
             </div>
+            <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] font-normal mb-0">
+              {t('product.definition.description')}
+            </p>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {t('product.definition.title')}
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed mb-0">
-            {t('product.definition.description')}
-          </p>
         </div>
       </section>
 
       {/* Effects */}
-      <section className="pt-[120px] pb-[120px] bg-teal-50 border-t border-teal-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {t('product.effects.title')}
-          </h2>
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
+              {t('product.effects.title')}
+            </h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+          </div>
           <div 
             ref={effectsRef.ref as React.RefObject<HTMLDivElement>}
             className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${
               effectsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={typeof factory2 === 'string' ? factory2 : factory2.src || factory2} 
@@ -164,15 +176,15 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('product.effects.effect1.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('product.effects.effect1.description')}
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={typeof factory3 === 'string' ? factory3 : factory3.src || factory3} 
@@ -181,15 +193,15 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('product.effects.effect2.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('product.effects.effect2.description')}
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-xl overflow-hidden text-center shadow-sm">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={typeof factory4 === 'string' ? factory4 : factory4.src || factory4} 
@@ -198,10 +210,10 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('product.effects.effect3.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('product.effects.effect3.description')}
                 </p>
               </div>
@@ -211,47 +223,50 @@ export default function ProductOverviewPage() {
       </section>
 
       {/* Benefits */}
-      <section className="pt-[120px] pb-[120px] bg-gray-900 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
-            {t('product.benefits.title')}
-          </h2>
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
+              {t('product.benefits.title')}
+            </h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+          </div>
           <div 
             ref={benefitsRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-12 transition-all duration-700 ${
+            className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${
               benefitsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="text-center">
-              <div className="text-6xl font-bold text-teal-500 mb-3">
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="text-[48px] font-bold text-teal-600 mb-3">
                 {t('product.benefits.cost.value')}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.benefits.cost.title')}
               </h3>
-              <p className="text-base text-gray-400">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.benefits.cost.description')}
               </p>
             </div>
-            <div className="text-center">
-              <div className="text-6xl font-bold text-teal-500 mb-3">
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="text-[48px] font-bold text-teal-600 mb-3">
                 {t('product.benefits.emission.value')}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.benefits.emission.title')}
               </h3>
-              <p className="text-base text-gray-400">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.benefits.emission.description')}
               </p>
             </div>
-            <div className="text-center">
-              <div className="text-6xl font-bold text-teal-500 mb-3">
+            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+              <div className="text-[48px] font-bold text-teal-600 mb-3">
                 {t('product.benefits.maintenance.value')}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                 {t('product.benefits.maintenance.title')}
               </h3>
-              <p className="text-base text-gray-400">
+              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                 {t('product.benefits.maintenance.description')}
               </p>
             </div>
@@ -260,13 +275,14 @@ export default function ProductOverviewPage() {
       </section>
 
       {/* Development Background */}
-      <section className="pt-[120px] pb-[120px] bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
               {t('business.background.title')}
             </h2>
-            <p className="text-lg text-gray-600 mb-12">
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
               {t('business.background.subtitle')}
             </p>
           </div>
@@ -277,7 +293,7 @@ export default function ProductOverviewPage() {
               backgroundRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-40 overflow-hidden">
                 <img 
                   src={typeof factory5 === 'string' ? factory5 : factory5.src || factory5} 
@@ -286,15 +302,15 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('business.background.reason1.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('business.background.reason1.description')}
                 </p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-40 overflow-hidden">
                 <img 
                   src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
@@ -303,15 +319,15 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('business.background.reason2.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('business.background.reason2.description')}
                 </p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl overflow-hidden border border-gray-200">
+            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
               <div className="h-40 overflow-hidden">
                 <img 
                   src={typeof factory2 === 'string' ? factory2 : factory2.src || factory2} 
@@ -320,32 +336,38 @@ export default function ProductOverviewPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
                   {t('business.background.reason3.title')}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                   {t('business.background.reason3.description')}
                 </p>
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl p-8 border border-teal-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+            <h3 className="text-[20px] font-semibold text-[#1f2933] mb-6">
               {t('business.background.whyNotEnough.title')}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <i className="ri-close-circle-line text-red-500 text-xl mt-0.5"></i>
-                <span className="text-gray-700">{t('business.background.whyNotEnough.reason1')}</span>
+                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i className="ri-close-line text-white text-xs"></i>
+                </div>
+                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason1')}</span>
               </li>
               <li className="flex items-start gap-3">
-                <i className="ri-close-circle-line text-red-500 text-xl mt-0.5"></i>
-                <span className="text-gray-700">{t('business.background.whyNotEnough.reason2')}</span>
+                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i className="ri-close-line text-white text-xs"></i>
+                </div>
+                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason2')}</span>
               </li>
               <li className="flex items-start gap-3">
-                <i className="ri-close-circle-line text-red-500 text-xl mt-0.5"></i>
-                <span className="text-gray-700">{t('business.background.whyNotEnough.reason3')}</span>
+                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i className="ri-close-line text-white text-xs"></i>
+                </div>
+                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason3')}</span>
               </li>
             </ul>
           </div>
@@ -353,40 +375,39 @@ export default function ProductOverviewPage() {
       </section>
 
       {/* Certifications */}
-      <section className="pt-[120px] pb-[120px] bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
               인증 및 수상
             </h2>
-            <p className="text-lg text-gray-600 mb-12">
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
               특허, 인증, 시험성적
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
-                  <i className="ri-award-line text-2xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  {t('media.tabs.awards')}
-                </h3>
+          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
+                <i className="ri-award-line text-2xl text-white"></i>
               </div>
-              <div className="space-y-4">
-                {mediaItems.awards.map((item) => (
-                  <div key={item.id} className="p-4 rounded-lg border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors">
-                    <div className="text-sm text-gray-500 mb-1">{item.date}</div>
-                    <div className="text-lg font-semibold text-gray-900 mb-1">
-                      {item.title}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      {item.summary}
-                    </div>
+              <h3 className="text-[20px] font-semibold text-[#1f2933]">
+                {t('media.tabs.awards')}
+              </h3>
+            </div>
+            <div className="space-y-4">
+              {mediaItems.awards.map((item) => (
+                <div key={item.id} className="p-6 rounded-lg bg-white border border-gray-200">
+                  <div className="text-[13px] text-[#4b5563] opacity-70 mb-2 font-normal">{item.date}</div>
+                  <div className="text-[18px] font-semibold text-[#1f2933] mb-2">
+                    {item.title}
                   </div>
-                ))}
-              </div>
+                  <div className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
+                    {item.summary}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

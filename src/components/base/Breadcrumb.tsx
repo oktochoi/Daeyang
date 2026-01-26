@@ -23,9 +23,6 @@ export default function Breadcrumb() {
     '/product/industries': { ko: t('common.nav.productIndustries'), en: 'Industries' },
     '/product/technical': { ko: t('common.nav.mediaTechnical'), en: 'Technical Resources' },
     '/performance': { ko: t('common.nav.performance'), en: 'Performance' },
-    '/performance/pilot': { ko: t('common.nav.performanceAdvantages'), en: 'Domestic Pilot' },
-    '/performance/mongolia': { ko: t('common.nav.performanceCases'), en: 'Mongolia Plant' },
-    '/performance/seasia': { ko: t('common.nav.performanceComparison'), en: 'Thailand & Laos' },
     '/media': { ko: t('common.nav.media'), en: 'Media' },
     '/media/press': { ko: t('common.nav.mediaPress'), en: 'Press Release' },
     '/media/awards': { ko: t('common.nav.mediaAwards'), en: 'Awards & Certifications' },
@@ -41,13 +38,20 @@ export default function Breadcrumb() {
   ];
 
   let currentPath = '';
-  pathSegments.forEach((segment) => {
+  pathSegments.forEach((segment, index) => {
     currentPath += `/${segment}`;
     if (pathMap[currentPath]) {
       breadcrumbs.push({
         path: currentPath,
         labelKo: pathMap[currentPath].ko,
         labelEn: pathMap[currentPath].en
+      });
+    } else if (index === pathSegments.length - 1 && pathSegments[0] === 'performance' && !isNaN(Number(segment))) {
+      // 동적 performance/[id] 경로 처리
+      breadcrumbs.push({
+        path: currentPath,
+        labelKo: '적용 실적 상세',
+        labelEn: 'Performance Detail'
       });
     } else {
       // pathMap에 없는 경로도 추가 (예: /product 같은 경우)

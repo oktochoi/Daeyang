@@ -195,7 +195,7 @@ export default function ContactPage() {
       {/* Contact Info */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="bg-white rounded-xl p-8 text-center">
               <div className="w-12 h-12 flex items-center justify-center mx-auto mb-4">
                 <i className="ri-phone-line text-3xl text-teal-600"></i>
@@ -218,6 +218,22 @@ export default function ContactPage() {
               </div>
               <p className="text-sm text-gray-600 mb-2">{t('contact.info.address.label')}</p>
               <p className="text-lg font-bold text-gray-900">{t('contact.info.address.value')}</p>
+            </div>
+          </div>
+
+          {/* Map */}
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+            <div className="h-[500px] w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.5!2d127.0!3d37.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMwJzAwLjAiTiAxMjfCsDAwJzAwLjAiRQ!5e0!3m2!1sko!2skr!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
             </div>
           </div>
         </div>

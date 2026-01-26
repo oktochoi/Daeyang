@@ -15,7 +15,7 @@ export const common = {
     performance: 'Performance',
     performanceAdvantages: 'Domestic Pilot',
     performanceCases: 'Mongolia Plant',
-    performanceComparison: 'Thailand & Laos',
+    performanceComparison: 'China & Palau',
     media: 'Media',
     mediaPress: 'Press Release',
     mediaAwards: 'Awards & Certifications',

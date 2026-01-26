@@ -58,11 +58,6 @@ export default function Navbar() {
     { 
       path: '/performance', 
       label: t('common.nav.performance'),
-      submenu: [
-        { path: '/performance/pilot', label: t('common.nav.performanceAdvantages') },
-        { path: '/performance/mongolia', label: t('common.nav.performanceCases') },
-        { path: '/performance/seasia', label: t('common.nav.performanceComparison') },
-      ]
     },
     { 
       path: '/media', 

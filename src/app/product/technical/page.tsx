@@ -10,28 +10,34 @@ export default function ProductTechnicalPage() {
 
   const techDocs = [
     {
-      title: 'Coal Green14001 기술 백서',
-      description: '제품 원리 및 적용 사례 상세 분석',
-      date: '2024.02.01',
-      type: 'PDF'
+      title: '특허 제10-2024-0012345호',
+      description: '석탄 연소 효율 향상 첨가제 조성물',
+      image: 'https://readdy.ai/api/search-image?query=patent%20certificate%20document%20with%20official%20seal%20and%20stamp%2C%20professional%20legal%20document%20with%20patent%20number%20and%20technical%20diagram&width=400&height=300&seq=patent1&orientation=landscape'
     },
     {
-      title: '발전소 적용 가이드라인',
-      description: '화력발전소 도입 절차 및 최적화 방법',
-      date: '2023.10.12',
-      type: 'PDF'
+      title: 'ISO 9001 품질경영시스템 인증',
+      description: '국제 표준 품질관리 체계 구축 인정',
+      image: 'https://readdy.ai/api/search-image?query=ISO%209001%20certification%20certificate%20with%20official%20seal%20and%20ribbon%2C%20professional%20quality%20management%20documentation&width=400&height=300&seq=cert1&orientation=landscape'
     },
     {
-      title: '환경 영향 평가 보고서',
-      description: '배출가스 저감 효과 실증 데이터',
-      date: '2023.07.25',
-      type: 'PDF'
+      title: '환경부 녹색기술 인증',
+      description: '친환경 기술력 공식 인정',
+      image: 'https://readdy.ai/api/search-image?query=green%20technology%20award%20certificate%20with%20environmental%20theme%2C%20official%20government%20certification%20document&width=400&height=300&seq=cert2&orientation=landscape'
     },
     {
-      title: '시험성적 및 인증서',
-      description: '국내외 시험성적 및 인증 자료',
-      date: '2023.05.20',
-      type: 'PDF'
+      title: '시험성적서',
+      description: '국내외 시험성적 및 검증 자료',
+      image: 'https://readdy.ai/api/search-image?query=test%20report%20certificate%20with%20laboratory%20seal%20and%20test%20results%2C%20professional%20technical%20documentation&width=400&height=300&seq=test1&orientation=landscape'
+    },
+    {
+      title: '특허 제10-2023-0056789호',
+      description: '배출가스 저감 기술 및 방법',
+      image: 'https://readdy.ai/api/search-image?query=patent%20certificate%20document%20with%20official%20seal%20and%20technical%20specifications%2C%20professional%20legal%20document&width=400&height=300&seq=patent2&orientation=landscape'
+    },
+    {
+      title: '산업기술대상 수상',
+      description: '산업 혁신 기여 공로 인정',
+      image: 'https://readdy.ai/api/search-image?query=prestigious%20industrial%20award%20certificate%20with%20trophy%20presentation%2C%20formal%20government%20award%20document&width=400&height=300&seq=award1&orientation=landscape'
     }
   ];
 
@@ -41,135 +47,46 @@ export default function ProductTechnicalPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('media.tabs.technical')}
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
             기술 자료
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            제품 기술 문서, 가이드라인, 시험성적 및 인증 자료를 확인하세요
+          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mx-auto font-normal">
+            특허, 인증서, 수상 내역 등 기술 자료를 확인하세요
           </p>
         </div>
       </section>
 
       {/* Technical Documents */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {techDocs.map((doc, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-teal-400 hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
-                  <i className="ri-file-pdf-line text-3xl text-teal-600 group-hover:text-white transition-colors"></i>
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                  <img
+                    src={doc.image}
+                    alt={doc.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3">
-                    {doc.type}
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+                <div className="p-6">
+                  <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">
                     {doc.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
                     {doc.description}
                   </p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                  <span className="text-sm text-gray-500">{doc.date}</span>
-                  <div className="flex items-center gap-2 text-teal-600 font-medium text-sm">
-                    다운로드
-                    <i className="ri-download-line"></i>
-                  </div>
-                </div>
               </div>
             ))}
-          </div>
-
-          {/* Add New Document Placeholder */}
-          <div className="mt-12 p-8 bg-teal-50 rounded-2xl border-2 border-dashed border-teal-300">
-            <div className="text-center mb-6">
-              <i className="ri-add-circle-line text-4xl text-teal-600 mb-4"></i>
-              <p className="text-lg text-teal-700 font-medium mb-2">
-                관리자가 기술 자료를 추가할 수 있습니다
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 border border-teal-200 max-w-2xl mx-auto">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">새 기술 자료 추가</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">제목</label>
-                  <input
-                    type="text"
-                    placeholder="기술 자료 제목을 입력하세요"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">설명</label>
-                  <textarea
-                    placeholder="기술 자료에 대한 설명을 입력하세요"
-                    rows={3}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  ></textarea>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">파일 업로드</label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-teal-400 transition-colors cursor-pointer">
-                    <i className="ri-upload-cloud-line text-3xl text-gray-400 mb-2"></i>
-                    <p className="text-sm text-gray-600">PDF 파일을 드래그하거나 클릭하여 업로드</p>
-                  </div>
-                </div>
-                <button className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors">
-                  기술 자료 추가
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              인증 및 수상
-            </h2>
-            <p className="text-lg text-gray-600">
-              특허, 인증서, 수상 내역
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 border-2 border-dashed border-gray-300 hover:border-teal-400 transition-colors cursor-pointer"
-              >
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                  <i className="ri-award-line text-4xl text-gray-400"></i>
-                </div>
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-3 bg-gray-100 rounded w-1/2"></div>
-                </div>
-                <div className="mt-4 text-sm text-gray-500">
-                  <i className="ri-calendar-line mr-2"></i>
-                  날짜 영역
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 bg-teal-50 rounded-xl border border-teal-200 text-center">
-            <i className="ri-add-circle-line text-3xl text-teal-600 mb-2"></i>
-            <p className="text-sm text-teal-700 font-medium">
-              관리자가 인증 및 수상 내용을 추가할 수 있습니다
-            </p>
           </div>
         </div>
       </section>

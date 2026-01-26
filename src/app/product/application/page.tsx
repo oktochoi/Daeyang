@@ -16,52 +16,61 @@ export default function ProductApplicationPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
             {t('product.application.title')}
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
             제품 투입 방식은 어떻게 되나요?
           </p>
         </div>
       </section>
 
       {/* Application Method */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
+      <section className="pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-8 text-left">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">적용 방법</h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+          </div>
+          
+          <div className="mb-8 rounded-xl overflow-hidden border border-gray-200">
             <img 
               src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
               alt="제품 적용 방법" 
-              className="w-full h-64 object-cover"
+              className="w-full h-[400px] object-cover"
             />
           </div>
-          <div className="bg-teal-50 rounded-2xl p-8 mb-12">
-            <p className="text-lg text-gray-700 leading-relaxed text-center">
+          
+          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm mb-12">
+            <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
               {t('product.application.description')}
             </p>
           </div>
           
-          <div className="mb-12 rounded-2xl overflow-hidden shadow-lg">
+          <div className="mb-12 rounded-xl overflow-hidden border border-gray-200">
             <img 
               src={typeof factory5 === 'string' ? factory5 : factory5.src || factory5} 
               alt="제품 적용 현장" 
-              className="w-full h-80 object-cover"
+              className="w-full h-[400px] object-cover"
             />
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            {t('product.specifications.title')}
-          </h2>
-          <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-            <ul className="space-y-4">
+          <div className="mb-8">
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
+              {t('product.specifications.title')}
+            </h2>
+            <div className="w-12 h-0.5 bg-teal-600"></div>
+          </div>
+          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
+            <ul className="space-y-3">
               {(t('product.specifications.items', { returnObjects: true }) as string[]).map((item: string, index: number) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <i className="ri-checkbox-circle-fill text-xl text-teal-600"></i>
+                  <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i className="ri-check-line text-white text-xs"></i>
                   </div>
-                  <span className="text-lg text-gray-700">{item}</span>
+                  <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{item}</span>
                 </li>
               ))}
             </ul>

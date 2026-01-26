@@ -97,37 +97,6 @@ export default function MediaAwardsPage() {
             </div>
           </div>
 
-          {/* Add New Article Placeholder */}
-          <div className="p-8 bg-teal-50 rounded-xl border-2 border-dashed border-teal-300">
-            <div className="text-center mb-6">
-              <i className="ri-add-circle-line text-4xl text-teal-600 mb-3"></i>
-              <p className="text-lg text-teal-700 font-medium mb-2">
-                {i18n.language === 'ko' 
-                  ? '관리자가 기사를 추가할 수 있습니다' 
-                  : 'Administrators can add articles'}
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 border border-teal-200">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
-                {i18n.language === 'ko' ? '기사 URL 입력' : 'Enter Article URL'}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {i18n.language === 'ko' ? '기사 URL' : 'Article URL'}
-                  </label>
-                  <input
-                    type="url"
-                    placeholder={i18n.language === 'ko' ? 'https://example.com/news/article' : 'https://example.com/news/article'}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  />
-                </div>
-                <button className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors">
-                  {i18n.language === 'ko' ? '기사 추가' : 'Add Article'}
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

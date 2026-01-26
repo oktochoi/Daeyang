@@ -15,7 +15,7 @@ export const common = {
     performance: '적용 실적',
     performanceAdvantages: '국내 시험로',
     performanceCases: '몽골 석탄공장',
-    performanceComparison: '태국·라오스',
+    performanceComparison: '중국·팔라우',
     media: '미디어',
     mediaPress: '보도자료',
     mediaAwards: '인증 및 수상',

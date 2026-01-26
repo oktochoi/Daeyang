@@ -23,7 +23,8 @@ export default function PerformancePage() {
     ? performanceProjects 
     : performanceProjects.filter(p => p.category === activeFilter);
 
-  const getProjectLink = (category: string) => {
+  const getProjectLink = (category?: string) => {
+    if (!category) return '/performance';
     const linkMap: { [key: string]: string } = {
       'pilot': '/performance/pilot',
       'mongolia': '/performance/mongolia',
@@ -70,7 +71,7 @@ export default function PerformancePage() {
             {filteredProjects.map((project) => (
               <Link
                 key={project.id}
-                href={getProjectLink(project.category)}
+                href={getProjectLink(project.category || undefined)}
                 className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-teal-400 group cursor-pointer"
               >
                 <div className="h-48 bg-gray-100 overflow-hidden">
