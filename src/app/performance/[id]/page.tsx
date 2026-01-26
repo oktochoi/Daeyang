@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
-import { getPerformanceProjectById, PerformanceProject as SupabasePerformanceProject } from '@/lib/supabase';
+import { getPerformanceProjectById, PerformanceProject as SupabasePerformanceProject, PerformanceProjectItem } from '@/lib/supabase';
 import { performanceProjects as mockProjects } from '../../../mocks/performance';
 
 // Supabase 데이터를 표시 형식으로 변환
@@ -23,11 +23,22 @@ function transformSupabaseProject(project: SupabasePerformanceProject) {
   };
 }
 
+interface ProjectDisplay {
+  id: number;
+  title: string;
+  titleEn?: string;
+  icon: string;
+  iconColor: string;
+  description?: string;
+  descriptionEn?: string;
+  items?: PerformanceProjectItem[];
+}
+
 export default function PerformanceDetailPage() {
   const { t, i18n } = useTranslation();
   const params = useParams();
   const id = params?.id ? parseInt(params.id as string) : null;
-  const [project, setProject] = useState<any>(null);
+  const [project, setProject] = useState<ProjectDisplay | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -147,7 +158,7 @@ export default function PerformanceDetailPage() {
               <div className="w-12 h-0.5 bg-teal-600"></div>
             </div>
             <div className="space-y-12">
-              {project.items.map((item, index) => (
+              {project.items.map((item: PerformanceProjectItem, index: number) => (
                 <div key={item.id} className="bg-gray-50 rounded-xl p-8">
                   <h3 className="text-[24px] font-bold text-[#1f2933] mb-6">
                     {i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
