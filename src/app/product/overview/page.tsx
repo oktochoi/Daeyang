@@ -2,6 +2,7 @@
 
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -138,11 +139,12 @@ export default function ProductOverviewPage() {
               </h2>
               <div className="w-12 h-0.5 bg-teal-600"></div>
             </div>
-            <div className="mb-8 rounded-xl overflow-hidden border border-gray-200">
-              <img 
-                src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
+            <div className="mb-8 rounded-xl overflow-hidden border border-gray-200 relative h-[400px]">
+              <Image 
+                src={factory1} 
                 alt="Coal Green 제품" 
-                className="w-full h-[400px] object-cover"
+                fill
+                className="object-cover"
               />
             </div>
             <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] font-normal mb-0">
@@ -168,11 +170,12 @@ export default function ProductOverviewPage() {
             }`}
           >
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={typeof factory2 === 'string' ? factory2 : factory2.src || factory2} 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
+                  src={factory2} 
                   alt="연소 효율 향상" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -185,11 +188,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={typeof factory3 === 'string' ? factory3 : factory3.src || factory3} 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
+                  src={factory3} 
                   alt="비용 절감" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -202,11 +206,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={typeof factory4 === 'string' ? factory4 : factory4.src || factory4} 
+              <div className="h-48 overflow-hidden relative">
+                <Image 
+                  src={factory4} 
                   alt="환경 개선" 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-8">
@@ -294,11 +299,12 @@ export default function ProductOverviewPage() {
             }`}
           >
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden">
-                <img 
-                  src={typeof factory5 === 'string' ? factory5 : factory5.src || factory5} 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
+                  src={factory5} 
                   alt={t('business.background.reason1.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">
@@ -311,11 +317,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden">
-                <img 
-                  src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
+                  src={factory1} 
                   alt={t('business.background.reason2.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">
@@ -328,11 +335,12 @@ export default function ProductOverviewPage() {
               </div>
             </div>
             <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden">
-                <img 
-                  src={typeof factory2 === 'string' ? factory2 : factory2.src || factory2} 
+              <div className="h-40 overflow-hidden relative">
+                <Image 
+                  src={factory2} 
                   alt={t('business.background.reason3.title')} 
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">

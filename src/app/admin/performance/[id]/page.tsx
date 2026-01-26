@@ -362,11 +362,13 @@ export default function PerformanceProjectManagePage() {
                       </div>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
                         {item.photos.map((photo, photoIndex) => (
-                          <div key={photoIndex} className="aspect-video bg-gray-100 rounded overflow-hidden">
-                            <img
+                          <div key={photoIndex} className="aspect-video bg-gray-100 rounded overflow-hidden relative">
+                            <Image
                               src={photo}
                               alt={`${item.item_title} - ${photoIndex + 1}`}
-                              className="w-full h-full object-cover"
+                              fill
+                              className="object-cover"
+                              unoptimized
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
                               }}

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import whiteLogo from '../../assets/white_logo.png';
 
 export default function Footer() {
@@ -13,11 +14,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info with Logo */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <img 
-                src={typeof whiteLogo === 'string' ? whiteLogo : whiteLogo.src || whiteLogo} 
+            <Link href="/" className="inline-block mb-6 relative h-16 w-auto">
+              <Image 
+                src={whiteLogo} 
                 alt="대양환경기술 로고" 
-                className="h-16 w-auto object-contain"
+                fill
+                className="object-contain"
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">

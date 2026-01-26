@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -70,11 +71,13 @@ export default function ProductTechnicalPage() {
                 key={index}
                 className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
-                  <img
+                <div className="aspect-[4/3] bg-gray-100 overflow-hidden relative">
+                  <Image
                     src={doc.image}
                     alt={doc.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    unoptimized
                   />
                 </div>
                 <div className="p-6">
