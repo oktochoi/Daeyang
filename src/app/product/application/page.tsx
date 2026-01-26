@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -35,11 +36,12 @@ export default function ProductApplicationPage() {
             <div className="w-12 h-0.5 bg-teal-600"></div>
           </div>
           
-          <div className="mb-8 rounded-xl overflow-hidden border border-gray-200">
-            <img 
-              src={typeof factory1 === 'string' ? factory1 : factory1.src || factory1} 
+          <div className="mb-8 rounded-xl overflow-hidden border border-gray-200 relative h-[400px]">
+            <Image 
+              src={factory1} 
               alt="제품 적용 방법" 
-              className="w-full h-[400px] object-cover"
+              fill
+              className="object-cover"
             />
           </div>
           
@@ -49,11 +51,12 @@ export default function ProductApplicationPage() {
             </p>
           </div>
           
-          <div className="mb-12 rounded-xl overflow-hidden border border-gray-200">
-            <img 
-              src={typeof factory5 === 'string' ? factory5 : factory5.src || factory5} 
+          <div className="mb-12 rounded-xl overflow-hidden border border-gray-200 relative h-[400px]">
+            <Image 
+              src={factory5} 
               alt="제품 적용 현장" 
-              className="w-full h-[400px] object-cover"
+              fill
+              className="object-cover"
             />
           </div>
 

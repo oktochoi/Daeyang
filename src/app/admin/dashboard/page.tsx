@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { createPerformanceProject, getPerformanceProjects, deletePerformanceProject, uploadImage, PerformanceProject as SupabasePerformanceProject } from '@/lib/supabase';
 import { 
   getPressReleases, 
@@ -559,8 +560,8 @@ export default function AdminDashboardPage() {
                   <label className="block text-xs text-gray-600 mb-2">이미지 업로드 (선택사항)</label>
                   <div className="flex items-center gap-3">
                     {iconImage ? (
-                      <div className="relative">
-                        <img src={iconImage} alt="Icon preview" className="w-16 h-16 object-cover rounded-lg border-2 border-teal-500" />
+                      <div className="relative w-16 h-16">
+                        <Image src={iconImage} alt="Icon preview" fill className="object-cover rounded-lg border-2 border-teal-500" unoptimized />
                         <button
                           type="button"
                           onClick={() => setIconImage(null)}
@@ -713,9 +714,9 @@ export default function AdminDashboardPage() {
                   <div key={project.id} className="border border-gray-200 rounded-lg p-4 hover:border-teal-300 hover:shadow-md transition-all">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden relative">
                           {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                            <img src={project.icon} alt="Project icon" className="w-full h-full object-cover" />
+                            <Image src={project.icon} alt="Project icon" fill className="object-cover" unoptimized />
                           ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                             <span className="text-3xl leading-none">{project.icon}</span>
                           ) : project.icon && project.icon.startsWith('ri-') ? (
@@ -847,8 +848,8 @@ export default function AdminDashboardPage() {
                 </label>
                 <div className="flex items-center gap-3">
                   {pressReleaseForm.featured_image ? (
-                    <div className="relative">
-                      <img src={pressReleaseForm.featured_image} alt="Preview" className="w-24 h-24 object-cover rounded-lg border-2 border-blue-500" />
+                    <div className="relative w-24 h-24">
+                      <Image src={pressReleaseForm.featured_image} alt="Preview" fill className="object-cover rounded-lg border-2 border-blue-500" unoptimized />
                       <button
                         type="button"
                         onClick={() => setPressReleaseForm({ ...pressReleaseForm, featured_image: '' })}
@@ -921,7 +922,9 @@ export default function AdminDashboardPage() {
                   <div key={release.id} className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all">
                     <div className="flex items-start gap-4">
                       {release.featured_image && (
-                        <img src={release.featured_image} alt={release.title} className="w-20 h-20 object-cover rounded-lg" />
+                        <div className="relative w-20 h-20 flex-shrink-0">
+                          <Image src={release.featured_image} alt={release.title} fill className="object-cover rounded-lg" unoptimized />
+                        </div>
                       )}
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900">{release.title}</h4>
@@ -1008,8 +1011,8 @@ export default function AdminDashboardPage() {
                 </label>
                 <div className="flex items-center gap-3">
                   {awardForm.featured_image ? (
-                    <div className="relative">
-                      <img src={awardForm.featured_image} alt="Preview" className="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500" />
+                    <div className="relative w-24 h-24">
+                      <Image src={awardForm.featured_image} alt="Preview" fill className="object-cover rounded-lg border-2 border-yellow-500" unoptimized />
                       <button
                         type="button"
                         onClick={() => setAwardForm({ ...awardForm, featured_image: '' })}
@@ -1082,7 +1085,9 @@ export default function AdminDashboardPage() {
                   <div key={award.id} className="border border-gray-200 rounded-lg p-4 hover:border-yellow-300 transition-all">
                     <div className="flex items-start gap-4">
                       {award.featured_image && (
-                        <img src={award.featured_image} alt={award.title} className="w-20 h-20 object-cover rounded-lg" />
+                        <div className="relative w-20 h-20 flex-shrink-0">
+                          <Image src={award.featured_image} alt={award.title} fill className="object-cover rounded-lg" unoptimized />
+                        </div>
                       )}
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900">{award.title}</h4>
@@ -1180,8 +1185,8 @@ export default function AdminDashboardPage() {
                 </label>
                 <div className="flex items-center gap-3">
                   {technicalForm.featured_image ? (
-                    <div className="relative">
-                      <img src={technicalForm.featured_image} alt="Preview" className="w-24 h-24 object-cover rounded-lg border-2 border-green-500" />
+                    <div className="relative w-24 h-24">
+                      <Image src={technicalForm.featured_image} alt="Preview" fill className="object-cover rounded-lg border-2 border-green-500" unoptimized />
                       <button
                         type="button"
                         onClick={() => setTechnicalForm({ ...technicalForm, featured_image: '' })}
@@ -1254,7 +1259,9 @@ export default function AdminDashboardPage() {
                   <div key={resource.id} className="border border-gray-200 rounded-lg p-4 hover:border-green-300 transition-all">
                     <div className="flex items-start gap-4">
                       {resource.featured_image && (
-                        <img src={resource.featured_image} alt={resource.title} className="w-20 h-20 object-cover rounded-lg" />
+                        <div className="relative w-20 h-20 flex-shrink-0">
+                          <Image src={resource.featured_image} alt={resource.title} fill className="object-cover rounded-lg" unoptimized />
+                        </div>
                       )}
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900">{resource.title}</h4>

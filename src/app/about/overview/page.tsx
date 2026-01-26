@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -112,18 +113,20 @@ export default function AboutOverviewPage() {
 
           {/* Office Images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200">
-              <img 
-                src={typeof office1 === 'string' ? office1 : (office1 as any).src || office1} 
+            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 relative">
+              <Image 
+                src={office1} 
                 alt="대양환경기술 사무실" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200">
-              <img 
-                src={typeof office2 === 'string' ? office2 : (office2 as any).src || office2} 
+            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 relative">
+              <Image 
+                src={office2} 
                 alt="대양환경기술 사무실" 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>

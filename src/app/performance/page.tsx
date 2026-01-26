@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '../../components/feature/Navbar';
 import Breadcrumb from '../../components/base/Breadcrumb';
 import Footer from '../../components/feature/Footer';
@@ -94,9 +95,9 @@ export default function PerformancePage() {
                     href={`/performance/${project.id}`}
                     className="group bg-gray-50 rounded-2xl p-6 hover:bg-teal-50 transition-all duration-300 cursor-pointer border border-gray-200 hover:border-teal-300 hover:shadow-lg"
                   >
-                    <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform overflow-hidden shadow-sm">
+                    <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform overflow-hidden shadow-sm relative">
                       {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                        <img src={project.icon} alt="Project icon" className="w-full h-full object-cover" />
+                        <Image src={project.icon} alt="Project icon" fill className="object-cover" unoptimized />
                       ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                         <span className="text-5xl leading-none">{project.icon}</span>
                       ) : project.icon && project.icon.startsWith('ri-') ? (

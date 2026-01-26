@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'next/navigation';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
@@ -122,9 +123,9 @@ export default function PerformanceDetailPage() {
             {t('common.nav.performance')}
           </div>
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden">
+            <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden relative">
               {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                <img src={project.icon} alt="Project icon" className="w-full h-full object-cover" />
+                <Image src={project.icon} alt="Project icon" fill className="object-cover" unoptimized />
               ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                 <span className="text-5xl leading-none">{project.icon}</span>
               ) : project.icon && project.icon.startsWith('ri-') ? (
@@ -166,11 +167,13 @@ export default function PerformanceDetailPage() {
                   {item.photos && item.photos.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {item.photos.map((photo, photoIndex) => (
-                        <div key={photoIndex} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                          <img
+                        <div key={photoIndex} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow relative h-64">
+                          <Image
                             src={photo}
                             alt={`${i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)} - ${photoIndex + 1}`}
-                            className="w-full h-64 object-cover"
+                            fill
+                            className="object-cover"
+                            unoptimized
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
                             }}

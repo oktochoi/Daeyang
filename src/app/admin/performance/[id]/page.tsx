@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   getPerformanceProjectById, 
   createPerformanceProjectItem,
@@ -187,9 +188,9 @@ export default function PerformanceProjectManagePage() {
         {project && (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden">
+              <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden relative">
                 {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                  <img src={project.icon} alt="Project icon" className="w-full h-full object-cover" />
+                  <Image src={project.icon} alt="Project icon" fill className="object-cover" unoptimized />
                 ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                   <span className="text-5xl leading-none">{project.icon}</span>
                 ) : project.icon && project.icon.startsWith('ri-') ? (

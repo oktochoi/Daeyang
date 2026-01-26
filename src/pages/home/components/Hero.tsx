@@ -13,12 +13,12 @@ export default function Hero() {
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
-          src={typeof mainBg === 'string' ? mainBg : mainBg.src || mainBg}
+        <Image
+          src={mainBg}
           alt="연기가 나오는 공장 사진 by Etienne Girardet on Unsplash"
-          className="w-full h-full object-cover object-center hero-bg-zoom"
-          loading="eager"
-          decoding="async"
+          fill
+          className="object-cover object-center hero-bg-zoom"
+          priority
         />
         {/* 좌측(텍스트 영역) 80% 어두움 → 우측 30~40% 어두움 그라데이션 */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35"></div>
