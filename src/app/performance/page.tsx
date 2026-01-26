@@ -25,7 +25,18 @@ function transformSupabaseProject(project: SupabasePerformanceProject) {
 
 export default function PerformancePage() {
   const { t, i18n } = useTranslation();
-  const [projects, setProjects] = useState<any[]>([]);
+  interface ProjectDisplay {
+    id: number;
+    title: string;
+    titleEn?: string;
+    icon: string;
+    iconColor: string;
+    description?: string;
+    descriptionEn?: string;
+    items?: any[];
+  }
+  
+  const [projects, setProjects] = useState<ProjectDisplay[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

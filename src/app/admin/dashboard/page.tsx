@@ -184,13 +184,7 @@ export default function AdminDashboardPage() {
           title: '',
           titleEn: '',
           description: '',
-          descriptionEn: '',
-          photos: [],
-          year: '',
-          client: '',
-          clientEn: '',
-          result: '',
-          resultEn: ''
+          descriptionEn: ''
         });
         setSelectedIcon('🇰🇷');
         setIconImage(null);
