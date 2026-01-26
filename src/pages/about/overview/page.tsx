@@ -59,6 +59,7 @@ export default function AboutOverviewPage() {
                 src={office1} 
                 alt="대양환경기술 사무실" 
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -67,6 +68,7 @@ export default function AboutOverviewPage() {
                 src={office2} 
                 alt="대양환경기술 사무실" 
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

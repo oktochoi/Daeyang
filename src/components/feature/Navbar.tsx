@@ -106,12 +106,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer relative h-10 sm:h-12 w-auto">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
             <Image 
               src={logo} 
               alt="대양환경기술 로고" 
-              fill
-              className="object-contain"
+              width={120}
+              height={48}
+              className="object-contain h-8 sm:h-10 w-auto"
+              priority
             />
           </Link>
 
@@ -184,12 +186,14 @@ export default function Navbar() {
         {isMegaMenuOpen && (
           <div className="fixed inset-0 z-50 bg-white text-gray-900 overflow-y-auto">
             <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 border-b border-gray-200">
-              <Link href="/" onClick={handleMegaMenuClose} className="flex items-center gap-2 cursor-pointer relative h-10 w-auto">
+              <Link href="/" onClick={handleMegaMenuClose} className="flex items-center gap-2 cursor-pointer">
                 <Image 
                   src={logo} 
                   alt="대양환경기술 로고" 
-                  fill
-                  className="object-contain"
+                  width={120}
+                  height={48}
+                  className="object-contain h-8 w-auto"
+                  priority
                 />
               </Link>
               <div className="flex items-center gap-3">

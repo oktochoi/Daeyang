@@ -1,14 +1,33 @@
 'use client'
 
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
-import { mediaItems } from '../../../mocks/media';
+import { getAwardsCertifications, AwardCertification } from '@/lib/supabase-media';
 
 export default function MediaAwardsPage() {
   const { t, i18n } = useTranslation();
+  const [awards, setAwards] = useState<AwardCertification[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadAwards() {
+      setIsLoading(true);
+      try {
+        const awardsData = await getAwardsCertifications();
+        setAwards(awardsData);
+      } catch (error) {
+        console.error('Error loading awards:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadAwards();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,68 +54,66 @@ export default function MediaAwardsPage() {
       {/* Awards & Certifications */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Articles List */}
-          <div className="space-y-6 mb-12">
-            {mediaItems.awards.map((item) => (
-              <Link
-                key={item.id}
-                href={`/media/awards/${item.id}`}
-                className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 hover:shadow-md hover:border-teal-400 transition-all duration-300 block cursor-pointer group"
-              >
-                <div className="flex flex-col sm:flex-row items-start gap-6">
-                  <div className="w-full sm:w-40 sm:h-24 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-dashed border-gray-300">
-                    <i className="ri-newspaper-line text-3xl text-gray-400"></i>
-                  </div>
-                  <div className="flex-1 w-full">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-sm text-gray-500">{item.date}</span>
-                      <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">
-                        {i18n.language === 'ko' ? '기사' : 'Article'}
-                      </span>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
-                      {i18n.language === 'ko' ? item.title : item.titleEn}
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      {i18n.language === 'ko' ? item.summary : item.summaryEn}
-                    </p>
-                    <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
-                      {i18n.language === 'ko' ? '자세히 보기' : 'Read more'}
-                      <i className="ri-arrow-right-line"></i>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Awards Grid */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              {i18n.language === 'ko' ? '인증서 및 수상 내역' : 'Certificates & Awards'}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 border-2 border-dashed border-gray-300 hover:border-teal-400 transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center group-hover:from-teal-50 group-hover:to-teal-100 transition-colors">
-                    <i className="ri-award-line text-4xl text-gray-400 group-hover:text-teal-600 transition-colors"></i>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                    <div className="h-3 bg-gray-100 rounded w-1/2"></div>
-                  </div>
-                  <div className="mt-4 text-sm text-gray-500">
-                    <i className="ri-calendar-line mr-2"></i>
-                    {i18n.language === 'ko' ? '날짜 영역' : 'Date'}
-                  </div>
-                </div>
-              ))}
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
+              <p className="mt-4 text-gray-600">로딩 중...</p>
             </div>
-          </div>
-
+          ) : awards.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <i className="ri-inbox-line text-4xl mb-2"></i>
+              <p>등록된 인증 및 수상 내역이 없습니다.</p>
+            </div>
+          ) : (
+            <>
+              {/* Awards Grid */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                  {i18n.language === 'ko' ? '인증서 및 수상 내역' : 'Certificates & Awards'}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {awards.map((award) => (
+                    <div
+                      key={award.id}
+                      className="bg-white rounded-xl p-6 border border-gray-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 cursor-pointer group"
+                    >
+                      {award.featured_image ? (
+                        <div className="aspect-video rounded-lg mb-4 overflow-hidden relative">
+                          <Image
+                            src={award.featured_image}
+                            alt={i18n.language === 'ko' ? award.title : (award.title_en || award.title)}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform"
+                            unoptimized
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center group-hover:from-teal-50 group-hover:to-teal-100 transition-colors">
+                          <i className="ri-award-line text-4xl text-gray-400 group-hover:text-teal-600 transition-colors"></i>
+                        </div>
+                      )}
+                      <div className="space-y-2">
+                        <h3 className="text-sm font-semibold text-gray-900 line-clamp-2">
+                          {i18n.language === 'ko' ? award.title : (award.title_en || award.title)}
+                        </h3>
+                        {award.description && (
+                          <p className="text-xs text-gray-600 line-clamp-2">
+                            {i18n.language === 'ko' ? award.description : (award.description_en || award.description)}
+                          </p>
+                        )}
+                      </div>
+                      {award.award_date && (
+                        <div className="mt-4 text-sm text-gray-500">
+                          <i className="ri-calendar-line mr-2"></i>
+                          {new Date(award.award_date).toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
 

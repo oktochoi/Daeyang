@@ -22,7 +22,6 @@ import {
 
 export default function AdminDashboardPage() {
   const { t } = useTranslation();
-  const [selectedIcon, setSelectedIcon] = useState<string>('🇰🇷');
   const [iconImage, setIconImage] = useState<string | null>(null);
   const [uploadingIcon, setUploadingIcon] = useState(false);
   const [performanceProjects, setPerformanceProjects] = useState<SupabasePerformanceProject[]>([]);
@@ -159,15 +158,10 @@ export default function AdminDashboardPage() {
       return;
     }
 
-    // icon이 없으면 기본값 설정
-    if (!iconImage && !selectedIcon) {
-      setSelectedIcon('🇰🇷');
-    }
-
     setIsLoading(true);
     try {
-      // icon이 이미지 URL이면 사용하고, 아니면 선택된 국기 이모지 사용, 둘 다 없으면 기본값
-      const finalIcon = iconImage || selectedIcon || '🇰🇷';
+      // icon이 이미지 URL이면 사용하고, 없으면 기본값
+      const finalIcon = iconImage || '🇰🇷';
 
       const project = {
         title: formData.title,
@@ -187,7 +181,6 @@ export default function AdminDashboardPage() {
           description: '',
           descriptionEn: ''
         });
-        setSelectedIcon('🇰🇷');
         setIconImage(null);
         // 목록 새로고침
         loadPerformanceProjects();
@@ -552,12 +545,12 @@ export default function AdminDashboardPage() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  아이콘 (이미지 업로드 또는 국기 선택) *
+                  아이콘 (이미지 업로드, 선택사항)
                 </label>
                 
                 {/* 이미지 업로드 */}
-                <div className="mb-4">
-                  <label className="block text-xs text-gray-600 mb-2">이미지 업로드 (선택사항)</label>
+                <div>
+                  <label className="block text-xs text-gray-600 mb-2">이미지 업로드 (선택사항, 없으면 기본값 🇰🇷 사용)</label>
                   <div className="flex items-center gap-3">
                     {iconImage ? (
                       <div className="relative w-16 h-16">
@@ -595,7 +588,6 @@ export default function AdminDashboardPage() {
                               const url = await uploadImage(file, 'icons');
                               if (url) {
                                 setIconImage(url);
-                                setSelectedIcon(''); // 이미지 업로드 시 국기 선택 해제
                               } else {
                                 alert('파일 업로드에 실패했습니다.');
                               }
@@ -618,57 +610,7 @@ export default function AdminDashboardPage() {
                       </div>
                     )}
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">* 이미지를 업로드하면 국기 선택이 무시됩니다.</p>
-                </div>
-
-                {/* 국기 선택 */}
-                <div>
-                  <label className="block text-xs text-gray-600 mb-2">또는 국기 선택</label>
-                  <div className="grid grid-cols-6 gap-2 mb-2">
-                    {[
-                      { icon: '🇰🇷', label: '한국' },
-                      { icon: '🇨🇳', label: '중국' },
-                      { icon: '🇲🇳', label: '몽골' },
-                      { icon: '🇹🇭', label: '태국' },
-                      { icon: '🇱🇦', label: '라오스' },
-                      { icon: '🇻🇳', label: '베트남' },
-                      { icon: '🇮🇩', label: '인도네시아' },
-                      { icon: '🇵🇭', label: '필리핀' },
-                      { icon: '🇵🇼', label: '팔라우' },
-                      { icon: '🇯🇵', label: '일본' },
-                      { icon: '🇺🇸', label: '미국' },
-                      { icon: '🇬🇧', label: '영국' },
-                      { icon: '🇩🇪', label: '독일' },
-                      { icon: '🇫🇷', label: '프랑스' },
-                      { icon: '🇷🇺', label: '러시아' },
-                      { icon: '🇮🇳', label: '인도' },
-                      { icon: '🇸🇬', label: '싱가포르' },
-                      { icon: '🇲🇾', label: '말레이시아' }
-                    ].map((item) => (
-                      <button
-                        key={item.icon}
-                        type="button"
-                        onClick={() => {
-                          setSelectedIcon(item.icon);
-                          setIconImage(null); // 국기 선택 시 이미지 제거
-                        }}
-                        className={`p-3 border-2 rounded-lg transition-all text-2xl ${
-                          selectedIcon === item.icon && !iconImage
-                            ? 'border-teal-500 bg-teal-50 scale-110'
-                            : 'border-gray-200 hover:border-teal-300 hover:scale-105'
-                        }`}
-                        title={item.label}
-                        disabled={!!iconImage}
-                      >
-                        {item.icon}
-                      </button>
-                    ))}
-                  </div>
-                  {!iconImage && (
-                    <p className="text-xs text-gray-500 mt-2">
-                      선택된 국기: {selectedIcon || '없음 (기본값: 🇰🇷)'}
-                    </p>
-                  )}
+                  <p className="text-xs text-gray-500 mt-1">* 이미지를 업로드하지 않으면 기본 아이콘(🇰🇷)이 사용됩니다.</p>
                 </div>
               </div>
               

@@ -75,6 +75,7 @@ export default function About() {
                 src={office1}
                 alt="대양환경기술 회사 소개" 
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

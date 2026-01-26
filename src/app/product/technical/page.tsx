@@ -1,46 +1,32 @@
 'use client'
 
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import { getTechnicalResources, TechnicalResource } from '@/lib/supabase-media';
 
 export default function ProductTechnicalPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [techDocs, setTechDocs] = useState<TechnicalResource[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const techDocs = [
-    {
-      title: '특허 제10-2024-0012345호',
-      description: '석탄 연소 효율 향상 첨가제 조성물',
-      image: 'https://readdy.ai/api/search-image?query=patent%20certificate%20document%20with%20official%20seal%20and%20stamp%2C%20professional%20legal%20document%20with%20patent%20number%20and%20technical%20diagram&width=400&height=300&seq=patent1&orientation=landscape'
-    },
-    {
-      title: 'ISO 9001 품질경영시스템 인증',
-      description: '국제 표준 품질관리 체계 구축 인정',
-      image: 'https://readdy.ai/api/search-image?query=ISO%209001%20certification%20certificate%20with%20official%20seal%20and%20ribbon%2C%20professional%20quality%20management%20documentation&width=400&height=300&seq=cert1&orientation=landscape'
-    },
-    {
-      title: '환경부 녹색기술 인증',
-      description: '친환경 기술력 공식 인정',
-      image: 'https://readdy.ai/api/search-image?query=green%20technology%20award%20certificate%20with%20environmental%20theme%2C%20official%20government%20certification%20document&width=400&height=300&seq=cert2&orientation=landscape'
-    },
-    {
-      title: '시험성적서',
-      description: '국내외 시험성적 및 검증 자료',
-      image: 'https://readdy.ai/api/search-image?query=test%20report%20certificate%20with%20laboratory%20seal%20and%20test%20results%2C%20professional%20technical%20documentation&width=400&height=300&seq=test1&orientation=landscape'
-    },
-    {
-      title: '특허 제10-2023-0056789호',
-      description: '배출가스 저감 기술 및 방법',
-      image: 'https://readdy.ai/api/search-image?query=patent%20certificate%20document%20with%20official%20seal%20and%20technical%20specifications%2C%20professional%20legal%20document&width=400&height=300&seq=patent2&orientation=landscape'
-    },
-    {
-      title: '산업기술대상 수상',
-      description: '산업 혁신 기여 공로 인정',
-      image: 'https://readdy.ai/api/search-image?query=prestigious%20industrial%20award%20certificate%20with%20trophy%20presentation%2C%20formal%20government%20award%20document&width=400&height=300&seq=award1&orientation=landscape'
+  useEffect(() => {
+    async function loadTechnicalResources() {
+      setIsLoading(true);
+      try {
+        const resources = await getTechnicalResources();
+        setTechDocs(resources);
+      } catch (error) {
+        console.error('Error loading technical resources:', error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  ];
+    loadTechnicalResources();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -65,32 +51,48 @@ export default function ProductTechnicalPage() {
       {/* Technical Documents */}
       <section className="py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {techDocs.map((doc, index) => (
-              <div
-                key={index}
-                className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden relative">
-                  <Image
-                    src={doc.image}
-                    alt={doc.title}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
+              <p className="mt-4 text-gray-600">로딩 중...</p>
+            </div>
+          ) : techDocs.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <i className="ri-inbox-line text-4xl mb-2"></i>
+              <p>등록된 기술 자료가 없습니다.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {techDocs.map((doc) => (
+                <div
+                  key={doc.id}
+                  className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  {doc.featured_image && (
+                    <div className="aspect-[4/3] bg-gray-100 overflow-hidden relative">
+                      <Image
+                        src={doc.featured_image}
+                        alt={i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">
+                      {i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
+                    </h3>
+                    {doc.description && (
+                      <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
+                        {i18n.language === 'ko' ? doc.description : (doc.description_en || doc.description)}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">
-                    {doc.title}
-                  </h3>
-                  <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                    {doc.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
