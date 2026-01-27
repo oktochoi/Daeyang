@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
@@ -66,10 +65,17 @@ export default function MediaPressPage() {
             </div>
           ) : (
             <div className="space-y-6 mb-12">
-              {pressReleases.map((item) => (
+              {pressReleases.map((item) => {
+                const isValidUrl = item.url && (item.url.startsWith('http://') || item.url.startsWith('https://'));
+                return (
                 <article
                   key={item.id}
-                  className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300"
+                  className={`bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 ${isValidUrl ? 'cursor-pointer' : ''}`}
+                  onClick={() => {
+                    if (isValidUrl) {
+                      window.open(item.url, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
                 >
                   <div className="flex flex-col sm:flex-row items-start gap-6">
                     {item.featured_image ? (
@@ -106,21 +112,25 @@ export default function MediaPressPage() {
                           {i18n.language === 'ko' ? item.description : (item.description_en || item.description)}
                         </p>
                       )}
-                      {item.url && (
-                        <Link
+                      {isValidUrl && (
+                        <a
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-teal-600 text-sm font-medium hover:text-teal-700 transition-colors"
+                          className="inline-flex items-center gap-1 text-teal-600 text-sm font-medium hover:text-teal-700 transition-colors"
+                          onClick={(e) => {
+                            e.stopPropagation(); // article 클릭 이벤트와 충돌 방지
+                          }}
                         >
                           {i18n.language === 'ko' ? '자세히 보기' : 'Read more'}
                           <i className="ri-arrow-right-line"></i>
-                        </Link>
+                        </a>
                       )}
                     </div>
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

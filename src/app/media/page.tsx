@@ -19,10 +19,17 @@ export default function MediaPage() {
     },
     {
       title: '인증 및 수상',
-      description: '인증서, 수상 내역, 특허 정보',
+      description: '인증서 및 수상 내역을 확인하세요',
       href: '/media/awards',
       icon: 'ri-award-line',
       color: 'bg-yellow-100 text-yellow-600'
+    },
+    {
+      title: '기술자료',
+      description: '특허, 인증서 등 기술 자료를 확인하세요',
+      href: '/product/technical',
+      icon: 'ri-file-text-line',
+      color: 'bg-green-100 text-green-600'
     }
   ];
 
@@ -45,8 +52,8 @@ export default function MediaPage() {
           </p>
           
           {/* 중앙 대형 박스 - 탐색 허브 */}
-          <div className="bg-white rounded-[32px] p-16 shadow-[0_10px_30px_rgba(0,0,0,0.05)] max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-[32px] p-16 shadow-[0_10px_30px_rgba(0,0,0,0.05)] max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {mediaOptions.map((option, index) => (
                 <Link
                   key={index}

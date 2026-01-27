@@ -990,6 +990,32 @@ export default function AdminDashboardPage() {
                   />
                 </div>
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    제목 (영문)
+                  </label>
+                  <input
+                    type="text"
+                    value={awardForm.title_en}
+                    onChange={(e) => setAwardForm({ ...awardForm, title_en: e.target.value })}
+                    placeholder="Title (English)"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    URL
+                  </label>
+                  <input
+                    type="url"
+                    value={awardForm.url}
+                    onChange={(e) => setAwardForm({ ...awardForm, url: e.target.value })}
+                    placeholder="https://example.com"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                  />
+                </div>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   설명
@@ -1004,11 +1030,11 @@ export default function AdminDashboardPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  대표 사진
+                  대표 사진 (A4 비율 권장)
                 </label>
                 <div className="flex items-center gap-3">
                   {awardForm.featured_image ? (
-                    <div className="relative w-24 h-24">
+                    <div className="relative" style={{ width: '148px', aspectRatio: '210 / 297' }}>
                       <Image src={awardForm.featured_image} alt="Preview" fill className="object-cover rounded-lg border-2 border-yellow-500" unoptimized />
                       <button
                         type="button"
@@ -1057,6 +1083,7 @@ export default function AdminDashboardPage() {
                     </div>
                   )}
                 </div>
+                <p className="text-xs text-gray-500 mt-1">* A4 비율(210:297) 이미지를 권장합니다.</p>
               </div>
               <button
                 type="submit"
@@ -1077,30 +1104,36 @@ export default function AdminDashboardPage() {
                 <p className="text-gray-500">등록된 인증/수상이 없습니다.</p>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {awardsCertifications.map((award) => (
-                  <div key={award.id} className="border border-gray-200 rounded-lg p-4 hover:border-yellow-300 transition-all">
-                    <div className="flex items-start gap-4">
-                      {award.featured_image && (
-                        <div className="relative w-20 h-20 flex-shrink-0">
-                          <Image src={award.featured_image} alt={award.title} fill className="object-cover rounded-lg" unoptimized />
+                  <div key={award.id} className="border border-gray-200 rounded-lg p-4 hover:border-yellow-300 transition-all bg-white">
+                    <div className="relative w-full mb-4" style={{ aspectRatio: '210 / 297' }}>
+                      {award.featured_image ? (
+                        <Image src={award.featured_image} alt={award.title} fill className="object-cover rounded-lg" unoptimized />
+                      ) : (
+                        <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+                          <i className="ri-file-paper-line text-4xl text-gray-400"></i>
                         </div>
                       )}
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">{award.title}</h4>
-                        {award.description && (
-                          <p className="text-sm text-gray-600 mt-1">{award.description}</p>
-                        )}
-                        {award.award_date && (
-                          <p className="text-xs text-gray-500 mt-2">📅 {award.award_date}</p>
-                        )}
-                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">{award.title}</h4>
+                      {award.description && (
+                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{award.description}</p>
+                      )}
+                      {award.award_date && (
+                        <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
+                          <i className="ri-calendar-line"></i>
+                          {award.award_date}
+                        </p>
+                      )}
                       <button
                         onClick={() => handleDeleteAward(award.id)}
-                        className="px-3 py-2 border border-red-300 text-red-600 text-sm font-medium rounded-lg hover:bg-red-50 transition-colors"
+                        className="w-full px-3 py-2 border border-red-300 text-red-600 text-sm font-medium rounded-lg hover:bg-red-50 transition-colors"
                         disabled={isLoading}
                       >
-                        <i className="ri-delete-bin-line"></i>
+                        <i className="ri-delete-bin-line mr-1"></i>
+                        삭제
                       </button>
                     </div>
                   </div>

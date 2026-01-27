@@ -3,11 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+import { getPerformanceProjects, getPerformanceProjectItems } from '@/lib/supabase';
 
 export default function Performance() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isLoadingProjects, setIsLoadingProjects] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,6 +32,63 @@ export default function Performance() {
         observer.unobserve(currentRef);
       }
     };
+  }, []);
+
+  // 최근 프로젝트 로드
+  useEffect(() => {
+    async function loadRecentProjects() {
+      setIsLoadingProjects(true);
+      try {
+        const projects = await getPerformanceProjects();
+        const projectsWithImages: Array<{
+          id: number;
+          title: string;
+          titleEn?: string;
+          description?: string;
+          descriptionEn?: string;
+          image?: string;
+        }> = [];
+
+        // 최근 3개 프로젝트만 처리
+        const recentThreeProjects = projects.slice(0, 3);
+
+        // 각 프로젝트의 첫 번째 이미지 찾기
+        for (const project of recentThreeProjects) {
+          let firstImage: string | undefined;
+          
+          try {
+            const items = await getPerformanceProjectItems(project.id);
+            for (const item of items) {
+              if (item.photos && item.photos.length > 0) {
+                // 첫 번째 이미지만 사용
+                if (!firstImage) {
+                  firstImage = item.photos[0];
+                }
+                break; // 첫 번째 이미지만 찾으면 중단
+              }
+            }
+          } catch (error) {
+            console.error(`Error loading items for project ${project.id}:`, error);
+          }
+
+          projectsWithImages.push({
+            id: project.id,
+            title: project.title,
+            titleEn: project.title_en,
+            description: project.description,
+            descriptionEn: project.description_en,
+            image: firstImage
+          });
+        }
+
+        setRecentProjects(projectsWithImages);
+      } catch (error) {
+        console.error('Error loading recent projects:', error);
+      } finally {
+        setIsLoadingProjects(false);
+      }
+    }
+    loadRecentProjects();
   }, []);
 
   const stats = [
@@ -58,23 +118,14 @@ export default function Performance() {
     }
   ];
 
-  const projects = [
-    {
-      title: '국내 시험로',
-      description: '국내 주요 발전소 시험 적용 완료',
-      image: ''
-    },
-    {
-      title: '몽골 석탄공장',
-      description: '해외 현장 검증 성공',
-      image: ''
-    },
-    {
-      title: '태국·라오스 산업 현장',
-      description: '동남아시아 시장 진출',
-      image: ''
-    }
-  ];
+  const [recentProjects, setRecentProjects] = useState<Array<{
+    id: number;
+    title: string;
+    titleEn?: string;
+    description?: string;
+    descriptionEn?: string;
+    image?: string;
+  }>>([]);
 
   return (
     <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50 border-t border-gray-100 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -112,31 +163,52 @@ export default function Performance() {
           ))}
         </div>
 
-        {/* Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: `${(index + 5) * 0.05}s` }}
-            >
-              <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center border-b border-gray-200">
-                <div className="text-center">
-                  <i className="ri-image-line text-5xl text-gray-400 mb-2"></i>
-                  <p className="text-sm text-gray-500">프로젝트 이미지</p>
+        {/* Recent Projects */}
+        {recentProjects.length > 0 && (
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 transition-all duration-500 delay-150 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            {recentProjects.map((project, index) => (
+              <Link
+                key={project.id}
+                href={`/performance/${project.id}`}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer"
+                style={{ transitionDelay: `${(index + 5) * 0.05}s` }}
+              >
+                <div className="aspect-video bg-gray-100 relative overflow-hidden border-b border-gray-200">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={i18n.language === 'ko' ? project.title : (project.titleEn || project.title)}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                      <div className="text-center">
+                        <i className="ri-image-line text-5xl text-gray-400 mb-2"></i>
+                        <p className="text-sm text-gray-500">프로젝트 이미지</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+                    {i18n.language === 'ko' ? project.title : (project.titleEn || project.title)}
+                  </h3>
+                  {project.description && (
+                    <p className="text-gray-600">
+                      {i18n.language === 'ko' ? project.description : (project.descriptionEn || project.description)}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
 
         <div className={`text-center transition-all duration-500 delay-200 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link

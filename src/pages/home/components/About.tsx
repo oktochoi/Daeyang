@@ -43,7 +43,7 @@ export default function About() {
               {t('common.nav.about')}
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              환경기술 기반의<br />
+              <span className="mb-3">환경기술 기반의</span><br />
               <span className="text-teal-600">솔루션 기업</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">

@@ -66,17 +66,27 @@ export default function ProductTechnicalPage() {
               {techDocs.map((doc) => (
                 <div
                   key={doc.id}
-                  className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200"
                 >
-                  {doc.featured_image && (
-                    <div className="aspect-[4/3] bg-gray-100 overflow-hidden relative">
-                      <Image
-                        src={doc.featured_image}
-                        alt={i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
+                  {doc.featured_image ? (
+                    <div className="bg-gray-100 overflow-hidden relative w-full">
+                      <div className="relative w-full" style={{ minHeight: '200px' }}>
+                        <Image
+                          src={doc.featured_image}
+                          alt={i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
+                          width={400}
+                          height={600}
+                          className="w-full h-auto object-contain"
+                          unoptimized
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23f3f4f6"/%3E%3Ctext x="200" y="150" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="aspect-[4/3] bg-gray-100 flex items-center justify-center">
+                      <i className="ri-file-paper-line text-5xl text-gray-400"></i>
                     </div>
                   )}
                   <div className="p-6">
@@ -84,9 +94,20 @@ export default function ProductTechnicalPage() {
                       {i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
                     </h3>
                     {doc.description && (
-                      <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
+                      <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal line-clamp-3">
                         {i18n.language === 'ko' ? doc.description : (doc.description_en || doc.description)}
                       </p>
+                    )}
+                    {doc.url && (
+                      <a
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 text-sm font-medium"
+                      >
+                        자세히 보기
+                        <i className="ri-external-link-line"></i>
+                      </a>
                     )}
                   </div>
                 </div>

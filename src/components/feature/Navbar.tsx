@@ -52,8 +52,6 @@ export default function Navbar() {
         { path: '/product/overview', label: t('common.nav.productOverview') },
         { path: '/product/how-it-works', label: t('common.nav.productHowItWorks') },
         { path: '/product/application', label: t('common.nav.productApplication') },
-        { path: '/product/industries', label: t('common.nav.productIndustries') },
-        { path: '/product/technical', label: t('common.nav.mediaTechnical') },
       ]
     },
     { 
@@ -66,6 +64,7 @@ export default function Navbar() {
       submenu: [
         { path: '/media/press', label: t('common.nav.mediaPress') },
         { path: '/media/awards', label: t('common.nav.mediaAwards') },
+        { path: '/product/technical', label: t('common.nav.mediaTechnical') },
       ]
     },
   ];
