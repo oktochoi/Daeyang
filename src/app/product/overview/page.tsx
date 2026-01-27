@@ -341,7 +341,7 @@ export default function ProductOverviewPage() {
                     By adding the additive to coal fuel, fuel consumption can be reduced, clinker can be prevented, and pollutant gas emissions can be decreased.
                   </p>
                   <p>
-                    The additive's components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
+                    The additive&apos;s components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
                   </p>
                 </div>
                 
