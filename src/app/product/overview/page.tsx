@@ -44,12 +44,15 @@ export default function ProductOverviewPage() {
       { threshold: 0.1 }
     );
 
-    if (problemsRef.current) observer.observe(problemsRef.current);
-    if (tableRef.current) observer.observe(tableRef.current);
+    const problemsCurrent = problemsRef.current;
+    const tableCurrent = tableRef.current;
+
+    if (problemsCurrent) observer.observe(problemsCurrent);
+    if (tableCurrent) observer.observe(tableCurrent);
 
     return () => {
-      if (problemsRef.current) observer.unobserve(problemsRef.current);
-      if (tableRef.current) observer.unobserve(tableRef.current);
+      if (problemsCurrent) observer.unobserve(problemsCurrent);
+      if (tableCurrent) observer.unobserve(tableCurrent);
     };
   }, []);
 
@@ -95,7 +98,7 @@ export default function ProductOverviewPage() {
                   By adding the additive to coal fuel, fuel consumption can be reduced, clinker can be prevented, and pollutant gas emissions can be decreased.
                 </p>
                 <p>
-                  The additive's components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
+                  The additive&apos;s components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
                 </p>
               </div>
               
