@@ -19,7 +19,7 @@ export default function Navbar() {
   // Mega menu 기본 오픈 섹션 (제품소개, 적용 실적, 미디어) 유지
   useEffect(() => {
     if (isMegaMenuOpen) {
-      setOpenMegaSections(new Set(['/product', '/performance', '/media']));
+      setOpenMegaSections(new Set(['/product/overview', '/performance', '/media']));
     } else {
       setOpenMegaSections(new Set());
     }
@@ -39,19 +39,16 @@ export default function Navbar() {
       path: '/about', 
       label: t('common.nav.about'),
       submenu: [
-        { path: '/about/overview', label: t('common.nav.aboutIntro') },
         { path: '/about/history', label: t('common.nav.aboutHistory') },
         { path: '/about/vision', label: t('common.nav.aboutTech') },
         { path: '/about/ceo', label: t('common.nav.aboutCI') },
       ]
     },
     { 
-      path: '/product', 
+      path: '/product/overview', 
       label: t('common.nav.product'),
       submenu: [
-        { path: '/product/overview', label: t('common.nav.productOverview') },
-        { path: '/product/how-it-works', label: t('common.nav.productHowItWorks') },
-        { path: '/product/application', label: t('common.nav.productApplication') },
+        { path: '/product/overview', label: t('product.hero.title') },
       ]
     },
     { 
@@ -108,7 +105,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 sm:gap-3 cursor-pointer">
             <Image 
               src={logo} 
-              alt="대양환경기술 로고" 
+              alt={t('common.logoAlt')} 
               width={120}
               height={48}
               className="object-contain h-8 sm:h-10 w-auto"
@@ -128,7 +125,7 @@ export default function Navbar() {
                 <Link
                   href={link.path}
                   className={`text-sm font-medium transition-colors whitespace-nowrap cursor-pointer flex items-center gap-1 ${
-                    pathname && pathname === link.path
+                    pathname && (pathname === link.path || (link.submenu && pathname.startsWith(link.path + '/')))
                       ? 'text-teal-600'
                       : 'text-gray-700 hover:text-teal-600'
                   }`}
@@ -146,14 +143,17 @@ export default function Navbar() {
                     onMouseEnter={() => handleMouseEnter(link.path)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="bg-white shadow-lg rounded-lg py-2 border border-gray-100">
+                    <div className="relative bg-white shadow-xl rounded-xl py-2 border border-gray-100 overflow-hidden ring-1 ring-black/5">
+                      {/* 상단 틸 악센트 바 */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 via-teal-400 to-cyan-400 rounded-t-xl" />
                       {link.submenu.map((sublink) => (
                         <Link
                           key={sublink.path}
                           href={sublink.path}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition-colors cursor-pointer"
+                          className="group flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:text-teal-600 transition-all duration-200 cursor-pointer border-l-2 border-transparent hover:border-teal-500 hover:bg-teal-50/70 hover:pl-5"
                         >
-                          {sublink.label}
+                          <i className="ri-arrow-right-s-line text-gray-200 group-hover:text-teal-400 text-sm transition-colors duration-200 flex-shrink-0" />
+                          <span>{sublink.label}</span>
                         </Link>
                       ))}
                     </div>
@@ -188,7 +188,7 @@ export default function Navbar() {
               <Link href="/" onClick={handleMegaMenuClose} className="flex items-center gap-2 cursor-pointer">
                 <Image 
                   src={logo} 
-                  alt="대양환경기술 로고" 
+                  alt={t('common.logoAlt')} 
                   width={120}
                   height={48}
                   className="object-contain h-8 w-auto"

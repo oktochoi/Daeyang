@@ -1,5 +1,6 @@
 export const contact = {
   hero: {
+    imageAlt: '문의하기 배경',
     title: '지금 문의하세요',
     subtitle: '02-2619-2451로 연락 주시면 가장 가까운 담당자가 빠르게 응대합니다.',
     cta: '문의하기'

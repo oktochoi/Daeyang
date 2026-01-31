@@ -32,7 +32,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden border-t border-gray-700 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden border-t-4 border-teal-600/50 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -47,7 +47,7 @@ export default function Contact() {
             {t('common.nav.contact')}
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            문의하기
+            {t('home.contact.title')}
           </h2>
           <p className="text-xl text-gray-300 mb-10 leading-relaxed">
             {t('home.finalCta.subtitle')}
@@ -59,7 +59,7 @@ export default function Contact() {
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <i className="ri-phone-line text-2xl text-teal-300"></i>
             </div>
-            <div className="text-lg font-semibold text-white mb-2">전화</div>
+            <div className="text-lg font-semibold text-white mb-2">{t('contact.info.phone.label')}</div>
             <div className="text-gray-300">{t('contact.info.phone.value')}</div>
           </div>
           <div className={`bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 transition-all duration-500 delay-150 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -73,7 +73,7 @@ export default function Contact() {
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <i className="ri-map-pin-line text-2xl text-teal-300"></i>
             </div>
-            <div className="text-lg font-semibold text-white mb-2">주소</div>
+            <div className="text-lg font-semibold text-white mb-2">{t('contact.info.address.label')}</div>
             <div className="text-gray-300">{t('common.footer.address')}</div>
           </div>
         </div>

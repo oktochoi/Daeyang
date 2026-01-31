@@ -29,44 +29,48 @@ export default function ProductTechnicalPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
       <Breadcrumb />
       
-      {/* Hero */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      {/* Header - 수상 페이지와 동일한 왼쪽 정렬 */}
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('media.tabs.technical')}
           </div>
-          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
-            기술 자료
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            {t('product.technical.title')}
           </h1>
-          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mx-auto font-normal">
-            특허, 인증서, 수상 내역 등 기술 자료를 확인하세요
+          <p className="text-lg text-gray-600">
+            {t('product.technical.subtitle')}
           </p>
         </div>
       </section>
 
-      {/* Technical Documents */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1200px] mx-auto px-8">
+      {/* Patents */}
+      <section className="py-16 pb-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
-              <p className="mt-4 text-gray-600">로딩 중...</p>
+              <p className="mt-4 text-gray-600">{t('product.technical.loading')}</p>
             </div>
           ) : techDocs.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <i className="ri-inbox-line text-4xl mb-2"></i>
-              <p>등록된 기술 자료가 없습니다.</p>
+              <p>{t('product.technical.empty')}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                {t('product.technical.title')}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {techDocs.map((doc) => (
                 <div
                   key={doc.id}
-                  className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200"
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 group"
                 >
                   {doc.featured_image ? (
                     <div className="bg-gray-100 overflow-hidden relative w-full">
@@ -90,7 +94,7 @@ export default function ProductTechnicalPage() {
                     </div>
                   )}
                   <div className="p-6">
-                    <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
                       {i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
                     </h3>
                     {doc.description && (
@@ -105,13 +109,14 @@ export default function ProductTechnicalPage() {
                         rel="noopener noreferrer"
                         className="mt-4 inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 text-sm font-medium"
                       >
-                        자세히 보기
+                        {t('product.technical.readMore')}
                         <i className="ri-external-link-line"></i>
                       </a>
                     )}
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           )}
         </div>

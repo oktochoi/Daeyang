@@ -6,13 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 export default function Breadcrumb() {
   const pathname = usePathname();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // 한국어와 영어 라벨 매핑
   const pathMap: { [key: string]: { ko: string; en: string } } = {
     '/': { ko: '홈', en: 'Home' },
     '/about': { ko: t('common.nav.about'), en: 'About' },
-    '/about/overview': { ko: t('common.nav.aboutIntro'), en: 'Company Overview' },
     '/about/history': { ko: t('common.nav.aboutHistory'), en: 'History' },
     '/about/vision': { ko: t('common.nav.aboutTech'), en: 'Vision & Philosophy' },
     '/about/ceo': { ko: t('common.nav.aboutCI'), en: 'CEO Message' },

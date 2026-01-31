@@ -11,36 +11,29 @@ export default function ProductPage() {
 
   const productOptions = [
     {
-      title: '제품 개요',
-      description: 'Coal Green14001의 상세 정보',
+      title: t('product.hub.overviewTitle'),
+      description: t('product.hub.overviewDesc'),
       href: '/product/overview',
       icon: 'ri-file-text-line',
       color: 'bg-teal-100 text-teal-600'
     },
     {
-      title: '작동 원리',
-      description: '제품의 작동 방식과 원리',
+      title: t('product.hub.howItWorksTitle'),
+      description: t('product.hub.howItWorksDesc'),
       href: '/product/how-it-works',
       icon: 'ri-settings-3-line',
       color: 'bg-blue-100 text-blue-600'
     },
     {
-      title: '적용 방법',
-      description: '제품 적용 절차와 방법',
+      title: t('product.hub.applicationTitle'),
+      description: t('product.hub.applicationDesc'),
       href: '/product/application',
       icon: 'ri-tools-line',
       color: 'bg-green-100 text-green-600'
     },
     {
-      title: '적용 산업',
-      description: '적용 가능한 산업 분야',
-      href: '/product/industries',
-      icon: 'ri-building-line',
-      color: 'bg-purple-100 text-purple-600'
-    },
-    {
-      title: '기술 자료',
-      description: '기술 백서, 시험성적, 가이드',
+      title: t('product.hub.technicalTitle'),
+      description: t('product.hub.technicalDesc'),
       href: '/product/technical',
       icon: 'ri-book-open-line',
       color: 'bg-orange-100 text-orange-600'
@@ -62,7 +55,7 @@ export default function ProductPage() {
           
           {/* 한 줄 안내 */}
           <p className="text-lg text-gray-600 text-center mb-12">
-            대양환경기술의 제품 / 기술 / 적용 분야를 확인하세요
+            {t('product.hub.subtitle')}
           </p>
           
           {/* 중앙 대형 박스 - 탐색 허브 */}

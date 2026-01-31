@@ -34,7 +34,7 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-white border-t border-gray-100 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-24 lg:py-32 bg-white border-t-2 border-teal-600/30 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Content */}
@@ -43,8 +43,8 @@ export default function About() {
               {t('common.nav.about')}
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="mb-3">환경기술 기반의</span><br />
-              <span className="text-teal-600">솔루션 기업</span>
+              <span className="mb-3">{t('home.about.titleLine1')}</span><br />
+              <span className="text-teal-600">{t('home.about.titleLine2')}</span>
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
               {t('about.hero.description')}
@@ -60,7 +60,7 @@ export default function About() {
               </div>
             </div>
             <Link
-              href="/about/overview"
+              href="/about"
               className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
             >
               회사소개 자세히 보기
@@ -73,7 +73,7 @@ export default function About() {
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl relative">
               <Image 
                 src={office1}
-                alt="대양환경기술 회사 소개" 
+                alt={t('home.about.imageAlt')} 
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

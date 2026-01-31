@@ -9,6 +9,20 @@ import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
 import { getPerformanceProjectById, PerformanceProject as SupabasePerformanceProject, PerformanceProjectItem } from '@/lib/supabase';
 import { performanceProjects as mockProjects } from '../../../mocks/performance';
+import type { PerformanceProject as MockProject } from '../../../mocks/performance';
+
+// Mock 데이터를 Supabase 형식으로 변환
+function mockToSupabaseFormat(mock: MockProject): SupabasePerformanceProject {
+  return {
+    id: mock.id,
+    title: mock.title,
+    title_en: mock.titleEn,
+    icon: mock.icon,
+    description: mock.description,
+    description_en: mock.descriptionEn,
+    items: []
+  };
+}
 
 // Supabase 데이터를 표시 형식으로 변환
 function transformSupabaseProject(project: SupabasePerformanceProject) {
@@ -58,7 +72,7 @@ export default function PerformanceDetailPage() {
           // Supabase에 없으면 mocks에서 찾기
           const mockProject = mockProjects.find(p => p.id === id);
           if (mockProject) {
-            setProject(transformSupabaseProject(mockProject as any));
+            setProject(transformSupabaseProject(mockToSupabaseFormat(mockProject)));
           }
         }
       } catch (error) {
@@ -66,7 +80,7 @@ export default function PerformanceDetailPage() {
         // 에러 발생 시 mocks에서 찾기
         const mockProject = mockProjects.find(p => p.id === id);
         if (mockProject) {
-          setProject(transformSupabaseProject(mockProject as any));
+          setProject(transformSupabaseProject(mockToSupabaseFormat(mockProject)));
         }
       } finally {
         setIsLoading(false);
@@ -83,7 +97,7 @@ export default function PerformanceDetailPage() {
         <section className="pt-32 pb-16">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
-            <p className="mt-4 text-gray-600">로딩 중...</p>
+            <p className="mt-4 text-gray-600">{t('performance.detail.loading')}</p>
           </div>
         </section>
         <Footer />
@@ -99,10 +113,10 @@ export default function PerformanceDetailPage() {
         <section className="pt-32 pb-16">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {i18n.language === 'ko' ? '적용 실적을 찾을 수 없습니다' : 'Performance not found'}
+              {t('performance.detail.notFound')}
             </h1>
             <p className="text-lg text-gray-600">
-              {i18n.language === 'ko' ? '요청하신 적용 실적이 존재하지 않습니다.' : 'The requested performance record does not exist.'}
+              {t('performance.detail.notFoundDesc')}
             </p>
           </div>
         </section>
@@ -125,7 +139,7 @@ export default function PerformanceDetailPage() {
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden relative">
               {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                <Image src={project.icon} alt="Project icon" fill className="object-cover" unoptimized />
+                <Image src={project.icon} alt={t('performance.detail.projectIconAlt')} fill className="object-cover" unoptimized />
               ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                 <span className="text-5xl leading-none">{project.icon}</span>
               ) : project.icon && project.icon.startsWith('ri-') ? (
@@ -194,7 +208,7 @@ export default function PerformanceDetailPage() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center py-12 text-gray-500">
               <i className="ri-inbox-line text-4xl mb-2"></i>
-              <p>{i18n.language === 'ko' ? '등록된 항목이 없습니다.' : 'No items registered.'}</p>
+              <p>{t('performance.detail.noItems')}</p>
             </div>
           </div>
         </section>

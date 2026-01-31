@@ -1,4 +1,9 @@
 export const common = {
+  logoAlt: '대양환경기술 로고',
+  loading: '로딩 중...',
+  messageMaxLength: '최대 500자',
+  messageLengthError: '메시지는 500자를 초과할 수 없습니다.',
+  submitting: '제출 중...',
   nav: {
     home: '홈',
     about: '회사소개',
@@ -18,8 +23,8 @@ export const common = {
     performanceComparison: '중국·팔라우',
     media: '미디어',
     mediaPress: '보도자료',
-    mediaAwards: '인증 및 수상',
-    mediaTechnical: '기술 자료',
+    mediaAwards: '수상',
+    mediaTechnical: '특허',
     contact: '문의하기'
   },
   cta: {

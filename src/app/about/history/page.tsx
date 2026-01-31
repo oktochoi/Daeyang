@@ -6,11 +6,16 @@ import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
 
+interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+}
+
 export default function AboutHistoryPage() {
   const { t } = useTranslation();
   
-  // 각 연혁 항목에 대한 애니메이션 refs
-  const milestones = useMemo(() => (t('about.history.milestones', { returnObjects: true }) as any[]), [t]);
+  const milestones = useMemo(() => (t('about.history.milestones', { returnObjects: true }) as Milestone[]), [t]);
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
   
   useEffect(() => {
@@ -65,23 +70,23 @@ export default function AboutHistoryPage() {
       <Breadcrumb />
       
       {/* Hero Section */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
-            {t('about.history.title')}
-          </h1>
-          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
-            {t('about.history.founded')}
-          </p>
+      <section className="mt-[80px] sm:mt-[140px] pt-16 sm:pt-20 pb-8 sm:pb-10 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 text-left">
+          <div className="mb-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
+              {t('about.history.title')}
+            </h1>
+            <div className="w-16 h-1 bg-teal-600 rounded-full mb-4" />
+          </div>
         </div>
       </section>
 
       {/* History Timeline */}
-      <section className="pb-[96px] bg-white">
+      <section className="pb-[48px] bg-white">
         <div className="max-w-[1200px] mx-auto px-8">
           <div className="mb-8">
             <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
-              주요 연혁
+              {t('about.history.milestoneSectionTitle')}
             </h2>
             <div className="w-12 h-0.5 bg-teal-600"></div>
           </div>
@@ -91,7 +96,7 @@ export default function AboutHistoryPage() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-teal-600"></div>
             
             <div className="space-y-8">
-              {milestones.map((milestone: any, index: number) => (
+              {milestones.map((milestone: Milestone, index: number) => (
                 <div 
                   key={index} 
                   id={`milestone-${index}`}
@@ -132,12 +137,11 @@ export default function AboutHistoryPage() {
                 
                 <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm border-2 border-teal-600">
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="text-[20px] font-semibold text-[#1f2933]">현재</span>
-                    <h3 className="text-[20px] font-semibold text-[#1f2933]">지속적인 성장과 혁신</h3>
+                    <span className="text-[20px] font-semibold text-[#1f2933]">{t('about.history.currentItem.year')}</span>
+                    <h3 className="text-[20px] font-semibold text-[#1f2933]">{t('about.history.currentItem.title')}</h3>
                   </div>
-                  <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                    국내외 시장 확대와 기술 개발을 통해<br />
-                    친환경 연소 솔루션의 선도 기업으로 성장하고 있습니다.
+                  <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal whitespace-pre-line">
+                    {t('about.history.currentItem.description')}
                   </p>
                 </div>
               </div>
@@ -151,7 +155,7 @@ export default function AboutHistoryPage() {
                 <i className="ri-lightbulb-line text-2xl text-white"></i>
               </div>
               <div>
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-2">핵심 기술</h3>
+                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-2">{t('about.history.coreTechTitle')}</h3>
                 <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('about.history.coalGreenPosition')}</p>
               </div>
             </div>

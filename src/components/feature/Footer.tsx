@@ -9,7 +9,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white border-t border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info with Logo */}
@@ -17,7 +17,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-6 relative h-16 w-48">
               <Image 
                 src={whiteLogo} 
-                alt="대양환경기술 로고" 
+                alt={t('common.logoAlt')} 
                 fill
                 sizes="192px"
                 className="object-contain"
@@ -36,7 +36,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.quickLinks')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/about/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
+                <Link href="/about" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.about')}
                 </Link>
@@ -45,12 +45,6 @@ export default function Footer() {
                 <Link href="/product/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
                   <i className="ri-arrow-right-s-line text-xs"></i>
                   {t('common.nav.product')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/product/industries" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
-                  {t('common.nav.productIndustries')}
                 </Link>
               </li>
               <li>

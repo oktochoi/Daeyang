@@ -23,7 +23,7 @@ export default function ContactPage() {
     // Validate textarea length
     const message = formData.get('message') as string;
     if (message && message.length > 500) {
-      alert(i18n.language === 'ko' ? '메시지는 500자를 초과할 수 없습니다.' : 'Message cannot exceed 500 characters.');
+      alert(t('common.messageLengthError'));
       setIsSubmitting(false);
       return;
     }
@@ -34,7 +34,13 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(formData as any).toString(),
+        body: (() => {
+          const params = new URLSearchParams();
+          formData.forEach((value, key) => {
+            if (typeof value === 'string') params.append(key, value);
+          });
+          return params.toString();
+        })(),
       });
 
       if (response.ok) {
@@ -168,7 +174,7 @@ export default function ContactPage() {
                 className="w-full text-lg text-gray-900 bg-transparent border-b border-gray-300 pb-2 outline-none focus:border-teal-600 transition-colors resize-none"
               ></textarea>
               <p className="text-xs text-gray-500 mt-1">
-                {i18n.language === 'ko' ? '최대 500자' : 'Maximum 500 characters'}
+                {t('common.messageMaxLength')}
               </p>
             </div>
 
@@ -177,7 +183,7 @@ export default function ContactPage() {
               disabled={isSubmitting}
               className="w-full py-4 bg-teal-600 text-white text-lg font-bold rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap cursor-pointer"
             >
-              {isSubmitting ? (i18n.language === 'ko' ? '제출 중...' : 'Submitting...') : t('contact.form.submit')}
+              {isSubmitting ? t('common.submitting') : t('contact.form.submit')}
             </button>
 
             {submitStatus === 'success' && (

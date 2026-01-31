@@ -15,7 +15,7 @@ import factory5 from '../../../assets/factory_5.jpg';
 export default function ProductHowItWorksPage() {
   const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const changesRef = useRef<HTMLDivElement>(null);
   const [isChangesVisible, setIsChangesVisible] = useState(false);
 
@@ -75,7 +75,7 @@ export default function ProductHowItWorksPage() {
             {t('product.howItWorks.title')}
           </h1>
           <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
-            Coal Green은 어떤 원리로 작동하나요?
+            {t('product.howItWorks.heroSubtitle')}
           </p>
         </div>
       </section>
@@ -85,10 +85,10 @@ export default function ProductHowItWorksPage() {
         <div className="max-w-[1200px] mx-auto px-8 text-left">
           <div className="mb-4">
             <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              사업 접근 방식
+              {t('product.howItWorks.approachTitle')}
             </h2>
             <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal mb-8">
-              테스트 적용 → 본 공급까지의 일반적인 흐름
+              {t('product.howItWorks.approachSubtitle')}
             </p>
           </div>
 
@@ -104,9 +104,9 @@ export default function ProductHowItWorksPage() {
               <div className="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <i className="ri-search-line text-3xl text-white"></i>
               </div>
-              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">현장분석 및 문제 파악</h3>
+              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">{t('product.howItWorks.step1Title')}</h3>
               <p className="text-[14px] text-[#4b5563] leading-[1.6] font-normal text-center">
-                현장조건과 문제점을 <span className="font-bold">정확히</span> 파악합니다
+                {t('product.howItWorks.step1Desc')}
               </p>
             </div>
 
@@ -123,9 +123,9 @@ export default function ProductHowItWorksPage() {
               <div className="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <i className="ri-file-edit-line text-3xl text-white"></i>
               </div>
-              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">맞춤형 솔루션 설계</h3>
+              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">{t('product.howItWorks.step2Title')}</h3>
               <p className="text-[14px] text-[#4b5563] leading-[1.6] font-normal text-center">
-                현장에 <span className="font-bold">최적화된</span> 솔루션을 설계합니다
+                {t('product.howItWorks.step2Desc')}
               </p>
             </div>
 
@@ -142,9 +142,9 @@ export default function ProductHowItWorksPage() {
               <div className="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <i className="ri-file-check-line text-3xl text-white"></i>
               </div>
-              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">시범 적용 및 성능 검증</h3>
+              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">{t('product.howItWorks.step3Title')}</h3>
               <p className="text-[14px] text-[#4b5563] leading-[1.6] font-normal text-center">
-                소규모 테스트를 통해 <span className="font-bold">효과를 검증</span>합니다
+                {t('product.howItWorks.step3Desc')}
               </p>
             </div>
 
@@ -161,9 +161,9 @@ export default function ProductHowItWorksPage() {
               <div className="w-16 h-16 bg-teal-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
                 <i className="ri-truck-line text-3xl text-white"></i>
               </div>
-              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">본 적용 및 정기 공급</h3>
+              <h3 className="text-lg font-bold text-[#1f2933] mb-2 text-center whitespace-nowrap">{t('product.howItWorks.step4Title')}</h3>
               <p className="text-[14px] text-[#4b5563] leading-[1.6] font-normal text-center">
-                검증 후 <span className="font-bold">본격 적용</span> 및 정기 공급을 진행합니다
+                {t('product.howItWorks.step4Desc')}
               </p>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function ProductHowItWorksPage() {
       <section className="pb-[96px] bg-white">
         <div className="max-w-[1200px] mx-auto px-8 text-left">
           <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">작동 원리 상세</h2>
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">{t('product.howItWorks.detailTitle')}</h2>
           </div>
           <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm mb-12">
             <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
@@ -188,7 +188,7 @@ export default function ProductHowItWorksPage() {
               <div className="h-48 overflow-hidden relative">
                 <Image 
                   src={factory3} 
-                  alt="희석 및 분사" 
+                  alt={t('product.howItWorks.diluteTitle')} 
                   fill
                   className="object-cover"
                 />
@@ -198,15 +198,15 @@ export default function ProductHowItWorksPage() {
                   <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-xl">1</span>
                   </div>
-                  <h3 className="text-[20px] font-semibold text-[#1f2933]">희석 및 분사</h3>
+                  <h3 className="text-[20px] font-semibold text-[#1f2933]">{t('product.howItWorks.diluteTitle')}</h3>
                 </div>
                 <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal mb-4">
-                  조연제를 물과 1:4000 비율로 희석하여 석탄 표면에 균일하게 분사합니다.
+                  {t('product.howItWorks.diluteDesc')}
                 </p>
                 <div className="bg-white rounded-lg p-4 border border-gray-200">
                   <p className="text-[13px] text-[#4b5563] font-normal">
                     <i className="ri-information-line mr-2 text-teal-600"></i>
-                    희석 비율: 물 4000 : 조연제 1
+                    {t('product.howItWorks.diluteRatio')}
                   </p>
                 </div>
               </div>
@@ -216,7 +216,7 @@ export default function ProductHowItWorksPage() {
               <div className="h-48 overflow-hidden relative">
                 <Image 
                   src={factory4} 
-                  alt="건조 처리" 
+                  alt={t('product.howItWorks.dryTitle')} 
                   fill
                   className="object-cover"
                 />
@@ -226,15 +226,15 @@ export default function ProductHowItWorksPage() {
                   <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-xl">2</span>
                   </div>
-                  <h3 className="text-[20px] font-semibold text-[#1f2933]">건조 처리</h3>
+                  <h3 className="text-[20px] font-semibold text-[#1f2933]">{t('product.howItWorks.dryTitle')}</h3>
                 </div>
                 <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal mb-4">
-                  조연제가 석탄 표면에 흡착된 후 적절히 건조시켜 연소 준비를 완료합니다.
+                  {t('product.howItWorks.dryDesc')}
                 </p>
                 <div className="bg-white rounded-lg p-4 border border-gray-200">
                   <p className="text-[13px] text-[#4b5563] font-normal">
                     <i className="ri-information-line mr-2 text-teal-600"></i>
-                    건조 상태 확인 필수
+                    {t('product.howItWorks.dryNote')}
                   </p>
                 </div>
               </div>
@@ -256,7 +256,7 @@ export default function ProductHowItWorksPage() {
                 <div className="absolute inset-0">
                   <Image 
                     src={factory1} 
-                    alt="화염 온도 상승" 
+                    alt={t('product.howItWorks.changes.change1')} 
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -281,7 +281,7 @@ export default function ProductHowItWorksPage() {
                 <div className="absolute inset-0">
                   <Image 
                     src={factory2} 
-                    alt="미연소 감소" 
+                    alt={t('product.howItWorks.changes.change2')} 
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -296,7 +296,7 @@ export default function ProductHowItWorksPage() {
                     {t('product.howItWorks.changes.change2')}
                   </h3>
                   <p className="text-[15px] text-white/90 leading-[1.8] font-normal">
-                    불완전 연소가 <span className="font-bold text-white">감소</span>하여 미연소 물질이 <span className="font-bold text-white">현저히 줄어듭니다</span>.
+                    {t('product.howItWorks.changes.change2Desc')}
                   </p>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export default function ProductHowItWorksPage() {
                 <div className="absolute inset-0">
                   <Image 
                     src={factory5} 
-                    alt="연소 잔재물 감소" 
+                    alt={t('product.howItWorks.changes.change3')} 
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -321,7 +321,7 @@ export default function ProductHowItWorksPage() {
                     {t('product.howItWorks.changes.change3')}
                   </h3>
                   <p className="text-[15px] text-white/90 leading-[1.8] font-normal">
-                    크링커와 바텀애시 같은 연소 잔재물이 <span className="font-bold text-white">감소</span>하여 <span className="font-bold text-white">설비 보호 효과</span>가 있습니다.
+                    {t('product.howItWorks.changes.change3Desc')}
                   </p>
                 </div>
               </div>
@@ -334,7 +334,7 @@ export default function ProductHowItWorksPage() {
       <section className="pb-[96px] bg-white">
         <div className="max-w-[1200px] mx-auto px-8 text-left">
           <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">작동 과정 시각화</h2>
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">{t('product.howItWorks.visualizationTitle')}</h2>
           </div>
           <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
               <div className="space-y-8">
@@ -345,7 +345,7 @@ export default function ProductHowItWorksPage() {
                   </div>
                   <div className="flex-1">
                     <div className="h-2 bg-gradient-to-r from-teal-600 to-teal-400 rounded-full"></div>
-                    <p className="text-sm text-gray-500 mt-2 text-center">조연제 희석</p>
+                    <p className="text-sm text-gray-500 mt-2 text-center">{t('product.howItWorks.stepDilute')}</p>
                   </div>
                   <div className="w-24 h-24 flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex-shrink-0 shadow-md">
                     <i className="ri-fire-line text-4xl text-white"></i>
@@ -364,7 +364,7 @@ export default function ProductHowItWorksPage() {
                   </div>
                   <div className="flex-1">
                     <div className="h-2 bg-gradient-to-r from-teal-600 to-teal-400 rounded-full"></div>
-                    <p className="text-sm text-gray-500 mt-2 text-center">연소 반응 촉진</p>
+                    <p className="text-sm text-gray-500 mt-2 text-center">{t('product.howItWorks.stepPromote')}</p>
                   </div>
                   <div className="w-24 h-24 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex-shrink-0 shadow-md">
                     <i className="ri-leaf-line text-4xl text-white"></i>

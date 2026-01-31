@@ -11,29 +11,22 @@ export default function AboutPage() {
 
   const aboutOptions = [
     {
-      title: '회사 개요',
-      description: '대양환경기술의 회사 소개 및 개요',
-      href: '/about/overview',
-      icon: 'ri-building-line',
-      color: 'bg-teal-100 text-teal-600'
-    },
-    {
-      title: '연혁',
-      description: '회사 설립부터 현재까지의 주요 이정표',
+      title: t('about.page.options.history.title'),
+      description: t('about.page.options.history.description'),
       href: '/about/history',
       icon: 'ri-history-line',
       color: 'bg-blue-100 text-blue-600'
     },
     {
-      title: '비전 및 철학',
-      description: '회사의 경영이념과 미래 비전',
+      title: t('about.page.options.vision.title'),
+      description: t('about.page.options.vision.description'),
       href: '/about/vision',
       icon: 'ri-lightbulb-line',
       color: 'bg-green-100 text-green-600'
     },
     {
-      title: 'CEO 인사말',
-      description: '대표이사의 인사말과 경영 철학',
+      title: t('about.page.options.ceo.title'),
+      description: t('about.page.options.ceo.description'),
       href: '/about/ceo',
       icon: 'ri-user-voice-line',
       color: 'bg-purple-100 text-purple-600'
@@ -55,7 +48,7 @@ export default function AboutPage() {
           
           {/* 한 줄 안내 */}
           <p className="text-lg text-gray-600 text-center mb-12">
-            대양환경기술의 회사 정보 / 연혁 / 경영이념을 확인하세요
+            {t('about.page.subtitle')}
           </p>
           
           {/* 중앙 대형 박스 - 탐색 허브 */}

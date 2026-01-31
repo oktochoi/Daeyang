@@ -32,7 +32,13 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams(formData as any).toString(),
+        body: (() => {
+          const params = new URLSearchParams();
+          formData.forEach((value, key) => {
+            if (typeof value === 'string') params.append(key, value);
+          });
+          return params.toString();
+        })(),
       });
 
       if (response.ok) {

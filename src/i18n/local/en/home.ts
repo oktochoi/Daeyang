@@ -1,13 +1,27 @@
 export const home = {
   hero: {
+    imageAlt: 'Dayang Environmental Technology - Combustion efficiency solution',
     eyebrow: 'DAYANG ECO TECHNOLOGY',
     title: 'Improve Combustion Efficiency, Reduce Air Pollution.',
+    titleLine1: 'Improve',
+    titleLine2: ' combustion efficiency,',
+    titleLine3: 'Reduce',
+    titleLine4: ' air pollution.',
     subtitle: 'Fuel Cost Reduction · Emission Reduction · No Equipment Changes',
     description: 'Achieve fuel cost reduction and emission reduction simultaneously with Coal Green14001',
     cta: {
       product: 'View Product',
       contact: 'Contact Us'
     }
+  },
+  about: {
+    titleLine1: 'Environmental technology-based',
+    titleLine2: 'Solution company',
+    cta: 'Learn more about us',
+    imageAlt: 'Dayang Environmental Technology - About Us',
+  },
+  product: {
+    cta: 'View product details',
   },
   problem: {
     title: 'Industrial Challenges',
@@ -25,6 +39,8 @@ export const home = {
     }
   },
   solution: {
+    verifiedTech: 'Verified technology',
+    sitesCount: '50+ field applications',
     title: 'Solution',
     productName: 'Coal Green',
     productDesc: 'Eco-friendly combustion additive that maximizes coal combustion efficiency',
@@ -85,7 +101,22 @@ export const home = {
   },
   media: {
     title: 'Latest News',
+    subtitle: 'Press releases, awards, and patents',
+    subtitleFull: 'Check out our latest news and resources',
+    loading: 'Loading...',
+    empty: 'No press releases registered.',
+    pressImage: 'Press release image',
+    viewMore: 'View more news',
     cta: 'Visit Media Center'
+  },
+  performance: {
+    title: 'Performance',
+    subtitle: 'Verified technology and diverse application cases',
+    projectImage: 'Project image',
+    cta: 'View performance details',
+  },
+  contact: {
+    title: 'Contact Us',
   },
   finalCta: {
     title: 'Considering Coal Green for your facility?',

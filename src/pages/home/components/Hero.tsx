@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src={mainBg}
-          alt="연기가 나오는 공장 사진 by Etienne Girardet on Unsplash"
+          alt={t('home.hero.imageAlt')}
           fill
           className="object-cover object-center hero-bg-zoom"
           priority
@@ -35,8 +35,8 @@ export default function Hero() {
             
             {/* Main Title - 700 weight 중심, 일부 키워드만 800, line-height 1.15~1.2, letter-spacing -0.03em ~ -0.05em, 줄바꿈 고정 */}
             <h1 className="text-[40px] sm:text-[56px] lg:text-[72px] font-bold text-white mb-6 leading-[1.18] tracking-[-0.04em] hero-fade-up">
-              <span className="font-extrabold tracking-[0.02em]">연소 효율</span>을 높이고,<br className="hidden sm:block sm:mb-2" />
-              <span className="font-extrabold tracking-[0.02em]">대기오염</span>을 줄입니다.
+              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine1')}</span>{t('home.hero.titleLine2')}<br className="hidden sm:block sm:mb-2" />
+              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine3')}</span>{t('home.hero.titleLine4')}
             </h1>
             
             {/* Subtitle - 16px(모바일), 18px(PC), 500 weight, rgba(255,255,255,0.78), letter-spacing -0.01em, line-height 1.45, text-shadow */}

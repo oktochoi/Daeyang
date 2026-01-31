@@ -53,7 +53,7 @@ export default function Media() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-white border-t border-gray-100 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gray-50/80 border-t-2 border-gray-200 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
@@ -63,9 +63,7 @@ export default function Media() {
             {t('media.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {i18n.language === 'ko' 
-              ? '최신 소식과 자료를 확인하세요' 
-              : 'Check out our latest news and resources'}
+            {t('home.media.subtitleFull')}
           </p>
         </div>
 
@@ -102,7 +100,7 @@ export default function Media() {
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="text-center">
                         <i className="ri-newspaper-line text-5xl text-gray-400 mb-2"></i>
-                        <p className="text-sm text-gray-500">보도자료 이미지</p>
+                        <p className="text-sm text-gray-500">{t('home.media.pressImage')}</p>
                       </div>
                     </div>
                   )}
@@ -143,7 +141,7 @@ export default function Media() {
             href="/media"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
           >
-            {i18n.language === 'ko' ? '더 많은 소식 보기' : 'View More News'}
+            {t('home.media.viewMore')}
             <i className="ri-arrow-right-line text-xl"></i>
           </Link>
         </div>

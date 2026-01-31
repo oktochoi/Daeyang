@@ -3,6 +3,12 @@ import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
 
+interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+}
+
 export default function AboutHistoryPage() {
   const { t } = useTranslation();
 
@@ -32,7 +38,7 @@ export default function AboutHistoryPage() {
             
             <div className="space-y-12">
               {Array.isArray(t('about.history.milestones', { returnObjects: true })) 
-                ? (t('about.history.milestones', { returnObjects: true }) as any[]).map((milestone: any, index: number) => (
+                ? (t('about.history.milestones', { returnObjects: true }) as Milestone[]).map((milestone: Milestone, index: number) => (
                   <div key={index} className="relative pl-24">
                     {/* Timeline Dot */}
                     <div className="absolute left-0 top-2 w-16 h-16 bg-white border-4 border-teal-600 rounded-full flex items-center justify-center shadow-lg">

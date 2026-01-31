@@ -34,7 +34,7 @@ export default function MediaPressPage() {
       <Breadcrumb />
       
       {/* Header */}
-      <section className="pt-32 pb-16 bg-white border-b border-gray-200">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('media.tabs.press')}
@@ -43,25 +43,23 @@ export default function MediaPressPage() {
             {t('media.tabs.press')}
           </h1>
           <p className="text-lg text-gray-600">
-            {i18n.language === 'ko' 
-              ? '최신 보도자료와 뉴스를 확인하세요' 
-              : 'Check out our latest press releases and news'}
+            {t('media.press.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Press Releases */}
-      <section className="py-16">
+      <section className="py-16 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
-              <p className="mt-4 text-gray-600">로딩 중...</p>
+              <p className="mt-4 text-gray-600">{t('media.press.loading')}</p>
             </div>
           ) : pressReleases.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <i className="ri-inbox-line text-4xl mb-2"></i>
-              <p>등록된 보도자료가 없습니다.</p>
+              <p>{t('media.press.empty')}</p>
             </div>
           ) : (
             <div className="space-y-6 mb-12">
@@ -101,7 +99,7 @@ export default function MediaPressPage() {
                           </span>
                         )}
                         <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">
-                          보도자료
+                          {t('media.press.badge')}
                         </span>
                       </div>
                       <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 hover:text-teal-600 transition-colors">
@@ -122,7 +120,7 @@ export default function MediaPressPage() {
                             e.stopPropagation(); // article 클릭 이벤트와 충돌 방지
                           }}
                         >
-                          {i18n.language === 'ko' ? '자세히 보기' : 'Read more'}
+                          {t('media.press.readMore')}
                           <i className="ri-arrow-right-line"></i>
                         </a>
                       )}

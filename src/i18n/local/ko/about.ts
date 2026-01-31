@@ -1,5 +1,13 @@
 export const about = {
   label: '회사소개',
+  page: {
+    subtitle: '대양환경기술의 회사 정보 / 연혁 / 경영이념을 확인하세요',
+    options: {
+      history: { title: '연혁', description: '회사 설립부터 현재까지의 주요 이정표' },
+      vision: { title: '비전 및 철학', description: '회사의 경영이념과 미래 비전' },
+      ceo: { title: 'CEO 인사말', description: '대표이사의 인사말과 경영 철학' }
+    }
+  },
   hero: {
     title1: '환경기술 기반의 솔루션 기업',
     title2: '제조 역량을 겸비한 환경기술 전문 기업',
@@ -75,37 +83,73 @@ export const about = {
         description: '몽골 MONZOL GROUP 석탄조연제 공급 계약 체결 (600억 원 규모)\n몽골 ENKHDOGIBOLD Co., Ltd. 공급 계약 체결 (75억 원 규모)\n몽골 성형탄 국영기업(TTT)과 조연제 공동개발·납품 협약서 체결\n서울대학교 에너지자원 신기술연구소 산학협력 체결 및 공동 연구 추진'
       }
     ],
-    coalGreenPosition: 'Coal Green은 회사의 핵심 기술이자 현재 주력 사업 제품입니다.'
+    coalGreenPosition: 'Coal Green은 회사의 핵심 기술이자 현재 주력 사업 제품입니다.',
+    milestoneSectionTitle: '주요 연혁',
+    currentItem: {
+      year: '현재',
+      title: '지속적인 성장과 혁신',
+      description: '국내외 시장 확대와 기술 개발을 통해\n친환경 연소 솔루션의 선도 기업으로 성장하고 있습니다.'
+    },
+    coreTechTitle: '핵심 기술'
   },
   vision: {
     title: '경영이념 & 비전',
+    heroEyebrow: 'VISION & PHILOSOPHY',
+    heroLine1: '환경을 말하지 않습니다',
+    heroLine2: '현장에서 증명합니다',
     coreValues: {
       title: '핵심 가치',
+      coreBadge: 'OUR CORE VALUE',
       saveEarth: {
-        title: '환경 보호 (Save the Earth)',
-        description: '지구 환경 보호를 최우선 가치로'
+        title: '환경 보호',
+        subtitle: 'Save the Earth',
+        description: '연소 과정에서 발생하는 오염물질을 줄여 지속가능한 산업 환경을 만듭니다.'
       },
       saveEnergy: {
-        title: '에너지 절감 (Save Energy)',
-        description: '에너지 효율 극대화를 통한 자원 절약'
+        title: '에너지 절감',
+        subtitle: 'Save Energy',
+        description: '연소 효율을 높여 에너지 손실을 줄이고 연료 사용의 효율을 극대화합니다.'
       },
       practical: {
         title: '기술을 통한 실질적 개선',
-        description: '형식적 ESG가 아닌 실제 현장 개선 중심'
+        subtitle: 'Proven in the Field',
+        description: '현장에서 검증된 기술로 즉시 적용 가능한 변화를 만들어냅니다.'
       }
     },
-    priority: '환경 + 기술의 실효성 중심 (형식적 ESG가 아닌, 실제 현장 개선)',
+    priorityTitle: '우선 방향',
+    priorityHeadline: '우리는 ESG를 보고서로 만들지 않습니다. 현장에서 수치로 만듭니다.',
+    prioritySub: '환경 + 기술의 실효성 중심 (형식적 ESG가 아닌, 실제 현장 개선)',
     futureVision: {
       title: '5~10년 후 비전',
+      headline: '우리는 친환경 에너지 솔루션의 글로벌 표준이 됩니다.',
       goals: [
-        '글로벌 친환경 에너지 솔루션 기업',
-        '석탄 연소 개선 분야에서 표준 기술로 인식',
-        '친환경 성형탄 및 석탄연료 청정화 분야 1위 기업'
-      ]
+        '연소 효율 개선 분야 국내 레퍼런스 100+ 현장',
+        '발전·산업용 연소 기술 표준 솔루션',
+        '친환경 에너지 전환 핵심 파트너 기업'
+      ],
+      closing: '우리는 기술로,\n환경의 기준을 다시 씁니다.'
     }
   },
   ceo: {
     title: '대표이사 인사말',
+    heroLabel: 'Save Earth, Save Energy',
+    mainTitle: '주식회사 대양환경기술의\n지속가능한 미래를 위한 기술의 약속',
+    paragraphs: [
+      '주식회사 대양환경기술은 환경개선과 에너지 효율 혁신을 선도하는 기술 기업으로, 지속가능한 미래 가치를 창출하고 있습니다.',
+      '저희는 전 세계적인 에너지 환경 변화와 기후변화를 기회로 삼아, 환경보호와 에너지 절약을 동시에 달성하는 통합 솔루션 제공자로 성장해왔습니다.',
+      '특히 화석연료 사용이 불가피한 산업 현장에서 연소 효율 개선과 오염물질 감소 기술을 통해 상당한 탄소 감축 성과를 달성하며, 환경과 경제성을 동시에 개선하는 혁신적인 솔루션을 제공하고 있습니다.',
+      '수년간 축적된 기술력과 현장 경험을 바탕으로, 석탄 및 중유 등 화석연료의 효율을 극대화하기 위한 조연제(COAL GREEN14001)를 활용한 환경 기술을 개발·상용화하여 산업 현장의 지속가능성을 높이고 있습니다.',
+      '저희의 핵심 경쟁력은 \'현장 검증 기술\'입니다. 몽골, 베트남, 중국 등 아시아 주요 국가에서 진행 중인 실증 프로젝트와 현지 협력을 통해 기술의 신뢰성을 입증하고 있으며, 연소 효율 개선, 배출물 감소, 에너지 비용 절감 등 실질적인 성과를 지속적으로 확대해 나가고 있습니다.',
+      '앞으로도 지속적인 R&D와 글로벌 협력을 통해 환경보호(Save the Earth)와 에너지 절약(Save Energy)을 동시에 실현하는 차세대 환경 기술의 표준이 되도록 최선을 다하겠습니다.',
+      '도전과 성장의 여정에 여러분의 지속적인 관심과 협력을 부탁드리며, 감사합니다.'
+    ],
+    ceoAlt: 'CEO 김정환',
+    ceoTitle: '주식회사 대양환경기술 CEO',
+    ceoName: '김정환',
+    ctoAlt: 'CTO 서하경',
+    ctoTitle: '주식회사 대양환경기술 CTO',
+    ctoName: '서하경',
+    footerCompany: '주식회사 대양환경기술',
     name: '김정환',
     position: '대표이사',
     message: `안녕하십니까. 환경개선을 선도하는 기업 주식회사 대양환경기술에 방문하신 여러분을 진심으로 환영합니다.

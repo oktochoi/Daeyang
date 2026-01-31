@@ -265,7 +265,6 @@ export async function createPerformanceProject(project: Omit<PerformanceProject,
   }
 
   try {
-    console.log('Creating project with data:', project);
     const { data, error } = await supabase
       .from('performance_projects')
       .insert([project])
@@ -283,7 +282,6 @@ export async function createPerformanceProject(project: Omit<PerformanceProject,
       return null;
     }
 
-    console.log('Project created successfully:', data);
     return data;
   } catch (error) {
     console.error('Exception creating performance project:', error);

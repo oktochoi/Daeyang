@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,168 +8,298 @@ import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
-import { getAwardsCertifications } from '@/lib/supabase-media';
 import factory1 from '../../../assets/factory_1.png';
 import factory2 from '../../../assets/factory_2.png';
 import factory3 from '../../../assets/factory_3.png';
-import factory4 from '../../../assets/factroey_4.png';
 import factory5 from '../../../assets/factory_5.jpg';
+import chinaTest from '../../../assets/중국발전소테스트.jpg';
+import mongolia from '../../../assets/몽골.jpg';
+import palau from '../../../assets/팔라위현장짤.jpg';
+import sprayScene from '../../../assets/조연제분사장면.png';
 
 export default function ProductOverviewPage() {
-  const { t, i18n } = useTranslation();
-  const definitionRef = useScrollAnimation();
+  const { t } = useTranslation();
+  const problemsRef = useScrollAnimation();
+  const solutionRef = useScrollAnimation();
   const effectsRef = useScrollAnimation();
-  const benefitsRef = useScrollAnimation();
-  const backgroundRef = useScrollAnimation();
-  const [awards, setAwards] = useState<any[]>([]);
-  const [isLoadingAwards, setIsLoadingAwards] = useState(true);
-  const [isProblemsVisible, setIsProblemsVisible] = useState(false);
-  const [isTableVisible, setIsTableVisible] = useState(false);
-  const problemsRef = useRef<HTMLDivElement>(null);
-  const tableRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target === problemsRef.current) {
-              setIsProblemsVisible(true);
-            } else if (entry.target === tableRef.current) {
-              setIsTableVisible(true);
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const problemsCurrent = problemsRef.current;
-    const tableCurrent = tableRef.current;
-
-    if (problemsCurrent) observer.observe(problemsCurrent);
-    if (tableCurrent) observer.observe(tableCurrent);
-
-    return () => {
-      if (problemsCurrent) observer.unobserve(problemsCurrent);
-      if (tableCurrent) observer.unobserve(tableCurrent);
-    };
-  }, []);
-
-  useEffect(() => {
-    async function loadAwards() {
-      setIsLoadingAwards(true);
-      try {
-        const data = await getAwardsCertifications();
-        setAwards(data.slice(0, 3)); // 최근 3개만 표시
-      } catch (error) {
-        console.error('Error loading awards:', error);
-      } finally {
-        setIsLoadingAwards(false);
-      }
-    }
-    loadAwards();
-  }, []);
+  const proofRef = useScrollAnimation();
+  const tableRef = useScrollAnimation();
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb />
-      
-      {/* Hero - Introduction Section */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          {/* Left Text, Right Image Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left: Text Content */}
-            <div>
-              <div className="mb-6">
-                <p className="text-teal-600 text-[18px] font-semibold mb-2">Save Earth, Save Energy</p>
-                <h1 className="text-[32px] font-bold text-[#1f2933] mb-6 leading-[1.3]">
-                  석탄 조연제 COAL GREEN을 소개합니다.
+
+      {/* 1️⃣ Hero: "한 방 설명" - 무대 카드 */}
+      <section className="mt-[80px] sm:mt-[140px] pt-8 pb-16 lg:pb-24 px-4 sm:px-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="relative rounded-[24px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] bg-gradient-to-br from-gray-50 via-white to-teal-50/30 border border-gray-100">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_50%,rgba(20,184,166,0.06),transparent)]" />
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[420px] lg:min-h-[480px]">
+              <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-16 hero-fade-up">
+                <p className="text-teal-600 text-[12px] font-semibold tracking-[0.2em] uppercase mb-4">COAL GREEN</p>
+                <h1 className="text-[38px] sm:text-[40px] font-bold text-[#111827] leading-[1.25] tracking-[-0.01em] mb-6">
+                  {t('product.overview.heroTitle1')}
+                  <br />
+                  <span className="text-teal-600">{t('product.overview.heroTitle2')}</span>
                 </h1>
+                <ul className="space-y-5">
+                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-lg"></i>
+                    {t('product.overview.keyword1')}
+                  </li>
+                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-lg"></i>
+                    {t('product.overview.keyword2')}
+                  </li>
+                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-lg"></i>
+                    {t('product.overview.keyword3')}
+                  </li>
+                </ul>
               </div>
-              
-              <div className="space-y-4 text-[15px] text-[#4b5563] leading-[1.8] font-normal">
-                <p>
-                  Coal Green is a trace substance added to liquid and solid fuels to improve quality for complete combustion, maintain a clean fuel chamber, prevent wear, prevent clinker formation, prevent ash adhesion, and prevent corrosion of boiler materials and heating tubes.
-                </p>
-                <p>
-                  By adding the additive to coal fuel, fuel consumption can be reduced, clinker can be prevented, and pollutant gas emissions can be decreased.
-                </p>
-                <p>
-                  The additive&apos;s components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
-                </p>
+              <div className="relative h-[320px] lg:h-auto lg:min-h-[480px] order-first lg:order-last overflow-hidden">
+                <div className="absolute inset-0 brightness-[0.93]">
+                  <Image
+                    src={factory5}
+                    alt={t('product.overview.heroImageAlt')}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-transparent lg:from-white/60 pointer-events-none" />
               </div>
-              
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <p className="text-sm font-semibold text-[#1f2933] mb-2">※클링커(Clinker)란?</p>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  When the temperature of the combustion bed during coal combustion rises above the melting point of ash, causing the coal ash to melt and solidify into lumps.
-                </p>
-              </div>
-            </div>
-            
-            {/* Right: Industrial Facility Image */}
-            <div className="rounded-xl overflow-hidden border border-gray-200 relative h-[600px] lg:sticky lg:top-24">
-              <Image 
-                src={factory5} 
-                alt="산업 시설 내부" 
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Comparison Table */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              제품 비교
-            </h2>
+      {/* 2️⃣ Section 2: "왜 이게 필요하냐" (문제 제시) */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-10 underline decoration-teal-600 decoration-2 underline-offset-4">
+            {t('product.overview.problemsTitle')}
+          </h2>
+          <div
+            ref={problemsRef.ref as React.RefObject<HTMLDivElement>}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">01</span>
+                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem1Short')}</h3>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+                <Image src={factory1} alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem1.description')}</p>
+              </div>
+            </div>
+            <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">02</span>
+                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem2Short')}</h3>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+                <Image src={factory2} alt={t('product.overview.problem2Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem2.description')}</p>
+              </div>
+            </div>
+            <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">03</span>
+                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem3Short')}</h3>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+                <Image src={factory3} alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem3.description')}</p>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div 
-            ref={tableRef}
-            className={`bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 transition-all duration-700 ${
-              isTableVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      {/* 3️⃣ Section 3: "이해되는 구조" - COAL GREEN 해결 방식 */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <div className="mb-14">
+            <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-1 underline decoration-teal-600 decoration-2 underline-offset-4">
+              {t('product.overview.solutionTitle')}
+            </h2>
+            <p className="text-[12px] text-[#9ca3af]">{t('product.overview.solutionSubline')}</p>
+          </div>
+          <div
+            ref={solutionRef.ref as React.RefObject<HTMLDivElement>}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 lg:items-stretch ${
+              solutionRef.isVisible ? 'product-scroll-visible' : 'product-scroll-initial'
+            }`}
+          >
+            <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[280px] rounded-xl overflow-hidden border border-gray-200">
+              <Image
+                src={sprayScene}
+                alt={t('product.howItWorks.changes.change1')}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="lg:border-l lg:border-dashed lg:border-gray-200 pl-0 lg:pl-8">
+              <p className="text-[11px] font-medium text-[#9ca3af] tracking-widest uppercase mb-6">Process</p>
+              <ul className="space-y-7">
+                <li>
+                  <span className="text-[11px] font-bold text-teal-600/60 mr-2">01</span>
+                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process1Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process1Desc')}</p>
+                </li>
+                <li>
+                  <span className="text-[11px] font-bold text-teal-600/60 mr-2">02</span>
+                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process2Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process2Desc')}</p>
+                </li>
+                <li>
+                  <span className="text-[11px] font-bold text-teal-600/60 mr-2">03</span>
+                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process3Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process3Desc')}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4️⃣ Section 4: "결과 요약 카드" - 도입 효과 */}
+      <section className="py-20 lg:py-28" style={{ background: 'linear-gradient(180deg, #F1FDFB 0%, #FFFFFF 70%)' }}>
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-14 mt-10 text-center">
+            {t('product.overview.effectsTitle')}
+          </h2>
+          <div
+            ref={effectsRef.ref as React.RefObject<HTMLDivElement>}
+            className="grid grid-cols-1 md:grid-cols-3 gap-9"
+          >
+            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-2 border-teal-500 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
+              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.cost.title')}</h3>
+              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectCostValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.cost.description')}</p>
+            </div>
+            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
+              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.emission.title')}</h3>
+              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectEmissionValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.emission.description')}</p>
+            </div>
+            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
+              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.maintenance.title')}</h3>
+              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectMaintenanceValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.maintenance.description')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5️⃣ Section 5: "현장에서 증명했냐?" - 신뢰 (현장 적용 결과) */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <div className="mb-10">
+            <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2 underline-offset-4">
+              {t('product.overview.proofTitle')}
+            </h2>
+            <p className="text-[15px] text-[#4b5563] mt-2">
+              {t('product.overview.proofSubline')}
+            </p>
+          </div>
+          <div
+            ref={proofRef.ref as React.RefObject<HTMLDivElement>}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
+              <div className="aspect-[4/3] relative">
+                <Image src={chinaTest} alt={t('product.overview.proofChinaTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
+              <div className="p-4 bg-gray-50">
+                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofChinaTitle')}</p>
+                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofChinaDesc')}</p>
+              </div>
+            </div>
+            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
+              <div className="aspect-[4/3] relative">
+                <Image src={mongolia} alt={t('product.overview.proofMongoliaTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
+              <div className="p-4 bg-gray-50">
+                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofMongoliaTitle')}</p>
+                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofMongoliaDesc')}</p>
+              </div>
+            </div>
+            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
+              <div className="aspect-[4/3] relative">
+                <Image src={palau} alt={t('product.overview.proofPalauTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
+              <div className="p-4 bg-gray-50">
+                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofPalauTitle')}</p>
+                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofPalauDesc')}</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/performance"
+              className="inline-flex items-center gap-2 px-6 py-3 text-teal-600 font-semibold hover:text-teal-700 transition-colors"
+            >
+              {t('product.overview.morePerformance')}
+              <i className="ri-arrow-right-line"></i>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 6️⃣ Section 6: "참고자료" - 제품 사양 */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <div className="mb-8">
+            <h2 className="text-[18px] sm:text-[20px] font-semibold text-[#6b7280] mb-1">
+              {t('product.overview.specTitle')}
+            </h2>
+            <p className="text-[13px] text-[#9ca3af]">{t('product.overview.specRef')}</p>
+          </div>
+          <div
+            ref={tableRef.ref as React.RefObject<HTMLDivElement>}
+            className={`bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 ${
+              tableRef.isVisible ? 'product-scroll-visible' : 'product-scroll-initial'
             }`}
           >
             <table className="w-full">
               <thead>
                 <tr className="bg-teal-600 text-white">
-                  <th className="px-6 py-4 text-left font-semibold text-[15px] border-r border-teal-700">제품명</th>
-                  <th className="px-6 py-4 text-center font-semibold text-[15px] border-r border-teal-700">석탄용 조연제</th>
-                  <th className="px-6 py-4 text-center font-semibold text-[15px]">소각용 첨가제</th>
+                  <th className="px-6 py-4 text-left font-semibold text-[15px] border-r border-teal-700">{t('product.overview.specProductName')}</th>
+                  <th className="px-6 py-4 text-center font-semibold text-[15px] border-r border-teal-700">{t('product.overview.specCoalAdditive')}</th>
+                  <th className="px-6 py-4 text-center font-semibold text-[15px]">{t('product.overview.specIncinerationAdditive')}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">사용처</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] border-r border-gray-200">석탄 화력발전소</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563]">쓰레기소각장</td>
+                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specUsage')}</td>
+                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] border-r border-gray-200">{t('product.overview.specCoalPlant')}</td>
+                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563]">{t('product.overview.specIncinerationPlant')}</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">형상</td>
+                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specForm')}</td>
                   <td colSpan={2} className="px-6 py-4 text-center text-[15px] text-[#4b5563]">
-                    원액 : 겔타입의 액체<br />
-                    <span className="text-[13px] text-gray-500">색상 : 갈색 또는 투명</span>
+                    {t('product.overview.specFormValue')}
                   </td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">사용방법</td>
+                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specMethod')}</td>
                   <td colSpan={2} className="px-6 py-4 text-center text-[15px] text-[#4b5563]">
-                    물과 원액을 희석 후 석탄 투입 전 스프레이 분사
+                    {t('product.overview.specMethodValue')}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">비율(원액 : 물)</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold border-r border-gray-200">1:4,000</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold">1:400</td>
+                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specRatio')}</td>
+                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold border-r border-gray-200">{t('product.overview.specRatioCoal')}</td>
+                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold">{t('product.overview.specRatioIncineration')}</td>
                 </tr>
               </tbody>
             </table>
@@ -177,472 +307,46 @@ export default function ProductOverviewPage() {
         </div>
       </section>
 
-      {/* Technical Resources */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              기술 자료
-            </h2>
-            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
-              제품 기술 백서, 적용 가이드, 시험성적 및 환경 영향 평가 자료
-            </p>
-          </div>
-
-          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
-                <i className="ri-file-text-line text-2xl text-white"></i>
-              </div>
-              <h3 className="text-[20px] font-semibold text-[#1f2933]">
-                기술 자료 모아보기
-              </h3>
-            </div>
-            <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal mb-6">
-              기술 백서, 적용 가이드라인, 시험성적, 환경 영향 평가 자료를 확인하세요.
-            </p>
+      {/* 7️⃣ Section 7: CTA - 자료 / 인증 / 문의 */}
+      <section className="py-16 lg:py-24 bg-white border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link
               href="/product/technical"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white text-[15px] font-semibold rounded-lg hover:bg-teal-700 transition-colors"
+              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
             >
-              기술 자료 바로가기
-              <i className="ri-arrow-right-line"></i>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Problems Section */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              {t('product.problems.title')}
-            </h2>
-            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
-              기존 석탄 연소 방식의 핵심 문제점
-            </p>
-          </div>
-          <div 
-            ref={problemsRef}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${
-              isProblemsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            {/* Problem 1: 미연소·불완전연소 문제 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[320px] hover:scale-105" style={{ transitionDelay: '0s' }}>
-              <div className="absolute inset-0">
-                <Image 
-                  src={factory1} 
-                  alt="미연소·불완전연소 문제" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+                <i className="ri-file-text-line text-2xl text-teal-600"></i>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/85 to-gray-900/90 z-10 group-hover:from-gray-900/85 group-hover:via-gray-800/80 transition-all duration-300"></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-fire-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('product.problems.problem1.title')}
-                </h3>
-                <p className="text-[15px] text-white/90 leading-[1.8] font-normal">
-                  {t('product.problems.problem1.description')}
-                </p>
-              </div>
-            </div>
-
-            {/* Problem 2: 대기오염물질 과다 배출 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[320px] hover:scale-105" style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute inset-0">
-                <Image 
-                  src={factory2} 
-                  alt="대기오염물질 과다 배출" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/85 to-gray-900/90 z-10 group-hover:from-gray-900/85 group-hover:via-gray-800/80 transition-all duration-300"></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-cloud-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('product.problems.problem2.title')}
-                </h3>
-                <p className="text-[15px] text-white/90 leading-[1.8] font-normal">
-                  {t('product.problems.problem2.description')}
-                </p>
-              </div>
-            </div>
-
-            {/* Problem 3: 크링커·바텀애시로 인한 설비 손상 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[320px] hover:scale-105" style={{ transitionDelay: '0.2s' }}>
-              <div className="absolute inset-0">
-                <Image 
-                  src={factory3} 
-                  alt="크링커·바텀애시로 인한 설비 손상" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/85 to-gray-900/90 z-10 group-hover:from-gray-900/85 group-hover:via-gray-800/80 transition-all duration-300"></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-tools-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('product.problems.problem3.title')}
-                </h3>
-                <p className="text-[15px] text-white/90 leading-[1.8] font-normal">
-                  {t('product.problems.problem3.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Definition */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div 
-            ref={definitionRef.ref as React.RefObject<HTMLDivElement>}
-            className={`transition-all duration-700 ${
-              definitionRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="mb-8">
-              <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-                {t('product.definition.title')}
-              </h2>
-            </div>
-            
-            {/* Left Text, Right Image Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Left: Text Content */}
               <div>
-                <div className="mb-6">
-                  <p className="text-teal-600 text-[18px] font-semibold mb-2">Save Earth, Save Energy</p>
-                  <h3 className="text-[28px] font-bold text-[#1f2933] mb-6 leading-[1.3]">
-                    석탄 조연제 COAL GREEN을 소개합니다.
-                  </h3>
-                </div>
-                
-                <div className="space-y-4 text-[15px] text-[#4b5563] leading-[1.8] font-normal">
-                  <p>
-                    Coal Green is a trace substance added to liquid and solid fuels to improve quality for complete combustion, maintain a clean fuel chamber, prevent wear, prevent clinker formation, prevent ash adhesion, and prevent corrosion of boiler materials and heating tubes.
-                  </p>
-                  <p>
-                    By adding the additive to coal fuel, fuel consumption can be reduced, clinker can be prevented, and pollutant gas emissions can be decreased.
-                  </p>
-                  <p>
-                    The additive&apos;s components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
-                  </p>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <p className="text-sm font-semibold text-[#1f2933] mb-2">※클링커(Clinker)란?</p>
-                  <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                    When the temperature of the combustion bed during coal combustion rises above the melting point of ash, causing the coal ash to melt and solidify into lumps.
-                  </p>
-                </div>
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaTechnical')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaTechnicalDesc')}</p>
               </div>
-              
-              {/* Right: Industrial Facility Image */}
-              <div className="rounded-xl overflow-hidden border border-gray-200 relative h-[600px] lg:sticky lg:top-24">
-                <Image 
-                  src={factory1} 
-                  alt="Coal Green 제품" 
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+            </Link>
+            <Link
+              href="/media/awards"
+              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
+            >
+              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+                <i className="ri-award-line text-2xl text-teal-600"></i>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Effects */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              {t('product.effects.title')}
-            </h2>
-          </div>
-          <div 
-            ref={effectsRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${
-              effectsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group hover:scale-105">
-              <div className="h-48 overflow-hidden relative">
-                <Image 
-                  src={factory2} 
-                  alt="연소 효율 향상" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+              <div>
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaAwards')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaAwardsDesc')}</p>
               </div>
-              <div className="p-8">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3 group-hover:text-teal-600 transition-colors">
-                  {t('product.effects.effect1.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('product.effects.effect1.description')}
-                </p>
+            </Link>
+            <Link
+              href="/contact"
+              className="flex items-center gap-4 p-6 rounded-xl bg-teal-600 hover:bg-teal-700 border border-teal-600 transition-all group"
+            >
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                <i className="ri-customer-service-2-line text-2xl text-white"></i>
               </div>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group hover:scale-105" style={{ transitionDelay: '0.1s' }}>
-              <div className="h-48 overflow-hidden relative">
-                <Image 
-                  src={factory3} 
-                  alt="비용 절감" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+              <div>
+                <h3 className="font-semibold text-white">{t('product.overview.ctaContact')}</h3>
+                <p className="text-sm text-white/80 mt-0.5">{t('product.overview.ctaContactDesc')}</p>
               </div>
-              <div className="p-8">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3 group-hover:text-teal-600 transition-colors">
-                  {t('product.effects.effect2.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('product.effects.effect2.description')}
-                </p>
-              </div>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group hover:scale-105" style={{ transitionDelay: '0.2s' }}>
-              <div className="h-48 overflow-hidden relative">
-                <Image 
-                  src={factory4} 
-                  alt="환경 개선" 
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-8">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3 group-hover:text-teal-600 transition-colors">
-                  {t('product.effects.effect3.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('product.effects.effect3.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              {t('product.benefits.title')}
-            </h2>
-          </div>
-          <div 
-            ref={benefitsRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ${
-              benefitsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-              <div className="text-[48px] font-bold text-teal-600 mb-3">
-                {t('product.benefits.cost.value')}
-              </div>
-              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                {t('product.benefits.cost.title')}
-              </h3>
-              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                {t('product.benefits.cost.description')}
-              </p>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-              <div className="text-[48px] font-bold text-teal-600 mb-3">
-                {t('product.benefits.emission.value')}
-              </div>
-              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                {t('product.benefits.emission.title')}
-              </h3>
-              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                {t('product.benefits.emission.description')}
-              </p>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-              <div className="text-[48px] font-bold text-teal-600 mb-3">
-                {t('product.benefits.maintenance.value')}
-              </div>
-              <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                {t('product.benefits.maintenance.title')}
-              </h3>
-              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                {t('product.benefits.maintenance.description')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Development Background */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              {t('business.background.title')}
-            </h2>
-            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
-              {t('business.background.subtitle')}
-            </p>
-          </div>
-          
-          <div 
-            ref={backgroundRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 transition-all duration-700 ${
-              backgroundRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden relative">
-                <Image 
-                  src={factory5} 
-                  alt={t('business.background.reason1.title')} 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                  {t('business.background.reason1.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('business.background.reason1.description')}
-                </p>
-              </div>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden relative">
-                <Image 
-                  src={factory1} 
-                  alt={t('business.background.reason2.title')} 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                  {t('business.background.reason2.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('business.background.reason2.description')}
-                </p>
-              </div>
-            </div>
-            <div className="bg-[#f9fafb] rounded-xl overflow-hidden shadow-sm">
-              <div className="h-40 overflow-hidden relative">
-                <Image 
-                  src={factory2} 
-                  alt={t('business.background.reason3.title')} 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-[20px] font-semibold text-[#1f2933] mb-3">
-                  {t('business.background.reason3.title')}
-                </h3>
-                <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  {t('business.background.reason3.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-            <h3 className="text-[20px] font-semibold text-[#1f2933] mb-6">
-              {t('business.background.whyNotEnough.title')}
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i className="ri-close-line text-white text-xs"></i>
-                </div>
-                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason1')}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i className="ri-close-line text-white text-xs"></i>
-                </div>
-                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason2')}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <i className="ri-close-line text-white text-xs"></i>
-                </div>
-                <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{t('business.background.whyNotEnough.reason3')}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">
-              인증 및 수상
-            </h2>
-            <p className="text-[13px] text-[#4b5563] opacity-70 leading-[1.6] mt-2 font-normal">
-              특허, 인증, 시험성적
-            </p>
-          </div>
-
-          <div className="bg-[#f9fafb] rounded-xl p-8 shadow-sm">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
-                <i className="ri-award-line text-2xl text-white"></i>
-              </div>
-              <h3 className="text-[20px] font-semibold text-[#1f2933]">
-                {t('media.tabs.awards')}
-              </h3>
-            </div>
-            {isLoadingAwards ? (
-              <div className="text-center py-8">
-                <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-teal-600"></div>
-              </div>
-            ) : awards.length > 0 ? (
-              <div className="space-y-4">
-                {awards.map((item) => (
-                  <div key={item.id} className="p-6 rounded-lg bg-white border border-gray-200">
-                    {item.award_date && (
-                      <div className="text-[13px] text-[#4b5563] opacity-70 mb-2 font-normal">
-                        {new Date(item.award_date).toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-                      </div>
-                    )}
-                    <div className="text-[18px] font-semibold text-[#1f2933] mb-2">
-                      {i18n.language === 'ko' ? item.title : (item.title_en || item.title)}
-                    </div>
-                    {item.description && (
-                      <div className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                        {i18n.language === 'ko' ? item.description : (item.description_en || item.description)}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-8 text-gray-500">
-                <p>등록된 인증 및 수상 내역이 없습니다.</p>
-              </div>
-            )}
+            </Link>
           </div>
         </div>
       </section>
@@ -651,4 +355,3 @@ export default function ProductOverviewPage() {
     </div>
   );
 }
-

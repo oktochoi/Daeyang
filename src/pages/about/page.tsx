@@ -1,4 +1,10 @@
 import { useTranslation } from 'react-i18next';
+
+interface Milestone {
+  year: string;
+  title: string;
+  description: string;
+}
 import Image from 'next/image';
 import Navbar from '../../components/feature/Navbar';
 import Breadcrumb from '../../components/base/Breadcrumb';
@@ -52,23 +58,27 @@ export default function AboutPage() {
 
           {/* Images */}
           <div className="mt-16 relative h-96">
-            <div className="absolute left-0 top-0 w-64 h-64 relative">
-              <Image
+            <div className="absolute left-0 top-0 w-64 h-64">
+              <div className="relative w-full h-full">
+                <Image
                 src="https://readdy.ai/api/search-image?query=modern%20industrial%20research%20laboratory%20with%20scientists%20in%20white%20coats%20working%20with%20chemical%20equipment%20and%20testing%20materials%2C%20clean%20professional%20lab%20environment%20with%20advanced%20technology&width=400&height=400&seq=about1&orientation=squarish"
                 alt="Research Lab"
                 fill
                 className="object-cover rounded-2xl shadow-lg"
                 unoptimized
               />
+              </div>
             </div>
-            <div className="absolute right-0 top-12 w-96 h-80 relative">
-              <Image
+            <div className="absolute right-0 top-12 w-96 h-80">
+              <div className="relative w-full h-full">
+                <Image
                 src="https://readdy.ai/api/search-image?query=industrial%20power%20plant%20with%20workers%20in%20safety%20gear%20inspecting%20large%20boiler%20equipment%2C%20professional%20on-site%20application%20of%20industrial%20technology%2C%20engineers%20working%20at%20thermal%20facility&width=600&height=500&seq=about2&orientation=portrait"
                 alt="Industrial Application"
                 fill
                 className="object-cover rounded-2xl shadow-lg"
                 unoptimized
               />
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +132,7 @@ export default function AboutPage() {
           </p>
           <div className="space-y-8">
             {Array.isArray(t('about.history.milestones', { returnObjects: true })) 
-              ? (t('about.history.milestones', { returnObjects: true }) as any[]).map((milestone: any, index: number) => (
+              ? (t('about.history.milestones', { returnObjects: true }) as Milestone[]).map((milestone: Milestone, index: number) => (
                 <div key={index} className="flex gap-8 pb-8 border-b border-gray-200 last:border-0">
                   <div className="w-24 flex-shrink-0">
                     <div className="text-2xl font-bold text-teal-600">{milestone.year}</div>

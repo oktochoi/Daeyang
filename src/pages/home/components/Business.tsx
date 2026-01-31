@@ -80,7 +80,7 @@ export default function Business() {
 
         <div className="text-center">
           <Link
-            href="/product/industries"
+            href="/product/overview"
             className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-full hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer"
           >
             {t('home.business.cta')}

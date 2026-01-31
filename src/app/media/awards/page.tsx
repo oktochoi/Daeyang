@@ -35,39 +35,37 @@ export default function MediaAwardsPage() {
       <Breadcrumb />
       
       {/* Header */}
-      <section className="pt-32 pb-16 bg-white border-b border-gray-200">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('common.nav.media')}
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            인증서 및 수상 내역
+            {t('media.awards.title')}
           </h1>
           <p className="text-lg text-gray-600">
-            {i18n.language === 'ko' 
-              ? '대양환경기술의 인증서와 수상 내역을 확인하세요' 
-              : 'View our certificates and awards'}
+            {t('media.awards.subtitle')}
           </p>
         </div>
       </section>
 
       {/* Awards & Certifications */}
-      <section className="py-16">
+      <section className="py-16 pb-24">
         <div className="max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
-              <p className="mt-4 text-gray-600">로딩 중...</p>
+              <p className="mt-4 text-gray-600">{t('media.awards.loading')}</p>
             </div>
           ) : awards.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <i className="ri-inbox-line text-4xl mb-2"></i>
-              <p>{i18n.language === 'ko' ? '등록된 인증서 및 수상 내역이 없습니다.' : 'No certificates or awards registered.'}</p>
+              <p>{t('media.awards.empty')}</p>
             </div>
           ) : (
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                {i18n.language === 'ko' ? '인증서 및 수상 내역' : 'Certificates & Awards'}
+                {t('media.awards.sectionTitle')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {awards.map((award) => (
@@ -93,7 +91,7 @@ export default function MediaAwardsPage() {
                         <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                           <div className="text-center">
                             <i className="ri-file-paper-line text-5xl text-gray-400 mb-2"></i>
-                            <p className="text-sm text-gray-500">인증서 이미지</p>
+                            <p className="text-sm text-gray-500">{t('media.awards.certificateImage')}</p>
                           </div>
                         </div>
                       )}
@@ -128,7 +126,7 @@ export default function MediaAwardsPage() {
                           rel="noopener noreferrer"
                           className="mt-4 inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 text-sm font-medium"
                         >
-                          자세히 보기
+                          {t('media.awards.readMore')}
                           <i className="ri-external-link-line"></i>
                         </a>
                       )}

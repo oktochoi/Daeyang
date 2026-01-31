@@ -9,151 +9,179 @@ import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
 export default function AboutVisionPage() {
   const { t } = useTranslation();
   const coreValuesRef = useScrollAnimation();
-  const priorityRef = useScrollAnimation();
+  const visionRef = useScrollAnimation();
+  const goals = Array.isArray(t('about.vision.futureVision.goals', { returnObjects: true }))
+    ? (t('about.vision.futureVision.goals', { returnObjects: true }) as string[])
+    : [];
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <Breadcrumb />
       
-      {/* Hero Section */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[48px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
-            {t('about.vision.title')}
-          </h1>
+      {/* Hero - "무대" 카드 (배경 #F9FAFB로 구분) */}
+      <section className="mt-[80px] sm:mt-[140px] pt-8 sm:pt-12 pb-16 sm:pb-24 px-6 sm:px-8 bg-[#F9FAFB]">
+        <div 
+          className="max-w-[1200px] mx-auto rounded-[28px] py-16 sm:py-24 px-8 sm:px-16"
+          style={{
+            background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 70%)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.06)',
+          }}
+        >
+          <span className="inline-block px-3 py-1.5 bg-teal-100 text-teal-700 text-xs font-semibold uppercase tracking-[0.15em] rounded mb-8">
+            {t('about.vision.heroEyebrow')}
+          </span>
+          <div className="space-y-6">
+            <p 
+              className="vision-hero-line-1 text-[36px] sm:text-[44px] lg:text-[52px] font-extrabold text-[#111827] leading-[1.1]"
+              style={{ letterSpacing: '-0.01em' }}
+            >
+              {t('about.vision.heroLine1')}
+            </p>
+            <p 
+              className="vision-hero-line-2 text-[36px] sm:text-[44px] lg:text-[52px] font-extrabold text-teal-600 leading-[1.1]"
+              style={{ letterSpacing: '-0.01em' }}
+            >
+              {t('about.vision.heroLine2')}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <div className="mb-12">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
-              {t('about.vision.coreValues.title')}
-            </h2>
-            <div className="w-12 h-0.5 bg-teal-600"></div>
-          </div>
+      {/* Core Values - 배경 #F9FAFB */}
+      <section className="py-16 sm:py-20 bg-[#F9FAFB] border-t border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+          <h2 className="text-lg sm:text-xl font-medium text-[#111827] mb-10">
+            {t('about.vision.coreValues.title')}
+          </h2>
           
           <div 
             ref={coreValuesRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 transition-all duration-700 ${
-              coreValuesRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-end"
           >
             {/* 환경 보호 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105" style={{ transitionDelay: '0s' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-green-900/90 via-green-800/85 to-green-900/90 z-10 group-hover:from-green-900/85 group-hover:via-green-800/80 transition-all duration-300"></div>
-              <div 
-                className="absolute inset-0 opacity-20 z-10"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E")`
-                }}
-              ></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-leaf-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('about.vision.coreValues.saveEarth.title')}
-                </h3>
-                <p className="text-white/90 leading-relaxed text-base flex-grow">
-                  연소 과정에서 발생하는 오염물질을 줄여 지속가능한 산업 환경을 만듭니다.
-                </p>
+            <div 
+              className={`bg-white rounded-xl p-6 border border-gray-200 flex flex-col h-full transition-all duration-300 ease-out shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] ${
+                coreValuesRef.isVisible ? 'vision-card-scroll-side' : 'vision-card-initial'
+              }`}
+            >
+              <div className="w-7 h-7 flex items-center justify-center mb-4">
+                <i className="ri-leaf-line text-[26px] text-teal-600"></i>
               </div>
+              <h3 className="text-base font-semibold text-[#111827] mb-1">
+                {t('about.vision.coreValues.saveEarth.title')}
+              </h3>
+              <p className="text-xs text-gray-500 mb-3">{t('about.vision.coreValues.saveEarth.subtitle')}</p>
+              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
+                {t('about.vision.coreValues.saveEarth.description')}
+              </p>
             </div>
             
-            {/* 에너지 절감 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105" style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-indigo-900/85 to-blue-900/90 z-10 group-hover:from-blue-900/85 group-hover:via-indigo-900/80 transition-all duration-300"></div>
-              <div 
-                className="absolute inset-0 opacity-20 z-10"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E")`
-                }}
-              ></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-flashlight-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('about.vision.coreValues.saveEnergy.title')}
-                </h3>
-                <p className="text-white/90 leading-relaxed text-base flex-grow">
-                  연소 효율을 높여 불필요한 에너지 손실을 줄이고 연료 사용의 효율을 극대화합니다.
-                </p>
+            {/* 에너지 절감 - CORE VALUE */}
+            <div 
+              className={`bg-white rounded-xl p-8 md:p-9 border-[3px] border-teal-500 flex flex-col relative z-10 transition-all duration-300 ease-out shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] ${
+                coreValuesRef.isVisible ? 'vision-card-scroll-center' : 'vision-card-initial'
+              }`}
+              style={{ minHeight: 'calc(100% + 16px)' }}
+            >
+              <span className={`absolute -top-3 left-6 px-3 py-1 bg-teal-600 text-white text-xs font-semibold uppercase tracking-wider rounded ${
+                coreValuesRef.isVisible ? 'vision-badge-pop' : 'opacity-0'
+              }`}>
+                {t('about.vision.coreValues.coreBadge')}
+              </span>
+              <div className="w-9 h-9 flex items-center justify-center mb-6 mt-2">
+                <i className="ri-flashlight-line text-[30px] text-teal-600"></i>
               </div>
+              <h3 className="text-xl font-bold text-[#111827] mb-1">
+                {t('about.vision.coreValues.saveEnergy.title')}
+              </h3>
+              <p className="text-xs text-gray-500 mb-4">{t('about.vision.coreValues.saveEnergy.subtitle')}</p>
+              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
+                {t('about.vision.coreValues.saveEnergy.description')}
+              </p>
             </div>
             
             {/* 기술을 통한 실질적 개선 */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105" style={{ transitionDelay: '0.2s' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/90 via-slate-700/85 to-slate-800/90 z-10 group-hover:from-slate-800/85 group-hover:via-slate-700/80 transition-all duration-300"></div>
-              <div 
-                className="absolute inset-0 opacity-20 z-10"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E")`
-                }}
-              ></div>
-              <div className="relative z-20 p-8 min-h-[320px] flex flex-col">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/30 transition-all duration-300">
-                  <i className="ri-building-line text-3xl text-white"></i>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {t('about.vision.coreValues.practical.title')}
-                </h3>
-                <p className="text-white/90 leading-relaxed text-base flex-grow">
-                  현장에서 검증된 기술로 즉시 적용 가능한 변화를 만들어냅니다.
-                </p>
+            <div 
+              className={`bg-white rounded-xl p-6 border border-gray-200 flex flex-col h-full transition-all duration-300 ease-out shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] ${
+                coreValuesRef.isVisible ? 'vision-card-scroll-side' : 'vision-card-initial'
+              }`}
+            >
+              <div className="w-7 h-7 flex items-center justify-center mb-4">
+                <i className="ri-building-line text-[26px] text-teal-600"></i>
               </div>
+              <h3 className="text-base font-semibold text-[#111827] mb-1">
+                {t('about.vision.coreValues.practical.title')}
+              </h3>
+              <p className="text-xs text-gray-500 mb-3">{t('about.vision.coreValues.practical.subtitle')}</p>
+              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
+                {t('about.vision.coreValues.practical.description')}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Priority & Future Vision */}
-      <section className="pb-[96px] bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
+      {/* 우선 방향 - 배경 #F1F5F9 */}
+      <section className="py-16 sm:py-20 bg-white border-t border-gray-100">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
           <div 
-            ref={priorityRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-700 ${
-              priorityRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            ref={visionRef.ref as React.RefObject<HTMLDivElement>}
+            className={`transition-all duration-500 ${
+              visionRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            {/* 우선 방향 */}
-            <div className="bg-gray-100 rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <i className="ri-compass-3-line text-2xl text-white"></i>
-                </div>
-                <h3 className="text-xl font-bold text-[#1f2933]">우선 방향</h3>
-              </div>
-              <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                {t('about.vision.priority')}
+            <div 
+              className="relative rounded-xl py-8 px-8 sm:px-10 pl-12 sm:pl-14 overflow-hidden"
+              style={{ background: '#F1F5F9' }}
+            >
+              {/* Line Draw */}
+              <div 
+                className={`absolute left-0 top-0 w-1 bg-[#10B981] rounded-l-xl ${
+                  visionRef.isVisible ? 'vision-line-draw' : 'h-0'
+                }`}
+              />
+              <h2 className="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-4">
+                {t('about.vision.priorityTitle')}
+              </h2>
+              <p className="text-2xl sm:text-3xl font-bold text-[#111827] leading-snug max-w-2xl mb-4">
+                {t('about.vision.priorityHeadline')}
+              </p>
+              <p className="text-sm text-gray-500 leading-relaxed max-w-2xl">
+                {t('about.vision.prioritySub')}
               </p>
             </div>
             
-            {/* 5~10년 후 비전 */}
-            <div className="bg-gray-100 rounded-xl p-8 shadow-sm border border-gray-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <i className="ri-rocket-line text-2xl text-white"></i>
-                </div>
-                <h3 className="text-xl font-bold text-[#1f2933]">
-                  {t('about.vision.futureVision.title')}
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {Array.isArray(t('about.vision.futureVision.goals', { returnObjects: true })) 
-                  ? (t('about.vision.futureVision.goals', { returnObjects: true }) as string[]).map((goal: string, index: number) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <i className="ri-check-line text-white text-xs"></i>
-                      </div>
-                      <span className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">{goal}</span>
-                    </li>
-                  ))
-                  : null}
+            {/* 5~10년 후 비전 - 배경 #FFFFFF, 체크 진하게, 마지막 문장 강조 */}
+            <div className="mt-16">
+              <h2 className="text-lg font-medium text-teal-600 mb-4">{t('about.vision.futureVision.title')}</h2>
+              <p className="text-xl sm:text-2xl font-medium text-[#111827] leading-relaxed mb-8 max-w-2xl">
+                {t('about.vision.futureVision.headline')}
+              </p>
+              <ul className="space-y-4 max-w-xl mb-12">
+                {goals.map((goal: string, index: number) => (
+                  <li 
+                    key={index} 
+                    className={`flex items-start gap-3 ${
+                      visionRef.isVisible ? 'vision-list-item' : 'opacity-0'
+                    }`}
+                    style={visionRef.isVisible ? { animationDelay: `${index * 80}ms` } : undefined}
+                  >
+                    <span className="flex-shrink-0 w-5 h-5 mt-0.5 rounded-full bg-teal-600 flex items-center justify-center">
+                      <i className="ri-check-line text-white text-xs"></i>
+                    </span>
+                    <span className="text-[15px] text-gray-600 leading-relaxed">{goal}</span>
+                  </li>
+                ))}
               </ul>
+              <p 
+                className={`text-xl sm:text-2xl font-bold text-teal-700 leading-relaxed max-w-2xl whitespace-pre-line ${
+                  visionRef.isVisible ? 'vision-list-item' : 'opacity-0'
+                }`}
+                style={visionRef.isVisible ? { animationDelay: `${goals.length * 80}ms` } : undefined}
+              >
+                {t('about.vision.futureVision.closing')}
+              </p>
             </div>
           </div>
         </div>
@@ -163,5 +191,3 @@ export default function AboutVisionPage() {
     </div>
   );
 }
-
-

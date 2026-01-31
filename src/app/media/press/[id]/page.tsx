@@ -21,9 +21,9 @@ export default function MediaPressDetailPage() {
         <Navbar />
         <Breadcrumb />
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">기사를 찾을 수 없습니다</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('media.pressDetail.notFound')}</h1>
           <Link href="/media/press" className="text-teal-600 hover:text-teal-700">
-            보도자료 목록으로 돌아가기
+            {t('media.pressDetail.backToList')}
           </Link>
         </div>
         <Footer />
@@ -44,7 +44,7 @@ export default function MediaPressDetailPage() {
             className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 mb-6"
           >
             <i className="ri-arrow-left-line"></i>
-            {i18n.language === 'ko' ? '보도자료 목록으로' : 'Back to Press Releases'}
+            {t('media.pressDetail.backLink')}
           </Link>
           <div className="flex items-center gap-3 mb-4">
             <span className="text-sm text-gray-500">{article.date}</span>
@@ -72,13 +72,7 @@ export default function MediaPressDetailPage() {
                 {i18n.language === 'ko' ? article.summary : article.summaryEn}
               </p>
               <div className="text-gray-600 leading-relaxed whitespace-pre-line">
-                {i18n.language === 'ko' 
-                  ? `이 기사는 관리자가 추가한 보도자료입니다. 실제 기사 내용은 관리자 페이지에서 입력할 수 있습니다.
-
-기사 본문 내용이 여기에 표시됩니다. 관리자는 이 영역에 기사의 전체 내용을 입력할 수 있습니다.` 
-                  : `This is a press release added by an administrator. The actual article content can be entered in the admin page.
-
-The full article content will be displayed here. Administrators can enter the complete article content in this area.`}
+                {t('media.pressDetail.placeholderContent')}
               </div>
             </div>
           </article>

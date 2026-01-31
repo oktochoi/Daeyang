@@ -46,8 +46,8 @@ export default function Solution() {
                   <i className="ri-check-line text-2xl text-teal-600"></i>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">검증된 기술</p>
-                  <p className="text-lg font-bold text-gray-900">50+ 현장 적용</p>
+                  <p className="text-sm text-gray-600">{t('home.solution.verifiedTech')}</p>
+                  <p className="text-lg font-bold text-gray-900">{t('home.solution.sitesCount')}</p>
                 </div>
               </div>
             </div>

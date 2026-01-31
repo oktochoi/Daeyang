@@ -1,5 +1,6 @@
 export const contact = {
   hero: {
+    imageAlt: 'Contact Us',
     title: 'contact us now',
     subtitle: 'Expert consultation team responds within 24 hours',
     cta: 'Contact'

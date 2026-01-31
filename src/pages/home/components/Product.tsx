@@ -57,7 +57,7 @@ export default function Product() {
   ];
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gray-50/80 border-t-2 border-gray-200 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
@@ -107,7 +107,7 @@ export default function Product() {
             href="/product/overview"
             className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
           >
-            제품소개 자세히 보기
+            {t('home.product.cta')}
             <i className="ri-arrow-right-line text-xl"></i>
           </Link>
         </div>

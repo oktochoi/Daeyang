@@ -11,22 +11,22 @@ export default function MediaPage() {
 
   const mediaOptions = [
     {
-      title: '보도자료',
-      description: '최신 보도자료와 뉴스를 확인하세요',
+      title: t('media.page.options.press.title'),
+      description: t('media.page.options.press.description'),
       href: '/media/press',
       icon: 'ri-newspaper-line',
       color: 'bg-teal-100 text-teal-600'
     },
     {
-      title: '인증 및 수상',
-      description: '인증서 및 수상 내역을 확인하세요',
+      title: t('media.page.options.awards.title'),
+      description: t('media.page.options.awards.description'),
       href: '/media/awards',
       icon: 'ri-award-line',
       color: 'bg-yellow-100 text-yellow-600'
     },
     {
-      title: '기술자료',
-      description: '특허, 인증서 등 기술 자료를 확인하세요',
+      title: t('media.page.options.technical.title'),
+      description: t('media.page.options.technical.description'),
       href: '/product/technical',
       icon: 'ri-file-text-line',
       color: 'bg-green-100 text-green-600'
@@ -39,7 +39,7 @@ export default function MediaPage() {
       <Breadcrumb />
       
       {/* Hero - 탐색 허브 스타일 */}
-      <section className="pt-20 pb-20 bg-gray-50">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-24 bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           {/* 페이지 제목 */}
           <h1 className="text-5xl font-bold text-gray-900 text-center mb-4">
@@ -48,7 +48,7 @@ export default function MediaPage() {
           
           {/* 한 줄 안내 */}
           <p className="text-lg text-gray-600 text-center mb-12">
-            대양환경기술의 최신 소식과 자료를 확인하세요
+            {t('media.page.subtitle')}
           </p>
           
           {/* 중앙 대형 박스 - 탐색 허브 */}

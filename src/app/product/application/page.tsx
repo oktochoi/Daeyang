@@ -56,7 +56,7 @@ export default function ProductApplicationPage() {
             {t('product.application.title')}
           </h1>
           <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
-            제품 투입 방식은 어떻게 되나요?
+            {t('product.application.heroSubtitle')}
           </p>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function ProductApplicationPage() {
       <section className="pb-[96px] bg-white">
         <div className="max-w-[1200px] mx-auto px-8 text-left">
           <div className="mb-8">
-            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">적용 방법</h2>
+            <h2 className="text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2">{t('product.application.title')}</h2>
           </div>
           
           {/* Left Text, Right Image Layout */}
@@ -78,25 +78,19 @@ export default function ProductApplicationPage() {
             <div>
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-teal-600 mb-4">Save Earth, Save Energy</h3>
-                <h4 className="text-xl font-bold text-[#1f2933] mb-6">석탄 조연제 COAL GREEN을 소개합니다.</h4>
+                <h4 className="text-xl font-bold text-[#1f2933] mb-6">{t('product.application.introTitle')}</h4>
               </div>
               
               <div className="space-y-4 text-[15px] text-[#4b5563] leading-[1.8] font-normal">
-                <p>
-                  Coal Green is a trace substance added to liquid and solid fuels to improve quality for complete combustion, maintain a clean fuel chamber, prevent wear, prevent clinker formation, prevent ash adhesion, and prevent corrosion of boiler materials and heating tubes.
-                </p>
-                <p>
-                  By adding the additive to coal fuel, fuel consumption can be reduced, clinker can be prevented, and pollutant gas emissions can be decreased.
-                </p>
-                <p>
-                  The additive&apos;s components are 100% water-soluble, harmless to the human body, and pose no risk of damage to power generation equipment or explosion. The product has undergone continuous performance improvement, with the current version being Ver 7.0.
-                </p>
+                <p>{t('product.application.intro1')}</p>
+                <p>{t('product.application.intro2')}</p>
+                <p>{t('product.application.intro3')}</p>
               </div>
               
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <p className="text-sm font-semibold text-[#1f2933] mb-2">※클링커(Clinker)란?</p>
+                <p className="text-sm font-semibold text-[#1f2933] mb-2">{t('product.application.clinkerTitle')}</p>
                 <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal">
-                  When the temperature of the combustion bed during coal combustion rises above the melting point of ash, causing the coal ash to melt and solidify into lumps.
+                  {t('product.application.clinkerDesc')}
                 </p>
               </div>
             </div>
@@ -104,7 +98,7 @@ export default function ProductApplicationPage() {
             <div className="rounded-xl overflow-hidden border border-gray-200 relative h-[600px] lg:sticky lg:top-24 hover:shadow-xl transition-all duration-300 group">
               <Image 
                 src={factory5} 
-                alt="제품 적용 현장" 
+                alt={t('product.application.imageAlt')} 
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"

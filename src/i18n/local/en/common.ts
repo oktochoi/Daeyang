@@ -1,4 +1,9 @@
 export const common = {
+  logoAlt: 'Daeyang Environmental Technology Logo',
+  loading: 'Loading...',
+  messageMaxLength: 'Maximum 500 characters',
+  messageLengthError: 'Message cannot exceed 500 characters.',
+  submitting: 'Submitting...',
   nav: {
     home: 'Home',
     about: 'About',
@@ -18,8 +23,8 @@ export const common = {
     performanceComparison: 'China & Palau',
     media: 'Media',
     mediaPress: 'Press Release',
-    mediaAwards: 'Awards & Certifications',
-    mediaTechnical: 'Technical Resources',
+    mediaAwards: 'Awards',
+    mediaTechnical: 'Patents',
     contact: 'Contact'
   },
   cta: {

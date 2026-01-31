@@ -1,5 +1,13 @@
 export const about = {
   label: 'ABOUT US',
+  page: {
+    subtitle: 'Explore company information, history, and management philosophy',
+    options: {
+      history: { title: 'History', description: 'Key milestones from founding to present' },
+      vision: { title: 'Vision & Philosophy', description: 'Management philosophy and future vision' },
+      ceo: { title: 'CEO Message', description: 'CEO message and management philosophy' }
+    }
+  },
   hero: {
     title1: 'Environmental Technology-Based Solution Company',
     title2: 'Environmental Technology Specialist with Manufacturing Capabilities',
@@ -49,37 +57,73 @@ export const about = {
         description: 'Expanded main business with Coal Green14001 as core technology'
       }
     ],
-    coalGreenPosition: 'Coal Green is the company\'s core technology and current main business product.'
+    coalGreenPosition: 'Coal Green is the company\'s core technology and current main business product.',
+    milestoneSectionTitle: 'Key Milestones',
+    currentItem: {
+      year: 'Present',
+      title: 'Continuous Growth and Innovation',
+      description: 'Growing as a leading eco-friendly combustion solution company through domestic and international market expansion and technology development.'
+    },
+    coreTechTitle: 'Core Technology'
   },
   vision: {
     title: 'Management Philosophy & Vision',
+    heroEyebrow: 'VISION & PHILOSOPHY',
+    heroLine1: 'We don\'t talk about the environment',
+    heroLine2: 'We prove it in the field',
     coreValues: {
       title: 'Core Values',
+      coreBadge: 'OUR CORE VALUE',
       saveEarth: {
-        title: 'Environmental Protection (Save the Earth)',
-        description: 'Prioritizing Earth\'s environmental protection as the top value'
+        title: 'Environmental Protection',
+        subtitle: 'Save the Earth',
+        description: 'Reducing pollutants from combustion to create a sustainable industrial environment.'
       },
       saveEnergy: {
-        title: 'Energy Conservation (Save Energy)',
-        description: 'Resource conservation through energy efficiency maximization'
+        title: 'Energy Conservation',
+        subtitle: 'Save Energy',
+        description: 'Maximizing fuel efficiency by improving combustion and reducing energy loss.'
       },
       practical: {
         title: 'Practical Improvement Through Technology',
-        description: 'Focus on actual field improvement, not formal ESG'
+        subtitle: 'Proven in the Field',
+        description: 'Creating immediate, applicable change through field-verified technology.'
       }
     },
-    priority: 'Environment + Technology Effectiveness Focus (Actual field improvement, not formal ESG)',
+    priorityTitle: 'Priority Direction',
+    priorityHeadline: 'We don\'t turn ESG into reports. We turn it into numbers on the ground.',
+    prioritySub: 'Environment + Technology effectiveness focus (Actual field improvement, not formal ESG)',
     futureVision: {
       title: '5-10 Year Vision',
+      headline: 'We become the global standard for eco-friendly energy solutions.',
       goals: [
-        'Global Eco-friendly Energy Solution Company',
-        'Recognized as Standard Technology in Coal Combustion Improvement',
-        'No. 1 Company in Eco-friendly Briquettes and Coal Fuel Purification'
-      ]
+        '100+ domestic reference sites in combustion efficiency improvement',
+        'Standard solution for power & industrial combustion technology',
+        'Key partner in eco-friendly energy transition'
+      ],
+      closing: 'With technology,\nwe rewrite the standards for the environment.'
     }
   },
   ceo: {
     title: 'CEO Message',
+    heroLabel: 'Save Earth, Save Energy',
+    mainTitle: 'Technology Promise for a Sustainable Future\nof Daeyang Environmental Technology Co., Ltd.',
+    paragraphs: [
+      'Daeyang Environmental Technology Co., Ltd. is a technology company leading environmental improvement and energy efficiency innovation, creating sustainable future value.',
+      'We have grown as an integrated solution provider achieving both environmental protection and energy conservation, turning global energy environment changes and climate change into opportunities.',
+      'In particular, we achieve significant carbon reduction results through combustion efficiency improvement and pollutant reduction technology at industrial sites where fossil fuel use is inevitable, providing innovative solutions that simultaneously improve both environment and economics.',
+      'Based on years of accumulated technology and field experience, we develop and commercialize environmental technology using combustion catalysts (COAL GREEN14001) to maximize the efficiency of fossil fuels such as coal and heavy oil, enhancing the sustainability of industrial sites.',
+      'Our core competitiveness is \'field-verified technology\'. We are proving the reliability of our technology through demonstration projects and local cooperation in major Asian countries including Mongolia, Vietnam, and China, and continuously expanding practical results such as combustion efficiency improvement, emission reduction, and energy cost savings.',
+      'We will do our best to become the standard for next-generation environmental technology that simultaneously realizes environmental protection (Save the Earth) and energy conservation (Save Energy) through continuous R&D and global cooperation.',
+      'We ask for your continued interest and cooperation on this journey of challenge and growth. Thank you.'
+    ],
+    ceoAlt: 'CEO Kim Jung-hwan',
+    ceoTitle: 'Daeyang Environmental Technology Co., Ltd. CEO',
+    ceoName: 'Kim Jung-hwan',
+    ctoAlt: 'CTO Seo Ha-kyung',
+    ctoTitle: 'Daeyang Environmental Technology Co., Ltd. CTO',
+    ctoName: 'Seo Ha-kyung',
+    footerCompany: 'Daeyang Environmental Technology Co., Ltd.',
     name: 'Kim Jung-hwan',
     position: 'CEO',
     message: `Welcome to Dayang Eco Technology Co., Ltd., a company leading environmental improvement.

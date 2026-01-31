@@ -1,13 +1,27 @@
 export const home = {
   hero: {
+    imageAlt: '대양환경기술 - 연소 효율 개선 솔루션',
     eyebrow: 'DAYANG ECO TECHNOLOGY',
     title: '연소 효율을 높이고, 대기오염을 줄입니다.',
+    titleLine1: '연소 효율',
+    titleLine2: '을 높이고,',
+    titleLine3: '대기오염',
+    titleLine4: '을 줄입니다.',
     subtitle: '연료비 절감 · 배출가스 저감 · 설비 변경 無',
     description: 'Coal Green14001로 연료비 절감과 배출가스 저감을 동시에 실현하세요',
     cta: {
       product: '제품 소개',
       contact: '문의하기'
     }
+  },
+  about: {
+    titleLine1: '환경기술 기반의',
+    titleLine2: '솔루션 기업',
+    cta: '회사소개 자세히 보기',
+    imageAlt: '대양환경기술 회사 소개',
+  },
+  product: {
+    cta: '제품소개 자세히 보기',
   },
   problem: {
     title: '석탄 연소의 핵심 문제',
@@ -26,6 +40,8 @@ export const home = {
     }
   },
   solution: {
+    verifiedTech: '검증된 기술',
+    sitesCount: '50+ 현장 적용',
     title: 'Coal Green14001',
     subtitle: 'Coal Green은 석탄 연소 효율을 높여 오염물질을 줄이는 첨가형 연소조연제입니다.',
     effect1: {
@@ -92,8 +108,22 @@ export const home = {
   },
   media: {
     title: '최근 소식',
-    subtitle: '보도자료 및 기술 자료',
+    subtitle: '보도자료 및 수상·특허',
+    subtitleFull: '최신 소식과 자료를 확인하세요',
+    loading: '로딩 중...',
+    empty: '등록된 보도자료가 없습니다.',
+    pressImage: '보도자료 이미지',
+    viewMore: '더 많은 소식 보기',
     cta: '미디어 센터 보기'
+  },
+  performance: {
+    title: '적용 실적',
+    subtitle: '검증된 기술력과 다양한 적용 사례',
+    projectImage: '프로젝트 이미지',
+    cta: '적용 실적 자세히 보기',
+  },
+  contact: {
+    title: '문의하기',
   },
   finalCta: {
     title: 'Coal Green14001 도입을 검토하고 계신가요?',
