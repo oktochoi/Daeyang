@@ -92,37 +92,53 @@ export default function PerformancePage() {
                     href={`/performance/${project.id}`}
                     className="group flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden min-w-0 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300"
                   >
-                    {/* 상단 캡: 시각적 구분 영역 */}
-                    <div className="h-1.5 w-full bg-gray-200 group-hover:bg-gray-300 transition-colors" aria-hidden />
-
-                    {/* 카드 본문: 여백 리듬 */}
-                    <div className="flex flex-col flex-1 p-6">
-                      <div className="flex items-center gap-4 mb-5">
-                        <div className="w-12 h-12 shrink-0 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden relative">
-                          {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                            <Image src={project.icon} alt={t('performance.page.projectIconAlt')} fill className="object-cover" unoptimized priority={index < 3} />
-                          ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
-                            <span className="text-2xl leading-none">{project.icon}</span>
-                          ) : project.icon && project.icon.startsWith('ri-') ? (
-                            <i className={`${project.icon} text-2xl text-gray-600`} aria-hidden />
-                          ) : (
-                            <span className="text-2xl leading-none">🇰🇷</span>
-                          )}
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-gray-700">
-                          {i18n.language === 'ko' ? project.title : (project.titleEn || project.title)}
-                        </h3>
-                      </div>
-                      {project.description && (
-                        <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 mb-4">
-                          {i18n.language === 'ko' ? project.description : (project.descriptionEn || project.description)}
-                        </p>
+                    {/* 상단 대표 비주얼: 고정 높이, 카드 폭 전체, object-cover */}
+                    <div className="relative h-36 w-full shrink-0 bg-gray-100 overflow-hidden">
+                      {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
+                        <>
+                          <Image
+                            src={project.icon}
+                            alt=""
+                            fill
+                            className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+                            unoptimized
+                            priority={index < 3}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden />
+                        </>
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                            {project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
+                              <span className="text-5xl leading-none text-gray-400">{project.icon}</span>
+                            ) : project.icon && project.icon.startsWith('ri-') ? (
+                              <i className={`${project.icon} text-4xl text-gray-300`} aria-hidden />
+                            ) : (
+                              <span className="text-5xl leading-none text-gray-300">🇰🇷</span>
+                            )}
+                          </div>
+                          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden />
+                        </>
                       )}
-                      {!project.description && <div className="flex-1 min-h-[2.5rem]" />}
                     </div>
 
-                    {/* 하단 메타: 시각적 마침표 */}
-                    <div className="px-6 py-3.5 border-t border-gray-100 bg-gray-50/60">
+                    {/* 본문: 이미지 아래, 밀도 낮게 */}
+                    <div className="flex flex-col flex-1 px-5 pt-4 pb-1">
+                      <h3 className="text-base font-semibold text-gray-900 line-clamp-2 mb-2">
+                        {i18n.language === 'ko' ? project.title : (project.titleEn || project.title)}
+                      </h3>
+                      {project.description ? (
+                        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
+                          {i18n.language === 'ko' ? project.description : (project.descriptionEn || project.description)}
+                        </p>
+                      ) : (
+                        <div className="h-5" aria-hidden />
+                      )}
+                    </div>
+
+                    {/* 하단 메타 */}
+                    <div className="px-5 py-3 border-t border-gray-100 bg-gray-50/60">
                       <span className="text-xs font-medium text-gray-500">
                         {(project.items?.length ?? 0)}{t('performance.page.itemsCount')}
                       </span>
