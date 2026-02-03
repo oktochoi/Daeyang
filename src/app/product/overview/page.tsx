@@ -41,7 +41,7 @@ export default function ProductOverviewPage() {
                 <h1 className="text-[38px] sm:text-[40px] font-bold text-[#111827] leading-[1.25] tracking-[-0.01em] mb-6">
                   {t('product.overview.heroTitle1')}
                   <br />
-                  <span className="text-teal-600">{t('product.overview.heroTitle2')}</span>
+                  <span className="text-teal-600 whitespace-pre-line">{t('product.overview.heroTitle2')}</span>
                 </h1>
                 <ul className="space-y-5">
                   <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
@@ -94,7 +94,7 @@ export default function ProductOverviewPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
                 <Image src={factory1} alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem1.description')}</p>
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem1.description')}</p>
               </div>
             </div>
             <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}>
@@ -105,7 +105,7 @@ export default function ProductOverviewPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
                 <Image src={factory2} alt={t('product.overview.problem2Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem2.description')}</p>
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem2.description')}</p>
               </div>
             </div>
             <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}>
@@ -116,7 +116,7 @@ export default function ProductOverviewPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
                 <Image src={factory3} alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10">{t('product.problems.problem3.description')}</p>
+                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem3.description')}</p>
               </div>
             </div>
           </div>
@@ -184,17 +184,17 @@ export default function ProductOverviewPage() {
             <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-2 border-teal-500 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
               <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.cost.title')}</h3>
               <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectCostValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.cost.description')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.cost.description')}</p>
             </div>
             <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
               <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.emission.title')}</h3>
               <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectEmissionValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.emission.description')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.emission.description')}</p>
             </div>
             <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
               <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.maintenance.title')}</h3>
               <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectMaintenanceValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6]">{t('product.benefits.maintenance.description')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.maintenance.description')}</p>
             </div>
           </div>
         </div>
@@ -310,7 +310,7 @@ export default function ProductOverviewPage() {
       {/* 7️⃣ Section 7: CTA - 자료 / 인증 / 문의 */}
       <section className="py-16 lg:py-24 bg-white border-t border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Link
               href="/product/technical"
               className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
@@ -321,6 +321,18 @@ export default function ProductOverviewPage() {
               <div>
                 <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaTechnical')}</h3>
                 <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaTechnicalDesc')}</p>
+              </div>
+            </Link>
+            <Link
+              href="/media/certification"
+              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
+            >
+              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+                <i className="ri-verified-badge-line text-2xl text-teal-600"></i>
+              </div>
+              <div>
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaCertification')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaCertificationDesc')}</p>
               </div>
             </Link>
             <Link

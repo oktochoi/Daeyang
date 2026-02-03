@@ -16,6 +16,11 @@ export interface PressRelease {
   updated_at?: string;
 }
 
+// 인증(certification) | 수상(award) 구분. (컬럼명은 category 사용 — type은 PostgreSQL 예약어)
+// Supabase: awards_certifications 테이블에 category 컬럼 추가 필요.
+// SQL: ALTER TABLE awards_certifications ADD COLUMN IF NOT EXISTS category text CHECK (category IN ('certification', 'award')) DEFAULT 'award';
+export type AwardCertificationType = 'certification' | 'award';
+
 // Award & Certification 타입
 export interface AwardCertification {
   id: number;
@@ -26,6 +31,9 @@ export interface AwardCertification {
   featured_image?: string;
   url?: string;
   award_date?: string;
+  /** 'certification' = 인증, 'award' = 수상. DB 컬럼명: category */
+  type?: AwardCertificationType;
+  category?: AwardCertificationType;
   created_at?: string;
   updated_at?: string;
 }
@@ -182,7 +190,7 @@ export async function deletePressRelease(id: number): Promise<boolean> {
 
 // ========== Awards & Certifications ==========
 
-// 인증 및 수상 가져오기
+// 인증 및 수상 전체 가져오기 (type 필터 없음)
 export async function getAwardsCertifications(): Promise<AwardCertification[]> {
   const supabase = getSupabaseClient();
   if (!supabase) {
@@ -205,6 +213,51 @@ export async function getAwardsCertifications(): Promise<AwardCertification[]> {
   } catch (error) {
     console.error('Error fetching awards certifications:', error);
     return [];
+  }
+}
+
+// 인증만 가져오기 (DB 컬럼: category = 'certification'). category 컬럼이 없으면 전체 조회 후 메모리에서 필터.
+export async function getCertifications(): Promise<AwardCertification[]> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return [];
+
+  try {
+    const { data, error } = await supabase
+      .from('awards_certifications')
+      .select('*')
+      .eq('category', 'certification')
+      .order('award_date', { ascending: false });
+
+    if (!error) return data || [];
+
+    // 400 등: category 컬럼 없음 또는 예약어 충돌 → 전체 조회 후 필터
+    const all = await getAwardsCertifications();
+    return (all || []).filter((row) => (row.category ?? row.type) === 'certification');
+  } catch {
+    const all = await getAwardsCertifications();
+    return (all || []).filter((row) => (row.category ?? row.type) === 'certification');
+  }
+}
+
+// 수상만 가져오기 (DB 컬럼: category = 'award'). category 컬럼이 없으면 전체 조회 후 메모리에서 필터.
+export async function getAwards(): Promise<AwardCertification[]> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return [];
+
+  try {
+    const { data, error } = await supabase
+      .from('awards_certifications')
+      .select('*')
+      .eq('category', 'award')
+      .order('award_date', { ascending: false });
+
+    if (!error) return data || [];
+
+    const all = await getAwardsCertifications();
+    return (all || []).filter((row) => (row.category ?? row.type ?? 'award') === 'award');
+  } catch {
+    const all = await getAwardsCertifications();
+    return (all || []).filter((row) => (row.category ?? row.type ?? 'award') === 'award');
   }
 }
 
@@ -235,7 +288,7 @@ export async function getAwardCertificationById(id: number): Promise<AwardCertif
   }
 }
 
-// 인증 및 수상 추가
+// 인증 및 수상 추가 (type: 'certification' | 'award' 지정)
 export async function createAwardCertification(award: Omit<AwardCertification, 'id' | 'created_at' | 'updated_at'>): Promise<AwardCertification | null> {
   const supabase = getSupabaseClient();
   if (!supabase) {
@@ -244,18 +297,33 @@ export async function createAwardCertification(award: Omit<AwardCertification, '
   }
 
   try {
+    const kind = award.type ?? award.category ?? 'award';
+    const row: Record<string, unknown> = {
+      title: award.title,
+      title_en: award.title_en,
+      description: award.description,
+      description_en: award.description_en,
+      featured_image: award.featured_image,
+      url: award.url,
+      award_date: award.award_date,
+      category: kind,
+    };
     const { data, error } = await supabase
       .from('awards_certifications')
-      .insert([award])
+      .insert([row])
       .select()
       .single();
 
     if (error) {
       console.error('Error creating award certification:', error);
+      if (error.code === '42703' || error.message?.includes('category')) {
+        console.error(
+          'awards_certifications 테이블에 category 컬럼이 없습니다. Supabase SQL Editor에서 실행: ALTER TABLE awards_certifications ADD COLUMN IF NOT EXISTS category text CHECK (category IN (\'certification\', \'award\')) DEFAULT \'award\';'
+        );
+      }
       return null;
     }
-
-    return data;
+    return data as AwardCertification;
   } catch (error) {
     console.error('Error creating award certification:', error);
     return null;

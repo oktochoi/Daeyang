@@ -60,6 +60,7 @@ export default function Navbar() {
       label: t('common.nav.media'),
       submenu: [
         { path: '/media/press', label: t('common.nav.mediaPress') },
+        { path: '/media/certification', label: t('common.nav.mediaCertification') },
         { path: '/media/awards', label: t('common.nav.mediaAwards') },
         { path: '/product/technical', label: t('common.nav.mediaTechnical') },
       ]

@@ -75,15 +75,15 @@ export const product = {
     title: 'Three Core Problems of Existing Coal Combustion',
     problem1: {
       title: 'Unburned/Incomplete Combustion Problem',
-      description: 'Energy loss due to unburned/incomplete combustion occurring during coal combustion'
+      description: 'Energy loss due to unburned/incomplete combustion\noccurring during coal combustion'
     },
     problem2: {
       title: 'Excessive Air Pollutant Emissions',
-      description: 'Excessive emissions of air pollutants such as CO, CO₂, NOx, SOx, and particulate matter'
+      description: 'CO, CO₂, NOx, SOx, and particulate matter —\nexcessive air pollutant emissions'
     },
     problem3: {
       title: 'Equipment Damage from Clinker/Bottom Ash',
-      description: 'Equipment damage and efficiency reduction due to increased clinker and bottom ash'
+      description: 'Increased clinker and bottom ash —\nequipment damage and efficiency reduction'
     }
   },
   features: {
@@ -104,15 +104,15 @@ export const product = {
     title: 'Representative Effects for Customers',
     effect1: {
       title: 'Improved Combustion Efficiency',
-      description: 'Combustion efficiency improves with increased calorific value'
+      description: 'Increased calorific value improves combustion efficiency.'
     },
     effect2: {
       title: 'Fuel Cost Reduction and Profitability Improvement',
-      description: 'Reduces costs and improves profitability through reduced fuel consumption'
+      description: 'Reduced fuel consumption lowers costs and improves profitability.'
     },
     effect3: {
       title: 'Emission and Particulate Matter Reduction',
-      description: 'Reduces emissions and particulate matter to levels that meet environmental regulations'
+      description: 'Emissions and particulate matter reduced to environmentally compliant levels.'
     }
   },
   targets: {
@@ -181,6 +181,8 @@ export const product = {
     specRatioIncineration: '1:400',
     ctaTechnical: 'Patents',
     ctaTechnicalDesc: 'View our patents',
+    ctaCertification: 'Certification',
+    ctaCertificationDesc: 'View our certifications',
     ctaAwards: 'Awards',
     ctaAwardsDesc: 'View our awards',
     ctaContact: 'Contact',

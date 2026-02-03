@@ -1,11 +1,25 @@
 export const about = {
   label: '회사소개',
   page: {
+    heroTitle: '환경 기술로 연소의 기준을 다시 세우다',
+    heroSub: '대양환경기술의 이야기를 만나보세요.',
     subtitle: '대양환경기술의 회사 정보 / 연혁 / 경영이념을 확인하세요',
     options: {
-      history: { title: '연혁', description: '회사 설립부터 현재까지의 주요 이정표' },
-      vision: { title: '비전 및 철학', description: '회사의 경영이념과 미래 비전' },
-      ceo: { title: 'CEO 인사말', description: '대표이사의 인사말과 경영 철학' }
+      history: {
+        title: '연혁',
+        description: '회사 설립부터 현재까지의 주요 이정표',
+        oneLiner: '회사의 시작부터 현재까지의 주요 발자취'
+      },
+      vision: {
+        title: '비전 및 철학',
+        description: '회사의 경영이념과 미래 비전',
+        oneLiner: '지속가능성과 환경, 미래를 향한 우리의 방향'
+      },
+      ceo: {
+        title: 'CEO 인사말',
+        description: '대표이사의 인사말과 경영 철학',
+        oneLiner: '환경과 비용, 두 가지를 동시에 개선하는 현실적인 해답을 약속합니다.'
+      }
     }
   },
   hero: {
@@ -103,25 +117,25 @@ export const about = {
       saveEarth: {
         title: '환경 보호',
         subtitle: 'Save the Earth',
-        description: '연소 과정에서 발생하는 오염물질을 줄여 지속가능한 산업 환경을 만듭니다.'
+        description: '연소 과정에서 발생하는 오염물질을 줄여\n지속가능한 산업 환경을 만듭니다.'
       },
       saveEnergy: {
         title: '에너지 절감',
         subtitle: 'Save Energy',
-        description: '연소 효율을 높여 에너지 손실을 줄이고 연료 사용의 효율을 극대화합니다.'
+        description: '연소 효율을 높여 에너지 손실을 줄이고\n연료 사용의 효율을 극대화합니다.'
       },
       practical: {
         title: '기술을 통한 실질적 개선',
         subtitle: 'Proven in the Field',
-        description: '현장에서 검증된 기술로 즉시 적용 가능한 변화를 만들어냅니다.'
+        description: '현장에서 검증된 기술로\n즉시 적용 가능한 변화를 만들어냅니다.'
       }
     },
     priorityTitle: '우선 방향',
-    priorityHeadline: '우리는 ESG를 보고서로 만들지 않습니다. 현장에서 수치로 만듭니다.',
-    prioritySub: '환경 + 기술의 실효성 중심 (형식적 ESG가 아닌, 실제 현장 개선)',
+    priorityHeadline: '우리는 ESG를 보고서로 만들지 않습니다.\n현장에서 수치로 만듭니다.',
+    prioritySub: '환경 + 기술의 실효성 중심\n(형식적 ESG가 아닌, 실제 현장 개선)',
     futureVision: {
       title: '5~10년 후 비전',
-      headline: '우리는 친환경 에너지 솔루션의 글로벌 표준이 됩니다.',
+      headline: '우리는 친환경 에너지 솔루션의\n글로벌 표준이 됩니다.',
       goals: [
         '연소 효율 개선 분야 국내 레퍼런스 100+ 현장',
         '발전·산업용 연소 기술 표준 솔루션',

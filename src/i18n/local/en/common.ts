@@ -23,6 +23,7 @@ export const common = {
     performanceComparison: 'China & Palau',
     media: 'Media',
     mediaPress: 'Press Release',
+    mediaCertification: 'Certification',
     mediaAwards: 'Awards',
     mediaTechnical: 'Patents',
     contact: 'Contact'

@@ -10,7 +10,8 @@ import {
   getPressReleases, 
   createPressRelease, 
   deletePressRelease,
-  getAwardsCertifications,
+  getCertifications,
+  getAwards,
   createAwardCertification,
   deleteAwardCertification,
   getTechnicalResources,
@@ -29,7 +30,8 @@ export default function AdminDashboardPage() {
   const [uploadingIcon, setUploadingIcon] = useState(false);
   const [performanceProjects, setPerformanceProjects] = useState<SupabasePerformanceProject[]>([]);
   const [pressReleases, setPressReleases] = useState<PressRelease[]>([]);
-  const [awardsCertifications, setAwardsCertifications] = useState<AwardCertification[]>([]);
+  const [certifications, setCertifications] = useState<AwardCertification[]>([]);
+  const [awards, setAwards] = useState<AwardCertification[]>([]);
   const [technicalResources, setTechnicalResources] = useState<TechnicalResource[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   
@@ -44,6 +46,7 @@ export default function AdminDashboardPage() {
     featured_image: ''
   });
   const [awardForm, setAwardForm] = useState({
+    type: 'certification' as 'certification' | 'award',
     title: '',
     title_en: '',
     description: '',
@@ -77,8 +80,15 @@ export default function AdminDashboardPage() {
       link: '/media/press'
     },
     {
-      title: '인증 및 수상',
-      count: awardsCertifications.length,
+      title: '인증',
+      count: certifications.length,
+      icon: 'ri-verified-badge-line',
+      color: 'bg-blue-500',
+      link: '/media/certification'
+    },
+    {
+      title: '수상',
+      count: awards.length,
       icon: 'ri-award-line',
       color: 'bg-yellow-500',
       link: '/media/awards'
@@ -115,7 +125,8 @@ export default function AdminDashboardPage() {
           setIsAuthenticated(true);
           loadPerformanceProjects();
           loadPressReleases();
-          loadAwardsCertifications();
+          loadCertifications();
+          loadAwards();
           loadTechnicalResources();
         } else {
           setIsAuthenticated(false);
@@ -183,12 +194,21 @@ export default function AdminDashboardPage() {
     }
   }
 
-  async function loadAwardsCertifications() {
+  async function loadCertifications() {
     try {
-      const awards = await getAwardsCertifications();
-      setAwardsCertifications(awards || []);
+      const data = await getCertifications();
+      setCertifications(data || []);
     } catch (error) {
-      console.error('Error loading awards certifications:', error);
+      console.error('Error loading certifications:', error);
+    }
+  }
+
+  async function loadAwards() {
+    try {
+      const data = await getAwards();
+      setAwards(data || []);
+    } catch (error) {
+      console.error('Error loading awards:', error);
     }
   }
 
@@ -348,6 +368,7 @@ export default function AdminDashboardPage() {
     setIsLoading(true);
     try {
       const award = {
+        type: awardForm.type,
         title: awardForm.title,
         title_en: awardForm.title_en || undefined,
         description: awardForm.description || undefined,
@@ -359,8 +380,9 @@ export default function AdminDashboardPage() {
 
       const created = await createAwardCertification(award);
       if (created) {
-        alert('인증/수상이 추가되었습니다.');
+        alert(awardForm.type === 'certification' ? '인증이 추가되었습니다.' : '수상이 추가되었습니다.');
         setAwardForm({
+          type: awardForm.type,
           title: '',
           title_en: '',
           description: '',
@@ -369,9 +391,12 @@ export default function AdminDashboardPage() {
           award_date: '',
           featured_image: ''
         });
-        loadAwardsCertifications();
+        loadCertifications();
+        loadAwards();
       } else {
-        alert('인증/수상 추가에 실패했습니다.');
+        alert(
+          '인증/수상 추가에 실패했습니다.\n\n인증과 수상이 구분되어 보이려면 Supabase awards_certifications 테이블에 category 컬럼이 필요합니다.\n\nSupabase 대시보드 → SQL Editor에서 아래를 실행해 주세요:\n\nALTER TABLE awards_certifications ADD COLUMN IF NOT EXISTS category text CHECK (category IN (\'certification\', \'award\')) DEFAULT \'award\';'
+        );
       }
     } catch (error) {
       console.error('Error adding award:', error);
@@ -391,14 +416,15 @@ export default function AdminDashboardPage() {
     try {
       const success = await deleteAwardCertification(id);
       if (success) {
-        alert('인증/수상이 삭제되었습니다.');
-        loadAwardsCertifications();
+        alert('삭제되었습니다.');
+        loadCertifications();
+        loadAwards();
       } else {
-        alert('인증/수상 삭제에 실패했습니다.');
+        alert('삭제에 실패했습니다.');
       }
     } catch (error) {
-      console.error('Error deleting award:', error);
-      alert('인증/수상 삭제 중 오류가 발생했습니다.');
+      console.error('Error deleting award certification:', error);
+      alert('삭제 중 오류가 발생했습니다.');
     } finally {
       setIsLoading(false);
     }
@@ -481,8 +507,15 @@ export default function AdminDashboardPage() {
       color: 'bg-blue-50 text-blue-600 hover:bg-blue-100'
     },
     {
-      title: '인증 및 수상 관리',
-      description: '인증서, 수상 내역 관리',
+      title: '인증 관리',
+      description: '인증 내역 관리',
+      icon: 'ri-verified-badge-line',
+      link: '/media/certification',
+      color: 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+    },
+    {
+      title: '수상 관리',
+      description: '수상 내역 관리',
       icon: 'ri-award-line',
       link: '/media/awards',
       color: 'bg-yellow-50 text-yellow-600 hover:bg-yellow-100'
@@ -952,18 +985,31 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* Awards & Certifications Management */}
+        {/* 인증·수상 관리 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mt-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">인증 및 수상 관리</h2>
-              <p className="text-sm text-gray-500 mt-1">인증 및 수상 내역을 추가하고 관리하세요</p>
+              <h2 className="text-2xl font-bold text-gray-900">인증 · 수상 관리</h2>
+              <p className="text-sm text-gray-500 mt-1">구분을 선택한 뒤 인증 또는 수상 내역을 추가하세요</p>
             </div>
           </div>
 
-          {/* Add Award Form */}
-          <div className="mb-8 p-6 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border border-yellow-200">
+          {/* 추가 폼 */}
+          <div className="mb-8 p-6 bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl border border-gray-200">
             <form onSubmit={handleAddAward} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  구분 *
+                </label>
+                <select
+                  value={awardForm.type}
+                  onChange={(e) => setAwardForm({ ...awardForm, type: e.target.value as 'certification' | 'award' })}
+                  className="w-full md:max-w-xs px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                >
+                  <option value="certification">인증</option>
+                  <option value="award">수상</option>
+                </select>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -973,7 +1019,7 @@ export default function AdminDashboardPage() {
                     type="text"
                     value={awardForm.title}
                     onChange={(e) => setAwardForm({ ...awardForm, title: e.target.value })}
-                    placeholder="인증/수상 제목"
+                    placeholder={awardForm.type === 'certification' ? '인증 제목' : '수상 제목'}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
                     required
                   />
@@ -1088,28 +1134,31 @@ export default function AdminDashboardPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full px-6 py-3 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 transition-colors disabled:opacity-50"
+                className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-50"
               >
-                {isLoading ? '추가 중...' : '인증/수상 추가'}
+                {isLoading ? '추가 중...' : (awardForm.type === 'certification' ? '인증 추가' : '수상 추가')}
               </button>
             </form>
           </div>
 
-          {/* Awards List */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">인증 및 수상 목록 ({awardsCertifications.length})</h3>
-            {awardsCertifications.length === 0 ? (
-              <div className="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-                <i className="ri-inbox-line text-4xl text-gray-400 mb-2"></i>
-                <p className="text-gray-500">등록된 인증/수상이 없습니다.</p>
+          {/* 인증 목록 */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <i className="ri-verified-badge-line text-blue-600"></i>
+              인증 목록 ({certifications.length})
+            </h3>
+            {certifications.length === 0 ? (
+              <div className="text-center py-8 bg-blue-50/50 rounded-lg border-2 border-dashed border-blue-200">
+                <i className="ri-verified-badge-line text-3xl text-blue-400 mb-2"></i>
+                <p className="text-gray-500 text-sm">등록된 인증이 없습니다. 위 폼에서 구분을 「인증」으로 선택 후 추가하세요.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {awardsCertifications.map((award) => (
-                  <div key={award.id} className="border border-gray-200 rounded-lg p-4 hover:border-yellow-300 transition-all bg-white">
+                {certifications.map((item) => (
+                  <div key={item.id} className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-all bg-white">
                     <div className="relative w-full mb-4" style={{ aspectRatio: '210 / 297' }}>
-                      {award.featured_image ? (
-                        <Image src={award.featured_image} alt={award.title} fill className="object-cover rounded-lg" unoptimized />
+                      {item.featured_image ? (
+                        <Image src={item.featured_image} alt={item.title} fill className="object-cover rounded-lg" unoptimized />
                       ) : (
                         <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
                           <i className="ri-file-paper-line text-4xl text-gray-400"></i>
@@ -1117,18 +1166,68 @@ export default function AdminDashboardPage() {
                       )}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">{award.title}</h4>
-                      {award.description && (
-                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{award.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      {item.description && (
+                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{item.description}</p>
                       )}
-                      {award.award_date && (
+                      {item.award_date && (
                         <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
                           <i className="ri-calendar-line"></i>
-                          {award.award_date}
+                          {item.award_date}
                         </p>
                       )}
                       <button
-                        onClick={() => handleDeleteAward(award.id)}
+                        onClick={() => handleDeleteAward(item.id)}
+                        className="w-full px-3 py-2 border border-red-300 text-red-600 text-sm font-medium rounded-lg hover:bg-red-50 transition-colors"
+                        disabled={isLoading}
+                      >
+                        <i className="ri-delete-bin-line mr-1"></i>
+                        삭제
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 수상 목록 */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <i className="ri-award-line text-yellow-600"></i>
+              수상 목록 ({awards.length})
+            </h3>
+            {awards.length === 0 ? (
+              <div className="text-center py-8 bg-yellow-50/50 rounded-lg border-2 border-dashed border-yellow-200">
+                <i className="ri-award-line text-3xl text-yellow-400 mb-2"></i>
+                <p className="text-gray-500 text-sm">등록된 수상이 없습니다. 위 폼에서 구분을 「수상」으로 선택 후 추가하세요.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {awards.map((item) => (
+                  <div key={item.id} className="border border-gray-200 rounded-lg p-4 hover:border-yellow-300 transition-all bg-white">
+                    <div className="relative w-full mb-4" style={{ aspectRatio: '210 / 297' }}>
+                      {item.featured_image ? (
+                        <Image src={item.featured_image} alt={item.title} fill className="object-cover rounded-lg" unoptimized />
+                      ) : (
+                        <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+                          <i className="ri-file-paper-line text-4xl text-gray-400"></i>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      {item.description && (
+                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{item.description}</p>
+                      )}
+                      {item.award_date && (
+                        <p className="text-xs text-gray-500 mb-3 flex items-center gap-1">
+                          <i className="ri-calendar-line"></i>
+                          {item.award_date}
+                        </p>
+                      )}
+                      <button
+                        onClick={() => handleDeleteAward(item.id)}
                         className="w-full px-3 py-2 border border-red-300 text-red-600 text-sm font-medium rounded-lg hover:bg-red-50 transition-colors"
                         disabled={isLoading}
                       >

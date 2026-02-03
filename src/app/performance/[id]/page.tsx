@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
@@ -10,6 +10,8 @@ import Footer from '../../../components/feature/Footer';
 import { getPerformanceProjectById, PerformanceProject as SupabasePerformanceProject, PerformanceProjectItem } from '@/lib/supabase';
 import { performanceProjects as mockProjects } from '../../../mocks/performance';
 import type { PerformanceProject as MockProject } from '../../../mocks/performance';
+
+const ITEMS_PER_PAGE = 9;
 
 // Mock 데이터를 Supabase 형식으로 변환
 function mockToSupabaseFormat(mock: MockProject): SupabasePerformanceProject {
@@ -55,6 +57,7 @@ export default function PerformanceDetailPage() {
   const id = params?.id ? parseInt(params.id as string) : null;
   const [project, setProject] = useState<ProjectDisplay | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function loadProject() {
@@ -87,6 +90,17 @@ export default function PerformanceDetailPage() {
       }
     }
     loadProject();
+  }, [id]);
+
+  const items = useMemo(() => project?.items ?? [], [project?.items]);
+  const totalPages = Math.max(1, Math.ceil(items.length / ITEMS_PER_PAGE));
+  const paginatedItems = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return items.slice(start, start + ITEMS_PER_PAGE);
+  }, [items, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
   }, [id]);
 
   if (isLoading) {
@@ -139,7 +153,7 @@ export default function PerformanceDetailPage() {
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden relative">
               {project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://')) ? (
-                <Image src={project.icon} alt={t('performance.detail.projectIconAlt')} fill className="object-cover" unoptimized />
+                <Image src={project.icon} alt={t('performance.detail.projectIconAlt')} fill className="object-cover" unoptimized priority />
               ) : project.icon && !project.icon.startsWith('ri-') && project.icon.length <= 2 ? (
                 <span className="text-5xl leading-none">{project.icon}</span>
               ) : project.icon && project.icon.startsWith('ri-') ? (
@@ -162,7 +176,7 @@ export default function PerformanceDetailPage() {
         </div>
       </section>
 
-      {/* Project Items */}
+      {/* Project Items — 갤러리 3열 그리드 + 페이지네이션 */}
       {project.items && project.items.length > 0 && (
         <section className="pb-[96px] bg-white">
           <div className="max-w-7xl mx-auto px-6">
@@ -172,33 +186,61 @@ export default function PerformanceDetailPage() {
               </h2>
               <div className="w-12 h-0.5 bg-teal-600"></div>
             </div>
-            <div className="space-y-12">
-              {project.items.map((item: PerformanceProjectItem, index: number) => (
-                <div key={item.id} className="bg-gray-50 rounded-xl p-8">
-                  <h3 className="text-[24px] font-bold text-[#1f2933] mb-6">
-                    {i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
-                  </h3>
-                  {item.photos && item.photos.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {item.photos.map((photo, photoIndex) => (
-                        <div key={photoIndex} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow relative h-64">
-                          <Image
-                            src={photo}
-                            alt={`${i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)} - ${photoIndex + 1}`}
-                            fill
-                            className="object-cover"
-                            unoptimized
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
-                            }}
-                          />
-                        </div>
-                      ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedItems.map((item: PerformanceProjectItem) => (
+                <article key={item.id} className="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  {item.photos && item.photos[0] ? (
+                    <div className="relative w-full aspect-video bg-gray-200">
+                      <Image
+                        src={item.photos[0]}
+                        alt={i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full aspect-video bg-gray-200 flex items-center justify-center">
+                      <i className="ri-image-line text-4xl text-gray-400"></i>
                     </div>
                   )}
-                </div>
+                  <div className="p-4">
+                    <h3 className="text-base font-semibold text-[#1f2933] line-clamp-2">
+                      {i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
+                    </h3>
+                  </div>
+                </article>
               ))}
             </div>
+
+            {totalPages > 1 && (
+              <nav className="mt-10 flex items-center justify-center gap-2" aria-label="페이지 네비게이션">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {i18n.language === 'ko' ? '이전' : 'Previous'}
+                </button>
+                <span className="px-4 py-2 text-sm text-gray-600">
+                  {currentPage} / {totalPages}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {i18n.language === 'ko' ? '다음' : 'Next'}
+                </button>
+              </nav>
+            )}
           </div>
         </section>
       )}

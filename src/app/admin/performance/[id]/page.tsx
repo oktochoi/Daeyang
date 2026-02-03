@@ -28,9 +28,9 @@ export default function PerformanceProjectManagePage() {
   const [itemForm, setItemForm] = useState({
     item_title: '',
     item_title_en: '',
-    photos: [] as string[]
+    photo: '' // 사진 1개만
   });
-  const [uploadingFiles, setUploadingFiles] = useState<{ [key: number]: boolean }>({});
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   const loadProject = useCallback(async () => {
     if (!projectId) return;
@@ -98,8 +98,8 @@ export default function PerformanceProjectManagePage() {
 
   async function handleAddItem(e: React.FormEvent) {
     e.preventDefault();
-    if (!projectId || !itemForm.item_title || itemForm.photos.length === 0) {
-      alert('제목과 사진은 필수 입력 항목입니다.');
+    if (!projectId || !itemForm.item_title || !itemForm.photo) {
+      alert('제목과 사진 1개는 필수 입력 항목입니다.');
       return;
     }
 
@@ -109,7 +109,7 @@ export default function PerformanceProjectManagePage() {
         project_id: projectId,
         item_title: itemForm.item_title,
         item_title_en: itemForm.item_title_en || undefined,
-        photos: itemForm.photos,
+        photos: [itemForm.photo],
         display_order: items.length
       };
 
@@ -119,7 +119,7 @@ export default function PerformanceProjectManagePage() {
         setItemForm({
           item_title: '',
           item_title_en: '',
-          photos: []
+          photo: ''
         });
         loadItems();
       } else {
@@ -275,94 +275,70 @@ export default function PerformanceProjectManagePage() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                사진 (URL 또는 업로드) *
+                사진 1개 (URL 또는 업로드) *
               </label>
-              <div className="space-y-2">
-                {itemForm.photos.map((photo, index) => (
-                  <div key={index} className="flex gap-2">
-                    <input
-                      type="url"
-                      value={photo}
-                      onChange={(e) => {
-                        const newPhotos = [...itemForm.photos];
-                        newPhotos[index] = e.target.value;
-                        setItemForm({ ...itemForm, photos: newPhotos });
-                      }}
-                      placeholder="https://example.com/image.jpg 또는 파일 업로드"
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                      required
-                    />
-                    <label className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 cursor-pointer transition-colors flex items-center gap-1">
-                      <i className="ri-upload-line"></i>
-                      <span className="text-sm">업로드</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={async (e) => {
-                          const file = e.target.files?.[0];
-                          if (!file) return;
-
-                          // 파일 크기 체크 (5MB)
-                          const maxSize = 5 * 1024 * 1024; // 5MB
-                          if (file.size > maxSize) {
-                            alert('파일 크기는 5MB 이하여야 합니다.');
-                            e.target.value = '';
-                            return;
-                          }
-
-                          setUploadingFiles({ ...uploadingFiles, [index]: true });
-                          try {
-                            const url = await uploadImage(file, 'performance');
-                            if (url) {
-                              const newPhotos = [...itemForm.photos];
-                              newPhotos[index] = url;
-                              setItemForm({ ...itemForm, photos: newPhotos });
-                            } else {
-                              alert('파일 업로드에 실패했습니다.');
-                            }
-                          } catch (error) {
-                            console.error('Error uploading file:', error);
-                            alert('파일 업로드 중 오류가 발생했습니다.');
-                          } finally {
-                            setUploadingFiles({ ...uploadingFiles, [index]: false });
-                            e.target.value = ''; // 같은 파일 다시 선택 가능하도록
-                          }
-                        }}
-                        disabled={uploadingFiles[index]}
-                      />
-                    </label>
-                    {uploadingFiles[index] && (
-                      <div className="flex items-center px-3 text-sm text-gray-500">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-teal-600 mr-2"></div>
-                        업로드 중...
-                      </div>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const newPhotos = itemForm.photos.filter((_, i) => i !== index);
-                        setItemForm({ ...itemForm, photos: newPhotos });
-                      }}
-                      className="px-3 py-2 text-red-600 hover:text-red-700"
-                    >
-                      <i className="ri-delete-bin-line"></i>
-                    </button>
+              <div className="flex flex-wrap items-center gap-2">
+                <input
+                  type="url"
+                  value={itemForm.photo}
+                  onChange={(e) => setItemForm({ ...itemForm, photo: e.target.value })}
+                  placeholder="https://example.com/image.jpg 또는 업로드"
+                  className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                />
+                <label className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 cursor-pointer transition-colors flex items-center gap-1 shrink-0 disabled:opacity-50 disabled:cursor-not-allowed">
+                  <i className="ri-upload-line"></i>
+                  <span className="text-sm">업로드</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const maxSize = 5 * 1024 * 1024;
+                      if (file.size > maxSize) {
+                        alert('파일 크기는 5MB 이하여야 합니다.');
+                        e.target.value = '';
+                        return;
+                      }
+                      setUploadingPhoto(true);
+                      try {
+                        const url = await uploadImage(file, 'performance');
+                        if (url) {
+                          setItemForm({ ...itemForm, photo: url });
+                        } else {
+                          alert('파일 업로드에 실패했습니다.');
+                        }
+                      } catch (error) {
+                        console.error('Error uploading file:', error);
+                        alert('파일 업로드 중 오류가 발생했습니다.');
+                      } finally {
+                        setUploadingPhoto(false);
+                        e.target.value = '';
+                      }
+                    }}
+                    disabled={uploadingPhoto}
+                  />
+                </label>
+                {itemForm.photo && (
+                  <button
+                    type="button"
+                    onClick={() => setItemForm({ ...itemForm, photo: '' })}
+                    className="px-3 py-2 text-red-600 hover:text-red-700 shrink-0"
+                    title="사진 지우기"
+                  >
+                    <i className="ri-delete-bin-line"></i>
+                  </button>
+                )}
+                {uploadingPhoto && (
+                  <div className="flex items-center text-sm text-gray-500 shrink-0">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-teal-600 mr-2"></div>
+                    업로드 중...
                   </div>
-                ))}
+                )}
               </div>
-              <button
-                type="button"
-                className="mt-2 text-sm text-teal-600 hover:text-teal-700 flex items-center gap-1"
-                onClick={() => {
-                  setItemForm({ ...itemForm, photos: [...itemForm.photos, ''] });
-                }}
-              >
-                <i className="ri-add-line"></i>
-                사진 추가
-              </button>
               <p className="text-xs text-gray-500 mt-1">
-                * 파일 크기는 5MB 이하여야 합니다.
+                * 항목당 사진 1개만 등록 가능합니다. 파일 크기는 5MB 이하.
               </p>
             </div>
             <button
@@ -395,25 +371,20 @@ export default function PerformanceProjectManagePage() {
                           {i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
                         </h4>
                       </div>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
-                        {item.photos.map((photo, photoIndex) => (
-                          <div key={photoIndex} className="aspect-video bg-gray-100 rounded overflow-hidden relative">
-                            <Image
-                              src={photo}
-                              alt={`${item.item_title} - ${photoIndex + 1}`}
-                              fill
-                              className="object-cover"
-                              unoptimized
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <p className="text-sm text-gray-500 mt-2">
-                        사진 {item.photos.length}개
-                      </p>
+                      {item.photos && item.photos[0] && (
+                        <div className="w-full max-w-sm aspect-video bg-gray-100 rounded overflow-hidden relative mt-3">
+                          <Image
+                            src={item.photos[0]}
+                            alt={i18n.language === 'ko' ? item.item_title : (item.item_title_en || item.item_title)}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect width="100" height="100" fill="%23ddd"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999"%3E이미지%3C/text%3E%3C/svg%3E';
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                     <button
                       onClick={() => handleDeleteItem(item.id)}

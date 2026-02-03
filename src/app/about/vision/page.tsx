@@ -72,7 +72,7 @@ export default function AboutVisionPage() {
                 {t('about.vision.coreValues.saveEarth.title')}
               </h3>
               <p className="text-xs text-gray-500 mb-3">{t('about.vision.coreValues.saveEarth.subtitle')}</p>
-              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
+              <p className="text-sm text-gray-600 leading-relaxed flex-grow whitespace-pre-line">
                 {t('about.vision.coreValues.saveEarth.description')}
               </p>
             </div>
@@ -96,8 +96,8 @@ export default function AboutVisionPage() {
                 {t('about.vision.coreValues.saveEnergy.title')}
               </h3>
               <p className="text-xs text-gray-500 mb-4">{t('about.vision.coreValues.saveEnergy.subtitle')}</p>
-              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
-                {t('about.vision.coreValues.saveEnergy.description')}
+<p className="text-sm text-gray-600 leading-relaxed flex-grow whitespace-pre-line">
+              {t('about.vision.coreValues.saveEnergy.description')}
               </p>
             </div>
             
@@ -114,7 +114,7 @@ export default function AboutVisionPage() {
                 {t('about.vision.coreValues.practical.title')}
               </h3>
               <p className="text-xs text-gray-500 mb-3">{t('about.vision.coreValues.practical.subtitle')}</p>
-              <p className="text-sm text-gray-600 leading-relaxed flex-grow">
+              <p className="text-sm text-gray-600 leading-relaxed flex-grow whitespace-pre-line">
                 {t('about.vision.coreValues.practical.description')}
               </p>
             </div>
@@ -144,10 +144,10 @@ export default function AboutVisionPage() {
               <h2 className="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-4">
                 {t('about.vision.priorityTitle')}
               </h2>
-              <p className="text-2xl sm:text-3xl font-bold text-[#111827] leading-snug max-w-2xl mb-4">
+              <p className="text-2xl sm:text-3xl font-bold text-[#111827] leading-snug max-w-2xl mb-4 whitespace-pre-line">
                 {t('about.vision.priorityHeadline')}
               </p>
-              <p className="text-sm text-gray-500 leading-relaxed max-w-2xl">
+              <p className="text-sm text-gray-500 leading-relaxed max-w-2xl whitespace-pre-line">
                 {t('about.vision.prioritySub')}
               </p>
             </div>
@@ -155,7 +155,7 @@ export default function AboutVisionPage() {
             {/* 5~10년 후 비전 - 배경 #FFFFFF, 체크 진하게, 마지막 문장 강조 */}
             <div className="mt-16">
               <h2 className="text-lg font-medium text-teal-600 mb-4">{t('about.vision.futureVision.title')}</h2>
-              <p className="text-xl sm:text-2xl font-medium text-[#111827] leading-relaxed mb-8 max-w-2xl">
+              <p className="text-xl sm:text-2xl font-medium text-[#111827] leading-relaxed mb-8 max-w-2xl whitespace-pre-line">
                 {t('about.vision.futureVision.headline')}
               </p>
               <ul className="space-y-4 max-w-xl mb-12">

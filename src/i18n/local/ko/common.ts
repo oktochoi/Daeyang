@@ -23,6 +23,7 @@ export const common = {
     performanceComparison: '중국·팔라우',
     media: '미디어',
     mediaPress: '보도자료',
+    mediaCertification: '인증',
     mediaAwards: '수상',
     mediaTechnical: '특허',
     contact: '문의하기'

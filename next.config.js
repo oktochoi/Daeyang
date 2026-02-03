@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'xatkkenrwopikeedvqzs.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
     unoptimized: false,
   },
   // i18n 설정은 App Router에서는 다른 방식으로 처리

@@ -75,15 +75,15 @@ export const product = {
     title: '기존 석탄 연소의 핵심 문제 3가지',
     problem1: {
       title: '미연소·불완전연소 문제',
-      description: '석탄 연소 시 발생하는 미연소·불완전연소로 인한 에너지 손실'
+      description: '석탄 연소 시 발생하는\n 미연소·불완전연소로 인한에너지 손실'
     },
     problem2: {
       title: '대기오염물질 과다 배출',
-      description: 'CO, CO₂, NOx, SOx, 분진 등 대기오염물질의 과다 배출'
+      description: 'CO, CO₂, NOx, SOx, 분진 등\n대기오염물질의 과다 배출'
     },
     problem3: {
       title: '크링커·바텀애시로 인한 설비 손상',
-      description: '크링커(Clinker)·바텀애시 증가로 인한 설비 손상 및 효율 저하'
+      description: '크링커(Clinker)·바텀애시 증가로 인한\n설비 손상 및 효율 저하'
     }
   },
   features: {
@@ -104,15 +104,15 @@ export const product = {
     title: '고객이 얻는 대표 효과',
     effect1: {
       title: '연소 효율 향상',
-      description: '발열량 증가로 연소 효율이 향상됩니다'
+      description: '발열량 증가로 연소 효율이 향상됩니다.'
     },
     effect2: {
       title: '연료비 절감 및 수익성 개선',
-      description: '연료 사용량 감소로 비용을 절감하고 수익성을 개선합니다'
+      description: '연료 사용량 감소로 비용을 절감하고 수익성을 개선합니다.'
     },
     effect3: {
       title: '배출가스 및 분진 저감',
-      description: '환경 규제 대응이 가능한 수준으로 배출가스와 분진을 저감합니다'
+      description: '환경 규제 대응이 가능한 수준으로 배출가스와 분진을 저감합니다.'
     }
   },
   targets: {
@@ -141,7 +141,7 @@ export const product = {
     specTitle: '제품 사양',
     heroImageAlt: 'COAL GREEN 산업 적용',
     heroTitle1: '석탄 연소 효율을 높이고',
-    heroTitle2: '배출과 비용을 동시에 줄이는 연소 조연제',
+    heroTitle2: '배출과 비용을 동시에\n줄이는 연소 조연제',
     keyword1: '연소 효율 개선',
     keyword2: '배출 저감',
     keyword3: '설비 보호',
@@ -181,6 +181,8 @@ export const product = {
     specRatioIncineration: '1:400',
     ctaTechnical: '특허',
     ctaTechnicalDesc: '특허를 확인하세요',
+    ctaCertification: '인증',
+    ctaCertificationDesc: '인증 내역',
     ctaAwards: '수상',
     ctaAwardsDesc: '수상 내역',
     ctaContact: '문의하기',
@@ -192,7 +194,7 @@ export const product = {
     cost: {
       title: '연료비 절감',
       value: '연료비↓',
-      description: '연소 효율 상승으로 석탄 사용량을 줄여 수익성을 개선'
+      description: '연소 효율 상승으로 \n석탄 사용량을 줄여 수익성을 개선합니다.'
     },
     emission: {
       title: '배출 저감',

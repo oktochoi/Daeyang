@@ -1,11 +1,25 @@
 export const about = {
   label: 'ABOUT US',
   page: {
+    heroTitle: 'Redefining the standard of combustion through environmental technology',
+    heroSub: 'Discover the story of Dayang Eco Technology.',
     subtitle: 'Explore company information, history, and management philosophy',
     options: {
-      history: { title: 'History', description: 'Key milestones from founding to present' },
-      vision: { title: 'Vision & Philosophy', description: 'Management philosophy and future vision' },
-      ceo: { title: 'CEO Message', description: 'CEO message and management philosophy' }
+      history: {
+        title: 'History',
+        description: 'Key milestones from founding to present',
+        oneLiner: 'Our path from founding to the present'
+      },
+      vision: {
+        title: 'Vision & Philosophy',
+        description: 'Management philosophy and future vision',
+        oneLiner: 'Sustainability, environment, and our direction toward the future'
+      },
+      ceo: {
+        title: 'CEO Message',
+        description: 'CEO message and management philosophy',
+        oneLiner: 'We promise practical solutions that improve both environment and cost.'
+      }
     }
   },
   hero: {
@@ -77,25 +91,25 @@ export const about = {
       saveEarth: {
         title: 'Environmental Protection',
         subtitle: 'Save the Earth',
-        description: 'Reducing pollutants from combustion to create a sustainable industrial environment.'
+        description: 'Reducing pollutants from combustion\nto create a sustainable industrial environment.'
       },
       saveEnergy: {
         title: 'Energy Conservation',
         subtitle: 'Save Energy',
-        description: 'Maximizing fuel efficiency by improving combustion and reducing energy loss.'
+        description: 'Improving combustion and reducing energy loss\nto maximize fuel efficiency.'
       },
       practical: {
         title: 'Practical Improvement Through Technology',
         subtitle: 'Proven in the Field',
-        description: 'Creating immediate, applicable change through field-verified technology.'
+        description: 'Field-verified technology\ncreating immediate, applicable change.'
       }
     },
     priorityTitle: 'Priority Direction',
-    priorityHeadline: 'We don\'t turn ESG into reports. We turn it into numbers on the ground.',
-    prioritySub: 'Environment + Technology effectiveness focus (Actual field improvement, not formal ESG)',
+    priorityHeadline: 'We don\'t turn ESG into reports.\nWe turn it into numbers on the ground.',
+    prioritySub: 'Environment + Technology effectiveness focus\n(Actual field improvement, not formal ESG)',
     futureVision: {
       title: '5-10 Year Vision',
-      headline: 'We become the global standard for eco-friendly energy solutions.',
+      headline: 'We become the global standard\nfor eco-friendly energy solutions.',
       goals: [
         '100+ domestic reference sites in combustion efficiency improvement',
         'Standard solution for power & industrial combustion technology',

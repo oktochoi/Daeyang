@@ -24,7 +24,8 @@ export default function Breadcrumb() {
     '/performance': { ko: t('common.nav.performance'), en: 'Performance' },
     '/media': { ko: t('common.nav.media'), en: 'Media' },
     '/media/press': { ko: t('common.nav.mediaPress'), en: 'Press Release' },
-    '/media/awards': { ko: t('common.nav.mediaAwards'), en: 'Awards & Certifications' },
+    '/media/certification': { ko: t('common.nav.mediaCertification'), en: 'Certification' },
+    '/media/awards': { ko: t('common.nav.mediaAwards'), en: 'Awards' },
     '/contact': { ko: t('common.cta.contact'), en: 'Contact' },
   };
 

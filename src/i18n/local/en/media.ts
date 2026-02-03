@@ -1,16 +1,21 @@
 export const media = {
   title: 'Media',
   page: {
-    subtitle: 'Explore our latest news and materials',
+    heroTitle: 'Media & Achievements',
+    heroMessage: 'Verified technology and field achievements on record.',
+    heroSub: 'Press releases, certifications, awards, and technical resources in one place.',
+    subtitle: 'Latest news and materials',
     options: {
-      press: { title: 'Press Releases', description: 'Check out our latest press releases and news' },
-      awards: { title: 'Awards', description: 'View our awards' },
-      technical: { title: 'Patents', description: 'View our patents' }
+      press: { title: 'Press Releases', description: 'Our story as covered by media and press' },
+      certification: { title: 'Certification', description: 'Quality and environmental certifications' },
+      awards: { title: 'Awards', description: 'Key awards demonstrating technical competitiveness' },
+      technical: { title: 'Patents', description: 'Registered patents and technical resources' }
     }
   },
   tabs: {
     press: 'Press Releases',
-    awards: 'Certifications & Awards',
+    certification: 'Certification',
+    awards: 'Awards',
     technical: 'Technical Materials'
   },
   press: {
@@ -26,6 +31,15 @@ export const media = {
     backLink: 'Back to Press Releases',
     badge: 'Press Release',
     placeholderContent: 'This is a press release added by an administrator. The actual article content can be entered in the admin page.\n\nThe full article content will be displayed here. Administrators can enter the complete article content in this area.'
+  },
+  certification: {
+    title: 'Certifications',
+    subtitle: 'View our certifications',
+    loading: 'Loading...',
+    empty: 'No certifications registered.',
+    sectionTitle: 'Certifications',
+    certificateImage: 'Certification image',
+    readMore: 'Read more'
   },
   awards: {
     title: 'Awards',

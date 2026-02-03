@@ -94,7 +94,7 @@ export default function Product() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                   {feature.description}
                 </p>
               </div>
