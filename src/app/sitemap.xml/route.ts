@@ -9,8 +9,8 @@ function escapeXml(s: string): string {
     .replace(/'/g, '&apos;')
 }
 
-function toIso(date: Date): string {
-  return date.toISOString()
+function toIso(date: Date | string): string {
+  return typeof date === 'string' ? new Date(date).toISOString() : date.toISOString()
 }
 
 export async function GET(): Promise<Response> {
