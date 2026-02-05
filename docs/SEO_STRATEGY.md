@@ -77,7 +77,7 @@
 프로덕션에서 캐노니컬/OG URL이 올바르게 나오도록 설정:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://www.daeyang-eco.com
+NEXT_PUBLIC_SITE_URL=https://daeyang-alpha.vercel.app
 ```
 
 (실제 도메인으로 변경하여 사용)

@@ -3,7 +3,7 @@ import { createClient } from '@/utils/supabase/server'
 
 /** GSC 인식용: sitemap.xml은 순수 XML만 출력. 스크립트/JSX 미포함. */
 const BASE_URL =
-  (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.daeyang-eco.com').replace(
+  (process.env.NEXT_PUBLIC_SITE_URL || 'https://daeyang-alpha.vercel.app').replace(
     /\/$/,
     ''
   )

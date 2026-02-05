@@ -3,7 +3,7 @@
  * 프로덕션 배포 시 NEXT_PUBLIC_SITE_URL을 실제 도메인으로 설정하세요.
  */
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.daeyang-eco.com'
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://daeyang-alpha.vercel.app'
 
 export const SEO = {
   siteUrl: SITE_URL,
