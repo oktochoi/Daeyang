@@ -13,10 +13,13 @@ function url(path: string): string {
   return p === '/' ? BASE_URL : `${BASE_URL}${p}`
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export type SitemapEntry = MetadataRoute.Sitemap[number]
+
+/** sitemap.xml 라우트에서 재사용 (순수 데이터만 반환) */
+export async function getSitemapEntries(): Promise<SitemapEntry[]> {
   const now = new Date()
 
-  const staticEntries: MetadataRoute.Sitemap = [
+  const staticEntries: SitemapEntry[] = [
     { url: url('/'), lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { url: url('/about'), lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: url('/about/ceo'), lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
@@ -36,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url('/media/press'), lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
   ]
 
-  const dynamicEntries: MetadataRoute.Sitemap = []
+  const dynamicEntries: SitemapEntry[] = []
 
   try {
     const supabase = await createClient()
