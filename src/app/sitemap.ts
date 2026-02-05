@@ -76,3 +76,7 @@ export async function getSitemapEntries(): Promise<SitemapEntry[]> {
 
   return [...staticEntries, ...dynamicEntries]
 }
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  return getSitemapEntries()
+}
