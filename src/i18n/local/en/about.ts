@@ -120,8 +120,38 @@ export const about = {
   },
   ceo: {
     title: 'CEO Message',
-    heroLabel: 'Save Earth, Save Energy',
-    mainTitle: 'Technology Promise for a Sustainable Future\nof Daeyang Environmental Technology Co., Ltd.',
+    heroLabel: 'FIELD-VERIFIED ENVIRONMENTAL TECHNOLOGY',
+    heroHeadline: 'Field-verified combustion technology.\nCarbon reduction and energy efficiency—delivered together.',
+    heroSub: 'Coal Green14001 proven in Mongolia, Vietnam, and China',
+    strengths: [
+      { title: 'Field-verified technology', desc: 'Combustion catalyst technology proven at overseas power plants and industrial sites in Mongolia, Vietnam, and China' },
+      { title: 'Carbon and cost reduction', desc: 'Proven results in fuel savings and carbon reduction through improved combustion efficiency and lower emissions' },
+      { title: 'No equipment changes', desc: 'Practical solution that improves efficiency with additive-only application, without modifying existing boilers or plants' },
+    ],
+    story: {
+      problemTitle: 'The challenge',
+      problemBody: 'Where fossil fuels remain essential, combustion efficiency and emissions directly affect both the environment and operating costs. We believed the answer had to address environmental protection and energy savings at once.',
+      technologyTitle: 'How we developed the solution',
+      technologyBody: 'Building on years of combustion expertise and field experience, we developed and commercialized COAL GREEN14001—a combustion catalyst that maximizes the efficiency of coal and heavy oil. The key is improving combustion and reducing emissions through additive dosing alone, without equipment changes.',
+      visionTitle: 'Results and vision',
+      visionBody: 'We have demonstrated reliability through field verification and large-scale supply contracts across Asia. We will continue to set the standard for next-generation environmental technology that delivers both environmental protection (Save the Earth) and energy conservation (Save Energy) through R&D and global partnership.',
+    },
+    stats: [
+      { value: 'KRW 60B+', label: 'Mongolia supply contracts' },
+      { value: '3 countries', label: 'Field verification (Mongolia, Vietnam, China)' },
+      { value: 'No equipment change', label: 'Efficiency and reduction by dosing only' },
+    ],
+    keyMessages: [
+      'Environmental protection and energy efficiency together',
+      'Field-verified technology innovation',
+      'Global sustainable solution company',
+    ],
+    boldPhrases: [
+      'field-verified technology',
+      'carbon reduction',
+      'combustion efficiency',
+      'environmental protection (Save the Earth) and energy conservation (Save Energy)',
+    ],
     paragraphs: [
       'Daeyang Environmental Technology Co., Ltd. is a technology company leading environmental improvement and energy efficiency innovation, creating sustainable future value.',
       'We have grown as an integrated solution provider achieving both environmental protection and energy conservation, turning global energy environment changes and climate change into opportunities.',
