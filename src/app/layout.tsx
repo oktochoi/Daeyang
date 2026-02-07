@@ -89,8 +89,8 @@ export default function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning className="scroll-smooth">
+      <body suppressHydrationWarning className="min-w-0 overflow-x-hidden antialiased">
         <RemixIconLoader />
         <I18nProvider>
           {children}

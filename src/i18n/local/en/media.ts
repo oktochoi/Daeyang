@@ -9,14 +9,16 @@ export const media = {
       press: { title: 'Press Releases', description: 'Our story as covered by media and press' },
       certification: { title: 'Certification', description: 'Quality and environmental certifications' },
       awards: { title: 'Awards', description: 'Key awards demonstrating technical competitiveness' },
-      technical: { title: 'Patents', description: 'Registered patents and technical resources' }
+      technical: { title: 'Patents', description: 'Registered patents and technical resources' },
+      video: { title: 'Videos', description: 'Watch product introductions and field videos' }
     }
   },
   tabs: {
     press: 'Press Releases',
     certification: 'Certification',
     awards: 'Awards',
-    technical: 'Technical Materials'
+    technical: 'Technical Materials',
+    video: 'Videos'
   },
   press: {
     subtitle: 'Check out our latest press releases and news',
@@ -49,5 +51,14 @@ export const media = {
     sectionTitle: 'Awards',
     certificateImage: 'Award image',
     readMore: 'Read more'
+  },
+  video: {
+    title: 'Videos',
+    subtitle: 'Watch product introductions and field videos',
+    loading: 'Loading...',
+    empty: 'No videos registered.',
+    sectionTitle: 'Videos',
+    playLabel: 'Play',
+    closeLabel: 'Close'
   }
 };

@@ -105,9 +105,9 @@ export default function MediaPressPage() {
                       <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 hover:text-teal-600 transition-colors">
                         {i18n.language === 'ko' ? item.title : (item.title_en || item.title)}
                       </h2>
-                      {item.description && (
+                      {(item.description || item.description_en) && (
                         <p className="text-gray-600 leading-relaxed mb-4">
-                          {i18n.language === 'ko' ? item.description : (item.description_en || item.description)}
+                          {i18n.language === 'ko' ? (item.description || item.description_en) : (item.description_en || item.description)}
                         </p>
                       )}
                       {isValidUrl && (

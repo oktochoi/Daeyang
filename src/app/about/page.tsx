@@ -17,9 +17,9 @@ export default function AboutPage() {
       <Breadcrumb />
 
       {/* 상단 타이틀 영역 — 좌측 정렬, 넓은 여백, 선언형 문장 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-16 pb-20 sm:pb-28">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
-          <h1 className="text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-bold text-[#111827] leading-[1.2] tracking-tight max-w-3xl">
+      <section className="mt-[80px] sm:mt-[140px] pt-12 sm:pt-16 pb-5 sm:pb-14">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 safe-area-padding-x">
+          <h1 className="text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-bold text-[#111827] leading-[1.2] tracking-tight max-w-5xl">
             {t('about.page.heroTitle')}
           </h1>
           <p className="mt-4 text-sm sm:text-base text-[#6B7280] max-w-xl">
@@ -30,8 +30,8 @@ export default function AboutPage() {
 
       {/* 상단 2열: 연혁 / 비전 및 철학 */}
       <section className="pb-8">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 safe-area-padding-x">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
             {/* 연혁 카드 — 정보형, 안정적 */}
             <Link
               href="/about/history"

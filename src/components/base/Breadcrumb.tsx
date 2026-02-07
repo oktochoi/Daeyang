@@ -26,6 +26,7 @@ export default function Breadcrumb() {
     '/media/press': { ko: t('common.nav.mediaPress'), en: 'Press Release' },
     '/media/certification': { ko: t('common.nav.mediaCertification'), en: 'Certification' },
     '/media/awards': { ko: t('common.nav.mediaAwards'), en: 'Awards' },
+    '/media/video': { ko: t('media.tabs.video'), en: 'Videos' },
     '/contact': { ko: t('common.cta.contact'), en: 'Contact' },
   };
 
@@ -67,9 +68,9 @@ export default function Breadcrumb() {
   if (breadcrumbs.length === 1 && pathname === '/') return null;
 
   return (
-    <div className="bg-gray-50 border-b border-gray-200 fixed top-16 sm:top-20 left-0 right-0 z-40">
-      <div className="max-w-7xl mx-auto px-6 py-3">
-        <div className="flex items-center gap-2 text-sm">
+    <div className="bg-gray-50 border-b border-gray-200 fixed top-14 sm:top-16 md:top-20 left-0 right-0 z-40 safe-area-padding-x">
+      <div className="max-w-7xl mx-auto py-2.5 sm:py-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap">
           <Link href="/" className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer">
             <i className="ri-home-4-line"></i>
           </Link>

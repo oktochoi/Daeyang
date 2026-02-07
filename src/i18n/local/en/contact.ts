@@ -21,7 +21,8 @@ export const contact = {
     messagePlaceholder: 'Please provide details about your inquiry',
     submit: 'Submit Inquiry',
     success: 'Your inquiry has been submitted successfully. We will contact you soon.',
-    error: 'An error occurred while submitting your inquiry. Please try again.'
+    error: 'An error occurred while submitting your inquiry. Please try again.',
+    submittedTitle: 'Submitted inquiry'
   },
   info: {
     phone: {
@@ -34,7 +35,8 @@ export const contact = {
     },
     address: {
       label: 'Address',
-      value: '123 Teheran-ro, Gangnam-gu, Seoul, Korea'
+      value: '308, Ace Techno Tower 8th, 11 Digital-ro 33-gil, Guro-gu, Seoul, Korea',
+      plusCode: 'FVPW+76 Seoul'
     }
   }
 };

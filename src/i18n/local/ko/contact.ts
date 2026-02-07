@@ -2,7 +2,7 @@ export const contact = {
   hero: {
     imageAlt: '문의하기 배경',
     title: '지금 문의하세요',
-    subtitle: '02-2619-2451로 연락 주시면 가장 가까운 담당자가 빠르게 응대합니다.',
+    subtitle: '02-2619-2451로 연락 주시면\n 가장 가까운 담당자가 빠르게 응대합니다.',
     cta: '문의하기'
   },
   form: {
@@ -21,7 +21,8 @@ export const contact = {
     messagePlaceholder: '문의하실 내용을 자세히 입력해주세요',
     submit: '문의 제출',
     success: '문의가 성공적으로 제출되었습니다. 빠른 시일 내에 연락드리겠습니다.',
-    error: '문의 제출 중 오류가 발생했습니다. 다시 시도해주세요.'
+    error: '문의 제출 중 오류가 발생했습니다. 다시 시도해주세요.',
+    submittedTitle: '제출한 문의 내용'
   },
   info: {
     phone: {
@@ -30,11 +31,12 @@ export const contact = {
     },
     email: {
       label: '이메일',
-      value: '문의 시 안내'
+      value: 'info@daeyangenv.com'
     },
     address: {
       label: '주소',
-      value: '문의 시 안내'
+      value: '서울특별시 구로구 디지털로33길 11, 에이스테크노타워8차 308호',
+      plusCode: 'FVPW+76 서울특별시'
     }
   }
 };

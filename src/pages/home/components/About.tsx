@@ -34,18 +34,22 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-white border-t-2 border-teal-600/30 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section ref={sectionRef} className={`py-16 sm:py-24 lg:py-32 bg-white border-t-2 border-teal-600/30 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 safe-area-padding-x">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Left: Content */}
           <div className={`transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
               {t('common.nav.about')}
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              <span className="mb-3">{t('home.about.titleLine1')}</span><br />
-              <span className="text-teal-600">{t('home.about.titleLine2')}</span>
-            </h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                <span className="block mb-2">
+                  {t('home.about.titleLine1')}
+                </span>
+                <span className="block text-teal-600 pb-2">
+                  {t('home.about.titleLine2')}
+                </span>
+              </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
               {t('about.hero.description')}
             </p>
@@ -61,7 +65,7 @@ export default function About() {
             </div>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-8 py-4 bg-teal-600 text-white text-base sm:text-lg font-semibold rounded-xl hover:bg-teal-700 active:bg-teal-800 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer touch-manipulation"
             >
               회사소개 자세히 보기
               <i className="ri-arrow-right-line text-xl"></i>

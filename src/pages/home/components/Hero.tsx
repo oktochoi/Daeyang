@@ -10,7 +10,7 @@ export default function Hero() {
   const router = useRouter();
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-[max(320px,100dvh)] w-full overflow-hidden flex flex-col justify-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -19,46 +19,47 @@ export default function Hero() {
           fill
           className="object-cover object-center hero-bg-zoom"
           priority
+          sizes="100vw"
         />
-        {/* 좌측(텍스트 영역) 80% 어두움 → 우측 30~40% 어두움 그라데이션 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35" aria-hidden />
       </div>
 
-      {/* Content */}
-      <div className="relative h-full flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-left max-w-[720px] pl-0">
-            {/* Eyebrow Label - 12~14px, 600 weight, letter-spacing 0.10~0.14em, opacity 60~70% */}
-            <div className="text-xs sm:text-sm font-semibold text-white/65 uppercase tracking-[0.12em] mb-4 hero-fade-up">
+      {/* Content - 반응형 패딩·타이포·터치 영역 */}
+      <div className="relative flex items-center min-h-[max(320px,100dvh)] py-10 sm:py-12 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 min-[400px]:px-5 sm:px-6 lg:px-8 w-full safe-area-padding-x">
+          <div className="text-left max-w-[720px]">
+            {/* Eyebrow */}
+            <div className="text-[11px] min-[380px]:text-xs sm:text-sm font-semibold text-white/65 uppercase tracking-[0.1em] sm:tracking-[0.12em] mb-3 sm:mb-4 hero-fade-up">
               {t('home.hero.eyebrow')}
             </div>
-            
-            {/* Main Title - 700 weight 중심, 일부 키워드만 800, line-height 1.15~1.2, letter-spacing -0.03em ~ -0.05em, 줄바꿈 고정 */}
-            <h1 className="text-[40px] sm:text-[56px] lg:text-[72px] font-bold text-white mb-6 leading-[1.18] tracking-[-0.04em] hero-fade-up">
-              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine1')}</span>{t('home.hero.titleLine2')}<br className="hidden sm:block sm:mb-2" />
+
+            {/* Main Title - 단계별 크기·줄간격·여백 */}
+            <h1 className="text-[26px] min-[360px]:text-[30px] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-[1.22] sm:leading-[1.18] tracking-[-0.04em] hero-fade-up break-words">
+              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine1')}</span>{t('home.hero.titleLine2')}<br className="hidden sm:block" />
               <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine3')}</span>{t('home.hero.titleLine4')}
             </h1>
-            
-            {/* Subtitle - 16px(모바일), 18px(PC), 500 weight, rgba(255,255,255,0.78), letter-spacing -0.01em, line-height 1.45, text-shadow */}
+
+            {/* Subtitle */}
             <p
-              className="text-base sm:text-lg font-medium text-white/80 mb-7 leading-[1.45] tracking-[-0.01em] hero-fade-in-delay-1"
+              className="text-sm min-[400px]:text-base sm:text-lg font-medium text-white/80 mb-5 sm:mb-6 md:mb-7 leading-[1.5] sm:leading-[1.45] tracking-[-0.01em] hero-fade-in-delay-1 break-words max-w-[90vw] sm:max-w-none"
               style={{ textShadow: '0 2px 12px rgba(0,0,0,0.35)' }}
             >
               {t('home.hero.subtitle')}
             </p>
 
-            
-            {/* CTA Buttons - 미니멀한 고급스러운 스타일 */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 mb-16 sm:mb-20">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
               <button
+                type="button"
                 onClick={() => router.push('/product/overview')}
-                className="h-12 px-6 sm:px-8 bg-teal-700 hover:bg-teal-800 text-white text-base font-medium rounded-[14px] transition-colors duration-200 whitespace-nowrap cursor-pointer hero-fade-in-delay-2"
+                className="min-h-[44px] sm:min-h-[48px] h-12 px-5 sm:px-6 md:px-8 py-3 bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-sm sm:text-base font-medium rounded-xl transition-colors duration-200 cursor-pointer hero-fade-in-delay-2 touch-manipulation"
               >
                 {t('home.hero.cta.product')}
               </button>
               <button
+                type="button"
                 onClick={() => router.push('/contact')}
-                className="h-12 px-6 sm:px-8 bg-transparent hover:bg-white/5 text-white text-base font-medium rounded-[14px] border border-white/20 transition-all duration-200 whitespace-nowrap cursor-pointer hero-fade-in-delay-3"
+                className="min-h-[44px] sm:min-h-[48px] h-12 px-5 sm:px-6 md:px-8 py-3 bg-transparent hover:bg-white/5 active:bg-white/10 text-white text-sm sm:text-base font-medium rounded-xl border border-white/20 transition-all duration-200 cursor-pointer hero-fade-in-delay-3 touch-manipulation"
               >
                 {t('home.hero.cta.contact')}
               </button>

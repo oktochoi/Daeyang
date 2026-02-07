@@ -2,7 +2,7 @@ export const about = {
   label: 'ABOUT US',
   page: {
     heroTitle: 'Redefining the standard of combustion through environmental technology',
-    heroSub: 'Discover the story of Dayang Eco Technology.',
+    heroSub: 'Discover the story of Daiyang Eco Technology.',
     subtitle: 'Explore company information, history, and management philosophy',
     options: {
       history: {
@@ -25,7 +25,7 @@ export const about = {
   hero: {
     title1: 'Environmental Technology-Based Solution Company',
     title2: 'Environmental Technology Specialist with Manufacturing Capabilities',
-    description: 'Dayang Eco Technology is an environmental technology company that develops and supplies eco-friendly combustion solutions to improve coal combustion efficiency and reduce air pollution. We provide practical technologies that improve efficiency and profitability without changing existing equipment.',
+    description: 'Daiyang Eco Technology is an environmental technology company that develops and supplies eco-friendly combustion solutions to improve coal combustion efficiency and reduce air pollution. We provide practical technologies that improve efficiency and profitability without changing existing equipment.',
     link: 'View History'
   },
   overview: {
@@ -48,7 +48,7 @@ export const about = {
       {
         year: '2011',
         title: 'Company Establishment',
-        description: 'Dayang Eco Technology Co., Ltd. established'
+        description: 'Daiyang Eco Technology Co., Ltd. established'
       },
       {
         year: '2012-2014',
@@ -170,11 +170,11 @@ export const about = {
     footerCompany: 'Daeyang Environmental Technology Co., Ltd.',
     name: 'Kim Jung-hwan',
     position: 'CEO',
-    message: `Welcome to Dayang Eco Technology Co., Ltd., a company leading environmental improvement.
+    message: `Welcome to Daiyang Eco Technology Co., Ltd., a company leading environmental improvement.
 
 Our company was established as an innovative environmental improvement technology company to become the best social enterprise in the eco-friendly field by continuously promoting research and development to foster the environmental industry, focusing on environmental protection (Save the Earth) and energy conservation (Save Energy).
 
-The world is now facing many difficulties due to global warming caused by excessive use of fossil fuels, such as air pollution, carbon emissions, and greenhouse gas emissions. Our Dayang Eco Technology Co., Ltd. is achieving practical results in environmental protection and energy resource conservation by distributing coal additives (combustion catalysts) and functional briquettes developed with proprietary technology to improve the efficiency of fossil fuels, and we will continue to work on innovative environmental improvement through continuous R&D.
+The world is now facing many difficulties due to global warming caused by excessive use of fossil fuels, such as air pollution, carbon emissions, and greenhouse gas emissions. Our Daiyang Eco Technology Co., Ltd. is achieving practical results in environmental protection and energy resource conservation by distributing coal additives (combustion catalysts) and functional briquettes developed with proprietary technology to improve the efficiency of fossil fuels, and we will continue to work on innovative environmental improvement through continuous R&D.
 
 We promise to grow into the best company of the 21st century leading environmental protection and energy conservation by further expanding the ongoing local business for fossil fuel energy improvement in Asia, including Korea Coal Corporation, Mongolia, Vietnam, and China. We ask for your continued interest and cooperation.`,
     keyMessage: 'We provide practical solutions that simultaneously improve both the environment and costs.'

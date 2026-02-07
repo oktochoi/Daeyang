@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import factory2 from '../../../assets/factory_2.png';
-import factory3 from '../../../assets/factory_3.png';
-import factory4 from '../../../assets/factroey_4.png';
+import factory2 from '../../../assets/1.jpg';
+import factory3 from '../../../assets/2.jpg';
+import factory4 from '../../../assets/3.jpg';
 
 export default function Product() {
   const { t } = useTranslation();
@@ -57,7 +57,7 @@ export default function Product() {
   ];
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gray-50/80 border-t-2 border-gray-200 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-16 sm:py-24 lg:py-32 bg-gray-50/80 border-t-2 border-gray-200 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
@@ -88,10 +88,7 @@ export default function Product() {
                 />
               </div>
               <div className="p-8">
-                <div className="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
-                  <i className={`${feature.icon} text-3xl text-teal-600`}></i>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed whitespace-pre-line">

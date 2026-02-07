@@ -71,7 +71,7 @@ export default function AboutHistoryPage() {
       
       {/* Hero Section */}
       <section className="mt-[80px] sm:mt-[140px] pt-16 sm:pt-20 pb-8 sm:pb-10 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 text-left">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-left safe-area-padding-x">
           <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
               {t('about.history.title')}
@@ -83,7 +83,7 @@ export default function AboutHistoryPage() {
 
       {/* History Timeline */}
       <section className="pb-[48px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 safe-area-padding-x">
           <div className="mb-8">
             <h2 className="text-[30px] font-bold text-[#1f2933] mb-2">
               {t('about.history.milestoneSectionTitle')}

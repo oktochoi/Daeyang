@@ -102,9 +102,9 @@ export default function MediaAwardsPage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
                         {i18n.language === 'ko' ? award.title : (award.title_en || award.title)}
                       </h3>
-                      {award.description && (
+                      {(award.description || award.description_en) && (
                         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                          {i18n.language === 'ko' ? award.description : (award.description_en || award.description)}
+                          {i18n.language === 'ko' ? (award.description || award.description_en) : (award.description_en || award.description)}
                         </p>
                       )}
                       {award.award_date && (

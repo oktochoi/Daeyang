@@ -168,7 +168,7 @@ export default function PerformanceDetailPage() {
               {title}
             </h1>
             {description && (
-              <p className="mt-2 text-white/90 text-sm sm:text-base max-w-2xl line-clamp-2">
+              <p className="mt-2 text-white/90 text-sm sm:text-base max-w-2xl">
                 {description}
               </p>
             )}
@@ -242,7 +242,7 @@ export default function PerformanceDetailPage() {
                       )}
                     </div>
                     <div className="p-4 sm:p-5">
-                      <h3 className="text-base font-semibold text-gray-900 line-clamp-2">
+                      <h3 className="text-base font-semibold text-gray-900">
                         {itemTitle}
                       </h3>
                     </div>

@@ -32,7 +32,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden border-t-4 border-teal-600/50 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <section ref={sectionRef} className={`py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden border-t-4 border-teal-600/50 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -41,20 +41,20 @@ export default function Contact() {
         }}></div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center safe-area-padding-x">
         <div className={`transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="inline-block px-4 py-1.5 bg-teal-500/20 text-teal-300 rounded-full text-sm font-medium mb-6">
+          <div className="inline-block px-4 py-1.5 bg-teal-500/20 text-teal-300 rounded-full text-sm font-medium mb-4 sm:mb-6">
             {t('common.nav.contact')}
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             {t('home.contact.title')}
           </h2>
-          <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+          <p className="text-base sm:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed">
             {t('home.finalCta.subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-8 sm:mb-10">
           <div className={`bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 transition-all duration-500 delay-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <i className="ri-phone-line text-2xl text-teal-300"></i>
@@ -81,7 +81,7 @@ export default function Contact() {
         <div className={`transition-all duration-500 delay-250 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-700 transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 min-h-[48px] px-8 sm:px-10 py-4 sm:py-5 bg-teal-600 text-white text-base sm:text-lg font-semibold rounded-xl hover:bg-teal-700 active:bg-teal-800 transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer touch-manipulation"
           >
             {t('home.finalCta.button')}
             <i className="ri-arrow-right-line text-xl"></i>

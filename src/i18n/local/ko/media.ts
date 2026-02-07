@@ -9,14 +9,16 @@ export const media = {
       press: { title: '보도자료', description: '보도 및 언론에 담긴 우리의 소식' },
       certification: { title: '인증', description: '품질·환경 인증으로 검증된 기준' },
       awards: { title: '수상', description: '기술 경쟁력을 증명하는 주요 수상 기록' },
-      technical: { title: '특허', description: '등록 특허 및 기술 자료' }
+      technical: { title: '특허', description: '등록 특허 및 기술 자료' },
+      video: { title: '영상', description: '제품 소개 및 현장 영상을 바로 시청하세요' }
     }
   },
   tabs: {
     press: '보도자료',
     certification: '인증',
     awards: '수상',
-    technical: '특허'
+    technical: '특허',
+    video: '영상'
   },
   press: {
     subtitle: '최신 보도자료와 뉴스를 확인하세요',
@@ -49,5 +51,14 @@ export const media = {
     sectionTitle: '수상 내역',
     certificateImage: '수상 이미지',
     readMore: '자세히 보기'
+  },
+  video: {
+    title: '영상',
+    subtitle: '제품 소개 및 현장 영상을 시청하세요',
+    loading: '로딩 중...',
+    empty: '등록된 영상이 없습니다.',
+    sectionTitle: '영상',
+    playLabel: '재생',
+    closeLabel: '닫기'
   }
 };

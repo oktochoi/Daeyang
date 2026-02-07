@@ -52,6 +52,20 @@ export interface TechnicalResource {
   updated_at?: string;
 }
 
+// 영상(Video) 타입
+export interface MediaVideo {
+  id: number;
+  title: string;
+  title_en?: string;
+  description?: string;
+  description_en?: string;
+  url: string;
+  featured_image?: string;
+  published_date?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 // ========== Press Releases ==========
 
 // 보도 자료 가져오기
@@ -516,6 +530,115 @@ export async function deleteTechnicalResource(id: number): Promise<boolean> {
     return true;
   } catch (error) {
     console.error('Error deleting technical resource:', error);
+    return false;
+  }
+}
+
+// ========== Media Videos (영상) ==========
+
+export async function getMediaVideos(): Promise<MediaVideo[]> {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    console.warn('Supabase client is not initialized. Returning empty array.');
+    return [];
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('media_videos')
+      .select('*')
+      .order('published_date', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching media videos:', error.message || error.code || error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    const err = error as Error & { code?: string };
+    console.error('Error fetching media videos:', err?.message ?? err);
+    return [];
+  }
+}
+
+export async function createMediaVideo(video: Omit<MediaVideo, 'id' | 'created_at' | 'updated_at'>): Promise<MediaVideo | null> {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    console.error('Supabase client is not initialized. Cannot create media video.');
+    return null;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('media_videos')
+      .insert([video])
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error creating media video:', (error as { message?: string; code?: string }).message ?? (error as { message?: string; code?: string }).code ?? error);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    const err = error as Error & { code?: string };
+    console.error('Error creating media video:', err?.message ?? err);
+    return null;
+  }
+}
+
+export async function updateMediaVideo(id: number, video: Partial<MediaVideo>): Promise<MediaVideo | null> {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    console.error('Supabase client is not initialized. Cannot update media video.');
+    return null;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('media_videos')
+      .update(video)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating media video:', (error as { message?: string; code?: string }).message ?? (error as { message?: string; code?: string }).code ?? error);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    const err = error as Error & { code?: string };
+    console.error('Error updating media video:', err?.message ?? err);
+    return null;
+  }
+}
+
+export async function deleteMediaVideo(id: number): Promise<boolean> {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    console.error('Supabase client is not initialized. Cannot delete media video.');
+    return false;
+  }
+
+  try {
+    const { error } = await supabase
+      .from('media_videos')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting media video:', (error as { message?: string; code?: string }).message ?? (error as { message?: string; code?: string }).code ?? error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    const err = error as Error & { code?: string };
+    console.error('Error deleting media video:', err?.message ?? err);
     return false;
   }
 }

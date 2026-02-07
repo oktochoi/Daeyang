@@ -73,12 +73,12 @@ export default function PerformancePage() {
       <Breadcrumb />
 
       {/* Hero — 그라데이션 배경 + 포인트 라인 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-14 sm:pt-20 pb-12 sm:pb-16 bg-gradient-to-b from-teal-50/40 via-white to-white border-b border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
-          <h1 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-gray-900 tracking-tight border-l-4 border-teal-500 pl-5">
+      <section className="mt-[88px] sm:mt-[140px] pt-8 sm:pt-20 pb-6 sm:pb-16 bg-gradient-to-b from-teal-50/40 via-white to-white border-b border-gray-100">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 safe-area-padding-x">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-gray-900 tracking-tight border-l-4 border-teal-500 pl-4 sm:pl-5">
             {t('common.nav.performance')}
           </h1>
-          <p className="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl pl-5">
+          <p className="mt-2 text-gray-600 text-base sm:text-lg max-w-2xl pl-5">
             {t('performance.page.subtitle')}
           </p>
           <span className="mt-5 ml-5 block h-0.5 w-16 bg-teal-400/80 rounded-full" aria-hidden />
@@ -87,7 +87,7 @@ export default function PerformancePage() {
 
       {/* 성과 쇼케이스 */}
       <section className="py-12 sm:py-16 md:py-20 bg-gray-50/30">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 safe-area-padding-x">
           {isLoading ? (
             <div className="flex items-center justify-center py-20">
               <div className="animate-spin rounded-full h-9 w-9 border-2 border-gray-200 border-t-teal-500" />

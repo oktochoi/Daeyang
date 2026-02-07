@@ -423,6 +423,32 @@ export async function deletePerformanceProject(id: number): Promise<boolean> {
   }
 }
 
+// 문의하기 (contact_inquiries)
+export interface ContactInquiry {
+  id: number;
+  name: string | null;
+  company: string | null;
+  email: string | null;
+  phone: string | null;
+  industry: string | null;
+  message: string | null;
+  created_at: string | null;
+}
+
+export async function getContactInquiries(): Promise<ContactInquiry[]> {
+  const supabase = getSupabaseClient();
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from('contact_inquiries')
+    .select('id, name, company, email, phone, industry, message, created_at')
+    .order('created_at', { ascending: false });
+  if (error) {
+    console.error('Error fetching contact inquiries:', error);
+    return [];
+  }
+  return (data ?? []) as ContactInquiry[];
+}
+
 // Media 관련 타입과 함수는 src/lib/supabase-media.ts에서 import하여 사용하세요
 // 보도 자료, 인증 및 수상, 기술자료 관련 함수들은 별도 파일에 있습니다.
 

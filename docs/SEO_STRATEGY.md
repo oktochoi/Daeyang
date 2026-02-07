@@ -16,7 +16,7 @@
 
 ### 2.1 브랜드·핵심 키워드
 
-- **브랜드**: 대양환경기술, Dayang Eco Technology
+- **브랜드**: 대양환경기술, Daiyang Eco Technology
 - **제품**: Coal Green14001
 - **역할**: 연소 효율 개선, 배출가스 저감, 연료비 절감, 대기오염 저감
 

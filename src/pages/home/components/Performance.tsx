@@ -152,7 +152,7 @@ export default function Performance() {
                     {i18n.language === 'ko' ? project.title : (project.titleEn || project.title)}
                   </h3>
                   {project.description && (
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 line-clamp-2">
                       {i18n.language === 'ko' ? project.description : (project.descriptionEn || project.description)}
                     </p>
                   )}

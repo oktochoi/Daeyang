@@ -1,8 +1,8 @@
 export const home = {
   hero: {
     imageAlt: '대양환경기술 - 연소 효율 개선 솔루션',
-    eyebrow: 'DAYANG ECO TECHNOLOGY',
-    title: '연소 효율을 높이고, 대기오염을 줄입니다.',
+    eyebrow: 'Daiyang ECO TECHNOLOGY',
+    title: '연소 효율을 높이고 대기오염을 줄입니다.',
     titleLine1: '연소 효율',
     titleLine2: '을 높이고,',
     titleLine3: '대기오염',

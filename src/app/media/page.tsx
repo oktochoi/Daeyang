@@ -11,6 +11,7 @@ const CARD_STYLES = {
   certification: { bar: 'border-l-blue-500', icon: 'text-blue-600' },
   awards: { bar: 'border-l-amber-500', icon: 'text-amber-600' },
   technical: { bar: 'border-l-emerald-600', icon: 'text-emerald-600' },
+  video: { bar: 'border-l-violet-500', icon: 'text-violet-600' },
 } as const
 
 export default function MediaPage() {
@@ -21,6 +22,7 @@ export default function MediaPage() {
     { key: 'certification', title: t('media.page.options.certification.title'), description: t('media.page.options.certification.description'), href: '/media/certification', icon: 'ri-verified-badge-line' },
     { key: 'awards', title: t('media.page.options.awards.title'), description: t('media.page.options.awards.description'), href: '/media/awards', icon: 'ri-award-line' },
     { key: 'technical', title: t('media.page.options.technical.title'), description: t('media.page.options.technical.description'), href: '/product/technical', icon: 'ri-file-text-line' },
+    { key: 'video', title: t('media.page.options.video.title'), description: t('media.page.options.video.description'), href: '/media/video', icon: 'ri-play-circle-line' },
   ]
 
   return (

@@ -97,9 +97,9 @@ export default function MediaCertificationPage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
                         {i18n.language === 'ko' ? item.title : (item.title_en || item.title)}
                       </h3>
-                      {item.description && (
+                      {(item.description || item.description_en) && (
                         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                          {i18n.language === 'ko' ? item.description : (item.description_en || item.description)}
+                          {i18n.language === 'ko' ? (item.description || item.description_en) : (item.description_en || item.description)}
                         </p>
                       )}
                       {item.award_date && (

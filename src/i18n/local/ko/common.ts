@@ -40,7 +40,7 @@ export const common = {
     quickLinks: '빠른 링크',
     resources: '자료실',
     contact: '연락처',
-    address: '문의 시 안내',
+    address: '서울특별시 구로구 디지털로33길 11, 에이스테크노타워8차 308호',
     company: '주식회사 대양환경기술',
     rights: 'All rights reserved.',
     newsletter: '뉴스레터',

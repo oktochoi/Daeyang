@@ -1,7 +1,7 @@
 export const home = {
   hero: {
-    imageAlt: 'Dayang Environmental Technology - Combustion efficiency solution',
-    eyebrow: 'DAYANG ECO TECHNOLOGY',
+    imageAlt: 'Daiyang Environmental Technology - Combustion efficiency solution',
+    eyebrow: 'Daiyang ECO TECHNOLOGY',
     title: 'Improve Combustion Efficiency, Reduce Air Pollution.',
     titleLine1: 'Improve',
     titleLine2: ' combustion efficiency,',
@@ -18,7 +18,7 @@ export const home = {
     titleLine1: 'Environmental technology-based',
     titleLine2: 'Solution company',
     cta: 'Learn more about us',
-    imageAlt: 'Dayang Environmental Technology - About Us',
+    imageAlt: 'Daiyang Environmental Technology - About Us',
   },
   product: {
     cta: 'View product details',

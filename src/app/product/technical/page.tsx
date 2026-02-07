@@ -97,9 +97,9 @@ export default function ProductTechnicalPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
                       {i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title)}
                     </h3>
-                    {doc.description && (
+                    {(doc.description || doc.description_en) && (
                       <p className="text-[15px] text-[#4b5563] leading-[1.6] font-normal line-clamp-3">
-                        {i18n.language === 'ko' ? doc.description : (doc.description_en || doc.description)}
+                        {i18n.language === 'ko' ? (doc.description || doc.description_en) : (doc.description_en || doc.description)}
                       </p>
                     )}
                     {doc.url && (

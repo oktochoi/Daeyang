@@ -10,8 +10,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white border-t border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16 safe-area-padding-x pb-safe">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Company Info with Logo */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6 relative h-16 w-48">
@@ -33,23 +33,23 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.quickLinks')}</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-white">{t('common.footer.quickLinks')}</h3>
+            <ul className="space-y-1 sm:space-y-3">
               <li>
-                <Link href="/about" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
+                <Link href="/about" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2 py-2.5 min-h-[44px] touch-manipulation">
+                  <i className="ri-arrow-right-s-line text-xs flex-shrink-0"></i>
                   {t('common.nav.about')}
                 </Link>
               </li>
               <li>
-                <Link href="/product/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
+                <Link href="/product/overview" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2 py-2.5 min-h-[44px] touch-manipulation">
+                  <i className="ri-arrow-right-s-line text-xs flex-shrink-0"></i>
                   {t('common.nav.product')}
                 </Link>
               </li>
               <li>
-                <Link href="/performance" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
+                <Link href="/performance" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2 py-2.5 min-h-[44px] touch-manipulation">
+                  <i className="ri-arrow-right-s-line text-xs flex-shrink-0"></i>
                   {t('common.nav.performance')}
                 </Link>
               </li>
@@ -58,17 +58,17 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.resources')}</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-white">{t('common.footer.resources')}</h3>
+            <ul className="space-y-1 sm:space-y-3">
               <li>
-                <Link href="/media" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
+                <Link href="/media" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2 py-2.5 min-h-[44px] touch-manipulation">
+                  <i className="ri-arrow-right-s-line text-xs flex-shrink-0"></i>
                   {t('common.nav.media')}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2">
-                  <i className="ri-arrow-right-s-line text-xs"></i>
+                <Link href="/contact" className="text-sm text-gray-400 hover:text-teal-400 transition-colors cursor-pointer flex items-center gap-2 py-2.5 min-h-[44px] touch-manipulation">
+                  <i className="ri-arrow-right-s-line text-xs flex-shrink-0"></i>
                   {t('common.nav.contact')}
                 </Link>
               </li>
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-white">{t('common.footer.contact')}</h3>
+            <h3 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-white">{t('common.footer.contact')}</h3>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 flex items-center justify-center bg-teal-600/20 rounded mt-0.5 flex-shrink-0">
@@ -102,8 +102,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-6 sm:pt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
             <p className="text-sm text-gray-500 text-center md:text-left">
               © 2025 {t('common.footer.company')}. {t('common.footer.rights')}
             </p>

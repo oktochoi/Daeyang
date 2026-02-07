@@ -40,7 +40,7 @@ export const common = {
     quickLinks: 'Quick Links',
     resources: 'Resources',
     contact: 'Contact',
-    address: 'Available upon inquiry',
+    address: '308, Ace Techno Tower 8th, 11 Digital-ro 33-gil, Guro-gu, Seoul, Korea',
     company: 'Daeyang Environmental Technology Co., Ltd.',
     rights: 'All rights reserved.',
     newsletter: 'NEWSLETTER',

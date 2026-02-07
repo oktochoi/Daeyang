@@ -64,7 +64,7 @@ export default function AboutCeoPage() {
 
       {/* CEO 인사말 메인 — 스크롤 등장 + 첫 문장 강조 + 프로필 카드 */}
       <section className="pt-10 sm:pt-14 md:pt-18 pb-12 sm:pb-16 md:pb-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12" ref={contentRef}>
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 safe-area-padding-x" ref={contentRef}>
           <div
             className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start transition-all duration-700 ease-out ${
               visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
