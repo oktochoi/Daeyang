@@ -76,12 +76,12 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen min-w-0 overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-[100vw] min-w-0 overflow-x-hidden box-border">
       <Navbar />
       <Breadcrumb />
 
-      {/* Hero - PC에서 네비·브레드크럼과 겹치지 않도록 상단 여백 확보 */}
-      <section className="relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px] flex flex-col justify-end pt-[88px] sm:pt-24 md:pt-32 lg:pt-36">
+      {/* Hero - 모바일 상단 여백 강화, 네비·브레드크럼 겹침 방지 */}
+      <section className="relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px] flex flex-col justify-end w-full min-w-0 pt-[104px] sm:pt-24 md:pt-32 lg:pt-36">
         <div className="absolute inset-0">
           <Image
             src="https://readdy.ai/api/search-image?query=wide%20panoramic%20view%20of%20modern%20industrial%20facility%20at%20sunset%20with%20dramatic%20sky%2C%20professional%20corporate%20photography%20of%20large%20scale%20power%20plant%20complex%2C%20inspiring%20industrial%20landscape%20with%20warm%20lighting&width=1920&height=600&seq=contact1&orientation=landscape"
@@ -93,11 +93,21 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-black/55" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-14 safe-area-padding-x">
-          <h1 className="text-2xl min-[430px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase mb-3 sm:mb-4 leading-tight">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 md:pb-14 box-border safe-area-padding-x min-w-0">
+          <h1 className="text-2xl min-[430px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white lowercase mb-3 sm:mb-4 leading-tight break-words max-w-full">
             {t('contact.hero.title')}
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-8 max-w-xl">
+          <p
+            className="
+              text-sm sm:text-base md:text-lg
+              text-white/90
+              mb-6 sm:mb-8
+              max-w-prose
+              leading-relaxed
+              break-words
+              pr-2 sm:pr-0
+            "
+          >
             {t('contact.hero.subtitle')}
           </p>
           <a
@@ -113,12 +123,12 @@ export default function ContactPage() {
       </section>
 
       {/* Form - 카드형·터치 친화·16px 폰트(iOS 줌 방지) */}
-      <section id="contact-form" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white scroll-mt-24">
-        <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 safe-area-padding-x">
+      <section id="contact-form" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white scroll-mt-24 w-full min-w-0">
+        <div className="w-full max-w-[min(100%-2rem,42rem)] sm:max-w-2xl mx-auto px-4 sm:px-6 box-border safe-area-padding-x min-w-0">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
             {t('contact.form.title')}
           </h2>
-          <form onSubmit={handleSubmit} data-readdy-form className="bg-gray-50/80 sm:bg-gray-50 rounded-2xl p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6 border border-gray-100">
+          <form onSubmit={handleSubmit} data-readdy-form className="bg-gray-50/80 sm:bg-gray-50 rounded-2xl p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6 border border-gray-100 w-full min-w-0 box-border">
             <div>
               <label htmlFor="contact-name" className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 sm:mb-2">
                 {t('contact.form.name')}
@@ -270,8 +280,8 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info - 카드 반응형·텍스트 줄바꿈 */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 safe-area-padding-x">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-50 w-full min-w-0">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 box-border safe-area-padding-x min-w-0">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-10">
             <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 text-center min-w-0 shadow-sm border border-gray-100">
               <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center mx-auto mb-3 sm:mb-4 rounded-lg bg-teal-50">
@@ -304,7 +314,7 @@ export default function ContactPage() {
           </div>
 
           {/* Map */}
-          <div className="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white min-w-0">
+          <div className="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white min-w-0 w-full max-w-full">
             <div className="h-[240px] sm:h-[300px] md:h-[380px] lg:h-[460px] w-full">
               <iframe
                 src="https://www.google.com/maps?q=서울특별시+구로구+디지털로33길+11+에이스테크노타워8차&output=embed"
