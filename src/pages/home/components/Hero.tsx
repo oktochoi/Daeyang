@@ -35,7 +35,7 @@ export default function Hero() {
 
             {/* Main Title - 단계별 크기·줄간격·여백 */}
             <h1 className="text-[26px] min-[360px]:text-[30px] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-[1.22] sm:leading-[1.18] tracking-[-0.04em] hero-fade-up break-words">
-              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine1')}</span>{t('home.hero.titleLine2')}<br className="hidden sm:block" />
+              <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine1')}</span>{t('home.hero.titleLine2')}<br />
               <span className="font-extrabold tracking-[0.02em]">{t('home.hero.titleLine3')}</span>{t('home.hero.titleLine4')}
             </h1>
 

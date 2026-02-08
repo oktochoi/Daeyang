@@ -738,8 +738,8 @@ export default function AdminDashboardPage() {
                     <th className="py-3 px-2 font-medium">회사</th>
                     <th className="py-3 px-2 font-medium">이메일</th>
                     <th className="py-3 px-2 font-medium">연락처</th>
-                    <th className="py-3 px-2 font-medium">산업</th>
-                    <th className="py-3 px-2 font-medium">문의 내용</th>
+                    <th className="py-3 px-2 font-medium min-w-[100px]">산업</th>
+                    <th className="py-3 px-2 font-medium min-w-[180px]">문의 내용</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -756,9 +756,9 @@ export default function AdminDashboardPage() {
                         ) : '-'}
                       </td>
                       <td className="py-3 px-2">{inquiry.phone ?? '-'}</td>
-                      <td className="py-3 px-2">{inquiry.industry ?? '-'}</td>
-                      <td className="py-3 px-2 max-w-xs">
-                        <span className="line-clamp-2 text-gray-700" title={inquiry.message ?? ''}>{inquiry.message ?? '-'}</span>
+                      <td className="py-3 px-2 min-w-[100px] max-w-[200px] break-words align-top">{inquiry.industry ?? '-'}</td>
+                      <td className="py-3 px-2 min-w-[180px] break-words align-top whitespace-pre-wrap text-gray-700">
+                        {inquiry.message ?? '-'}
                       </td>
                     </tr>
                   ))}

@@ -344,7 +344,7 @@ export async function createAwardCertification(award: Omit<AwardCertification, '
   }
 }
 
-// 인증 및 수상 업데이트
+// 인증 및 수상 업데이트 (DB에 없는 컬럼 전송 시 400 방지: 기본 컬럼만 사용, category는 선택)
 export async function updateAwardCertification(id: number, award: Partial<AwardCertification>): Promise<AwardCertification | null> {
   const supabase = getSupabaseClient();
   if (!supabase) {
@@ -352,20 +352,47 @@ export async function updateAwardCertification(id: number, award: Partial<AwardC
     return null;
   }
 
+  const baseKeys = [
+    'title', 'title_en', 'description', 'description_en',
+    'featured_image', 'url', 'award_date',
+  ] as const;
+  const row: Record<string, unknown> = {};
+  for (const key of baseKeys) {
+    const value = award[key];
+    if (value !== undefined && value !== null) {
+      row[key] = value;
+    }
+  }
+  const categoryValue = award.category ?? award.type;
+  if (categoryValue !== undefined && categoryValue !== null) {
+    row['category'] = categoryValue;
+  }
+
   try {
-    const { data, error } = await supabase
+    let result = await supabase
       .from('awards_certifications')
-      .update(award)
+      .update(row)
       .eq('id', id)
       .select()
       .single();
 
-    if (error) {
-      console.error('Error updating award certification:', error);
+    const isBadRequestOrUnknownCol = result.error && ('400' === result.error.code || '42703' === result.error.code);
+    if (isBadRequestOrUnknownCol && 'category' in row) {
+      delete row['category'];
+      result = await supabase
+        .from('awards_certifications')
+        .update(row)
+        .eq('id', id)
+        .select()
+        .single();
+    }
+
+    if (result.error) {
+      console.error('Error updating award certification:', result.error);
       return null;
     }
 
-    return data;
+    return result.data;
   } catch (error) {
     console.error('Error updating award certification:', error);
     return null;
