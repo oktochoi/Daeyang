@@ -50,16 +50,17 @@ export default function ProductApplicationPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-[96px] bg-white">
-        <div className="max-w-[1200px] mx-auto px-8 text-left">
-          <h1 className="text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25]">
+      <section className="pt-[100px] sm:pt-[160px] pb-20 sm:pb-[96px] bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25] break-words">
             {t('product.application.title')}
           </h1>
-          <p className="text-[15px] text-[#4b5563] leading-[1.6] max-w-[480px] mb-0 font-normal">
+          <p className="text-sm sm:text-[5px] text-[#4b5563] leading-[1.6] max-w-[480px] font-normal">
             {t('product.application.heroSubtitle')}
           </p>
         </div>
       </section>
+
 
       {/* Application Method */}
       <section className="pb-[96px] bg-white">

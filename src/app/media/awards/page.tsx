@@ -7,12 +7,14 @@ import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import ImageLightbox from '../../../components/base/ImageLightbox';
 import { getAwards, AwardCertification } from '@/lib/supabase-media';
 
 export default function MediaAwardsPage() {
   const { t, i18n } = useTranslation();
   const [awards, setAwards] = useState<AwardCertification[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption?: string } | null>(null);
 
   useEffect(() => {
     async function loadAwards() {
@@ -73,8 +75,15 @@ export default function MediaAwardsPage() {
                     key={award.id}
                     className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 group"
                   >
-                    {/* A4 비율 이미지 컨테이너 (210:297 = 약 1:1.414) */}
-                    <div className="relative w-full" style={{ aspectRatio: '210 / 297' }}>
+                    {/* A4 비율 이미지 컨테이너 — 클릭 시 확대 */}
+                    <div
+                      className="relative w-full cursor-zoom-in"
+                      style={{ aspectRatio: '210 / 297' }}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => award.featured_image && setLightbox({ src: award.featured_image!, alt: i18n.language === 'ko' ? award.title : (award.title_en || award.title), caption: i18n.language === 'ko' ? award.title : (award.title_en || award.title) })}
+                      onKeyDown={(e) => e.key === 'Enter' && award.featured_image && setLightbox({ src: award.featured_image!, alt: i18n.language === 'ko' ? award.title : (award.title_en || award.title), caption: i18n.language === 'ko' ? award.title : (award.title_en || award.title) })}
+                    >
                       {award.featured_image ? (
                         <Image
                           src={award.featured_image}
@@ -138,6 +147,16 @@ export default function MediaAwardsPage() {
           )}
         </div>
       </section>
+
+      {lightbox && (
+        <ImageLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          caption={lightbox.caption}
+          isOpen={!!lightbox}
+          onClose={() => setLightbox(null)}
+        />
+      )}
 
       <Footer />
     </div>

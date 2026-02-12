@@ -6,12 +6,14 @@ import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import ImageLightbox from '../../../components/base/ImageLightbox';
 import { getTechnicalResources, TechnicalResource } from '@/lib/supabase-media';
 
 export default function ProductTechnicalPage() {
   const { t, i18n } = useTranslation();
   const [techDocs, setTechDocs] = useState<TechnicalResource[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption?: string } | null>(null);
 
   useEffect(() => {
     async function loadTechnicalResources() {
@@ -73,7 +75,13 @@ export default function ProductTechnicalPage() {
                   className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 group"
                 >
                   {doc.featured_image ? (
-                    <div className="bg-gray-100 overflow-hidden relative w-full">
+                    <div
+                      className="bg-gray-100 overflow-hidden relative w-full cursor-zoom-in"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setLightbox({ src: doc.featured_image!, alt: i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title), caption: i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title) })}
+                      onKeyDown={(e) => e.key === 'Enter' && setLightbox({ src: doc.featured_image!, alt: i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title), caption: i18n.language === 'ko' ? doc.title : (doc.title_en || doc.title) })}
+                    >
                       <div className="relative w-full" style={{ minHeight: '200px' }}>
                         <Image
                           src={doc.featured_image}
@@ -121,6 +129,16 @@ export default function ProductTechnicalPage() {
           )}
         </div>
       </section>
+
+      {lightbox && (
+        <ImageLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          caption={lightbox.caption}
+          isOpen={!!lightbox}
+          onClose={() => setLightbox(null)}
+        />
+      )}
 
       <Footer />
     </div>

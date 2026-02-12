@@ -21,7 +21,10 @@ export default function Hero() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35" aria-hidden />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/40 to-black/50"
+          aria-hidden
+        />
       </div>
 
       {/* Content - 반응형 패딩·타이포·터치 영역 */}

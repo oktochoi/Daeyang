@@ -95,6 +95,11 @@ export const about = {
         year: '2024',
         title: '대규모 계약 체결 및 연구 협력',
         description: '몽골 MONZOL GROUP 석탄조연제 공급 계약 체결 (600억 원 규모)\n몽골 ENKHDOGIBOLD Co., Ltd. 공급 계약 체결 (75억 원 규모)\n몽골 성형탄 국영기업(TTT)과 조연제 공동개발·납품 협약서 체결\n서울대학교 에너지자원 신기술연구소 산학협력 체결 및 공동 연구 추진'
+      },
+      {
+        year: '2025',
+        title: '인도 Gammon India Co.,LTD. 조연제 판매 중',
+        description: '한국기업가치평가원 기업 가치 평가 완료 (1주 : 51,000원)'
       }
     ],
     coalGreenPosition: 'Coal Green은 회사의 핵심 기술이자 현재 주력 사업 제품입니다.',

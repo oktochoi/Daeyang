@@ -7,12 +7,14 @@ import Image from 'next/image';
 import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
+import ImageLightbox from '../../../components/base/ImageLightbox';
 import { getCertifications, AwardCertification } from '@/lib/supabase-media';
 
 export default function MediaCertificationPage() {
   const { t, i18n } = useTranslation();
   const [items, setItems] = useState<AwardCertification[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string; caption?: string } | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -71,7 +73,14 @@ export default function MediaCertificationPage() {
                     key={item.id}
                     className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 group"
                   >
-                    <div className="relative w-full" style={{ aspectRatio: '210 / 297' }}>
+                    <div
+                        className="relative w-full cursor-zoom-in"
+                        style={{ aspectRatio: '210 / 297' }}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => item.featured_image && setLightbox({ src: item.featured_image!, alt: i18n.language === 'ko' ? item.title : (item.title_en || item.title), caption: i18n.language === 'ko' ? item.title : (item.title_en || item.title) })}
+                        onKeyDown={(e) => e.key === 'Enter' && item.featured_image && setLightbox({ src: item.featured_image!, alt: i18n.language === 'ko' ? item.title : (item.title_en || item.title), caption: i18n.language === 'ko' ? item.title : (item.title_en || item.title) })}
+                      >
                       {item.featured_image ? (
                         <Image
                           src={item.featured_image}
@@ -133,6 +142,16 @@ export default function MediaCertificationPage() {
           )}
         </div>
       </section>
+
+      {lightbox && (
+        <ImageLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          caption={lightbox.caption}
+          isOpen={!!lightbox}
+          onClose={() => setLightbox(null)}
+        />
+      )}
 
       <Footer />
     </div>

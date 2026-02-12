@@ -17,7 +17,7 @@ export const SEO = {
   locale: 'ko_KR',
   alternateLocale: 'en_US',
   twitterHandle: '@daeyang_eco',
-  ogImagePath: '/og-image.jpg',
+  ogImagePath: '/og.png',
 } as const
 
 export function canonical(path: string): string {

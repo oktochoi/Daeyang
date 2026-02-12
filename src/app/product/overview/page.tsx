@@ -36,32 +36,41 @@ export default function ProductOverviewPage() {
           <div className="relative rounded-[24px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] bg-gradient-to-br from-gray-50 via-white to-teal-50/30 border border-gray-100">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_50%,rgba(20,184,166,0.06),transparent)]" />
             <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[420px] lg:min-h-[480px]">
-              <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-16 hero-fade-up">
-                <p className="text-teal-600 text-[12px] font-semibold tracking-[0.2em] uppercase mb-4">COAL GREEN</p>
-                <h1 className="text-[38px] sm:text-[40px] font-bold text-[#111827] leading-[1.25] tracking-[-0.01em] mb-6">
+              <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-16 hero-fade-up">
+                <p className="text-teal-600 text-[11px] sm:text-[12px] font-semibold tracking-[0.18em] uppercase mb-3 sm:mb-4">
+                  COAL GREEN
+                </p>
+
+                <h1 className="text-[26px] sm:text-[32px] md:text-[38px] font-bold text-[#111827] leading-[1.2] tracking-[-0.02em] mb-5 sm:mb-6 break-words">
                   {t('product.overview.heroTitle1')}
                   <br />
-                  <span className="text-teal-600 whitespace-pre-line">{t('product.overview.heroTitle2')}</span>
+                  <span className="text-teal-600 whitespace-pre-line">
+                    {t('product.overview.heroTitle2')}
+                  </span>
                 </h1>
-                <ul className="space-y-5">
-                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
-                    <i className="ri-check-line text-teal-600 text-lg"></i>
+
+                <ul className="space-y-4 sm:space-y-5">
+                  <li className="flex items-center gap-3 text-[14px] sm:text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-base sm:text-lg"></i>
                     {t('product.overview.keyword1')}
                   </li>
-                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
-                    <i className="ri-check-line text-teal-600 text-lg"></i>
+
+                  <li className="flex items-center gap-3 text-[14px] sm:text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-base sm:text-lg"></i>
                     {t('product.overview.keyword2')}
                   </li>
-                  <li className="flex items-center gap-3 text-[15px] font-medium text-teal-600">
-                    <i className="ri-check-line text-teal-600 text-lg"></i>
+
+                  <li className="flex items-center gap-3 text-[14px] sm:text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-base sm:text-lg"></i>
                     {t('product.overview.keyword3')}
                   </li>
                 </ul>
               </div>
+
               <div className="relative h-[320px] lg:h-auto lg:min-h-[480px] order-first lg:order-last overflow-hidden">
                 <div className="absolute inset-0 brightness-[0.93]">
                   <Image
-                    src={factory5}
+                    src={factory2}
                     alt={t('product.overview.heroImageAlt')}
                     fill
                     className="object-cover object-center"
@@ -79,9 +88,14 @@ export default function ProductOverviewPage() {
       {/* 2️⃣ Section 2: "왜 이게 필요하냐" (문제 제시) */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
-          <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-10 underline decoration-teal-600 decoration-2 underline-offset-4">
+        <h2 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] 
+               font-bold text-[#1f2933] 
+               mb-6 sm:mb-8 md:mb-10 
+               leading-[1.25] tracking-[-0.02em] 
+               underline decoration-teal-600 decoration-2 underline-offset-4 break-words">
             {t('product.overview.problemsTitle')}
           </h2>
+
           <div
             ref={problemsRef.ref as React.RefObject<HTMLDivElement>}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -92,7 +106,7 @@ export default function ProductOverviewPage() {
                 <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem1Short')}</h3>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
-                <Image src={factory1} alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src="/11.PNG" alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem1.description')}</p>
               </div>
@@ -103,7 +117,7 @@ export default function ProductOverviewPage() {
                 <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem2Short')}</h3>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
-                <Image src={factory2} alt={t('product.overview.problem2Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src="/22.PNG" alt={t('product.overview.problem2Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem2.description')}</p>
               </div>
@@ -114,7 +128,7 @@ export default function ProductOverviewPage() {
                 <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem3Short')}</h3>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
-                <Image src={factory3} alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src="/33.PNG" alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem3.description')}</p>
               </div>

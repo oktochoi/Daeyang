@@ -72,9 +72,15 @@ export default function PerformancePage() {
       <Navbar />
       <Breadcrumb />
 
-      {/* Hero — 그라데이션 배경 + 포인트 라인 */}
-      <section className="mt-[88px] sm:mt-[140px] pt-8 sm:pt-20 pb-6 sm:pb-16 bg-gradient-to-b from-teal-50/40 via-white to-white border-b border-gray-100">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-8 safe-area-padding-x">
+      {/* Hero — 배경 이미지(은은) + 그라데이션 + 포인트 라인 */}
+      <section className="relative mt-[88px] sm:mt-[140px] pt-8 sm:pt-20 pb-6 sm:pb-16 overflow-hidden border-b border-gray-100">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
+          style={{ backgroundImage: "url('/media_bg.jpg')" }}
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/55 to-white" aria-hidden />
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-8 safe-area-padding-x">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-gray-900 tracking-tight border-l-4 border-teal-500 pl-4 sm:pl-5">
             {t('common.nav.performance')}
           </h1>
