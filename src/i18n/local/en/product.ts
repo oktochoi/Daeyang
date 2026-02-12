@@ -176,7 +176,7 @@ export const product = {
     specFormValue: 'Concentrate: gel-type liquid (color: brown or transparent)',
     specMethod: 'Usage method',
     specMethodValue: 'Dilute with water and spray before coal input',
-    specRatio: 'Ratio (coal : water)',
+    specRatio: 'Ratio (concentrate : coal)',
     specRatioCoal: '1:4,000',
     specRatioIncineration: '1:400',
     ctaTechnical: 'Patents',
@@ -197,12 +197,12 @@ export const product = {
       description: 'Reduced coal consumption through improved efficiency'
     },
     emission: {
-      title: 'Emission Reduction',
+      title: 'Air quality improvement',
       value: '30%+',
       description: 'Decreased NOx, SOx and other harmful emissions'
     },
     maintenance: {
-      title: 'Maintenance Cost',
+      title: 'Equipment life extension',
       value: '40%↓',
       description: 'Extended equipment failure and cleaning intervals'
     }

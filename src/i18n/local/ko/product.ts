@@ -176,7 +176,7 @@ export const product = {
     specFormValue: '원액 : 겔타입의 액체 (색상 : 갈색 또는 투명)',
     specMethod: '사용방법',
     specMethodValue: '물과 원액을 희석 후 석탄 투입 전 스프레이 분사',
-    specRatio: '비율(석탄 : 물)',
+    specRatio: '비율(원액 : 석탄)',
     specRatioCoal: '1:4,000',
     specRatioIncineration: '1:400',
     ctaTechnical: '특허',
@@ -197,12 +197,12 @@ export const product = {
       description: '연소 효율 상승으로 \n석탄 사용량을 줄여 수익성을 개선합니다.'
     },
     emission: {
-      title: '배출 저감',
+      title: '대기환경 개선',
       value: '배출↓',
       description: 'CO/CO₂/NOx/SOx와 분진을 낮춰 규제 대응'
     },
     maintenance: {
-      title: '설비 보호',
+      title: '설비 수명 연장',
       value: '클링커↓',
       description: '클링커·바텀애시 감소로 유지보수 비용을 절감'
     }
