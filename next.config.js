@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'img.youtube.com',
         pathname: '/vi/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'readdy.ai',
+        pathname: '/api/**',
+      },
     ],
     unoptimized: false,
   },

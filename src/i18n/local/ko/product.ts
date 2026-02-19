@@ -19,7 +19,7 @@ export const product = {
   },
   hero: {
     title: 'Coal Green14001',
-    subtitle: '석탄 연소 효율을 높여 오염물질을 줄이는 첨가형 연소조연제입니다.'
+    subtitle: '석탄 연소 효율을 개선으로 완전연소에 의한 각종 배기가스를 저감하는 조연제 입니다.'
   },
   definition: {
     title: '제품 정의',
@@ -155,7 +155,7 @@ export const product = {
     process2Desc: '연료 사용량 감소',
     process3Title: '회분·클링커 감소',
     process3Desc: '클링커 제거 및 재생성 방지',
-    effectCostValue: '운감소영 비용 ',
+    effectCostValue: '운영비영 감소 ',
     effectEmissionValue: '배출가스 감소',
     effectMaintenanceValue: '유지보수 비용 절감',
     proofSubline: '실제 현장 적용 사례 · 연소 효율 개선 및 배출 감소 확인',

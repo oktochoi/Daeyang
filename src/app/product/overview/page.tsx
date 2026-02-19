@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,22 +8,71 @@ import Navbar from '../../../components/feature/Navbar';
 import Breadcrumb from '../../../components/base/Breadcrumb';
 import Footer from '../../../components/feature/Footer';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
+import { getPerformanceProjects } from '@/lib/supabase';
+import { performanceProjects as mockProjects } from '../../../mocks/performance';
 import factory1 from '../../../assets/factory_1.png';
 import factory2 from '../../../assets/factory_2.png';
 import factory3 from '../../../assets/factory_3.png';
 import factory5 from '../../../assets/factory_5.jpg';
-import chinaTest from '../../../assets/중국발전소테스트.jpg';
-import mongolia from '../../../assets/몽골.jpg';
-import palau from '../../../assets/팔라위현장짤.jpg';
 import sprayScene from '../../../assets/조연제분사장면.png';
+import fallbackProof1 from '../../../assets/중국발전소테스트.jpg';
+import fallbackProof2 from '../../../assets/몽골.jpg';
+import fallbackProof3 from '../../../assets/팔라위현장짤.jpg';
+
+const FALLBACK_PROOF_IMAGES = [fallbackProof1, fallbackProof2, fallbackProof3];
+
+interface ProofProject {
+  id: number;
+  title: string;
+  titleEn?: string;
+  description?: string;
+  descriptionEn?: string;
+  icon?: string;
+}
 
 export default function ProductOverviewPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [proofProjects, setProofProjects] = useState<ProofProject[]>([]);
+  const [proofLoading, setProofLoading] = useState(true);
   const problemsRef = useScrollAnimation();
   const solutionRef = useScrollAnimation();
   const effectsRef = useScrollAnimation();
   const proofRef = useScrollAnimation();
   const tableRef = useScrollAnimation();
+
+  useEffect(() => {
+    async function loadProofProjects() {
+      setProofLoading(true);
+      try {
+        const projects = await getPerformanceProjects();
+        const source = projects?.length ? projects : mockProjects;
+        const recent3 = (source as ProofProject[]).slice(0, 3);
+        setProofProjects(recent3.map((p: Record<string, unknown>) => ({
+          id: p.id as number,
+          title: (p.title || '') as string,
+          titleEn: (p.titleEn ?? p.title_en ?? '') as string,
+          description: (p.description ?? p.result ?? '') as string,
+          descriptionEn: (p.descriptionEn ?? p.description_en ?? p.resultEn ?? '') as string,
+          icon: (p.image ?? p.icon ?? '') as string,
+        })));
+      } catch {
+        const recent3 = mockProjects.slice(0, 3);
+        setProofProjects(recent3.map((p) => ({
+          id: p.id,
+          title: p.title || '프로젝트',
+          titleEn: p.titleEn || p.title || 'Project',
+          description: p.description ?? p.result ?? '',
+          descriptionEn: p.descriptionEn ?? p.resultEn ?? '',
+          icon: p.image ?? p.icon,
+        })));
+      } finally {
+        setProofLoading(false);
+      }
+    }
+    loadProofProjects();
+  }, []);
+
+  const lang = i18n.language === 'ko' ? 'ko' : 'en';
 
   return (
     <div className="min-h-screen bg-white">
@@ -225,38 +274,53 @@ export default function ProductOverviewPage() {
               {t('product.overview.proofSubline')}
             </p>
           </div>
+          {proofLoading ? (
+            <div className="flex justify-center py-16">
+              <div className="animate-spin rounded-full h-9 w-9 border-2 border-gray-200 border-t-teal-500" />
+            </div>
+          ) : (
           <div
             ref={proofRef.ref as React.RefObject<HTMLDivElement>}
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
-              <div className="aspect-[4/3] relative">
-                <Image src={chinaTest} alt={t('product.overview.proofChinaTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className="p-4 bg-gray-50">
-                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofChinaTitle')}</p>
-                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofChinaDesc')}</p>
-              </div>
-            </div>
-            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
-              <div className="aspect-[4/3] relative">
-                <Image src={mongolia} alt={t('product.overview.proofMongoliaTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className="p-4 bg-gray-50">
-                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofMongoliaTitle')}</p>
-                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofMongoliaDesc')}</p>
-              </div>
-            </div>
-            <div className={`rounded-xl overflow-hidden border border-gray-200 shadow-sm ${proofRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
-              <div className="aspect-[4/3] relative">
-                <Image src={palau} alt={t('product.overview.proofPalauTitle')} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className="p-4 bg-gray-50">
-                <p className="text-sm font-medium text-[#1f2933]">{t('product.overview.proofPalauTitle')}</p>
-                <p className="text-xs text-[#4b5563] mt-0.5">{t('product.overview.proofPalauDesc')}</p>
-              </div>
-            </div>
+            {proofProjects.map((project, index) => {
+              const title = lang === 'ko' ? project.title : (project.titleEn || project.title);
+              const desc = lang === 'ko' ? (project.description ?? '') : (project.descriptionEn ?? project.description ?? '');
+              const hasImageUrl = project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://'));
+              const imgSrc = hasImageUrl ? project.icon! : (FALLBACK_PROOF_IMAGES[index] ?? FALLBACK_PROOF_IMAGES[0]);
+              const staggerClass = `product-animate-in product-stagger-${index + 1}`;
+              return (
+                <Link
+                  key={project.id}
+                  href={`/performance/${project.id}`}
+                  className={`block rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow ${staggerClass}`}
+                >
+                  <div className="aspect-[4/3] relative bg-gray-100">
+                    <Image
+                      src={imgSrc}
+                      alt={title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      unoptimized={hasImageUrl}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (hasImageUrl) {
+                          const fb = FALLBACK_PROOF_IMAGES[index] ?? FALLBACK_PROOF_IMAGES[0];
+                          target.src = typeof fb === 'string' ? fb : (fb as { src: string }).src;
+                        }
+                      }}
+                    />
+                  </div>
+                  <div className="p-4 bg-gray-50">
+                    <p className="text-sm font-medium text-[#1f2933]">{title}</p>
+                    {desc && <p className="text-xs text-[#4b5563] mt-0.5 line-clamp-2">{desc}</p>}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+          )}
           <div className="mt-8 text-center">
             <Link
               href="/performance"

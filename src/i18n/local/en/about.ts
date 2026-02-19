@@ -73,7 +73,7 @@ export const about = {
       {
         year: '2025',
         title: 'Selling combustion catalyst to Gammon India Co., Ltd. (India)',
-        description: 'Korea Enterprise Value Evaluation Institute business value evaluation completed (1 share: KRW 51,000)'
+        description: 'Korea Enterprise Value Evaluation Institute business value evaluation completed'
       }
     ],
     coalGreenPosition: 'Coal Green is the company\'s core technology and current main business product.',

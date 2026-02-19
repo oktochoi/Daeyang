@@ -19,7 +19,7 @@ export const product = {
   },
   hero: {
     title: 'Coal Green14001',
-    subtitle: 'An additive combustion catalyst that improves coal combustion efficiency and reduces pollutants.'
+    subtitle: 'A combustion catalyst that improves coal combustion efficiency and reduces various exhaust gases through complete combustion.'
   },
   definition: {
     title: 'Product Definition',

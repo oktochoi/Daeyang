@@ -9,15 +9,21 @@ import Breadcrumb from '../../components/base/Breadcrumb'
 import Footer from '../../components/feature/Footer'
 import { getPerformanceProjects, PerformanceProject as SupabasePerformanceProject, PerformanceProjectItem } from '@/lib/supabase'
 import { performanceProjects as mockProjects } from '../../mocks/performance'
+import fallback1 from '../../assets/중국발전소테스트.jpg'
+import fallback2 from '../../assets/몽골.jpg'
+import fallback3 from '../../assets/팔라위현장짤.jpg'
 
-function transformSupabaseProject(project: SupabasePerformanceProject & { titleEn?: string; descriptionEn?: string }) {
+const FALLBACK_IMAGES = [fallback1, fallback2, fallback3]
+
+function transformSupabaseProject(project: SupabasePerformanceProject & { titleEn?: string; descriptionEn?: string; image?: string }) {
+  const icon = (project as { image?: string }).image ?? project.icon
   return {
     id: project.id,
     title: project.title,
-    titleEn: project.title_en ?? project.titleEn,
-    icon: project.icon,
-    description: project.description,
-    descriptionEn: project.description_en ?? project.descriptionEn,
+    titleEn: project.title_en ?? (project as { titleEn?: string }).titleEn,
+    icon,
+    description: project.description ?? (project as { result?: string }).result,
+    descriptionEn: project.description_en ?? (project as { descriptionEn?: string }).descriptionEn ?? (project as { resultEn?: string }).resultEn,
     items: project.items || [],
   }
 }
@@ -125,15 +131,21 @@ export default function PerformancePage() {
                           unoptimized
                           priority={index < 3}
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          onError={(e) => {
+                            const fb = FALLBACK_IMAGES[index] ?? FALLBACK_IMAGES[0]
+                            const target = e.target as HTMLImageElement
+                            target.src = typeof fb === 'string' ? fb : (fb as { src: string }).src
+                            target.onerror = null
+                          }}
                         />
                       ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400 text-4xl">
-                          {project.icon?.startsWith('ri-') ? (
-                            <i className={project.icon} aria-hidden />
-                          ) : (
-                            <span aria-hidden>▢</span>
-                          )}
-                        </div>
+                        <Image
+                          src={FALLBACK_IMAGES[index] ?? FALLBACK_IMAGES[0]}
+                          alt=""
+                          fill
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
                       )}
                       {/* 어두운 그라데이션 오버레이 */}
                       <div
