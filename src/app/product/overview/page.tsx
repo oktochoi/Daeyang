@@ -305,7 +305,7 @@ export default function ProductOverviewPage() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      unoptimized={hasImageUrl}
+                      unoptimized={!!hasImageUrl}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (hasImageUrl) {
