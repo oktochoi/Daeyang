@@ -13,7 +13,7 @@ export const SEO = {
     'Coal Green14001으로 연료비 절감과 배출가스 저감을 동시에. 연소 효율 개선, 대기오염 저감, 설비 변경 없이 적용 가능한 환경기술 솔루션.',
   defaultDescriptionEn:
     'Fuel cost reduction and emission reduction with Coal Green14001. Combustion efficiency improvement, air pollution reduction, environmental technology without equipment changes.',
-  googleSiteVerification: '4j3cTkVACL2lF9s0CFfg6x9kHsVdndQdbKI5atxdBGQ',
+  googleSiteVerification: 'Jcm1_pdZyCMeoNG1e3lch9Pwh844RPtpHvQJ3KwxRXE',
   locale: 'ko_KR',
   alternateLocale: 'en_US',
   twitterHandle: '@daeyang_eco',
