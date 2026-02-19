@@ -46,15 +46,18 @@ export default function ProductOverviewPage() {
       try {
         const projects = await getPerformanceProjects();
         const source = projects?.length ? projects : mockProjects;
-        const recent3 = (source as ProofProject[]).slice(0, 3);
-        setProofProjects(recent3.map((p: Record<string, unknown>) => ({
-          id: p.id as number,
-          title: (p.title || '') as string,
-          titleEn: (p.titleEn ?? p.title_en ?? '') as string,
-          description: (p.description ?? p.result ?? '') as string,
-          descriptionEn: (p.descriptionEn ?? p.description_en ?? p.resultEn ?? '') as string,
-          icon: (p.image ?? p.icon ?? '') as string,
-        })));
+        const recent3 = source.slice(0, 3);
+        setProofProjects(recent3.map((p) => {
+          const raw = p as ProofProject & { title_en?: string; description_en?: string; result?: string; resultEn?: string; image?: string };
+          return {
+            id: raw.id,
+            title: raw.title || '',
+            titleEn: raw.titleEn ?? raw.title_en ?? '',
+            description: raw.description ?? raw.result ?? '',
+            descriptionEn: raw.descriptionEn ?? raw.description_en ?? raw.resultEn ?? '',
+            icon: raw.image ?? raw.icon ?? '',
+          };
+        }));
       } catch {
         const recent3 = mockProjects.slice(0, 3);
         setProofProjects(recent3.map((p) => ({
