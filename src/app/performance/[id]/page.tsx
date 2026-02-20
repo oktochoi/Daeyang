@@ -11,6 +11,7 @@ import Footer from '../../../components/feature/Footer'
 import { getPerformanceProjectById, PerformanceProject as SupabasePerformanceProject, PerformanceProjectItem } from '@/lib/supabase'
 import { performanceProjects as mockProjects } from '../../../mocks/performance'
 import type { PerformanceProject as MockProject } from '../../../mocks/performance'
+import { getRelatedSolutions } from '@/lib/related-solutions'
 
 const ITEMS_PER_PAGE = 9
 
@@ -26,7 +27,7 @@ function mockToSupabaseFormat(mock: MockProject): SupabasePerformanceProject {
   }
 }
 
-function transformSupabaseProject(project: SupabasePerformanceProject) {
+function transformSupabaseProject(project: SupabasePerformanceProject & { category?: string }) {
   return {
     id: project.id,
     title: project.title,
@@ -36,7 +37,13 @@ function transformSupabaseProject(project: SupabasePerformanceProject) {
     description: project.description,
     descriptionEn: project.description_en,
     items: project.items || [],
+    category: project.category,
   }
+}
+
+function transformMockProject(mock: MockProject) {
+  const base = transformSupabaseProject(mockToSupabaseFormat(mock))
+  return { ...base, category: mock.category }
 }
 
 interface ProjectDisplay {
@@ -48,6 +55,7 @@ interface ProjectDisplay {
   description?: string
   descriptionEn?: string
   items?: PerformanceProjectItem[]
+  category?: string
 }
 
 export default function PerformanceDetailPage() {
@@ -68,17 +76,17 @@ export default function PerformanceDetailPage() {
       try {
         const supabaseProject = await getPerformanceProjectById(id)
         if (supabaseProject) {
-          setProject(transformSupabaseProject(supabaseProject))
+          setProject(transformSupabaseProject(supabaseProject as SupabasePerformanceProject & { category?: string }))
         } else {
           const mockProject = mockProjects.find((p) => p.id === id)
           if (mockProject) {
-            setProject(transformSupabaseProject(mockToSupabaseFormat(mockProject)))
+            setProject(transformMockProject(mockProject))
           }
         }
       } catch {
         const mockProject = mockProjects.find((p) => p.id === id)
         if (mockProject) {
-          setProject(transformSupabaseProject(mockToSupabaseFormat(mockProject)))
+          setProject(transformMockProject(mockProject))
         }
       } finally {
         setIsLoading(false)
@@ -289,6 +297,27 @@ export default function PerformanceDetailPage() {
           </div>
         </section>
       )}
+
+      {/* Related Solution — internal linking */}
+      <section className="py-14 sm:py-20 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
+            {i18n.language === 'ko' ? '관련 솔루션' : 'Related Solution'}
+          </h2>
+          <div className="flex flex-wrap gap-3 sm:gap-4">
+            {getRelatedSolutions(project?.category).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-white text-gray-700 hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700 transition-colors text-sm sm:text-base font-medium"
+              >
+                <i className="ri-arrow-right-line text-teal-500" aria-hidden />
+                {i18n.language === 'ko' ? link.labelKo : link.labelEn}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

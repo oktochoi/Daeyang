@@ -83,13 +83,13 @@ export default function Footer() {
                 <div className="w-5 h-5 flex items-center justify-center bg-teal-600/20 rounded mt-0.5 flex-shrink-0">
                   <i className="ri-phone-line text-teal-400 text-sm"></i>
                 </div>
-                <span className="hover:text-white transition-colors">{t('contact.info.phone.value')}</span>
+                <a href="tel:+82-2-2619-2451" className="hover:text-white transition-colors">{t('contact.info.phone.value')}</a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 flex items-center justify-center bg-teal-600/20 rounded mt-0.5 flex-shrink-0">
                   <i className="ri-mail-line text-teal-400 text-sm"></i>
                 </div>
-                <span className="hover:text-white transition-colors break-all">info@daeyangenv.com</span>
+                <a href="mailto:info@daeyangenv.com" className="hover:text-white transition-colors break-all">{t('contact.info.email.value')}</a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 flex items-center justify-center bg-teal-600/20 rounded mt-0.5 flex-shrink-0">

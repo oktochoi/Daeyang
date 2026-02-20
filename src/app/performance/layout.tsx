@@ -3,12 +3,12 @@ import { generateMetadata as genMeta } from '../../lib/seo'
 import { PAGE_SEO } from '../../lib/seo-pages'
 
 export const metadata: Metadata = genMeta({
-  title: PAGE_SEO.product.title,
-  description: PAGE_SEO.product.description,
-  path: '/product',
+  title: PAGE_SEO.performance.title,
+  description: PAGE_SEO.performance.description,
+  path: '/performance',
 })
 
-export default function ProductLayout({
+export default function PerformanceLayout({
   children,
 }: {
   children: React.ReactNode

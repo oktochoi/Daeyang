@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 import { generateMetadata as genMeta } from '../../lib/seo'
-import { PAGE_SEO } from '../../lib/seo-pages'
 
+/** Admin pages: noindex to prevent search engine indexing */
 export const metadata: Metadata = genMeta({
-  title: PAGE_SEO.product.title,
-  description: PAGE_SEO.product.description,
-  path: '/product',
+  title: '관리자',
+  description: '대양환경기술 관리자',
+  path: '/admin',
+  noIndex: true,
 })
 
-export default function ProductLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode

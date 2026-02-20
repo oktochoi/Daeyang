@@ -3,7 +3,9 @@ import type { ReactNode } from 'react'
 import '../index.css'
 import { I18nProvider } from './providers/I18nProvider'
 import RemixIconLoader from '../components/base/RemixIconLoader'
-import { SEO, canonical } from '../lib/seo'
+import { WebSiteJsonLd, OrganizationJsonLd } from '../components/seo/JsonLd'
+import { LocalBusinessJsonLd } from '../components/seo/LocalBusinessJsonLd'
+import { SEO, canonical, ogImageUrl } from '../lib/seo'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -71,9 +73,9 @@ export const metadata: Metadata = {
     description: SEO.defaultDescription,
     images: [
       {
-        url: SEO.ogImagePath,
-        width: 1200,
-        height: 630,
+        url: ogImageUrl(),
+        width: SEO.ogImageWidth,
+        height: SEO.ogImageHeight,
         alt: '대양환경기술 - 연소 효율·배출가스 저감 솔루션',
       },
     ],
@@ -95,6 +97,9 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning className="scroll-smooth">
       <body suppressHydrationWarning className="min-w-0 overflow-x-hidden antialiased">
+        <WebSiteJsonLd />
+        <OrganizationJsonLd />
+        <LocalBusinessJsonLd />
         <RemixIconLoader />
         <I18nProvider>
           {children}

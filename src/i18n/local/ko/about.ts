@@ -99,7 +99,7 @@ export const about = {
       {
         year: '2025',
         title: '인도 Gammon India Co.,LTD. 조연제 판매 중',
-        description: '한국기업가치평가원 기업 가치 평가 완료 (1주 : 51,000원)'
+        description: '한국기업가치평가원 기업 가치 평가 완료'
       }
     ],
     coalGreenPosition: 'Coal Green은 회사의 핵심 기술이자 현재 주력 사업 제품입니다.',

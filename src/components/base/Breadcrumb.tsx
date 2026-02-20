@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
+import { BreadcrumbJsonLd } from '../seo/JsonLd';
 
 export default function Breadcrumb() {
   const pathname = usePathname();
@@ -67,7 +68,14 @@ export default function Breadcrumb() {
   // 홈 페이지만 있으면 breadcrumb 숨기기
   if (breadcrumbs.length === 1 && pathname === '/') return null;
 
+  const jsonLdItems = breadcrumbs.map((c) => ({
+    name: c.labelKo,
+    path: c.path,
+  }));
+
   return (
+    <>
+      <BreadcrumbJsonLd items={jsonLdItems} />
     <div className="bg-gray-50 border-b border-gray-200 fixed top-14 sm:top-16 md:top-20 left-0 right-0 z-40 safe-area-padding-x">
       <div className="max-w-7xl mx-auto py-2.5 sm:py-3">
         <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap">
@@ -94,5 +102,6 @@ export default function Breadcrumb() {
         </div>
       </div>
     </div>
+    </>
   );
 }
