@@ -15,7 +15,7 @@ export const home = {
     }
   },
   about: {
-    titleLine1: '환경기술 기반의',
+    titleLine1: '환경개선 기반의',
     titleLine2: '솔루션 기업',
     cta: '회사소개 자세히 보기',
     imageAlt: '대양환경기술 회사 소개',

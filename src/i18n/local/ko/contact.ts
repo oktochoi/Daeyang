@@ -31,7 +31,7 @@ export const contact = {
     },
     email: {
       label: '이메일',
-      value: 'info@daeyangenv.com'
+      value: 'daiyangecotech@gmail.com'
     },
     address: {
       label: '주소',

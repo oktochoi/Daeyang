@@ -8,7 +8,7 @@ import { SEO, canonical } from '@/lib/seo'
 const LOCAL_BUSINESS = {
   name: SEO.organizationName,
   telephone: '+82-2-2619-2451',
-  email: 'info@daeyangenv.com',
+  email: 'daiyangecotech@gmail.com',
   address: {
     streetAddress: '디지털로33길 11, 에이스테크노타워8차 308호',
     addressLocality: '구로구',

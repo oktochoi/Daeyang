@@ -18,6 +18,9 @@ import sprayScene from '../../../assets/조연제분사장면.png';
 import fallbackProof1 from '../../../assets/중국발전소테스트.jpg';
 import fallbackProof2 from '../../../assets/몽골.jpg';
 import fallbackProof3 from '../../../assets/팔라위현장짤.jpg';
+import miyeonso from '../../../assets/미연소.jpg';
+import clinkerDamage from '../../../assets/클링커 설비손상.jpg';
+import img1111 from '../../../assets/1111.png';
 
 const FALLBACK_PROOF_IMAGES = [fallbackProof1, fallbackProof2, fallbackProof3];
 
@@ -158,7 +161,7 @@ export default function ProductOverviewPage() {
                 <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem1Short')}</h3>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
-                <Image src="/11.PNG" alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src={miyeonso} alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem1.description')}</p>
               </div>
@@ -180,7 +183,7 @@ export default function ProductOverviewPage() {
                 <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem3Short')}</h3>
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
-                <Image src="/33.PNG" alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src={clinkerDamage} alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem3.description')}</p>
               </div>
@@ -206,14 +209,14 @@ export default function ProductOverviewPage() {
           >
             <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[280px] rounded-xl overflow-hidden border border-gray-200">
               <Image
-                src={sprayScene}
+                src={img1111}
                 alt={t('product.howItWorks.changes.change1')}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div className="lg:border-l lg:border-dashed lg:border-gray-200 pl-0 lg:pl-8">
+            <div className="lg:border-l lg:border-dashed lg:border-gray-200 pl-0 lg:pl-12 lg:pr-4">
               <p className="text-[11px] font-medium text-[#9ca3af] tracking-widest uppercase mb-6">Process</p>
               <ul className="space-y-7">
                 <li>
