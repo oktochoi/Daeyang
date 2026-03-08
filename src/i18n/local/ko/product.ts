@@ -155,7 +155,7 @@ export const product = {
     process2Desc: '연료 사용량 감소',
     process3Title: '회분·클링커 감소',
     process3Desc: '클링커 제거 및 재생성 방지',
-    effectCostValue: '운영비영 감소 ',
+    effectCostValue: '운영비용 감소 ',
     effectEmissionValue: '배출가스 감소',
     effectMaintenanceValue: '유지보수 비용 절감',
     proofSubline: '실제 현장 적용 사례 · 연소 효율 개선 및 배출 감소 확인',
