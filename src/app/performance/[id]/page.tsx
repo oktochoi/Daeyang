@@ -111,7 +111,7 @@ export default function PerformanceDetailPage() {
       <div className="min-h-screen bg-white">
         <Navbar />
         <Breadcrumb />
-        <section className="mt-[80px] sm:mt-[140px] pt-24 pb-20 bg-gray-50/60">
+        <section className="content-below-nav-bc pt-24 pb-20 bg-gray-50/60">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center">
             <div className="inline-block animate-spin rounded-full h-9 w-9 border-2 border-gray-200 border-t-teal-500" />
             <p className="mt-4 text-gray-600">{t('performance.detail.loading')}</p>
@@ -127,7 +127,7 @@ export default function PerformanceDetailPage() {
       <div className="min-h-screen bg-white">
         <Navbar />
         <Breadcrumb />
-        <section className="mt-[80px] sm:mt-[140px] pt-24 pb-20 bg-gray-50/60 border-b border-gray-100">
+        <section className="content-below-nav-bc pt-24 pb-20 bg-gray-50/60 border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
               {t('performance.detail.notFound')}
@@ -151,7 +151,7 @@ export default function PerformanceDetailPage() {
 
       {/* 히어로 — 대표 이미지 있으면 풀폭 커버, 없으면 그라데이션 헤더 */}
       {hasHeroImage ? (
-        <section className="mt-[80px] sm:mt-[140px] relative min-h-[280px] sm:min-h-[340px] flex items-end">
+        <section className="content-below-nav-bc relative min-h-[280px] sm:min-h-[340px] flex items-end">
           <div className="absolute inset-0">
             <Image
               src={project.icon}
@@ -183,7 +183,7 @@ export default function PerformanceDetailPage() {
           </div>
         </section>
       ) : (
-        <section className="mt-[80px] sm:mt-[140px] pt-12 sm:pt-16 pb-14 sm:pb-20 bg-gradient-to-b from-teal-50/50 via-gray-50/50 to-white border-b border-gray-100">
+        <section className="content-below-nav-bc pt-12 sm:pt-16 pb-14 sm:pb-20 bg-gradient-to-b from-teal-50/50 via-gray-50/50 to-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-5 sm:px-8">
             <Link
               href="/performance"

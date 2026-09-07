@@ -59,10 +59,10 @@ export default function Media() {
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-4 sm:mb-6">
             {t('common.nav.media')}
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 break-words px-1">
             {t('media.title')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto break-keep px-1">
             {t('home.media.subtitleFull')}
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function Media() {
         {isLoading ? (
           <div className="flex items-center justify-center py-12 mb-12">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-teal-600"></div>
-            <p className="ml-4 text-gray-600">로딩 중...</p>
+            <p className="ml-4 text-gray-600">{t('home.media.loading')}</p>
           </div>
         ) : latestItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
@@ -132,7 +132,7 @@ export default function Media() {
         ) : (
           <div className="text-center py-12 mb-12">
             <i className="ri-inbox-line text-6xl text-gray-300 mb-4"></i>
-            <p className="text-gray-500 text-lg">등록된 보도자료가 없습니다.</p>
+            <p className="text-gray-500 text-lg">{t('home.media.empty')}</p>
           </div>
         )}
 

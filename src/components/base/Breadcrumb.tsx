@@ -76,23 +76,23 @@ export default function Breadcrumb() {
   return (
     <>
       <BreadcrumbJsonLd items={jsonLdItems} />
-    <div className="bg-gray-50 border-b border-gray-200 fixed top-14 sm:top-16 md:top-20 left-0 right-0 z-40 safe-area-padding-x">
-      <div className="max-w-7xl mx-auto py-2.5 sm:py-3">
-        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap">
-          <Link href="/" className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer">
+    <div className="bg-gray-50 border-b border-gray-200 fixed top-14 sm:top-16 md:top-20 left-0 right-0 z-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 safe-area-padding-x">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm flex-wrap min-w-0">
+          <Link href="/" className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer shrink-0">
             <i className="ri-home-4-line"></i>
           </Link>
           {breadcrumbs.slice(1).map((crumb, index) => (
-            <div key={crumb.path} className="flex items-center gap-2">
-              <i className="ri-arrow-right-s-line text-gray-400"></i>
+            <div key={crumb.path} className="flex items-center gap-2 min-w-0">
+              <i className="ri-arrow-right-s-line text-gray-400 shrink-0"></i>
               {index === breadcrumbs.length - 2 ? (
-                <span className="text-gray-900 font-medium">
+                <span className="text-gray-900 font-medium break-words">
                   {crumb.labelKo} <span className="text-gray-500 font-normal">({crumb.labelEn})</span>
                 </span>
               ) : (
                 <Link
                   href={crumb.path}
-                  className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer"
+                  className="text-gray-500 hover:text-teal-600 transition-colors cursor-pointer break-words"
                 >
                   {crumb.labelKo} <span className="text-gray-400">({crumb.labelEn})</span>
                 </Link>

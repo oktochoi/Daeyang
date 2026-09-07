@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
@@ -46,7 +46,7 @@ export default function ProductPage() {
       <Breadcrumb />
       
       {/* Hero - 탐색 허브 스타일 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-20 bg-gray-50">
+      <section className="content-below-nav-bc pt-12 pb-20 bg-gray-50">
         <div className="max-w-[1280px] mx-auto px-6">
           {/* 페이지 제목 */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 text-center mb-4 leading-tight break-words">

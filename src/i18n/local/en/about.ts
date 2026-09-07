@@ -104,8 +104,8 @@ export const about = {
         description: 'Improving combustion and reducing energy loss\nto maximize fuel efficiency.'
       },
       practical: {
-        title: 'Practical Improvement Through Technology',
-        subtitle: 'Proven in the Field',
+        title: 'Field-Oriented Technology',
+        subtitle: 'Field First',
         description: 'Field-verified technology\ncreating immediate, applicable change.'
       }
     },

@@ -50,7 +50,7 @@ export default function ProductApplicationPage() {
       <Breadcrumb />
       
       {/* Hero */}
-      <section className="pt-[100px] sm:pt-[160px] pb-20 sm:pb-[96px] bg-white">
+      <section className="pt-below-nav-bc pb-20 sm:pb-[96px] bg-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <h1 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-[#1f2933] mb-4 leading-[1.25] break-words">
             {t('product.application.title')}

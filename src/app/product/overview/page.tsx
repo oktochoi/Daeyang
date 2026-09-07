@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -10,17 +10,13 @@ import Footer from '../../../components/feature/Footer';
 import { useScrollAnimation } from '../../../hooks/useScrollAnimation';
 import { getPerformanceProjects } from '@/lib/supabase';
 import { performanceProjects as mockProjects } from '../../../mocks/performance';
-import factory1 from '../../../assets/factory_1.png';
 import factory2 from '../../../assets/factory_2.png';
-import factory3 from '../../../assets/factory_3.png';
-import factory5 from '../../../assets/factory_5.jpg';
-import sprayScene from '../../../assets/조연제분사장면.png';
-import fallbackProof1 from '../../../assets/중국발전소테스트.jpg';
-import fallbackProof2 from '../../../assets/몽골.jpg';
-import fallbackProof3 from '../../../assets/팔라위현장짤.jpg';
 import miyeonso from '../../../assets/미연소.jpg';
 import clinkerDamage from '../../../assets/클링커 설비손상.jpg';
 import img1111 from '../../../assets/1111.png';
+import fallbackProof1 from '../../../assets/중국발전소테스트.jpg';
+import fallbackProof2 from '../../../assets/몽골.jpg';
+import fallbackProof3 from '../../../assets/팔라위현장짤.jpg';
 
 const FALLBACK_PROOF_IMAGES = [fallbackProof1, fallbackProof2, fallbackProof3];
 
@@ -86,7 +82,7 @@ export default function ProductOverviewPage() {
       <Breadcrumb />
 
       {/* 1️⃣ Hero: "한 방 설명" - 무대 카드 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-8 pb-16 lg:pb-24 px-4 sm:px-6">
+      <section className="content-below-nav-bc pt-8 pb-16 lg:pb-24 px-4 sm:px-6">
         <div className="max-w-[1200px] mx-auto">
           <div className="relative rounded-[24px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] bg-gradient-to-br from-gray-50 via-white to-teal-50/30 border border-gray-100">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_50%,rgba(20,184,166,0.06),transparent)]" />
@@ -119,6 +115,11 @@ export default function ProductOverviewPage() {
                     <i className="ri-check-line text-teal-600 text-base sm:text-lg"></i>
                     {t('product.overview.keyword3')}
                   </li>
+
+                  <li className="flex items-center gap-3 text-[14px] sm:text-[15px] font-medium text-teal-600">
+                    <i className="ri-check-line text-teal-600 text-base sm:text-lg"></i>
+                    {t('product.overview.keyword4')}
+                  </li>
                 </ul>
               </div>
 
@@ -142,7 +143,7 @@ export default function ProductOverviewPage() {
 
       {/* 2️⃣ Section 2: "왜 이게 필요하냐" (문제 제시) */}
       <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] 
                font-bold text-[#1f2933] 
                mb-6 sm:mb-8 md:mb-10 
@@ -156,37 +157,34 @@ export default function ProductOverviewPage() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">01</span>
-                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem1Short')}</h3>
+              <div className="flex items-baseline gap-2 mb-3 min-w-0">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30 shrink-0">01</span>
+                <h3 className="text-xl font-bold text-[#1f2933] min-w-0 break-words">{t('product.overview.problem1Short')}</h3>
               </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[200px] sm:min-h-[220px]">
                 <Image src={miyeonso} alt={t('product.overview.problem1Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem1.description')}</p>
               </div>
+              <p className="mt-3 text-sm text-[#4b5563] whitespace-pre-line leading-relaxed break-keep">{t('product.problems.problem1.description')}</p>
             </div>
             <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">02</span>
-                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem2Short')}</h3>
+              <div className="flex items-baseline gap-2 mb-3 min-w-0">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30 shrink-0">02</span>
+                <h3 className="text-xl font-bold text-[#1f2933] min-w-0 break-words">{t('product.overview.problem2Short')}</h3>
               </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[200px] sm:min-h-[220px]">
                 <Image src="/22.PNG" alt={t('product.overview.problem2Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem2.description')}</p>
               </div>
+              <p className="mt-3 text-sm text-[#4b5563] whitespace-pre-line leading-relaxed break-keep">{t('product.problems.problem2.description')}</p>
             </div>
             <div className={problemsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30">03</span>
-                <h3 className="text-xl font-bold text-[#1f2933]">{t('product.overview.problem3Short')}</h3>
+              <div className="flex items-baseline gap-2 mb-3 min-w-0">
+                <span className="text-4xl sm:text-5xl font-bold text-teal-600/30 shrink-0">03</span>
+                <h3 className="text-xl font-bold text-[#1f2933] min-w-0 break-words">{t('product.overview.problem3Short')}</h3>
               </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[220px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg group min-h-[200px] sm:min-h-[220px]">
                 <Image src={clinkerDamage} alt={t('product.overview.problem3Short')} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm text-white/95 z-10 whitespace-pre-line leading-relaxed">{t('product.problems.problem3.description')}</p>
               </div>
+              <p className="mt-3 text-sm text-[#4b5563] whitespace-pre-line leading-relaxed break-keep">{t('product.problems.problem3.description')}</p>
             </div>
           </div>
         </div>
@@ -194,16 +192,16 @@ export default function ProductOverviewPage() {
 
       {/* 3️⃣ Section 3: "이해되는 구조" - COAL GREEN 해결 방식 */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
-          <div className="mb-14">
-            <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-1 underline decoration-teal-600 decoration-2 underline-offset-4">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 sm:mb-14">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] font-bold text-[#1f2933] mb-1 underline decoration-teal-600 decoration-2 underline-offset-4 break-words">
               {t('product.overview.solutionTitle')}
             </h2>
             <p className="text-[12px] text-[#9ca3af]">{t('product.overview.solutionSubline')}</p>
           </div>
           <div
             ref={solutionRef.ref as React.RefObject<HTMLDivElement>}
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 lg:items-stretch ${
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 lg:items-stretch ${
               solutionRef.isVisible ? 'product-scroll-visible' : 'product-scroll-initial'
             }`}
           >
@@ -216,23 +214,23 @@ export default function ProductOverviewPage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div className="lg:border-l lg:border-dashed lg:border-gray-200 pl-0 lg:pl-12 lg:pr-4">
+            <div className="lg:border-l lg:border-dashed lg:border-gray-200 pl-0 lg:pl-12 lg:pr-4 min-w-0">
               <p className="text-[11px] font-medium text-[#9ca3af] tracking-widest uppercase mb-6">Process</p>
-              <ul className="space-y-7">
-                <li>
+              <ul className="space-y-6 sm:space-y-7">
+                <li className="min-w-0">
                   <span className="text-[11px] font-bold text-teal-600/60 mr-2">01</span>
-                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process1Title')}</span>
-                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process1Desc')}</p>
+                  <span className="text-[17px] sm:text-[19px] font-semibold text-[#1f2933] break-words">{t('product.overview.process1Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7 break-keep">{t('product.overview.process1Desc')}</p>
                 </li>
-                <li>
+                <li className="min-w-0">
                   <span className="text-[11px] font-bold text-teal-600/60 mr-2">02</span>
-                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process2Title')}</span>
-                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process2Desc')}</p>
+                  <span className="text-[17px] sm:text-[19px] font-semibold text-[#1f2933] break-words">{t('product.overview.process2Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7 break-keep">{t('product.overview.process2Desc')}</p>
                 </li>
-                <li>
+                <li className="min-w-0">
                   <span className="text-[11px] font-bold text-teal-600/60 mr-2">03</span>
-                  <span className="text-[19px] font-semibold text-[#1f2933]">{t('product.overview.process3Title')}</span>
-                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7">{t('product.overview.process3Desc')}</p>
+                  <span className="text-[17px] sm:text-[19px] font-semibold text-[#1f2933] break-words">{t('product.overview.process3Title')}</span>
+                  <p className="text-[14px] text-[#6b7280] mt-1.5 ml-7 break-keep">{t('product.overview.process3Desc')}</p>
                 </li>
               </ul>
             </div>
@@ -241,29 +239,29 @@ export default function ProductOverviewPage() {
       </section>
 
       {/* 4️⃣ Section 4: "결과 요약 카드" - 도입 효과 */}
-      <section className="py-20 lg:py-28" style={{ background: 'linear-gradient(180deg, #F1FDFB 0%, #FFFFFF 70%)' }}>
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
-          <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-14 mt-10 text-center">
+      <section className="py-16 sm:py-20 lg:py-28" style={{ background: 'linear-gradient(180deg, #F1FDFB 0%, #FFFFFF 70%)' }}>
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-[24px] sm:text-[26px] md:text-[30px] font-bold text-[#1f2933] mb-10 sm:mb-14 mt-4 sm:mt-10 text-center break-words">
             {t('product.overview.effectsTitle')}
           </h2>
           <div
             ref={effectsRef.ref as React.RefObject<HTMLDivElement>}
-            className="grid grid-cols-1 md:grid-cols-3 gap-9"
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-9"
           >
-            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-2 border-teal-500 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
-              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.cost.title')}</h3>
-              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectCostValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.cost.description')}</p>
+            <div className={`bg-white rounded-[18px] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-2 border-teal-500 text-left min-w-0 ${effectsRef.isVisible ? 'product-animate-in product-stagger-1' : 'product-scroll-initial'}`}>
+              <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#1f2933] mb-2 break-words">{t('product.benefits.cost.title')}</h3>
+              <p className="text-[22px] sm:text-[27px] font-bold text-teal-600 mb-4 break-words leading-snug">{t('product.overview.effectCostValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line break-keep">{t('product.benefits.cost.description')}</p>
             </div>
-            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
-              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.emission.title')}</h3>
-              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectEmissionValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.emission.description')}</p>
+            <div className={`bg-white rounded-[18px] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left min-w-0 ${effectsRef.isVisible ? 'product-animate-in product-stagger-2' : 'product-scroll-initial'}`}>
+              <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#1f2933] mb-2 break-words">{t('product.benefits.emission.title')}</h3>
+              <p className="text-[22px] sm:text-[27px] font-bold text-teal-600 mb-4 break-words leading-snug">{t('product.overview.effectEmissionValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line break-keep">{t('product.benefits.emission.description')}</p>
             </div>
-            <div className={`bg-white rounded-[18px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left ${effectsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
-              <h3 className="text-[18px] font-semibold text-[#1f2933] mb-2">{t('product.benefits.maintenance.title')}</h3>
-              <p className="text-[27px] font-bold text-teal-600 mb-4">{t('product.overview.effectMaintenanceValue')}</p>
-              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line">{t('product.benefits.maintenance.description')}</p>
+            <div className={`bg-white rounded-[18px] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-gray-200 text-left min-w-0 ${effectsRef.isVisible ? 'product-animate-in product-stagger-3' : 'product-scroll-initial'}`}>
+              <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#1f2933] mb-2 break-words">{t('product.benefits.maintenance.title')}</h3>
+              <p className="text-[22px] sm:text-[27px] font-bold text-teal-600 mb-4 break-words leading-snug">{t('product.overview.effectMaintenanceValue')}</p>
+              <p className="text-[14px] text-[#6b7280] leading-[1.6] whitespace-pre-line break-keep">{t('product.benefits.maintenance.description')}</p>
             </div>
           </div>
         </div>
@@ -271,12 +269,12 @@ export default function ProductOverviewPage() {
 
       {/* 5️⃣ Section 5: "현장에서 증명했냐?" - 신뢰 (현장 적용 결과) */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10">
-            <h2 className="text-[26px] sm:text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2 underline-offset-4">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] font-bold text-[#1f2933] mb-2 underline decoration-teal-600 decoration-2 underline-offset-4 break-words">
               {t('product.overview.proofTitle')}
             </h2>
-            <p className="text-[15px] text-[#4b5563] mt-2">
+            <p className="text-[14px] sm:text-[15px] text-[#4b5563] mt-2 break-keep">
               {t('product.overview.proofSubline')}
             </p>
           </div>
@@ -294,12 +292,14 @@ export default function ProductOverviewPage() {
               const desc = lang === 'ko' ? (project.description ?? '') : (project.descriptionEn ?? project.description ?? '');
               const hasImageUrl = project.icon && (project.icon.startsWith('http://') || project.icon.startsWith('https://'));
               const imgSrc = hasImageUrl ? project.icon! : (FALLBACK_PROOF_IMAGES[index] ?? FALLBACK_PROOF_IMAGES[0]);
-              const staggerClass = `product-animate-in product-stagger-${index + 1}`;
+              const staggerClass = proofRef.isVisible
+                ? `product-animate-in product-stagger-${index + 1}`
+                : 'product-scroll-initial';
               return (
                 <Link
                   key={project.id}
                   href={`/performance/${project.id}`}
-                  className={`block rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow ${staggerClass}`}
+                  className={`block rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow min-w-0 ${staggerClass}`}
                 >
                   <div className="aspect-[4/3] relative bg-gray-100">
                     <Image
@@ -341,7 +341,7 @@ export default function ProductOverviewPage() {
 
       {/* 6️⃣ Section 6: "참고자료" - 제품 사양 */}
       <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className="text-[18px] sm:text-[20px] font-semibold text-[#6b7280] mb-1">
               {t('product.overview.specTitle')}
@@ -350,40 +350,40 @@ export default function ProductOverviewPage() {
           </div>
           <div
             ref={tableRef.ref as React.RefObject<HTMLDivElement>}
-            className={`bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200 ${
+            className={`bg-white rounded-xl overflow-x-auto shadow-lg border border-gray-200 ${
               tableRef.isVisible ? 'product-scroll-visible' : 'product-scroll-initial'
             }`}
           >
-            <table className="w-full">
+            <table className="w-full min-w-[640px]">
               <thead>
                 <tr className="bg-teal-600 text-white">
-                  <th className="px-6 py-4 text-left font-semibold text-[15px] border-r border-teal-700">{t('product.overview.specProductName')}</th>
-                  <th className="px-6 py-4 text-center font-semibold text-[15px] border-r border-teal-700">{t('product.overview.specCoalAdditive')}</th>
-                  <th className="px-6 py-4 text-center font-semibold text-[15px]">{t('product.overview.specIncinerationAdditive')}</th>
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-left font-semibold text-sm sm:text-[15px] border-r border-teal-700 whitespace-nowrap">{t('product.overview.specProductName')}</th>
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-center font-semibold text-sm sm:text-[15px] border-r border-teal-700">{t('product.overview.specCoalAdditive')}</th>
+                  <th className="px-4 sm:px-6 py-3 sm:py-4 text-center font-semibold text-sm sm:text-[15px]">{t('product.overview.specIncinerationAdditive')}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specUsage')}</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] border-r border-gray-200">{t('product.overview.specCoalPlant')}</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563]">{t('product.overview.specIncinerationPlant')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 font-semibold text-[#1f2933] text-sm sm:text-[15px] border-r border-gray-200 whitespace-nowrap">{t('product.overview.specUsage')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] border-r border-gray-200 break-words">{t('product.overview.specCoalPlant')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] break-words">{t('product.overview.specIncinerationPlant')}</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specForm')}</td>
-                  <td colSpan={2} className="px-6 py-4 text-center text-[15px] text-[#4b5563]">
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 font-semibold text-[#1f2933] text-sm sm:text-[15px] border-r border-gray-200 whitespace-nowrap">{t('product.overview.specForm')}</td>
+                  <td colSpan={2} className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] break-words">
                     {t('product.overview.specFormValue')}
                   </td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specMethod')}</td>
-                  <td colSpan={2} className="px-6 py-4 text-center text-[15px] text-[#4b5563]">
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 font-semibold text-[#1f2933] text-sm sm:text-[15px] border-r border-gray-200 whitespace-nowrap">{t('product.overview.specMethod')}</td>
+                  <td colSpan={2} className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] break-words">
                     {t('product.overview.specMethodValue')}
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 bg-gray-50 font-semibold text-[#1f2933] text-[15px] border-r border-gray-200">{t('product.overview.specRatio')}</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold border-r border-gray-200">{t('product.overview.specRatioCoal')}</td>
-                  <td className="px-6 py-4 text-center text-[15px] text-[#4b5563] font-semibold">{t('product.overview.specRatioIncineration')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50 font-semibold text-[#1f2933] text-sm sm:text-[15px] border-r border-gray-200 whitespace-nowrap">{t('product.overview.specRatio')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] font-semibold border-r border-gray-200">{t('product.overview.specRatioCoal')}</td>
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-sm sm:text-[15px] text-[#4b5563] font-semibold">{t('product.overview.specRatioIncineration')}</td>
                 </tr>
               </tbody>
             </table>
@@ -393,54 +393,54 @@ export default function ProductOverviewPage() {
 
       {/* 7️⃣ Section 7: CTA - 자료 / 인증 / 문의 */}
       <section className="py-16 lg:py-24 bg-white border-t border-gray-200">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <Link
               href="/product/technical"
-              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
+              className="flex items-center gap-4 p-5 sm:p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group min-w-0"
             >
-              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+              <div className="w-12 h-12 shrink-0 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
                 <i className="ri-file-text-line text-2xl text-teal-600"></i>
               </div>
-              <div>
-                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaTechnical')}</h3>
-                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaTechnicalDesc')}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700 break-words">{t('product.overview.ctaTechnical')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5 break-words">{t('product.overview.ctaTechnicalDesc')}</p>
               </div>
             </Link>
             <Link
               href="/media/certification"
-              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
+              className="flex items-center gap-4 p-5 sm:p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group min-w-0"
             >
-              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+              <div className="w-12 h-12 shrink-0 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
                 <i className="ri-verified-badge-line text-2xl text-teal-600"></i>
               </div>
-              <div>
-                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaCertification')}</h3>
-                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaCertificationDesc')}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700 break-words">{t('product.overview.ctaCertification')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5 break-words">{t('product.overview.ctaCertificationDesc')}</p>
               </div>
             </Link>
             <Link
               href="/media/awards"
-              className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group"
+              className="flex items-center gap-4 p-5 sm:p-6 rounded-xl bg-gray-50 hover:bg-teal-50 border border-gray-200 hover:border-teal-200 transition-all group min-w-0"
             >
-              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
+              <div className="w-12 h-12 shrink-0 bg-teal-100 rounded-lg flex items-center justify-center group-hover:bg-teal-200 transition-colors">
                 <i className="ri-award-line text-2xl text-teal-600"></i>
               </div>
-              <div>
-                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700">{t('product.overview.ctaAwards')}</h3>
-                <p className="text-sm text-[#4b5563] mt-0.5">{t('product.overview.ctaAwardsDesc')}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-[#1f2933] group-hover:text-teal-700 break-words">{t('product.overview.ctaAwards')}</h3>
+                <p className="text-sm text-[#4b5563] mt-0.5 break-words">{t('product.overview.ctaAwardsDesc')}</p>
               </div>
             </Link>
             <Link
               href="/contact"
-              className="flex items-center gap-4 p-6 rounded-xl bg-teal-600 hover:bg-teal-700 border border-teal-600 transition-all group"
+              className="flex items-center gap-4 p-5 sm:p-6 rounded-xl bg-teal-600 hover:bg-teal-700 border border-teal-600 transition-all group min-w-0"
             >
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 shrink-0 bg-white/20 rounded-lg flex items-center justify-center">
                 <i className="ri-customer-service-2-line text-2xl text-white"></i>
               </div>
-              <div>
-                <h3 className="font-semibold text-white">{t('product.overview.ctaContact')}</h3>
-                <p className="text-sm text-white/80 mt-0.5">{t('product.overview.ctaContactDesc')}</p>
+              <div className="min-w-0">
+                <h3 className="font-semibold text-white break-words">{t('product.overview.ctaContact')}</h3>
+                <p className="text-sm text-white/80 mt-0.5 break-words">{t('product.overview.ctaContactDesc')}</p>
               </div>
             </Link>
           </div>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState, useMemo } from 'react';
@@ -70,7 +70,7 @@ export default function AboutHistoryPage() {
       <Breadcrumb />
       
       {/* Hero Section */}
-      <section className="mt-[80px] sm:mt-[140px] pt-16 sm:pt-20 pb-8 sm:pb-10 bg-white">
+      <section className="content-below-nav-bc pt-16 sm:pt-20 pb-8 sm:pb-10 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-left safe-area-padding-x">
           <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">

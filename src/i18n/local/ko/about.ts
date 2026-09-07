@@ -130,8 +130,8 @@ export const about = {
         description: '연소 효율을 높여 에너지 손실을 줄이고\n연료 사용의 효율을 극대화합니다.'
       },
       practical: {
-        title: '기술을 통한 실질적 개선',
-        subtitle: 'Proven in the Field',
+        title: '현장 중심 기술',
+        subtitle: 'Field-Oriented Technology',
         description: '현장에서 검증된 기술로\n즉시 적용 가능한 변화를 만들어냅니다.'
       }
     },

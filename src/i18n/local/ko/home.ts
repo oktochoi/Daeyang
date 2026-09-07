@@ -1,12 +1,12 @@
 export const home = {
   hero: {
     imageAlt: '대양환경기술 - 연소 효율 개선 솔루션',
-    eyebrow: 'Daiyang ECO TECHNOLOGY',
-    title: '연소 효율을 높이고 대기오염을 줄입니다.',
-    titleLine1: '연소 효율',
-    titleLine2: '을 높이고,',
-    titleLine3: '대기오염',
-    titleLine4: '을 줄입니다.',
+    eyebrow: 'DAIYANG ECO TECHNOLOGY',
+    title: '연소 효율을 높이고, 대기오염을 줄입니다.',
+    titleLine1: '연소 효율을 높이고,',
+    titleLine2: '대기오염을 ',
+    titleHighlight: '줄입니다.',
+    titleAfter: '',
     subtitle: '연료비 절감 · 배출가스 저감 · 설비 변경 無',
     description: 'Coal Green14001로 연료비 절감과 배출가스 저감을 동시에 실현하세요',
     cta: {

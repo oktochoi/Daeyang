@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <Breadcrumb />
 
       {/* 상단 타이틀 영역 — 좌측 정렬, 넓은 여백, 선언형 문장 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 sm:pt-16 pb-5 sm:pb-14">
+      <section className="content-below-nav-bc pt-12 sm:pt-16 pb-5 sm:pb-14">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 safe-area-padding-x">
           <h1 className="text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-bold text-[#111827] leading-[1.2] tracking-tight max-w-5xl">
             {t('about.page.heroTitle')}

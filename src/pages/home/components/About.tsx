@@ -42,7 +42,7 @@ export default function About() {
             <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
               {t('common.nav.about')}
             </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight break-keep">
                 <span className="block mb-2">
                   {t('home.about.titleLine1')}
                 </span>
@@ -50,24 +50,24 @@ export default function About() {
                   {t('home.about.titleLine2')}
                 </span>
               </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 break-keep">
               {t('about.hero.description')}
             </p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div className="bg-gray-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-teal-600 mb-2">{t('about.stats.founded')}</div>
-                <div className="text-sm text-gray-600">{t('about.stats.foundedLabel')}</div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-8">
+              <div className="bg-gray-50 rounded-xl p-4 sm:p-6 min-w-0">
+                <div className="text-2xl sm:text-3xl font-bold text-teal-600 mb-2 break-words">{t('about.stats.founded')}</div>
+                <div className="text-xs sm:text-sm text-gray-600 break-words">{t('about.stats.foundedLabel')}</div>
               </div>
-              <div className="bg-gray-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-teal-600 mb-2">{t('about.stats.patents')}</div>
-                <div className="text-sm text-gray-600">{t('about.stats.patentsLabel')}</div>
+              <div className="bg-gray-50 rounded-xl p-4 sm:p-6 min-w-0">
+                <div className="text-2xl sm:text-3xl font-bold text-teal-600 mb-2 break-words">{t('about.stats.patents')}</div>
+                <div className="text-xs sm:text-sm text-gray-600 break-words">{t('about.stats.patentsLabel')}</div>
               </div>
             </div>
             <Link
               href="/about"
               className="inline-flex items-center justify-center gap-2 min-h-[48px] px-8 py-4 bg-teal-600 text-white text-base sm:text-lg font-semibold rounded-xl hover:bg-teal-700 active:bg-teal-800 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer touch-manipulation"
             >
-              회사소개 자세히 보기
+              {t('home.about.cta')}
               <i className="ri-arrow-right-line text-xl"></i>
             </Link>
           </div>

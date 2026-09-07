@@ -95,7 +95,7 @@ export default function Footer() {
                 <div className="w-5 h-5 flex items-center justify-center bg-teal-600/20 rounded mt-0.5 flex-shrink-0">
                   <i className="ri-map-pin-line text-teal-400 text-sm"></i>
                 </div>
-                <span className="hover:text-white transition-colors">{t('common.footer.address')}</span>
+                <span className="hover:text-white transition-colors break-words">{t('common.footer.address')}</span>
               </li>
             </ul>
           </div>

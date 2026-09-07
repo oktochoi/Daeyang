@@ -81,7 +81,7 @@ export default function ContactPage() {
       <Breadcrumb />
 
       {/* Hero - 모바일 상단 여백 강화, 네비·브레드크럼 겹침 방지 */}
-      <section className="relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px] flex flex-col justify-end w-full min-w-0 pt-[104px] sm:pt-24 md:pt-32 lg:pt-36">
+      <section className="relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px] flex flex-col justify-end w-full min-w-0 pt-below-nav-bc">
         <div className="absolute inset-0">
           <Image
             src="https://readdy.ai/api/search-image?query=wide%20panoramic%20view%20of%20modern%20industrial%20facility%20at%20sunset%20with%20dramatic%20sky%2C%20professional%20corporate%20photography%20of%20large%20scale%20power%20plant%20complex%2C%20inspiring%20industrial%20landscape%20with%20warm%20lighting&width=1920&height=600&seq=contact1&orientation=landscape"

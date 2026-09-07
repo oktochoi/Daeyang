@@ -59,39 +59,40 @@ export default function Product() {
   return (
     <section ref={sectionRef} className={`py-16 sm:py-24 lg:py-32 bg-gray-50/80 border-t-2 border-gray-200 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
+        <div className={`text-center mb-10 sm:mb-16 transition-all duration-500 delay-50 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-4 sm:mb-6">
             {t('common.nav.product')}
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 break-words px-1">
             {t('product.hero.title')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto break-keep px-1">
             {t('product.hero.subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-12">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 will-change-transform min-w-0 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: `${(index + 1) * 0.05}s` }}
             >
-              <div className="h-48 overflow-hidden relative">
+              <div className="h-44 sm:h-48 overflow-hidden relative">
                 <Image 
                   src={feature.image} 
                   alt={feature.title} 
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   unoptimized
                 />
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="p-5 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 break-words">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                <p className="text-gray-600 leading-relaxed whitespace-pre-line break-keep text-sm sm:text-base">
                   {feature.description}
                 </p>
               </div>

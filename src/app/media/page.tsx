@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
@@ -31,7 +31,7 @@ export default function MediaPage() {
       <Breadcrumb />
 
       {/* 상단 — 성과 페이지 인상, 한 줄 성과 메시지 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-14 pb-12 sm:pb-16">
+      <section className="content-below-nav-bc pt-14 pb-12 sm:pb-16">
         <div className="max-w-[1120px] mx-auto px-6 sm:px-10">
           <p className="text-sm font-medium text-teal-600 tracking-wide mb-3">
             {t('media.page.heroMessage')}

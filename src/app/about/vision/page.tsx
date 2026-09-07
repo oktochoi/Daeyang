@@ -23,7 +23,7 @@ export default function AboutVisionPage() {
       <Breadcrumb />
       
       {/* Hero - 되돌림: 고정 높이·기본 그라디언트, 반응형 타이포·패딩 */}
-      <section className="relative min-h-[280px] min-[400px]:min-h-[320px] sm:min-h-[360px] md:min-h-[380px] lg:min-h-[400px] flex items-end overflow-hidden pt-[88px] sm:pt-24 md:pt-32 lg:pt-36">
+      <section className="relative min-h-[280px] min-[400px]:min-h-[320px] sm:min-h-[360px] md:min-h-[380px] lg:min-h-[400px] flex items-end overflow-hidden pt-below-nav-bc">
         <div className="absolute inset-0">
           <Image
             src={visionHeroBg}
@@ -81,7 +81,7 @@ export default function AboutVisionPage() {
             
             {/* 에너지 절감 - 대표 카드 강조 */}
             <div 
-              className={`bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-9 border-2 border-teal-500 flex flex-col relative z-10 min-h-0 transition-all duration-300 ease-out md:scale-[1.02] shadow-[0_12px_40px_rgba(0,59,92,0.12)] hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,59,92,0.18)] hover:border-teal-600 touch-manipulation ${
+              className={`bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-9 border-2 border-teal-500 flex flex-col relative z-10 min-h-0 transition-all duration-300 ease-out shadow-[0_12px_40px_rgba(0,59,92,0.12)] hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,59,92,0.18)] hover:border-teal-600 touch-manipulation ${
                 coreValuesRef.isVisible ? 'vision-card-scroll-center' : 'vision-card-initial'
               }`}
             >
@@ -102,7 +102,7 @@ export default function AboutVisionPage() {
               </p>
             </div>
             
-            {/* 기술을 통한 실질적 개선 */}
+            {/* 현장 중심 기술 */}
             <div 
               className={`bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 border border-gray-200 flex flex-col min-h-0 transition-all duration-300 ease-out shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:border-gray-300 touch-manipulation ${
                 coreValuesRef.isVisible ? 'vision-card-scroll-side' : 'vision-card-initial'

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -33,7 +33,7 @@ export default function AboutCeoPage() {
       <Breadcrumb />
 
       {/* Hero — 그라데이션 오버레이 + 살짝 블러 느낌 + 타이틀 강조 */}
-      <section className="mt-[80px] sm:mt-[140px] relative w-full min-h-[280px] sm:min-h-[320px] flex items-center justify-center overflow-hidden">
+      <section className="content-below-nav-bc relative w-full min-h-[280px] sm:min-h-[320px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={office1}

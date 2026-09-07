@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -79,7 +79,7 @@ export default function PerformancePage() {
       <Breadcrumb />
 
       {/* Hero — 배경 이미지(은은) + 그라데이션 + 포인트 라인 */}
-      <section className="relative mt-[88px] sm:mt-[140px] pt-8 sm:pt-20 pb-6 sm:pb-16 overflow-hidden border-b border-gray-100">
+      <section className="relative content-below-nav-bc pt-8 sm:pt-20 pb-6 sm:pb-16 overflow-hidden border-b border-gray-100">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
           style={{ backgroundImage: "url('/media_bg.jpg')" }}

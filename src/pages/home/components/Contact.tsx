@@ -66,15 +66,15 @@ export default function Contact() {
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <i className="ri-mail-line text-2xl text-teal-300"></i>
             </div>
-            <div className="text-lg font-semibold text-white mb-2">이메일</div>
-            <div className="text-gray-300">daiyangecotech@gmail.com</div>
+            <div className="text-lg font-semibold text-white mb-2">{t('contact.info.email.label')}</div>
+            <div className="text-gray-300 break-all text-sm sm:text-base">{t('contact.info.email.value')}</div>
           </div>
           <div className={`bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 transition-all duration-500 delay-200 will-change-transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
               <i className="ri-map-pin-line text-2xl text-teal-300"></i>
             </div>
             <div className="text-lg font-semibold text-white mb-2">{t('contact.info.address.label')}</div>
-            <div className="text-gray-300">{t('common.footer.address')}</div>
+            <div className="text-gray-300 break-words text-sm sm:text-base">{t('common.footer.address')}</div>
           </div>
         </div>
 

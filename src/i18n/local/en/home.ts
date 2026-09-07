@@ -1,16 +1,16 @@
 export const home = {
   hero: {
     imageAlt: 'Daiyang Environmental Technology - Combustion efficiency solution',
-    eyebrow: 'Daiyang ECO TECHNOLOGY',
-    title: 'Improve Combustion Efficiency, Reduce Air Pollution.',
-    titleLine1: 'Improve',
-    titleLine2: ' combustion efficiency,',
-    titleLine3: 'Reduce',
-    titleLine4: ' air pollution.',
+    eyebrow: 'DAIYANG ECO TECHNOLOGY',
+    title: 'Increase combustion efficiency and reduce air pollution.',
+    titleLine1: 'Increase combustion efficiency,',
+    titleLine2: '',
+    titleHighlight: 'Reduce',
+    titleAfter: ' air pollution.',
     subtitle: 'Fuel Cost Reduction · Emission Reduction · No Equipment Changes',
     description: 'Achieve fuel cost reduction and emission reduction simultaneously with Coal Green14001',
     cta: {
-      product: 'View Product',
+      product: 'Product Introduction',
       contact: 'Contact Us'
     }
   },

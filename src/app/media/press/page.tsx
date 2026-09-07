@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,7 +34,7 @@ export default function MediaPressPage() {
       <Breadcrumb />
       
       {/* Header */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-white border-b border-gray-200">
+      <section className="content-below-nav-bc pt-12 pb-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-teal-100 text-teal-700 rounded-full text-sm font-medium mb-6">
             {t('media.tabs.press')}

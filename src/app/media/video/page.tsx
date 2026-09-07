@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -130,7 +130,7 @@ export default function MediaVideoPage() {
       <Breadcrumb />
 
       {/* Header - 기존 미디어 섹션과 동일 */}
-      <section className="mt-[80px] sm:mt-[140px] pt-12 pb-16 bg-white border-b border-gray-200">
+      <section className="content-below-nav-bc pt-12 pb-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="inline-block px-4 py-1.5 bg-violet-100 text-violet-700 rounded-full text-sm font-medium mb-6">
             {t('media.tabs.video')}
