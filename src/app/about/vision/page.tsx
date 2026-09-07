@@ -170,24 +170,24 @@ export default function AboutVisionPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* 클로징 문장 — 풀블리드, 반응형 패딩·타이포 */}
-            <div
-              className={`vision-emphasis-bleed relative py-10 sm:py-12 md:py-16 overflow-hidden ${
-                visionRef.isVisible ? 'vision-list-item' : 'opacity-0'
-              }`}
-              style={visionRef.isVisible ? { animationDelay: `${goals.length * 80}ms` } : undefined}
-            >
-              <div className="absolute inset-0 bg-teal-600" aria-hidden />
-              <div className="absolute top-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" aria-hidden />
-              <div className="absolute bottom-0 left-0 w-40 sm:w-48 h-40 sm:h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" aria-hidden />
-              <div className="absolute top-1/2 left-1/4 w-20 sm:w-24 h-20 sm:h-24 border border-white/10 rounded-full -translate-y-1/2" aria-hidden />
-              <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 safe-area-padding-x">
-                <p className="text-white text-lg sm:text-xl md:text-2xl font-bold leading-relaxed whitespace-pre-line max-w-2xl break-words [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
-                  {t('about.vision.futureVision.closing')}
-                </p>
-              </div>
-            </div>
+        {/* 클로징 문장 — 섹션 전체 너비 (transform bleed 제거로 UI 깨짐 방지) */}
+        <div
+          className={`relative mt-2 py-10 sm:py-12 md:py-16 overflow-hidden ${
+            visionRef.isVisible ? 'vision-list-item' : 'opacity-0'
+          }`}
+          style={visionRef.isVisible ? { animationDelay: `${goals.length * 80}ms` } : undefined}
+        >
+          <div className="absolute inset-0 bg-teal-600" aria-hidden />
+          <div className="absolute top-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" aria-hidden />
+          <div className="absolute bottom-0 left-0 w-40 sm:w-48 h-40 sm:h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" aria-hidden />
+          <div className="absolute top-1/2 left-1/4 w-20 sm:w-24 h-20 sm:h-24 border border-white/10 rounded-full -translate-y-1/2" aria-hidden />
+          <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 safe-area-padding-x">
+            <p className="text-white text-lg sm:text-xl md:text-2xl font-bold leading-relaxed whitespace-pre-line max-w-2xl break-words [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+              {t('about.vision.futureVision.closing')}
+            </p>
           </div>
         </div>
       </section>

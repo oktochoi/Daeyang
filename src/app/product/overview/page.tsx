@@ -36,7 +36,7 @@ export default function ProductOverviewPage() {
   const problemsRef = useScrollAnimation();
   const solutionRef = useScrollAnimation();
   const effectsRef = useScrollAnimation();
-  const proofRef = useScrollAnimation();
+  const proofRef = useScrollAnimation(proofLoading ? 'loading' : proofProjects.length);
   const tableRef = useScrollAnimation();
 
   useEffect(() => {
@@ -47,26 +47,45 @@ export default function ProductOverviewPage() {
         const source = projects?.length ? projects : mockProjects;
         const recent3 = source.slice(0, 3);
         setProofProjects(recent3.map((p) => {
-          const raw = p as ProofProject & { title_en?: string; description_en?: string; result?: string; resultEn?: string; image?: string };
+          const raw = p as ProofProject & {
+            title_en?: string;
+            description_en?: string;
+            result?: string;
+            resultEn?: string;
+            image?: string;
+            photos?: string[];
+          };
+          const candidate = raw.image || raw.icon || raw.photos?.[0] || '';
+          const iconUrl =
+            candidate.startsWith('http://') || candidate.startsWith('https://')
+              ? candidate
+              : '';
           return {
             id: raw.id,
             title: raw.title || '',
             titleEn: raw.titleEn ?? raw.title_en ?? '',
             description: raw.description ?? raw.result ?? '',
             descriptionEn: raw.descriptionEn ?? raw.description_en ?? raw.resultEn ?? '',
-            icon: raw.image ?? raw.icon ?? '',
+            icon: iconUrl,
           };
         }));
       } catch {
         const recent3 = mockProjects.slice(0, 3);
-        setProofProjects(recent3.map((p) => ({
-          id: p.id,
-          title: p.title || '프로젝트',
-          titleEn: p.titleEn || p.title || 'Project',
-          description: p.description ?? p.result ?? '',
-          descriptionEn: p.descriptionEn ?? p.resultEn ?? '',
-          icon: p.image ?? p.icon,
-        })));
+        setProofProjects(recent3.map((p) => {
+          const candidate = p.image || p.icon || p.photos?.[0] || '';
+          const iconUrl =
+            candidate.startsWith('http://') || candidate.startsWith('https://')
+              ? candidate
+              : '';
+          return {
+            id: p.id,
+            title: p.title || '프로젝트',
+            titleEn: p.titleEn || p.title || 'Project',
+            description: p.description ?? p.result ?? '',
+            descriptionEn: p.descriptionEn ?? p.resultEn ?? '',
+            icon: iconUrl,
+          };
+        }));
       } finally {
         setProofLoading(false);
       }
@@ -278,15 +297,42 @@ export default function ProductOverviewPage() {
               {t('product.overview.proofSubline')}
             </p>
           </div>
+          <div ref={proofRef.ref as React.RefObject<HTMLDivElement>}>
           {proofLoading ? (
             <div className="flex justify-center py-16">
               <div className="animate-spin rounded-full h-9 w-9 border-2 border-gray-200 border-t-teal-500" />
             </div>
+          ) : proofProjects.length === 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {FALLBACK_PROOF_IMAGES.map((img, index) => (
+                <div
+                  key={index}
+                  className={`block rounded-xl overflow-hidden border border-gray-200 shadow-sm min-w-0 ${
+                    proofRef.isVisible ? `product-animate-in product-stagger-${index + 1}` : 'product-scroll-initial'
+                  }`}
+                >
+                  <div className="aspect-[4/3] relative bg-gray-100">
+                    <Image
+                      src={img}
+                      alt={t(`product.overview.proof${['China', 'Mongolia', 'Palau'][index]}Title`)}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-4 bg-gray-50">
+                    <p className="text-sm font-medium text-[#1f2933]">
+                      {t(`product.overview.proof${['China', 'Mongolia', 'Palau'][index]}Title`)}
+                    </p>
+                    <p className="text-xs text-[#4b5563] mt-0.5">
+                      {t(`product.overview.proof${['China', 'Mongolia', 'Palau'][index]}Desc`)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
-          <div
-            ref={proofRef.ref as React.RefObject<HTMLDivElement>}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {proofProjects.map((project, index) => {
               const title = lang === 'ko' ? project.title : (project.titleEn || project.title);
               const desc = lang === 'ko' ? (project.description ?? '') : (project.descriptionEn ?? project.description ?? '');
@@ -311,10 +357,8 @@ export default function ProductOverviewPage() {
                       unoptimized={!!hasImageUrl}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        if (hasImageUrl) {
-                          const fb = FALLBACK_PROOF_IMAGES[index] ?? FALLBACK_PROOF_IMAGES[0];
-                          target.src = typeof fb === 'string' ? fb : (fb as { src: string }).src;
-                        }
+                        const fb = FALLBACK_PROOF_IMAGES[index] ?? FALLBACK_PROOF_IMAGES[0];
+                        target.src = typeof fb === 'string' ? fb : (fb as { src: string }).src;
                       }}
                     />
                   </div>
@@ -327,6 +371,7 @@ export default function ProductOverviewPage() {
             })}
           </div>
           )}
+          </div>
           <div className="mt-8 text-center">
             <Link
               href="/performance"

@@ -196,18 +196,15 @@
   opacity: 0;
 }
 
+/* Vision list fade — transform은 위치용이 아닌 애니메이션 전용 */
 .vision-list-item {
   opacity: 0;
-  transform: translateY(8px);
   animation: visionFadeUp 0.5s ease-out both;
 }
 
-/* Vision: 강조 영역 풀블리드 (부모 overflow-x-hidden 전제) */
+/* (legacy) 풀블리드 유틸 — transform 충돌로 사용 중단, 구조적으로 대체함 */
 .vision-emphasis-bleed {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
 }
 
 /* Product Overview Animations */
